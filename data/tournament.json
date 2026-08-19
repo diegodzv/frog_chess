@@ -1,0 +1,12 @@
+{
+  "name": "Frog Chess",
+  "timeClass": "rapid",
+  "rules": "chess",
+  "requireRated": false,
+  "playerCap": { "min": 8, "max": 40 },
+  "swissRounds": 5,
+  "playoffCutoff": { "method": "rank", "value": 8 },
+  "phase": "registration",
+  "currentRound": 0,
+  "rounds": []
+}

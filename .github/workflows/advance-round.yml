@@ -1,0 +1,47 @@
+name: Advance tournament
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - start-tournament
+          - next-round
+          - force-next-round
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tournament-data
+  cancel-in-progress: false
+
+jobs:
+  advance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: npm ci
+
+      - name: Configure git identity
+        run: |
+          git config user.name "frog-chess-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: Advance tournament
+        working-directory: scripts
+        env:
+          ACTION: ${{ inputs.action }}
+        run: node advance-tournament.mjs

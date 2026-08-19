@@ -1,0 +1,13 @@
+{
+  "games": [
+    {
+      "url": "https://www.chess.com/game/live/1000000001",
+      "end_time": 1749571200,
+      "time_class": "rapid",
+      "rules": "chess",
+      "rated": true,
+      "white": { "username": "adalovelace", "result": "win" },
+      "black": { "username": "carlbot", "result": "checkmated" }
+    }
+  ]
+}

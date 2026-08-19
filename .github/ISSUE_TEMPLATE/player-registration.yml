@@ -1,0 +1,32 @@
+name: "🐸 Inscripción al torneo"
+description: "Regístrate en el torneo Frog Chess"
+title: "[Inscripción] "
+labels: ["registration"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Este repositorio es **público**: tu nombre y tu usuario de chess.com quedarán visibles en el historial de este issue y en la web del torneo. No incluyas ningún otro dato personal.
+  - type: input
+    id: name
+    attributes:
+      label: Nombre completo
+      description: Como quieres que aparezca en el ranking.
+      placeholder: "Ada Lovelace"
+    validations:
+      required: true
+  - type: input
+    id: username
+    attributes:
+      label: Usuario de chess.com
+      description: Tu username exacto en chess.com (sin la @).
+      placeholder: "adalovelace"
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consentimiento
+      options:
+        - label: Acepto que mi nombre y usuario de chess.com sean visibles públicamente en este repositorio mientras dure el torneo.
+          required: true

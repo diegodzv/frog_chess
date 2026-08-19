@@ -1,0 +1,9 @@
+{
+  "name": "Frog Chess",
+  "phase": "registration",
+  "currentRound": 0,
+  "swissRounds": 5,
+  "playerCount": 0,
+  "playerCap": { "min": 8, "max": 40 },
+  "updatedAt": null
+}

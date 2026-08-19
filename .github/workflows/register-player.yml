@@ -1,0 +1,95 @@
+name: Register player
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: tournament-data
+  cancel-in-progress: false
+
+jobs:
+  register:
+    if: contains(github.event.issue.labels.*.name, 'registration')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: npm ci
+
+      - name: Configure git identity
+        run: |
+          git config user.name "frog-chess-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: Run registration script
+        id: register
+        working-directory: scripts
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node register-player.mjs
+
+      - name: Comment and close on success
+        if: steps.register.outputs.result == 'accepted'
+        uses: actions/github-script@v7
+        env:
+          PLAYER_NAME: ${{ steps.register.outputs.player_name }}
+          PLAYER_USERNAME: ${{ steps.register.outputs.player_username }}
+        with:
+          # Player-supplied values are passed via env, never interpolated
+          # directly into this script body — untrusted issue content must
+          # not be spliced into JS source (classic Actions injection vector).
+          script: |
+            const name = process.env.PLAYER_NAME;
+            const username = process.env.PLAYER_USERNAME;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ Inscripción confirmada para **${name}** (chess.com: [${username}](https://www.chess.com/member/${username})).`
+            });
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['registered']
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
+
+      - name: Comment on rejection
+        if: steps.register.outputs.result == 'rejected'
+        uses: actions/github-script@v7
+        env:
+          REASON: ${{ steps.register.outputs.reason }}
+        with:
+          script: |
+            const reason = process.env.REASON;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `⚠️ No se ha podido completar el registro: ${reason}\n\nEdita este issue con los datos corregidos para reintentarlo.`
+            });
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['needs-changes']
+            });
