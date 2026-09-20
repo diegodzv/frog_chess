@@ -1,6 +1,6 @@
 # Frog Chess
 
-Torneo de ajedrez de oficina jugado en chess.com: rondas suizas + fase eliminatoria, repartido a lo largo de varios meses.
+Torneo de ajedrez de oficina jugado en chess.com: rondas suizas + fase eliminatoria.
 
 Arquitectura: sitio estático (GitHub Pages) + JSON versionado en `data/` como "base de datos" + GitHub Actions como "backend". Sin servidor propio, sin coste.
 
