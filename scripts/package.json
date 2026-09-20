@@ -5,8 +5,10 @@
   "type": "module",
   "description": "Backend automation scripts run by GitHub Actions for the Frog Chess tournament.",
   "scripts": {
-    "test": "node --test __tests__/",
+    "test": "node --test",
     "spike": "node dev/spike-tournament-organizer.mjs",
+    "sim": "node dev/simulate-tournament.mjs",
+    "reset": "node dev/reset-tournament.mjs",
     "smoke:chesscom": "node dev/smoke-chesscom.mjs"
   },
   "engines": {

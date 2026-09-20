@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write # to dispatch deploy-pages.yml
 
 concurrency:
   group: tournament-data
@@ -33,6 +34,21 @@ jobs:
           git config user.name "frog-chess-bot"
           git config user.email "actions@users.noreply.github.com"
 
+      - name: Remember current commit
+        id: head
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Sync results from chess.com
         working-directory: scripts
         run: node sync-results.mjs
+
+      # Pushes made with the workflow's GITHUB_TOKEN don't trigger other workflows, so the site has to be
+      # redeployed explicitly whenever this run committed new data.
+      - name: Redeploy the site if the bot committed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE: ${{ steps.head.outputs.sha }}
+        run: |
+          if [ "$(git rev-parse HEAD)" != "$BEFORE" ]; then
+            gh workflow run deploy-pages.yml --ref "${{ github.event.repository.default_branch || 'main' }}"
+          fi

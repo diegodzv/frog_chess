@@ -4,3 +4,5 @@ web/public/data/
 *.log
 .DS_Store
 .env
+sim/
+

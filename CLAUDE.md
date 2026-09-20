@@ -1,129 +1,101 @@
-# Frog Chess — contexto del proyecto
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Qué es esto
 
-Torneo de ajedrez de una oficina, jugado a través de chess.com entre compañeros de trabajo (16-40 personas), repartido a lo largo de varios meses. Formato "estilo Pokémon VGC": primero una fase de rondas suizas, luego una fase eliminatoria (single elimination) con los mejores clasificados. "Frog" viene de la mascota de la empresa del usuario, no tiene relación funcional con el proyecto.
+Torneo de ajedrez de una oficina (20-60 personas), jugado en chess.com a lo largo de varios meses. Formato "estilo Pokémon VGC": rondas suizas y después eliminatoria (single elimination) con los mejores clasificados. Cada emparejamiento es una **serie de partidas**: al mejor de 3 (Bo3) en todas las rondas salvo semifinales y final, que son al mejor de 5 (Bo5). **Las tablas no cuentan: se juega otra partida; gana la serie quien primero llegue a 2 victorias (Bo3) o 3 (Bo5), así que nunca hay encuentros empatados.** "Frog" es la mascota de la empresa del usuario, sin relación funcional. La app registra jugadores, genera emparejamientos, (debe) detectar resultados en chess.com y publica ranking/bracket. Documentación, mensajes de error de cara al organizador y mensajes de commit en español; identificadores y comentarios de código en inglés.
 
-La app debe: gestionar el registro de jugadores, generar los emparejamientos de cada ronda, detectar automáticamente los resultados de las partidas jugadas en chess.com, y mostrar un ranking/bracket que se actualiza solo.
+## Comandos
 
-## Decisiones de diseño clave (no renegociar sin motivo)
+Dos paquetes npm independientes, sin lint ni formateador configurados. Node 20 (`.nvmrc`; el local es 24 y también vale).
 
-- **Hosting**: GitHub Pages del usuario (repo personal, público — el plan gratuito de Pages para cuentas personales no permite repos privados).
-- **chess.com PubAPI** (`api.chess.com/pub`): de solo lectura, sin OAuth/autenticación, **sin CORS**. No se puede llamar desde el navegador — solo desde Node (GitHub Actions o scripts locales). No existe forma oficial de "vincular"/verificar que alguien es dueño de un username; cada jugador simplemente lo declara.
-- **Cero backend propio, cero servicios de pago**: todo dentro de GitHub. Pages sirve estáticos, JSON versionado en `data/` hace de "base de datos", GitHub Actions hace de "backend".
-- **Backend en Node.js** (no Python) — el usuario lo confirmó explícitamente tras plantearse usar un venv de Python; se mantuvo Node por poder reutilizar `tournament-organizer` (swiss pairing con blossom matching + tiebreaks), que no tiene equivalente maduro en Python.
-- **Registro de jugadores**: vía GitHub Issue Form (nombre + username chess.com). Una Action lo valida contra la API de chess.com y lo añade al roster.
-- **Avance de rondas**: MANUAL, disparado por un organizador vía `workflow_dispatch`. Nunca automático por fecha.
-- **Resultados**: automáticos vía API de chess.com, pero **nunca se adivina**: partidas ambiguas (varias candidatas, resultados inconsistentes) o partidas sin jugar se marcan para revisión manual del organizador, nunca se resuelven solas.
-- **Cortafuegos corporativo bloquea chess.com** (categoría "gaming", confirmado por el usuario): no afecta a producción (los runners de GitHub Actions están fuera de la red de la oficina), pero sí a cualquier prueba/desarrollo local hecho desde un equipo de la oficina.
+```bash
+# Backend / scripts (scripts/)
+cd scripts && npm install
+npm test                                              # node --test: descubre solo los *.test.mjs (no le pases directorios: falla en Node >=22)
+node --test __tests__/series.test.mjs                 # un solo fichero
+node --test --test-name-pattern="Bo5" __tests__/series.test.mjs   # un solo test
+npm run spike                                         # comprueba el comportamiento de tournament-organizer (sin red)
+npm run smoke:chesscom                                # llama a la API real de chess.com (necesita red sin filtro)
+node build-public-data.mjs                            # regenera data/public/*.json; puro, sin red ni git
+npm run reset -- --yes [--keep-players]               # vuelve a fase de inscripción (para pasar de pruebas al torneo real); no commitea
+
+# Simulación (fake players + partidas simuladas; NO toca data/)
+node dev/simulate-tournament.mjs                      # 20, 40 y 60 jugadores -> sim/n20, sim/n40, sim/n60 (+ 2 snapshots a medias) y estadísticas
+node dev/simulate-tournament.mjs --players=32 --seed=7 --runs=500 --no-show=0.05
+node dev/simulate-tournament.mjs --swiss-rounds=7 --cutoff=8 --out=/tmp/sim   # probar otro formato sin pisar sim/
+
+# Frontend (web/)
+cd web && npm install
+npm run dev        # predev copia data/public -> web/public/data y sim/*/public -> web/public/data/sim/* (gitignored)
+npm run build      # salida en web/dist
+# Ver una simulación: http://localhost:5173/index.html?data=sim/n40  (hay un selector "Datos:" en la barra si existe sim/)
+```
+
+`tournamentEngine*.test`, `tournamentFlow*.test`, `simulation.test`, `buildPublicData.test`, `resetTournament.test` y `registerPlayer.test` usan el paquete real `tournament-organizer` (no mockeado). `registerPlayer.test` ejecuta `register-player.mjs` como proceso, con el cuerpo de issue de GitHub y chess.com simulado (`__tests__/helpers/stub-chesscom.mjs`, cargado con `--import`). Ningún test usa red real. Con Node 20 (CI) y Node 24 pasan los 78+ tests.
+
+Guía de uso para el organizador (puesta en marcha, inscripción, rondas, overrides): `docs/ORGANIZADOR.md`.
+
+## Gotchas
+
+- **Los scripts que escriben datos hacen `git add data && git commit && git push` de verdad** (`register-player`, `sync-results`, `advance-tournament` vía `lib/commitAndPush.mjs`). Para ejecutarlos en local sin efectos: `FROG_SKIP_GIT=1` (no commitea) y `FROG_DATA_DIR=<dir>` (lee y escribe otra copia de `data/`; `lib/repoData.mjs`). El simulador y las pruebas de E/S usan ambos.
+- **Series Bo3/Bo5 y `sync-results`**: `resultMatcher.findGameForPairing` sigue asumiendo UNA partida por emparejamiento (varias = "ambiguo"). Por eso `sync-results.mjs` se niega a resolver nada automáticamente cuando la ronda es Bo>1 (solo loguea). **La detección automática de series en chess.com está pendiente**: hay que agregar las partidas entre los dos jugadores dentro de la ventana, en orden cronológico, con `scoreSeries(games, bestOf)` (`lib/series.mjs`; las tablas se ignoran y las partidas posteriores a la decisión también), dejar la serie pendiente mientras esté `in_progress`, decidir qué hacer ante partidas anómalas, y reescribir los tests del matcher. Mientras tanto, `sync-results` ya trata una única partida en tablas como "falta otra partida" en vez de resolver. Hasta entonces los resultados se meten a mano (`overrides.json` + `force-next-round`).
+- **Los `package-lock.json` de `scripts/` y `web/` deben estar commiteados**: todos los workflows hacen `npm ci` con `cache-dependency-path: */package-lock.json` y fallan sin ellos.
+- **Redespliegue tras los commits del bot**: los push hechos con el `GITHUB_TOKEN` no disparan `deploy-pages.yml`, así que `register-player`, `sync-results` y `advance-round` terminan con un paso que ejecuta `gh workflow run deploy-pages.yml` solo si su `HEAD` cambió (necesitan `permissions: actions: write`). **Escrito pero sin probar en GitHub**: comprobar en el primer registro real que aparece un run de "Deploy Pages" tras el del bot.
+- El repo tiene `core.autocrlf=true`: los ficheros originales están en CRLF y los añadidos después en LF. No lo "arregles" en masa; si editas con scripts, tenlo en cuenta al hacer reemplazos de texto.
+- El repo es `github.com/diegodzv/frog_chess` (Pages en `diegodzv.github.io/frog_chess/`); `REPO_URL` y el `USER_AGENT` de chess.com ya lo usan. `battle_subway_helper/` (otro proyecto del usuario copiado dentro del directorio, con su propio repo/Pages) está en `.gitignore`: no mezclarlo.
+- Cortafuegos de la oficina bloquea chess.com: `smoke:chesscom` y cualquier prueba con red real hay que hacerlas desde otra red. Los runners de Actions no se ven afectados.
+
+## Decisiones de diseño (no renegociar sin motivo)
+
+- **Cero backend propio y cero servicios de pago**: GitHub Pages sirve estáticos, JSON versionado en `data/` es la "base de datos", GitHub Actions es el "backend". Repo público (Pages gratis en cuenta personal no admite privados): nombres reales y usernames quedan visibles.
+- **chess.com PubAPI** (`api.chess.com/pub`): solo lectura, sin auth, **sin CORS** -> solo se llama desde Node, nunca desde el navegador. No hay forma oficial de verificar que alguien es dueño de un username; cada jugador lo declara.
+- **Node.js, no Python** (confirmado explícitamente por el usuario), para reutilizar `tournament-organizer` (swiss con blossom matching + tiebreaks), sin equivalente maduro en Python.
+- **Registro**: GitHub Issue Form (nombre + username) -> Action lo valida contra chess.com y lo añade a `data/players.json` (guarda `issueNumber`; editar un issue ya aceptado es un no-op, cambiar su usuario se rechaza; si chess.com falla o bloquea, el jugador recibe un mensaje de reintento; la duplicidad se comprueba también contra el nombre canónico de chess.com). El workflow se activa por la etiqueta `registration` **o** por el prefijo `[Inscripción]` del título, porque el formulario solo añade etiquetas que ya existan en el repo. El contenido del issue es input no confiable: en `register-player.yml` se pasa por `env`, nunca interpolado en el script de `github-script` (ya hubo una inyección corregida).
+- **Avance de ronda MANUAL** (`workflow_dispatch` de `advance-round.yml`: `start-tournament | next-round | force-next-round`). Nunca automático por fecha.
+- **Resultados nunca adivinados**: partida ambigua o inconsistente -> `needs-review.json`; partida sin jugar -> pendiente. Una partida no jugada jamás se forfeitea sola: requiere entrada manual en `overrides.json` + `force-next-round`.
+- **Formato (valores por defecto elegidos en la simulación, ajustables en `data/tournament.json`)**:
+  - Rondas suizas = `ceil(log2(n))` (`"swissRounds": "auto"`): 20->5, 40->6, 60->6. Corte a eliminatorias = mayor potencia de 2 <= n/2 acotada a [4,16] (`"value": "auto"`): 20->8, 40->16, 60->16. Un número explícito manda sobre `auto`; el corte tiene que ser potencia de 2. Se resuelven al iniciar el torneo y se guardan como números en `tournament.json`.
+  - Series (`"series"`): `swiss: 3`, `elimination: 3`, `semifinal: 5`, `final: 5`. Sin partido por el 3.er puesto.
+  - Reglas de serie (`lib/series.mjs`, definidas por el usuario): la serie termina cuando alguien llega a `ceil(bestOf/2)` victorias; una partida en tablas no puntúa y se repite, por lo que un "Bo3" puede durar más de 3 partidas. No existen encuentros empatados ni desempate a muerte súbita: `applySeriesResult` rechaza cualquier marcador que no sea `need`-N con N < need.
+  - **Comparado con Play! Pokémon (VGC)** (Tournament Rules Handbook §5.5.1, §5.6.1, §5.5.4.1; investigado y simulado): las rondas suizas coinciden con su tabla (9-16 -> 4, 17-32 -> 5, 33-64 -> 6 = `ceil(log2 n)`). El bye que usa la librería ya es el de Pokémon —ronda 1 al azar; después al peor récord sin bye previo, aleatorio dentro de ese grupo, nunca dos veces; medido en 1500 torneos de 29 jugadores: 100 % de las veces al peor récord, sin sesgo por orden de inscripción— y `verifyTournament` lo comprueba como invariante. Su desempate ("resistencia": win % de los rivales con mínimo 25 % y sin contar byes, luego win % de los rivales de los rivales) NO mejora el nuestro (Buchholz mediano, Sonneborn-Berger, dif. de partidas): en 1500 torneos por variante las diferencias están dentro del ruido (p. ej. gana el mejor 62,1 % vs 62,9 %); alternativa equivalente y aprox. sin código: `"tiebreaks": ["opponent match win percentage", "opponent opponent match win percentage", "game win differential"]` en `tournament.json`. Su corte es top 8 para 17-64 jugadores (nosotros 8/16/16 según n); top 8 vs 16 en 40-60 jugadores gana el mejor 55 % vs 56-58 % y ahorra una ronda: decisión abierta del usuario.
+  - Puntos: serie ganada 1, perdida 0, bye 1 (sin medios puntos). Desempates: Buchholz mediano -> Sonneborn-Berger -> diferencia de partidas. Consecuencia medida en simulación: con puntos enteros, en el 100 % de los torneos el corte a eliminatorias lo decide el desempate (10-16 jugadores empatados a los puntos de la línea) y más rondas suizas (7 u 8) no lo arreglan ni mejoran quién gana; es inherente a suizo + corte.
 
 ## Arquitectura
 
 ```
-Issue Form (registro) ──▶ register-player.yml ──▶ data/players.json
-                                                          │
-organizador ──workflow_dispatch──▶ advance-round.yml ────┤──▶ data/engine-state.json (tournament-organizer)
-                                                          │    data/tournament.json (fase, fechas de ronda)
-cron horario ──▶ sync-results.yml (llama chess.com API) ─┘
-                                                          │
-                                          build-public-data.mjs
-                                                          ▼
-                                              data/public/*.json
-                                                          │
-                                          deploy-pages.yml (push a main)
-                                                          ▼
-                                    GitHub Pages: Vite+React (standings, ronda, bracket, registro)
+Issue Form ──▶ register-player.yml ──▶ data/players.json
+organizador ─▶ advance-round.yml ─────▶ data/engine-state.json + data/tournament.json   (lib/tournamentFlow.mjs)
+cron horario ▶ sync-results.yml ──────▶ (chess.com; hoy solo resuelve rondas Bo1, ver Gotchas)
+                         └─ todos terminan en build-public-data.mjs ─▶ data/public/*.json
+push a main (data/public/** o web/**) ─▶ deploy-pages.yml ─▶ web/ (Vite+React) en GitHub Pages
 ```
 
-Todos los workflows que escriben en `data/` comparten `concurrency: {group: tournament-data, cancel-in-progress: false}` para que el sync programado y el avance manual de ronda nunca corran en paralelo (se encolan).
+Los tres workflows que escriben en `data/` comparten `concurrency: {group: tournament-data, cancel-in-progress: false}`: se encolan.
 
-Motor de torneo: [`tournament-organizer`](https://www.npmjs.com/package/tournament-organizer) (slashinfty, v4.1.1 fijada) — soporta nativamente swiss (`stageOne`) seguido de single-elimination (`stageTwo`) con corte configurable, y serializa su estado como JSON plano (`getValues()`/`loadTournament()`), que es justo lo que se persiste en `data/engine-state.json`.
+Cosas que exigen leer varios ficheros para entenderlas:
 
-## Estructura del repo
+- **`lib/tournamentEngine.mjs` es el único punto de contacto con `tournament-organizer`** (v4.1.1 fijada). Su cabecera documenta lo verificado leyendo el código de la librería y con `npm run spike`: `Manager` es el export *default*; `nextRound()` solo existe en stage one y tras la última ronda suiza construye TODO el bracket de golpe (rondas numeradas a continuación de las suizas); en stage two los cruces avanzan solos con `enterResult()`, `tournament.round` no se mueve y el estado nunca pasa a `complete` salvo que se llame a `endTournament()`; `scoring.bestOf` es global y mutable y `enterResult` valida contra él (máx. victorias = `round(bestOf/2)`), así que `applySeriesResult` lo fija por partido antes de registrar; `assignLoss()` no sirve para el doble forfeit (lanza al segunda llamada), por eso `applyDoubleForfeit` escribe la derrota directamente; el `Swiss` de `tournament-pairings` baraja con `Math.random` en cada ronda (los sorteos no son reproducibles; el simulador siembra `Math.random`). Cada script rehidrata desde `data/engine-state.json` y guarda con `saveEngineTournament` (claves ordenadas -> diffs estables). `engine-state.json` no se edita a mano (es `null` hasta `start-tournament`).
+- **`lib/tournamentFlow.mjs`** (`startTournament`, `advance`) es el ciclo de vida como transiciones puras, sin E/S: lo usan `advance-tournament.mjs` y el simulador (la misma ruta que producción). `advance` no muta lo que recibe y lanza sin dejar nada a medias (el script original marcaba overrides como aplicados aunque luego abortara).
+- **Dos estados en paralelo**: la librería lleva emparejamientos y puntos; `data/tournament.json` lleva lo que no modela — `phase` (registration -> stage-one -> stage-two -> complete), `currentRound` y `rounds[]` (`number, phase, label, bestOf, startedAt, endedAt`). En stage two `currentRound` es nuestro: la librería activa un cruce en cuanto acaban sus dos feeders, pero la ronda solo "se abre" (y solo se sincroniza) cuando el organizador avanza; por eso `getUnresolvedMatches(engine, round)` filtra por ronda y la web muestra esos cruces como "Por jugar", no "Pendiente". Tras la final, `advance` llama a `finishTournament`.
+- **La ventana de ronda gobierna la detección de resultados**: `resultMatcher.findGameForPairing` consulta los archivos mensuales de chess.com del jugador A y filtra por `timeClass`, `rules`, `requireRated`, los dos usernames y `endTime` dentro de la ventana (ver Gotchas: aún una partida por emparejamiento). `sync-results` sobrescribe `needs-review.json` entero en cada ejecución.
+- **Identidad de jugador**: `players.json[].id` es el id del jugador en el motor y `chesscomUsername` se copia a su `meta` dentro de `engine-state.json` (de ahí lo lee `sync-results`). Un jugador registrado después de `start-tournament` no entra en el motor. El desempate final de la librería hace `parseInt(id, 36)`: con ids `p_nombre-hash` es constante (orden de inscripción), inocuo pero no significativo.
+- **Overrides** (`data/overrides.json`, resultados manuales del organizador): cada entrada nombra el emparejamiento por `matchId` + `outcome`, o —lo cómodo— por usuarios de chess.com: `{"winner","loser"}` (serie ganada 2-0 en Bo3 / 3-0 en Bo5, sirve para walkovers) o `{"players":[a,b],"outcome":"double_forfeit"}`. Se aplican solo a partidas sin resolver de la ronda actual y solo una vez (`applied: true`); las que no coinciden con nada se devuelven en `skipped` y el workflow avisa. Tres acciones los usan: `apply-overrides` (aplica sin avanzar; la web muestra los resultados durante la ronda), `force-next-round` (aplica y avanza; aborta listando las pendientes sin cambiar nada) y `next-round` (avanza solo si no queda ninguna). `draw` no existe como resultado y `double_forfeit` solo vale en suizo (ambos pierden, 0 puntos, derrota en el récord). `rebuild-public-data` regenera `data/public/` tras editar `players.json` a mano.
+- **`build-public-data.mjs`**: `derivePublicData` es pura (`{tournament, roster, engineState, now}` -> `meta, standings, rounds, bracket, players`); `buildPublicData` solo hace E/S y conserva el `updatedAt` anterior si el contenido no cambió (si no, el cron horario generaría un commit y un redeploy cada hora). Los puntos y desempates salen de `getSwissStandings` de la librería, no se recalculan; las victorias por serie/partida se cuentan a partir de los `matches`. Ojo: `player.value` de la librería es la siembra (siempre 0 aquí), no los puntos.
+- **Frontend** (Vite multi-página: `index/round/bracket/register.html`, `base: './'`): pide los JSON en runtime con `useJson` (`cache: 'no-store'`); `src/dataset.js` resuelve `?data=sim/<n>` para ver simulaciones. `round.html` navega todas las rondas (`?round=N`), `bracket.html` pinta cada ronda con su Bo y marcadores. `web/public/data/` es una copia derivada (`web/copy-data.mjs`); `sim/` está en `.gitignore`, así que las simulaciones nunca llegan al despliegue.
+- **Simulación** (`lib/simulation.mjs`): jugadores con Elo oculto, partidas con expectativa Elo y tablas más raras cuanto mayor la diferencia, no-shows (overrides vía `force`), `stopAt` para snapshots a mitad de ronda. `verifyTournament` comprueba invariantes (todos juegan una vez por ronda, sin repetir rival, byes, siembra 1 vs N, Bo3/Bo5 correctos, un campeón) y calcula métricas del formato; sus propios tests lo manipulan para comprobar que falla cuando debe.
 
-```
-frog_chess/
-├── .github/
-│   ├── ISSUE_TEMPLATE/player-registration.yml   # formulario de inscripción
-│   └── workflows/
-│       ├── ci.yml                # tests + build en push/PR
-│       ├── register-player.yml   # on: issues → valida y añade jugador
-│       ├── sync-results.yml      # cron horario + workflow_dispatch
-│       ├── advance-round.yml     # workflow_dispatch (organizador): start-tournament | next-round | force-next-round
-│       └── deploy-pages.yml      # push a main → build + publica Pages
-├── data/
-│   ├── players.json              # roster
-│   ├── tournament.json           # config del torneo + fase + ventanas de fecha por ronda
-│   ├── engine-state.json         # dump de tournament-organizer (null hasta que empieza el torneo)
-│   ├── overrides.json            # resultados/forfaits manuales del organizador
-│   ├── needs-review.json         # partidas ambiguas detectadas por el matcher
-│   └── public/                   # generado por build-public-data.mjs, consumido por el frontend
-├── scripts/                      # Node ESM, ejecutado por las Actions (y localmente)
-│   ├── lib/
-│   │   ├── chesscomClient.mjs    # fetch a api.chess.com, backoff 429/5xx, memoización, trimming de campos
-│   │   ├── tournamentEngine.mjs  # único punto de contacto con tournament-organizer
-│   │   ├── resultMatcher.mjs     # empareja partidas de chess.com con pairings; nunca adivina en ambigüedad
-│   │   ├── issueForm.mjs         # parsea el markdown autogenerado del Issue Form
-│   │   ├── repoData.mjs          # leer/escribir data/*.json
-│   │   └── commitAndPush.mjs     # git add+commit+push con reintento pull --rebase
-│   ├── register-player.mjs
-│   ├── sync-results.mjs
-│   ├── advance-tournament.mjs
-│   ├── build-public-data.mjs
-│   ├── dev/
-│   │   ├── spike-tournament-organizer.mjs   # ver "Qué falta" — pendiente de ejecutar
-│   │   └── smoke-chesscom.mjs
-│   ├── fixtures/                 # respuestas de ejemplo de chess.com para tests
-│   └── __tests__/                # node:test — chesscomClient y resultMatcher no necesitan red
-└── web/                           # Vite + React, multi-página estática (index/round/bracket/register.html)
-    └── src/{pages,components,hooks}/...
-```
+## Estado y trabajo pendiente
 
-## Esquemas de datos (resumen — ver los ficheros reales en `data/` para el detalle)
+Verificado en local (Node 20 y 24): todos los tests, spike, build del frontend, simulaciones de 20/40/60 jugadores (y impares, con no-shows y dobles forfeits) sin incidencias, el registro como proceso con chess.com simulado, y `advance-tournament.mjs` de extremo a extremo sobre una copia de `data/`. **No verificado**: nada de GitHub (workflows, Issue Form, Pages, el redespliegue del bot) ni nada contra chess.com real (incluida la posibilidad de que bloquee las IPs de los runners de Actions).
 
-- `players.json`: `{ players: [{ id, name, chesscomUsername, chesscomPlayerId, status, registeredAt }] }`
-- `tournament.json`: config (`timeClass`, `rules`, `requireRated`, `swissRounds`, `playoffCutoff`, `playerCap`) + estado (`phase`: registration|stage-one|stage-two|complete, `currentRound`, `rounds[]` con ventanas de fecha por ronda — esto es responsabilidad nuestra, la librería no modela fechas).
-- `engine-state.json`: volcado literal de `tournament.getValues()`. No se edita a mano.
-- `overrides.json`: cola de resultados/forfaits manuales (`outcome`: player1_win|player2_win|draw|double_forfeit), idempotente vía el flag `applied`.
-- `needs-review.json`: partidas ambiguas/inconsistentes que el matcher no resuelve solo.
-- `public/*.json`: derivados de solo lectura para el frontend (standings, current-round, bracket, players, meta).
+1. **Detección de series en chess.com** (ver Gotchas): agregar partidas por emparejamiento con `scoreSeries`, política para partidas anómalas, tests. Sin esto los resultados se registran a mano con `apply-overrides`.
+2. **Bajas durante el torneo**: no hay acción "abandonar"; hoy se resuelve con walkovers cada ronda. Una baja en la fase suiza con buen récord podría ocupar plaza en el bracket (la librería la deja en la clasificación). Diseñar `drop-player` (Pokémon: quien abandona no entra en el top cut).
+3. Confirmar con el usuario: corte de playoffs por defecto (8/16/16 vs top 8 de Pokémon), tope de inscritos (`playerCap.max` subido a 64) y que no haya partido por el 3.er puesto.
+3. Subir todo (incluidos los lockfiles), *Settings -> Pages -> Source = GitHub Actions*, etiqueta `registration`; probar el registro con jugadores reales de prueba (`docs/ORGANIZADOR.md` §2) y confirmar que el redespliegue del bot funciona.
+4. Probar el pipeline de registro con issues reales (válido, inválido, duplicado, registro cerrado) y `advance-round.yml` dos veces seguidas (el `concurrency group` debe serializarlas).
+5. Sync con partidas reales de rapid una vez hecho el punto 1, y un simulacro con un torneo pequeño antes del real.
+6. Opcional: Issue Form para overrides, proceso de cambio de username (no hay lookup inverso en la API), aviso automático cuando algo cae en `needs-review.json`, calendario/plazos por ronda (con rondas de 2 semanas, 20 jugadores son 8 rondas ≈ 16 semanas y 40-60 jugadores 10 rondas ≈ 20 semanas).
 
-## Estado actual: qué está hecho
-
-Todo lo de abajo son **ficheros escritos pero nunca ejecutados ni instalados** — se generaron en una máquina sin `node`/`npm`/`git`. Nada se ha verificado todavía.
-
-- [x] Estructura completa del repo (backend, workflows, frontend, datos semilla).
-- [x] `chesscomClient.mjs` + `resultMatcher.mjs` + tests (`chesscomClient.test.mjs`, `resultMatcher.test.mjs`) — no dependen de red real, deberían pasar tal cual con `npm test`.
-- [x] `tournamentEngine.mjs` (wrapper de `tournament-organizer`) + `tournamentEngine.test.mjs` — este test sí requiere que el paquete esté instalado y que sus asunciones sobre la API real sean correctas.
-- [x] `register-player.mjs`, `sync-results.mjs`, `advance-tournament.mjs`, `build-public-data.mjs`.
-- [x] Los 5 workflows de GitHub Actions + la plantilla de Issue Form.
-- [x] Se detectó y corrigió una vulnerabilidad de inyección de código en `register-player.yml`: el nombre introducido por el usuario en el issue se interpolaba directamente en un script de `actions/github-script`; ahora se pasa por variables de entorno.
-- [x] Frontend Vite+React (4 páginas estáticas: standings, ronda, bracket, registro) con estilos y modo oscuro/claro automático.
-- [x] `README.md` con el runbook de arranque.
-
-## Qué falta por hacer
-
-Por orden recomendado, ahora que el desarrollo se traslada a una máquina con `node`/`npm`/`git`:
-
-1. **Verificación básica**: `cd scripts && npm install && npm test`. Los tests de `chesscomClient`/`resultMatcher` deberían pasar sin más. Si `tournamentEngine.test.mjs` falla, es señal de que alguna asunción sobre la API real de `tournament-organizer` está mal y hay que ajustar `lib/tournamentEngine.mjs`.
-2. **Spike obligatorio antes de fiarse del motor en producción**: `npm run spike` (dentro de `scripts/`) — ejecuta `dev/spike-tournament-organizer.mjs`, que crea un torneo suizo sintético de 9 jugadores (impar, para forzar un bye) y confirma explícitamente **cómo se dispara la transición swiss→eliminación** (la documentación pública de la librería no lo detalla) y cómo se gestionan los byes. Ajustar `advanceRound`/`buildBracket` si el comportamiento observado difiere de lo asumido.
-3. **Crear el repo en GitHub** y subir el código (ver instrucciones que se le dieron al usuario en el chat — resumen: `git init`, commit, crear repo vacío en GitHub, `git remote add origin`, push).
-4. Configurar en GitHub: *Settings → Pages → Source = GitHub Actions*, y *Settings → Actions → General → Workflow permissions = Read and write permissions*.
-5. Rellenar `web/src/config.js` con la URL real del repo (`REPO_URL`).
-6. `cd web && npm install && npm run dev` para verificar el frontend localmente contra los datos semilla.
-7. Pipeline de registro (Fase 3 del plan original): probar con issues reales (username válido, inválido, duplicado, registro cerrado) una vez el workflow esté corriendo en GitHub.
-8. Motor suizo end-to-end (Fase 4): llevar un roster de prueba (ideal: impar, para forzar un bye) por todas las rondas hasta playoffs disparando `advance-round.yml` manualmente; disparar dos avances seguidos para confirmar que el `concurrency group` los serializa.
-9. Sync automático con chess.com real (Fase 5): probar con cuentas reales jugando partidas rapid — detección normal, caso ambiguo (dos partidas el mismo día) correctamente marcado y no adivinado, partida fuera de ventana no se forfeitea sola.
-10. Pulido de frontend + simulacro completo end-to-end (Fase 6) con un torneo pequeño (8-16 jugadores) antes del torneo real de oficina.
-11. (Extra, opcional) Issue Form para overrides de resultado, proceso de cambio de username, aviso automático cuando algo cae en `needs-review.json`.
-
-## Riesgos y limitaciones conocidas (ya documentados en el diseño, no son bugs pendientes de arreglar sino trade-offs aceptados)
-
-- Rate limiting de chess.com sin límite publicado — mitigado con backoff, caché por ejecución y cron no agresivo (horario).
-- Ambigüedad de partidas múltiples / resultados inconsistentes → siempre a revisión manual, nunca se adivina.
-- Partida no jugada en la ventana de ronda → nunca se forfeitea sola; requiere `overrides.json` + `force-next-round`.
-- Cambio de username de chess.com a mitad de torneo → no hay lookup inverso en la API pública; proceso manual.
-- Número impar de jugadores → delegado al manejo de byes de `tournament-organizer` (pendiente de confirmar en el spike, punto 2 de arriba).
-- El bot de Actions necesita permisos de escritura activados manualmente una vez en la configuración del repo.
-- Repo público → nombres reales + usernames de chess.com visibles; el Issue Form pide consentimiento explícito y nunca se guarda email ni otros datos sensibles.
-- `tournament-organizer` es una librería pequeña de un solo mantenedor; toda la interacción con ella está aislada en `lib/tournamentEngine.mjs` para poder cambiarla sin tocar el resto del código si hiciera falta.
+Trade-offs aceptados (no son bugs): rate limiting de chess.com sin límite publicado (backoff, caché por ejecución, cron horario); número impar de jugadores delegado a los byes de la librería (verificado: un bye por ronda y nadie repite); el bot necesita permisos de escritura activados a mano una vez; el Issue Form pide consentimiento explícito y nunca guarda email ni datos sensibles.

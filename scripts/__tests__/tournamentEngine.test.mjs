@@ -55,7 +55,7 @@ test('getValues() -> saveEngineTournament -> loadEngineTournament round-trips lo
   const tournament = createEngineTournament(config, players);
   tournament.startTournament();
   for (const match of getUnresolvedMatches(tournament)) {
-    applyResult(tournament, match.id, 'draw');
+    applyResult(tournament, match.id, 'b_win');
   }
 
   const json = JSON.parse(saveEngineTournament(tournament));

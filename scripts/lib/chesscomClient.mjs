@@ -3,7 +3,7 @@
 // the API has no CORS headers, so browser fetches to api.chess.com are blocked.
 
 const BASE_URL = 'https://api.chess.com/pub';
-const USER_AGENT = 'frog-chess-tournament-bot (contact: github.com/<owner>/frog_chess)';
+const USER_AGENT = 'frog-chess-tournament-bot (contact: github.com/diegodzv/frog_chess)';
 const MAX_ATTEMPTS = 3;
 const BASE_BACKOFF_MS = 1000;
 

@@ -4,18 +4,28 @@ Torneo de ajedrez de oficina jugado en chess.com: rondas suizas + fase eliminato
 
 Arquitectura: sitio estático (GitHub Pages) + JSON versionado en `data/` como "base de datos" + GitHub Actions como "backend". Sin servidor propio, sin coste.
 
-## Estado de este scaffold
+## Estado
 
-Este proyecto se generó en una máquina sin `node`/`npm`/`git` instalados, así que **nada de esto se ha instalado, ejecutado ni verificado todavía**. Antes de fiarte de él:
+El backend (motor de torneo, ciclo de vida, datos públicos) y la web están verificados en local con tests (`cd scripts && npm test`) y con simulaciones de torneos completos. **Todavía no se ha probado nada en GitHub (workflows, formulario de inscripción, Pages) ni contra chess.com real.** Lo pendiente y los problemas conocidos están en `CLAUDE.md`.
 
-1. Clona/copia esta carpeta a una máquina con Node 20+, npm y git (idealmente fuera de una red que bloquee chess.com).
-2. `git init && git add -A && git commit -m "scaffold inicial"`.
-3. `cd scripts && npm install` (genera `scripts/package-lock.json`) — **luego ejecuta `npm run spike`** y revisa la salida contra los comentarios de `scripts/dev/spike-tournament-organizer.mjs`: confirma cómo `tournament-organizer` dispara la transición suizo→eliminación y el manejo de byes antes de fiarte de `advance-tournament.mjs` en producción.
-4. `cd scripts && npm test` — deberían pasar los tests de `chesscomClient` y `resultMatcher` (no dependen de red); los de `tournamentEngine` dependen de que `tournament-organizer` esté instalado y se comporte como se asumió.
-5. `cd web && npm install` (genera `web/package-lock.json`), `npm run dev` para ver el sitio local.
-6. Edita `web/src/config.js` con la URL real del repo una vez lo crees en GitHub.
-7. En GitHub: Settings → Pages → Source = **GitHub Actions**; Settings → Actions → General → Workflow permissions = **Read and write permissions**.
-8. Ajusta `data/tournament.json` (nombre del torneo, `timeClass`, número de rondas suizas, corte de playoffs, aforo).
+1. Node 20+ y npm. `cd scripts && npm install && npm test`; `cd web && npm install && npm run dev`.
+2. Antes de subir el repo, commitea los `package-lock.json` de `scripts/` y `web/` (los workflows usan `npm ci`).
+3. Edita `web/src/config.js` (y el `USER_AGENT` de `scripts/lib/chesscomClient.mjs`) con la URL real del repo.
+4. En GitHub: Settings → Pages → Source = **GitHub Actions**; Settings → Actions → General → Workflow permissions = **Read and write permissions**.
+5. Ajusta `data/tournament.json` (nombre, `timeClass`, tope de jugadores; las rondas suizas y el corte a eliminatorias son `"auto"` y dependen del número de inscritos).
+
+## Cómo llevar el torneo
+
+Toda la operación (puesta en marcha en GitHub, inscripción, resultados, rondas, reinicio tras las pruebas) está en [`docs/ORGANIZADOR.md`](docs/ORGANIZADOR.md).
+
+## Simular un torneo
+
+`cd scripts && npm run sim` genera torneos completos con jugadores y partidas ficticias (20, 40 y 60 jugadores por defecto) en `sim/` y muestra estadísticas del formato. No toca `data/`. Para verlos: `cd web && npm run dev` y abre `index.html?data=sim/n40` (o usa el selector "Datos" de la barra superior). Opciones: `--players=32 --seed=7 --runs=500 --no-show=0.05`.
+
+## Formato
+
+- Fase suiza de `ceil(log2(n))` rondas y eliminatoria con los 4-16 mejores (potencia de 2, hasta n/2). Todos los emparejamientos son al mejor de 3 partidas salvo semifinales y final, al mejor de 5.
+- Las tablas no cuentan: se juega otra partida hasta que alguien gana 2 (o 3 en Bo5). No hay encuentros empatados.
 
 ## Cómo funciona
 

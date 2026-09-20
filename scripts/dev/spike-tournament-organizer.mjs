@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-// Verification spike (Fase 1 del plan) — NO SE HA EJECUTADO TODAVÍA porque esta
-// máquina no tiene Node instalado. Ejecútalo con `npm install && npm run spike`
-// dentro de scripts/ en cuanto tengas Node disponible, ANTES de fiarte de
-// advance-tournament.mjs en producción.
+// Verification spike (Fase 1 del plan). Ejecutado el 2026-09-19 con tournament-organizer 4.1.1;
+// sus conclusiones están documentadas en la cabecera de lib/tournamentEngine.mjs
+// (transición suizo -> eliminatorias, byes, `bestOf` mutable, sin nextRound() en stage two).
+// Vuelve a ejecutarlo (`npm run spike`) si cambias de versión de la librería.
 //
 // Qué confirma:
 //  1. Cómo se dispara la transición swiss -> eliminación en tournament-organizer
@@ -14,7 +14,7 @@
 // Si algo de esto no coincide con lo asumido en lib/tournamentEngine.mjs y
 // build-public-data.mjs, ajusta esos ficheros según lo que observes aquí.
 
-import { Manager } from 'tournament-organizer';
+import Manager from 'tournament-organizer';
 import assert from 'node:assert/strict';
 
 const PLAYER_COUNT = 9; // impar a propósito, para forzar un bye

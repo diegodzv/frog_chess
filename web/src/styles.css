@@ -193,3 +193,400 @@ tr:last-child td {
   height: 100%;
   background: var(--accent);
 }
+
+/* ---- Wider layout, tables, dataset switcher ---- */
+.page.wide {
+  max-width: 1200px;
+}
+
+h2 {
+  margin: 1.25rem 0 0.25rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+.legend {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 1rem;
+  max-width: 70ch;
+}
+
+.dataset-switcher {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.dataset-switcher select {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+}
+
+.sim-banner {
+  margin: -1.25rem 0 1.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--pending) 18%, transparent);
+  border: 1px dashed var(--pending);
+  font-size: 0.85rem;
+}
+
+/* ---- Standings ---- */
+table.standings td.num,
+table.standings th:not(:nth-child(2)):not(:last-child) {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+table.standings td.strong {
+  font-weight: 700;
+}
+
+table.standings tr.qualified td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+table.standings tr.cutoff-line td {
+  border-bottom: 2px dashed var(--accent);
+}
+
+.tag {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.outcome-champion {
+  font-weight: 700;
+  color: #b8860b;
+}
+
+.outcome-final {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.outcome-qualified {
+  color: var(--accent);
+}
+
+.outcome-out {
+  color: var(--muted);
+}
+
+.champion-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #d4af37;
+  background: color-mix(in srgb, #d4af37 14%, var(--surface));
+}
+
+.champion-banner .trophy {
+  font-size: 2rem;
+}
+
+.champion-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.champion-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* ---- Rounds ---- */
+.round-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.round-tabs button {
+  position: relative;
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.round-tabs button.elim {
+  border-style: dashed;
+}
+
+.round-tabs button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.round-tabs .dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 0.4rem;
+  border-radius: 50%;
+  background: var(--pending);
+}
+
+.pairing-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.pairing-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr 4rem 1fr 6.5rem 8.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.pairing-row:last-child {
+  border-bottom: none;
+}
+
+.pairing-row.pending {
+  background: color-mix(in srgb, var(--pending) 8%, transparent);
+}
+
+.pairing-row .pname.left {
+  justify-content: flex-end;
+}
+
+.pairing-row .pname {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pairing-row .pname.won {
+  font-weight: 700;
+}
+
+.table-no {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.score {
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.games {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bye-note {
+  color: var(--muted);
+  font-size: 0.85rem;
+  grid-column: 3 / -1;
+}
+
+.bye-row {
+  grid-template-columns: 2rem auto 1fr;
+}
+
+.seed {
+  display: inline-block;
+  min-width: 1.4rem;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+  background: var(--border);
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.badge-bye,
+.badge-waiting {
+  background: var(--muted);
+}
+
+.badge-manual {
+  background: #7a5ea8;
+}
+
+.badge-double {
+  background: var(--review);
+}
+
+@media (max-width: 720px) {
+  .pairing-row {
+    grid-template-columns: 1.5rem 1fr 3rem 1fr;
+  }
+
+  .pairing-row .games {
+    grid-column: 2 / 4;
+  }
+
+  .pairing-row .badge {
+    grid-column: 4;
+    justify-self: end;
+  }
+}
+
+/* ---- Bracket ---- */
+.bracket {
+  align-items: stretch;
+}
+
+.bracket-round {
+  min-width: 250px;
+  flex: 1;
+}
+
+.bracket-round h3 {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.bracket-round h3 .bo {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.bracket-round.current h3 {
+  color: var(--accent);
+}
+
+.bracket-matches {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.bmatch {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bmatch.pending {
+  border-color: var(--pending);
+}
+
+.bmatch.waiting {
+  opacity: 0.7;
+}
+
+.bslot {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr 1.4rem;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.bslot + .bslot {
+  border-top: 1px solid var(--border);
+}
+
+.bslot.won {
+  font-weight: 700;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.bslot.lost {
+  color: var(--muted);
+}
+
+.bscore {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+table a {
+  color: inherit;
+  text-decoration: none;
+}
+
+table a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.pairing-row .badge {
+  justify-self: start;
+}
+
+/* Rounds: winner highlighted like in the bracket, loser muted */
+.pairing-row .pname {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.pairing-row .pname.won {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.pairing-row .pname.lost {
+  color: var(--muted);
+}
+
+/* Rounds: chess.com username under the name, so players know whom to challenge */
+.pname-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.pairing-row .pname.left .pname-text {
+  align-items: flex-end;
+}
+
+.cc-user {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.cc-user:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}

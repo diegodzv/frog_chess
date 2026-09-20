@@ -1,16 +1,10 @@
 #!/usr/bin/env node
 // Run by .github/workflows/advance-round.yml, triggered manually by an
-// organizer via workflow_dispatch. Actions: start-tournament | next-round | force-next-round.
+// organizer via workflow_dispatch. Actions: start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.
+// The tournament logic lives in lib/tournamentFlow.mjs; this script only does I/O.
 
-import {
-  createEngineTournament,
-  loadEngineTournament,
-  saveEngineTournament,
-  getUnresolvedMatches,
-  applyResult,
-  applyDoubleForfeit,
-  advanceRound
-} from './lib/tournamentEngine.mjs';
+import { loadEngineTournament, saveEngineTournament } from './lib/tournamentEngine.mjs';
+import { startTournament, advance, applyPendingOverrides } from './lib/tournamentFlow.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
 import { buildPublicData } from './build-public-data.mjs';
@@ -20,104 +14,80 @@ function getAction() {
   return flag ? flag.split('=')[1] : process.env.ACTION;
 }
 
-function describeMatch(match, byId) {
-  const p1 = byId.get(match.player1?.id)?.name ?? match.player1?.id;
-  const p2 = byId.get(match.player2?.id)?.name ?? match.player2?.id;
-  return `${p1} vs ${p2} (match ${match.id})`;
-}
-
-async function startTournament() {
-  const tournament = await readJson('tournament.json');
-  if (tournament.phase !== 'registration') {
-    throw new Error(`No se puede iniciar: fase actual es "${tournament.phase}", no "registration".`);
-  }
-
-  const roster = await readJson('players.json');
-  const active = roster.players.filter((p) => p.status === 'active');
-  if (active.length < tournament.playerCap.min) {
-    throw new Error(`Faltan jugadores: ${active.length} registrados, mínimo ${tournament.playerCap.min}.`);
-  }
-
-  const engine = createEngineTournament(tournament, roster.players);
-  engine.startTournament();
+async function start() {
+  const { engine, tournament } = startTournament({
+    tournament: await readJson('tournament.json'),
+    roster: await readJson('players.json')
+  });
 
   await writeJson('engine-state.json', saveEngineTournament(engine));
-
-  const now = new Date().toISOString();
-  tournament.phase = 'stage-one';
-  tournament.currentRound = 1;
-  tournament.rounds = [{ number: 1, phase: 'stage-one', startedAt: now, endedAt: null }];
   await writeJson('tournament.json', tournament);
 
   await buildPublicData();
-  commitAndPush(`torneo: inicio, ronda 1 (${active.length} jugadores)`);
-  console.log(`Tournament started with ${active.length} players.`);
+  commitAndPush(
+    `torneo: inicio, ronda 1 (${tournament.playerCount} jugadores, ${tournament.swissRounds} rondas suizas, corte a ${tournament.playoffCutoff.value})`
+  );
+  console.log(
+    `Tournament started with ${tournament.playerCount} players: ${tournament.swissRounds} swiss rounds, top ${tournament.playoffCutoff.value} advance.`
+  );
 }
 
-async function nextRound(force) {
+/** Records the organizer's manual results (data/overrides.json) in the current round without advancing it. */
+async function applyOverrides() {
+  const engine = loadEngineTournament(await readJson('engine-state.json'));
   const tournament = await readJson('tournament.json');
-  if (tournament.phase !== 'stage-one' && tournament.phase !== 'stage-two') {
-    throw new Error(`No hay ronda que avanzar en fase "${tournament.phase}".`);
+  const { overrides, applied, skipped } = applyPendingOverrides({ engine, tournament, overrides: await readJson('overrides.json') });
+  for (const ov of skipped) {
+    console.warn(`::warning::Override sin aplicar (${JSON.stringify(ov)}): no coincide con ninguna partida pendiente de la ronda actual. ¿Usuario mal escrito, id incorrecto o partida ya resuelta?`);
+  }
+  if (applied === 0) {
+    console.log('No hay overrides pendientes que apliquen a partidas sin resolver de la ronda actual.');
+    return;
   }
 
-  const engineJson = await readJson('engine-state.json');
-  const engine = loadEngineTournament(engineJson);
-  const byId = new Map(engine.players.map((p) => [p.id, p]));
-
-  let unresolved = getUnresolvedMatches(engine).filter((m) => !m.bye && m.player2);
-
-  if (force && unresolved.length > 0) {
-    const overridesData = await readJson('overrides.json');
-    for (const match of unresolved) {
-      const ov = overridesData.overrides.find((o) => o.matchId === match.id && !o.applied);
-      if (!ov) continue;
-      if (ov.outcome === 'double_forfeit') {
-        applyDoubleForfeit(engine, match);
-      } else {
-        applyResult(engine, match.id, ov.outcome);
-      }
-      ov.applied = true;
-    }
-    await writeJson('overrides.json', overridesData);
-    unresolved = getUnresolvedMatches(engine).filter((m) => !m.bye && m.player2);
-  }
-
-  if (unresolved.length > 0) {
-    const list = unresolved.map((m) => describeMatch(m, byId)).join('\n  - ');
-    const hint = force
-      ? 'Añade una entrada en data/overrides.json para cada partida pendiente y vuelve a intentarlo.'
-      : 'Espera a que se resuelvan vía sync-results, o repite con action=force-next-round tras añadir overrides.';
-    throw new Error(`Hay ${unresolved.length} partida(s) sin resolver:\n  - ${list}\n${hint}`);
-  }
-
-  // Close the current round's window before advancing.
-  const currentRoundInfo = tournament.rounds.find((r) => r.number === tournament.currentRound);
-  const now = new Date().toISOString();
-  if (currentRoundInfo) currentRoundInfo.endedAt = now;
-
-  advanceRound(engine);
   await writeJson('engine-state.json', saveEngineTournament(engine));
+  await writeJson('overrides.json', overrides);
+  await buildPublicData();
+  commitAndPush(`torneo: ${applied} resultado(s) manual(es) en la ronda ${tournament.currentRound}`);
+  console.log(`Applied ${applied} override(s) to round ${tournament.currentRound}.`);
+}
 
-  const engineValues = engine.getValues();
-  const newPhase = engineValues.status === 'complete' ? 'complete' : engineValues.status === 'stage-two' ? 'stage-two' : 'stage-one';
-  tournament.phase = newPhase;
-  tournament.currentRound = engineValues.round;
-  if (newPhase !== 'complete') {
-    tournament.rounds.push({ number: engineValues.round, phase: newPhase, startedAt: now, endedAt: null });
-  }
-  await writeJson('tournament.json', tournament);
+/** Regenerates data/public/*.json (e.g. after editing players.json by hand) and commits it. */
+async function rebuildPublicData() {
+  await buildPublicData();
+  const committed = commitAndPush('datos públicos: reconstruidos a mano');
+  console.log(committed ? 'Public data rebuilt and committed.' : 'Public data already up to date.');
+}
+
+async function next(force) {
+  const engine = loadEngineTournament(await readJson('engine-state.json'));
+  const result = advance({
+    engine,
+    tournament: await readJson('tournament.json'),
+    overrides: await readJson('overrides.json'),
+    force
+  });
+
+  // Nothing is written before `advance` succeeds, so a failed advance never
+  // leaves overrides marked as applied without the engine having received them.
+  await writeJson('engine-state.json', saveEngineTournament(engine));
+  await writeJson('overrides.json', result.overrides);
+  await writeJson('tournament.json', result.tournament);
 
   await buildPublicData();
-  commitAndPush(`torneo: avance a ronda ${tournament.currentRound} (${newPhase})`);
-  console.log(`Advanced to round ${tournament.currentRound}, phase ${newPhase}.`);
+  const label = result.finished ? 'torneo finalizado' : `avance a ronda ${result.tournament.currentRound} (${result.tournament.phase})`;
+  commitAndPush(`torneo: ${label}`);
+  console.log(result.finished ? 'Tournament finished.' : `Advanced to round ${result.tournament.currentRound}, phase ${result.tournament.phase}.`);
 }
 
 async function main() {
   const action = getAction();
-  if (action === 'start-tournament') return startTournament();
-  if (action === 'next-round') return nextRound(false);
-  if (action === 'force-next-round') return nextRound(true);
-  throw new Error(`Acción desconocida: "${action}". Usa start-tournament | next-round | force-next-round.`);
+  if (action === 'start-tournament') return start();
+  if (action === 'apply-overrides') return applyOverrides();
+  if (action === 'rebuild-public-data') return rebuildPublicData();
+  if (action === 'next-round') return next(false);
+  if (action === 'force-next-round') return next(true);
+  throw new Error(`Acción desconocida: "${action}". Usa start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.`);
 }
 
 await main();

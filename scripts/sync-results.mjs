@@ -10,6 +10,7 @@ import {
   loadEngineTournament,
   saveEngineTournament,
   getUnresolvedMatches,
+  getRoundInfo,
   applyResult
 } from './lib/tournamentEngine.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
@@ -36,8 +37,18 @@ async function main() {
   }
 
   const engine = loadEngineTournament(engineJson);
-  const byId = new Map(engine.players.map((p) => [p.id, p]));
-  const pending = getUnresolvedMatches(engine).filter((m) => !m.bye && m.player2);
+
+  // findGameForPairing resolves a pairing from ONE chess.com game. In a Bo3/Bo5
+  // that would record a single game as a whole series, so refuse until the
+  // matcher aggregates the games of a series (scoreSeries in lib/series.mjs).
+  const { bestOf, label } = getRoundInfo(engine, tournament.currentRound);
+  if (bestOf > 1) {
+    console.log(`${label} es al mejor de ${bestOf}: el matcher aún no agrega series, no se resuelve nada automáticamente.`);
+    return;
+  }
+
+  const byId = new Map(engine.getPlayers().map((p) => [p.id, p]));
+  const pending = getUnresolvedMatches(engine, tournament.currentRound);
 
   const needsReview = { items: [] };
   let anyResolved = false;
@@ -59,7 +70,10 @@ async function main() {
       windowEnd: roundInfo.endedAt
     });
 
-    if (result.status === 'resolved') {
+    if (result.status === 'resolved' && result.outcome === 'draw') {
+      // A drawn game decides nothing: another one has to be played.
+      console.log(`${usernameA} vs ${usernameB}: tablas, falta otra partida.`);
+    } else if (result.status === 'resolved') {
       applyResult(engine, match.id, result.outcome);
       match.meta = { ...match.meta, chesscom: { url: result.game.url, endTime: result.game.endTime } };
       anyResolved = true;

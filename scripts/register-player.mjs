@@ -14,6 +14,7 @@ import { buildPublicData } from './build-public-data.mjs';
 
 const NAME_FIELD = 'Nombre completo';
 const USERNAME_FIELD = 'Usuario de chess.com';
+const MAX_NAME_LENGTH = 60;
 
 function slugify(name, username) {
   const base = name
@@ -46,13 +47,32 @@ async function main() {
 
   if (!name) return fail('Falta el nombre completo.');
   if (!chesscomUsername) return fail('Falta el usuario de chess.com.');
+  if (name.length > MAX_NAME_LENGTH) return fail(`El nombre es demasiado largo (máximo ${MAX_NAME_LENGTH} caracteres).`);
+
+  const roster = await readJson('players.json');
+
+  // The workflow also runs when an issue is edited. An issue that is already registered must not be
+  // re-processed (it would be rejected as a "duplicate" of itself), nor register a second player.
+  const issueNumber = Number(process.env.ISSUE_NUMBER) || null;
+  const registeredFromThisIssue = issueNumber
+    ? roster.players.find((p) => p.issueNumber === issueNumber && p.status === 'active')
+    : null;
+  if (registeredFromThisIssue) {
+    if (registeredFromThisIssue.chesscomUsername.toLowerCase() === chesscomUsername.toLowerCase()) {
+      await setOutput('result', 'unchanged');
+      console.log(`Issue #${issueNumber} ya estaba registrado (${registeredFromThisIssue.chesscomUsername}); sin cambios.`);
+      return;
+    }
+    return fail(
+      `Este issue ya está registrado con el usuario "${registeredFromThisIssue.chesscomUsername}". Para cambiarlo, habla con el organizador.`
+    );
+  }
 
   const tournament = await readJson('tournament.json');
   if (tournament.phase !== 'registration') {
     return fail(`El registro está cerrado (fase actual: ${tournament.phase}).`);
   }
 
-  const roster = await readJson('players.json');
   const activePlayers = roster.players.filter((p) => p.status === 'active');
   if (activePlayers.length >= tournament.playerCap.max) {
     return fail(`Se ha alcanzado el aforo máximo (${tournament.playerCap.max} jugadores).`);
@@ -63,8 +83,20 @@ async function main() {
   );
   if (duplicate) return fail(`El usuario de chess.com "${chesscomUsername}" ya está registrado.`);
 
-  const profile = await getPlayerProfile(chesscomUsername);
+  let profile;
+  try {
+    profile = await getPlayerProfile(chesscomUsername);
+  } catch (err) {
+    // chess.com down, rate-limited or blocking the runner: tell the player instead of failing silently.
+    console.error(err);
+    return fail('No se pudo consultar chess.com en este momento. Edita este issue (o guarda de nuevo) para reintentarlo más tarde.');
+  }
   if (!profile) return fail(`No existe ningún usuario de chess.com llamado "${chesscomUsername}".`);
+
+  // Same check again on chess.com's canonical name (covers any difference between what was typed and the account).
+  if (roster.players.some((p) => p.status === 'active' && p.chesscomUsername.toLowerCase() === profile.username.toLowerCase())) {
+    return fail(`El usuario de chess.com "${profile.username}" ya está registrado.`);
+  }
 
   const player = {
     id: slugify(name, chesscomUsername),
@@ -72,7 +104,8 @@ async function main() {
     chesscomUsername: profile.username, // canonical casing from chess.com
     chesscomPlayerId: profile.player_id,
     status: 'active',
-    registeredAt: new Date().toISOString()
+    registeredAt: new Date().toISOString(),
+    issueNumber
   };
 
   roster.players.push(player);

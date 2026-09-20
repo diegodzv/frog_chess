@@ -16,6 +16,10 @@ function hasChanges() {
  * Returns true if a commit was made, false if there was nothing to commit.
  */
 export function commitAndPush(message, { attempts = 3 } = {}) {
+  // FROG_SKIP_GIT=1 lets the scripts run locally (or against simulated data)
+  // without committing or pushing anything.
+  if (process.env.FROG_SKIP_GIT === '1') return false;
+
   git(['add', 'data']);
   if (!hasChanges()) return false;
 

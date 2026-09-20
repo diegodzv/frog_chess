@@ -1,7 +1,6 @@
 {
   "updatedAt": "2026-09-19T13:06:50.343Z",
   "phase": "registration",
-  "size": null,
-  "champion": null,
+  "currentRound": 0,
   "rounds": []
 }
