@@ -33,7 +33,7 @@ npm run build      # salida en web/dist
 # Ver una simulación: http://localhost:5173/index.html?data=sim/n40  (hay un selector "Datos:" en la barra si existe sim/)
 ```
 
-`tournamentEngine*.test`, `tournamentFlow*.test`, `simulation.test`, `buildPublicData.test`, `resetTournament.test` y `registerPlayer.test` usan el paquete real `tournament-organizer` (no mockeado). `registerPlayer.test` ejecuta `register-player.mjs` como proceso, con el cuerpo de issue de GitHub y chess.com simulado (`__tests__/helpers/stub-chesscom.mjs`, cargado con `--import`). Ningún test usa red real. Con Node 20 (CI) y Node 24 pasan los 78+ tests.
+`tournamentEngine*.test`, `tournamentFlow*.test`, `simulation.test`, `buildPublicData.test`, `resetTournament.test` y `registerPlayer.test` usan el paquete real `tournament-organizer` (no mockeado). `registerPlayer.test` ejecuta `register-player.mjs` como proceso, con el cuerpo de issue de GitHub y chess.com simulado (`__tests__/helpers/stub-chesscom.mjs`, cargado con `--import`). Ningún test usa red real. Con Node 20 (CI) y Node 24 pasan los 81 tests (sin `npm install` previo, los que importan el motor fallan con `ERR_MODULE_NOT_FOUND: tournament-organizer`).
 
 Guía de uso para el organizador (puesta en marcha, inscripción, rondas, overrides): `docs/ORGANIZADOR.md`.
 
@@ -93,9 +93,9 @@ Verificado en local (Node 20 y 24): todos los tests, spike, build del frontend, 
 1. **Detección de series en chess.com** (ver Gotchas): agregar partidas por emparejamiento con `scoreSeries`, política para partidas anómalas, tests. Sin esto los resultados se registran a mano con `apply-overrides`.
 2. **Bajas durante el torneo**: no hay acción "abandonar"; hoy se resuelve con walkovers cada ronda. Una baja en la fase suiza con buen récord podría ocupar plaza en el bracket (la librería la deja en la clasificación). Diseñar `drop-player` (Pokémon: quien abandona no entra en el top cut).
 3. Confirmar con el usuario: corte de playoffs por defecto (8/16/16 vs top 8 de Pokémon), tope de inscritos (`playerCap.max` subido a 64) y que no haya partido por el 3.er puesto.
-3. Subir todo (incluidos los lockfiles), *Settings -> Pages -> Source = GitHub Actions*, etiqueta `registration`; probar el registro con jugadores reales de prueba (`docs/ORGANIZADOR.md` §2) y confirmar que el redespliegue del bot funciona.
-4. Probar el pipeline de registro con issues reales (válido, inválido, duplicado, registro cerrado) y `advance-round.yml` dos veces seguidas (el `concurrency group` debe serializarlas).
-5. Sync con partidas reales de rapid una vez hecho el punto 1, y un simulacro con un torneo pequeño antes del real.
-6. Opcional: Issue Form para overrides, proceso de cambio de username (no hay lookup inverso en la API), aviso automático cuando algo cae en `needs-review.json`, calendario/plazos por ronda (con rondas de 2 semanas, 20 jugadores son 8 rondas ≈ 16 semanas y 40-60 jugadores 10 rondas ≈ 20 semanas).
+4. Subir todo (incluidos los lockfiles), *Settings -> Pages -> Source = GitHub Actions*, etiqueta `registration`; probar el registro con jugadores reales de prueba (`docs/ORGANIZADOR.md` §2) y confirmar que el redespliegue del bot funciona.
+5. Probar el pipeline de registro con issues reales (válido, inválido, duplicado, registro cerrado) y `advance-round.yml` dos veces seguidas (el `concurrency group` debe serializarlas).
+6. Sync con partidas reales de rapid una vez hecho el punto 1, y un simulacro con un torneo pequeño antes del real.
+7. Opcional: Issue Form para overrides, proceso de cambio de username (no hay lookup inverso en la API), aviso automático cuando algo cae en `needs-review.json`, calendario/plazos por ronda (con rondas de 2 semanas, 20 jugadores son 8 rondas ≈ 16 semanas y 40-60 jugadores 10 rondas ≈ 20 semanas).
 
 Trade-offs aceptados (no son bugs): rate limiting de chess.com sin límite publicado (backoff, caché por ejecución, cron horario); número impar de jugadores delegado a los byes de la librería (verificado: un bye por ronda y nadie repite); el bot necesita permisos de escritura activados a mano una vez; el Issue Form pide consentimiento explícito y nunca guarda email ni datos sensibles.
