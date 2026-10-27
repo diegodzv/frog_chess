@@ -1,6 +1,7 @@
 # Normas del torneo Frog Chess
 
-Frog Chess es el torneo de ajedrez online de la oficina, jugado en chess.com: seis rondas suizas semanales del 9 de noviembre al 20 de diciembre y eliminatorias en enero. La inscripción está abierta hasta el domingo 8 de noviembre a las 23:59.
+Frog Chess es el torneo de ajedrez online de la BU de Ciberdefensa, jugado en chess.com.
+Seis rondas suizas semanales del 9 de noviembre al 20 de diciembre y eliminatorias en enero. La inscripción está abierta hasta el domingo 8 de noviembre a las 23:59.
 
 ## Calendario
 
