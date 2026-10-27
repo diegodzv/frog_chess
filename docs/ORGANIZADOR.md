@@ -14,7 +14,7 @@ Cómo se maneja el torneo de principio a fin. Casi todo se hace desde GitHub (na
 | Empezar el torneo | | | Botón **start-tournament** |
 | Jugar las partidas | Se retan en chess.com | | |
 | Registrar resultados | | Cada hora lee chess.com y resuelve las partidas jugadas | Tablas a suertes, incomparecencias y cambios de rival en `data/overrides.json` + **apply-overrides** |
-| Pasar de ronda (lunes 8:00) | | | Botón **next-round** / **force-next-round** |
+| Pasar de ronda (lunes, antes de las 9:00) | | | Botón **next-round** / **force-next-round** |
 | Publicar la web | | Se redespliega sola tras cada cambio | |
 
 Los datos viven en `data/*.json` dentro del repo: cada cambio es un commit, así que todo queda auditado y se puede deshacer.
@@ -60,20 +60,20 @@ Puedes importar varias veces durante la semana de inscripción (por ejemplo, cad
 
 **Bajas antes de empezar**: en `data/players.json` cambia `"status": "active"` por `"status": "withdrawn"`; luego `rebuild-public-data`.
 
-## 3. Cerrar la inscripción y empezar (lunes 9 de noviembre, 8:00)
+## 3. Cerrar la inscripción y empezar (lunes 9 de noviembre, antes de las 9:00)
 
 *Actions → Advance tournament → Run workflow → `start-tournament`*.
 
 - Se niega si queda algún usuario sin comprobar (`check-players`) o hay menos de 8 jugadores.
-- Formato configurado en `data/tournament.json`: **6 rondas suizas** (`swissRounds`), cada una a **una sola partida** (`series.swiss: 1`). El corte a eliminatorias (`playoffCutoff.value`) es `auto` = mayor potencia de 2 ≤ n/2, entre 4 y 32 (20 → 8, 40 → 16, 60 → 16, 100 → 32); pon un número (potencia de 2) **antes** de empezar si preferís otro. Semifinales y final al mejor de 5 (`series.semifinal`, `series.final`); el resto de eliminatorias al mejor de 3 (`series.elimination`), cambiable antes de que empiecen.
+- Formato configurado en `data/tournament.json`: **6 rondas suizas** (`swissRounds`), cada una a **una sola partida** (`series.swiss: 1`). El corte a eliminatorias (`playoffCutoff.value`) es `auto` = mayor potencia de 2 ≤ n/2, entre 4 y 32 (20 → 8, 40 → 16, 60 → 16, 100 → 32); pon un número (potencia de 2) **antes** de empezar si preferís otro. Semifinales y final al mejor de 3 (`series.semifinal`, `series.final`); el resto de eliminatorias, por ahora también al mejor de 3 (`series.elimination`), está por decidir y se puede cambiar antes de que empiecen.
 - La ronda 1 se sortea al azar. Con número impar, un jugador descansa (**bye**, cuenta como victoria); después el bye va al peor récord que aún no lo haya tenido (nadie descansa dos veces).
-- Desempate (**resistencia**): porcentaje de victorias medio de todos los rivales y, después, la resistencia media de los rivales.
+- **Resistencia**: cada jugador tiene la suya (porcentaje de victorias medio de todos sus rivales) y la web la muestra para todos. Ordena a los empatados a puntos, después la resistencia media de los rivales. Al acabar, la clasificación general ordena por ronda de eliminación y, dentro, por puntos y resistencia de todo el torneo.
 
 Publica en Teams los emparejamientos de la web (**Rondas**).
 
 ## 4. Cada semana
 
-La ronda va de lunes 8:00 a domingo 23:59. Para el bot, la ventana de la ronda empieza cuando pulsas `next-round` (o `start-tournament`) y termina cuando pulsas el siguiente: pulsa el lunes a las 8:00.
+A los jugadores se les comunica la ronda los lunes a las 9:00 y tienen hasta el domingo a las 23:59. Para el bot, la ventana de la ronda empieza cuando pulsas `next-round` (o `start-tournament`) y termina cuando pulsas el siguiente: pulsa el lunes entre las 8:00 y las 9:00 y publica en Teams a las 9:00.
 
 1. **Resultados automáticos.** Cada hora `sync-results` busca en chess.com las partidas entre cada pareja dentro de la ventana, con el ritmo del torneo, y resuelve las que tienen ganador. La web lo muestra en **Rondas**.
    - **Tablas**: la partida queda «Pendiente» con un ½. Si juegan otra, el bot la resuelve sola. Si lo echan a suertes, apunta el resultado (paso 2).
@@ -97,7 +97,7 @@ La ronda va de lunes 8:00 a domingo 23:59. Para el bot, la ventana de la ronda e
    - `swap` (**cambio de rival**, a partir del viernes 8:00): `j1` y `j3` pasan a jugar entre sí y sus rivales (`j2` y `j4`) entre sí. Se niega si alguna de las dos nuevas parejas ya se ha enfrentado (elige otro cambio) o si alguna partida ya tiene resultado. Con un número impar de afectados, el que sobra sigue con su rival original.
    - Mayúsculas/minúsculas y espacios no importan. `reason` es opcional. Cada entrada se aplica una vez.
 3. *Actions → Advance tournament → Run workflow → **`apply-overrides`***: aplica las entradas **sin pasar de ronda** y la web se actualiza (avisa a los afectados de un cambio de rival). Las entradas que no coinciden con nada quedan sin aplicar y el log lo avisa.
-4. **Lunes 8:00**: **`next-round`** cierra la ronda y empareja la siguiente. Si quedan partidas sin jugar, añade sus overrides (`winner`/`loser` o `double_forfeit`) y usa **`force-next-round`**. Si aún falta alguna, el run falla con la lista y **no cambia nada**.
+4. **Lunes, antes de las 9:00**: **`next-round`** cierra la ronda y empareja la siguiente. Si quedan partidas sin jugar, añade sus overrides (`winner`/`loser` o `double_forfeit`) y usa **`force-next-round`**. Si aún falta alguna, el run falla con la lista y **no cambia nada**.
 
 Después de la 6.ª ronda suiza (domingo 20 de diciembre), `next-round` construye el cuadro de eliminatorias con los mejores clasificados (1.º contra el último, etc.). Hazlo cuando queráis empezar en enero: la ventana de la primera eliminatoria empieza en ese momento.
 

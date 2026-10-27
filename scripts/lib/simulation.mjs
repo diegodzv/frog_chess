@@ -17,7 +17,7 @@ import {
   resolveFormat
 } from './tournamentEngine.mjs';
 import { startTournament, advance } from './tournamentFlow.mjs';
-import { scoreSeries, winsNeeded } from './series.mjs';
+import { DEFAULT_SERIES, bestOfFor, scoreSeries, winsNeeded } from './series.mjs';
 
 // ---------------------------------------------------------------------------
 // Randomness and fake people
@@ -379,7 +379,7 @@ export function verifyTournament({ engine, tournament, roster, ratings, config, 
   }
   for (let r = lastSwiss + 1; r <= finalRound; r++) {
     const info = getRoundInfo(engine, r);
-    const expected = info.roundsFromFinal <= 1 ? 5 : 3;
+    const expected = bestOfFor({ phase: 'stage-two', roundsFromFinal: info.roundsFromFinal }, { ...DEFAULT_SERIES, ...config.series });
     check(info.bestOf === expected, `${info.label}: Bo${info.bestOf}, esperado Bo${expected}`);
     check(engine.getMatchesByRound(r).length === 2 ** info.roundsFromFinal, `${info.label}: número de cruces incorrecto`);
   }

@@ -8,8 +8,8 @@
   "series": {
     "swiss": 1,
     "elimination": 3,
-    "semifinal": 5,
-    "final": 5
+    "semifinal": 3,
+    "final": 3
   },
   "playerCount": 0,
   "expectedFormat": null,
@@ -18,5 +18,5 @@
     "max": 200
   },
   "champion": null,
-  "updatedAt": "2026-10-27T11:56:05.517Z"
+  "updatedAt": "2026-10-27T12:14:36.367Z"
 }

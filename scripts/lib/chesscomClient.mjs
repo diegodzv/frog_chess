@@ -1,6 +1,7 @@
 // Thin client for the Chess.com Published Data API (https://api.chess.com/pub).
-// Runs only in Node (GitHub Actions runners / local dev), never in the browser:
-// the API has no CORS headers, so browser fetches to api.chess.com are blocked.
+// Runs only in Node (GitHub Actions runners / local dev). The API does send
+// `Access-Control-Allow-Origin: *` (checked 2026-10-27), but the site never calls
+// it: results and stats are computed by the workflows and published as JSON.
 
 const BASE_URL = 'https://api.chess.com/pub';
 const USER_AGENT = 'frog-chess-tournament-bot (contact: github.com/diegodzv/frog_chess)';

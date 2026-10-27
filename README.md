@@ -23,9 +23,9 @@ Toda la operación (puesta en marcha en GitHub, inscripción, resultados, rondas
 
 ## Formato
 
-- 6 rondas suizas semanales a una sola partida y eliminatoria con los mejores (potencia de 2, `auto` = hasta n/2 entre 4 y 32). Eliminatorias al mejor de 3, semifinales y final al mejor de 5.
+- 6 rondas suizas semanales a una sola partida y eliminatoria con los mejores (potencia de 2, `auto` = hasta n/2 entre 4 y 32). Eliminatorias al mejor de 3 (las rondas anteriores a semifinales, por decidir).
 - Las tablas no cuentan: se juega otra partida (o, en la fase suiza, se echa a suertes). No hay encuentros empatados.
-- Desempate por resistencia: porcentaje de victorias medio de todos los rivales.
+- Cada jugador tiene su resistencia (porcentaje de victorias medio de todos sus rivales), que ordena a los empatados a puntos y también la clasificación general final.
 
 ## Cómo funciona
 
@@ -37,6 +37,6 @@ Toda la operación (puesta en marcha en GitHub, inscripción, resultados, rondas
 
 ## Limitaciones conocidas
 
-- La API de chess.com no tiene CORS: solo se puede llamar desde Node (Actions o scripts locales), nunca desde el navegador directamente.
+- La web nunca llama a chess.com: los workflows consultan la API y publican JSON (la API sí permite CORS, pero así no dependemos de sus límites desde cada navegador).
 - El cortafuegos de la oficina bloquea chess.com (categoría "gaming"): no afecta a las Actions (corren fuera de la red de la oficina), pero sí a pruebas locales (`npm run smoke:chesscom`, el spike) hechas desde un equipo de trabajo — usa red doméstica/móvil para eso.
 - El repo debe ser público para usar GitHub Pages gratis: nombres y usuarios de chess.com quedan visibles públicamente (el issue de inscripción pide consentimiento explícito).

@@ -154,3 +154,28 @@ test('every pairing has a winner, except a double forfeit which counts as a loss
     assert.ok(row.record.loss >= count, 'el doble forfeit cuenta como derrota en el récord');
   }
 });
+
+test('overall standings: only once the bracket exists; champion first, then by elimination round, then the rest by points and resistance', () => {
+  const swissOnly = derive(simulateTournament({ config, playerCount: 20, seed: 2, stopAt: { round: 3, resolvedShare: 0.5 } }));
+  assert.equal(swissOnly['standings.json'].final, null);
+
+  const files = derive(simulateTournament({ config, playerCount: 20, seed: 5, noShowRate: 0 }));
+  const { final, cutoff } = files['standings.json'];
+  assert.equal(final.provisional, false);
+  assert.equal(final.rows.length, 20);
+  assert.equal(final.rows[0].playerId, files['meta.json'].champion.id);
+  assert.deepEqual(final.rows.slice(0, 2).map((r) => r.outcome), ['Campeón', 'Finalista']);
+  assert.deepEqual(final.rows.slice(2, 4).map((r) => r.outcome), ['Eliminado en semifinales', 'Eliminado en semifinales']);
+  assert.ok(final.rows.slice(cutoff).every((r) => r.outcome === 'Eliminado en fase suiza'));
+
+  // Inside a group: more points first, then more resistance (both over the whole tournament).
+  const rest = final.rows.slice(cutoff);
+  for (let i = 1; i < rest.length; i++) {
+    const [a, b] = [rest[i - 1], rest[i]];
+    assert.ok(a.points > b.points || (a.points === b.points && a.resistance >= b.resistance), `${a.name} antes que ${b.name}`);
+  }
+  // Records include the bracket: the champion won every bracket round on top of the swiss ones.
+  const swissRow = files['standings.json'].rows.find((r) => r.playerId === final.rows[0].playerId);
+  assert.equal(final.rows[0].record.win, swissRow.record.win + Math.log2(cutoff));
+  assert.ok(final.rows.every((r) => r.resistance >= 0 && r.resistance <= 1));
+});

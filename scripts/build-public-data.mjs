@@ -62,16 +62,15 @@ function buildPairing(engine, m, seeds, currentRound) {
   };
 }
 
-/** Per-player aggregate over the swiss rounds: series record (wins/losses), game record and byes. */
-function swissRecords(engine) {
-  const lastSwiss = getLastSwissRound(engine);
+/** Per-player aggregate up to `maxRound` (default: the swiss rounds): series record (wins/losses), game record and byes. */
+function seriesRecords(engine, maxRound = getLastSwissRound(engine)) {
   const records = new Map();
   const rec = (id) => {
     if (!records.has(id)) records.set(id, { win: 0, loss: 0, gameWin: 0, gameLoss: 0, gameDraw: 0, byes: 0 });
     return records.get(id);
   };
   for (const m of engine.getMatches()) {
-    if (m.round > lastSwiss || m.active || !isResolved(m)) continue;
+    if (m.round > maxRound || m.active || !isResolved(m)) continue;
     if (m.bye) {
       rec(m.player1.id).win++;
       rec(m.player1.id).byes++;
@@ -109,7 +108,7 @@ function buildStandings({ tournament, engine, seeds, now }) {
   const emptyResult = { updatedAt: now, phase: tournament.phase, round: tournament.currentRound, cutoff, rows: [] };
   if (!engine) return emptyResult;
 
-  const records = swissRecords(engine);
+  const records = seriesRecords(engine);
   const lastSwiss = getLastSwissRound(engine);
   const finalRound = engine.getStatus() === 'stage-one' ? null : getFinalRound(engine);
   const outcomes = finalRound ? bracketOutcomes(engine, finalRound, lastSwiss) : new Map();
@@ -137,7 +136,33 @@ function buildStandings({ tournament, engine, seeds, now }) {
     };
   });
 
-  return { ...emptyResult, rows };
+  return { ...emptyResult, rows, final: bracketStarted ? buildFinalStandings(engine, seeds, outcomes, tournament.phase) : null };
+}
+
+/**
+ * Overall standings once the bracket exists (the library's own ranking, as in Play! Pokémon): players still
+ * alive, then the eliminated ones by the round they fell in, then the rest. Inside each group: points over the
+ * whole tournament, then resistance over the whole tournament.
+ */
+function buildFinalStandings(engine, seeds, outcomes, phase) {
+  const records = seriesRecords(engine, Infinity);
+  const rows = engine.getStandings().map((s, i) => {
+    const id = s.player.getId();
+    const r = records.get(id) ?? { win: 0, loss: 0 };
+    return {
+      rank: i + 1,
+      playerId: id,
+      name: s.player.getName(),
+      chesscomUsername: s.player.getMeta().chesscomUsername ?? null,
+      seed: seeds.get(id) ?? null,
+      points: s.matchPoints,
+      record: { win: r.win, loss: r.loss },
+      resistance: round4(s.tiebreaks.oppMatchWinPct),
+      opponentsResistance: round4(s.tiebreaks.oppOppMatchWinPct),
+      outcome: outcomes.get(id) ?? (s.player.isActive() ? 'En juego' : 'Eliminado en fase suiza')
+    };
+  });
+  return { provisional: phase !== 'complete', rows };
 }
 
 function buildRounds({ tournament, engine, seeds, now }) {

@@ -23,6 +23,62 @@ function OutcomeCell({ row, provisional }) {
   return null;
 }
 
+function PlayerCell({ row }) {
+  return playerLink(row) ? (
+    <a href={playerLink(row)} target="_blank" rel="noreferrer">
+      {row.name}
+    </a>
+  ) : (
+    row.name
+  );
+}
+
+/** Overall ranking once the bracket exists: how far each player got, then points and resistance over the whole tournament. */
+function FinalStandings({ final }) {
+  return (
+    <>
+      <h2>Clasificación general{final.provisional ? ' (provisional)' : ''}</h2>
+      <p className="legend">
+        Primero quien llegó más lejos en las eliminatorias; dentro de cada grupo, más puntos y después más resistencia,
+        contando todo el torneo.
+      </p>
+      <div className="table-wrap">
+        <table className="standings">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jugador</th>
+              <th title="Puntos: 1 por cada encuentro ganado, fase suiza y eliminatorias">Pts</th>
+              <th title="Encuentros ganados-perdidos en todo el torneo">V-D</th>
+              <th title="Resistencia: porcentaje de victorias medio de tus rivales">Resist.</th>
+              <th title="Resistencia media de tus rivales">Resist. rivales</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {final.rows.map((row) => (
+              <tr key={row.playerId}>
+                <td className="num">{row.rank}</td>
+                <td>
+                  <PlayerCell row={row} />
+                </td>
+                <td className="num strong">{row.points}</td>
+                <td className="num">{vd(row.record)}</td>
+                <td className="num">{pct(row.resistance)}</td>
+                <td className="num">{pct(row.opponentsResistance)}</td>
+                <td>
+                  <OutcomeCell row={row} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <h2>Fase suiza</h2>
+    </>
+  );
+}
+
 export function Standings() {
   const { data: standings, error } = useJson(dataUrl('standings.json'));
   const { data: meta } = useJson(dataUrl('meta.json'));
@@ -59,11 +115,12 @@ export function Standings() {
 
       {started && (
         <>
+          {standings.final && <FinalStandings final={standings.final} />}
           <p className="legend">
             {meta?.swissRounds} rondas suizas ({bestOfText(meta?.series?.swiss)}). Los {standings.cutoff} primeros pasan a
-            eliminatorias{provisional ? ' (provisional hasta la última ronda)' : ''}. A igualdad de puntos manda la
-            resistencia: el porcentaje de victorias medio de todos tus rivales; si sigue el empate, la resistencia media
-            de tus rivales.
+            eliminatorias{provisional ? ' (provisional hasta la última ronda)' : ''}. Cada jugador tiene su resistencia:
+            el porcentaje de victorias medio de todos sus rivales, con su récord actual. Se ordena por puntos y, con los
+            mismos puntos, por resistencia y después por la resistencia de los rivales.
           </p>
           <div className="table-wrap">
             <table className="standings">
@@ -87,13 +144,7 @@ export function Standings() {
                   >
                     <td className="num">{row.rank}</td>
                     <td>
-                      {playerLink(row) ? (
-                        <a href={playerLink(row)} target="_blank" rel="noreferrer">
-                          {row.name}
-                        </a>
-                      ) : (
-                        row.name
-                      )}
+                      <PlayerCell row={row} />
                       {row.byes > 0 && (
                         <span className="tag" title="Ha tenido un bye">
                           bye
