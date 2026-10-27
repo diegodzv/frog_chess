@@ -230,14 +230,6 @@ h2 {
   padding: 0.2rem 0.4rem;
 }
 
-.sim-banner {
-  margin: -1.25rem 0 1.5rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--pending) 18%, transparent);
-  border: 1px dashed var(--pending);
-  font-size: 0.85rem;
-}
 
 /* ---- Standings ---- */
 table.standings td.num,
@@ -362,7 +354,7 @@ table.standings tr.cutoff-line td {
 
 .pairing-row {
   display: grid;
-  grid-template-columns: 2rem 1fr 4rem 1fr 6.5rem 8.5rem;
+  grid-template-columns: 2rem 1fr 4rem 1fr 8.5rem;
   align-items: center;
   gap: 0.75rem;
   padding: 0.55rem 0.8rem;
@@ -403,12 +395,6 @@ table.standings tr.cutoff-line td {
   font-variant-numeric: tabular-nums;
 }
 
-.games {
-  color: var(--muted);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
-}
 
 .bye-note {
   color: var(--muted);
@@ -420,17 +406,6 @@ table.standings tr.cutoff-line td {
   grid-template-columns: 2rem auto 1fr;
 }
 
-.seed {
-  display: inline-block;
-  min-width: 1.4rem;
-  padding: 0 0.3rem;
-  border-radius: 4px;
-  background: var(--border);
-  color: var(--muted);
-  font-size: 0.7rem;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
 
 .badge-bye,
 .badge-waiting {
@@ -448,10 +423,6 @@ table.standings tr.cutoff-line td {
 @media (max-width: 720px) {
   .pairing-row {
     grid-template-columns: 1.5rem 1fr 3rem 1fr;
-  }
-
-  .pairing-row .games {
-    grid-column: 2 / 4;
   }
 
   .pairing-row .badge {
@@ -513,7 +484,7 @@ table.standings tr.cutoff-line td {
 
 .bslot {
   display: grid;
-  grid-template-columns: 1.6rem 1fr 1.4rem;
+  grid-template-columns: 1fr 1.4rem;
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.6rem;
@@ -605,7 +576,7 @@ table a:hover {
 
 .stat-card h2 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .stat-unit {
@@ -629,6 +600,7 @@ table a:hover {
 
 .stat-name {
   font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .stat-detail {

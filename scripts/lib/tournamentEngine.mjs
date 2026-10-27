@@ -243,61 +243,6 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
   tournament.getPlayer(match.player2.id).updateMatch(match.id, lost);
 }
 
-/** Points of a player counting only finished matches (the same sum the library uses for pairUpDown). */
-function finishedPoints(tournament, player) {
-  return player
-    .getMatches()
-    .filter((m) => !tournament.getMatch(m.id).isActive())
-    .reduce((sum, m) => sum + (m.win > m.loss ? 1 : 0), 0);
-}
-
-/**
- * Re-pairs two pending swiss matches of the same round: `aId` and `cId` (each in
- * a different match, typically two players whose opponents never answered)
- * face each other, and their former opponents face each other. Refuses
- * rematches, byes, resolved matches and bracket rounds. The library has no
- * re-pairing of its own, so both matches and the four players' match records
- * are rewritten here; the original pairings are kept in each match's meta.
- */
-export function swapOpponents(tournament, round, aId, cId) {
-  if (getRoundInfo(tournament, round).phase !== 'stage-one') {
-    throw new Error('Solo se pueden cambiar emparejamientos en la fase suiza.');
-  }
-  const name = (id) => tournament.getPlayer(id).getName();
-  const pendingMatchOf = (id) => {
-    const match = getUnresolvedMatches(tournament, round).find((m) => !m.bye && (m.player1.id === id || m.player2.id === id));
-    if (!match) throw new Error(`${name(id)} no tiene ninguna partida pendiente en la ronda ${round}.`);
-    return match;
-  };
-  const matchAB = pendingMatchOf(aId);
-  const matchCD = pendingMatchOf(cId);
-  if (matchAB.id === matchCD.id) throw new Error(`${name(aId)} y ${name(cId)} ya se enfrentan en esta ronda.`);
-
-  const opponentIn = (match, id) => (match.player1.id === id ? match.player2.id : match.player1.id);
-  const bId = opponentIn(matchAB, aId);
-  const dId = opponentIn(matchCD, cId);
-  for (const [x, y] of [[aId, cId], [bId, dId]]) {
-    if (tournament.getPlayer(x).getMatches().some((m) => m.opponent === y)) {
-      throw new Error(`${name(x)} y ${name(y)} ya se enfrentaron en otra ronda: elige otro cambio.`);
-    }
-  }
-
-  const rewrite = (match, p1, p2, previous) => {
-    match.set({ player1: { id: p1 }, player2: { id: p2 }, meta: { repairedFrom: previous } });
-    const pairUpDown = finishedPoints(tournament, tournament.getPlayer(p1)) !== finishedPoints(tournament, tournament.getPlayer(p2));
-    for (const [me, other] of [[p1, p2], [p2, p1]]) {
-      tournament.getPlayer(me).addMatch({ id: match.id, opponent: other, pairUpDown });
-    }
-  };
-  tournament.getPlayer(aId).removeMatch(matchAB.id);
-  tournament.getPlayer(bId).removeMatch(matchAB.id);
-  tournament.getPlayer(cId).removeMatch(matchCD.id);
-  tournament.getPlayer(dId).removeMatch(matchCD.id);
-  rewrite(matchAB, aId, cId, [aId, bId]);
-  rewrite(matchCD, bId, dId, [cId, dId]);
-  return { matches: [matchAB, matchCD], newPairs: [[aId, cId], [bId, dId]] };
-}
-
 // ---------------------------------------------------------------------------
 // Advancing
 // ---------------------------------------------------------------------------

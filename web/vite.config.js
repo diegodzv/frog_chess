@@ -16,8 +16,7 @@ export default defineConfig({
         standings: resolve(dirname, 'index.html'),
         round: resolve(dirname, 'round.html'),
         bracket: resolve(dirname, 'bracket.html'),
-        stats: resolve(dirname, 'stats.html'),
-        register: resolve(dirname, 'register.html')
+        stats: resolve(dirname, 'stats.html')
       }
     }
   }

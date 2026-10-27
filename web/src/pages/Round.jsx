@@ -3,7 +3,7 @@ import { Nav } from '../components/Nav.jsx';
 import { StatusBadge } from '../components/StatusBadge.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { bestOfText, formatDate, gameSequence } from '../components/format.js';
+import { formatDate } from '../components/format.js';
 
 const SHORT_LABEL = {
   'Dieciseisavos de final': '1/16',
@@ -18,7 +18,6 @@ const shortLabel = (round) => SHORT_LABEL[round.label] ?? `R${round.number}`;
 function PlayerName({ player, won, lost, left }) {
   return (
     <span className={`pname ${left ? 'left' : ''} ${won ? 'won' : ''} ${lost ? 'lost' : ''}`}>
-      {player?.seed && <span className="seed">{player.seed}</span>}
       <span className="pname-text">
         <span>{player?.name ?? '—'}</span>
         {player?.chesscomUsername && (
@@ -43,14 +42,13 @@ function Pairing({ pairing }) {
       <div className="pairing-row bye-row">
         <span className="table-no">·</span>
         <PlayerName player={pairing.player1} won />
-        <span className="bye-note">descansa esta ronda (bye: cuenta como victoria)</span>
+        <span className="bye-note">descansa esta ronda</span>
       </div>
     );
   }
 
   const badge =
     pairing.manual === 'double' || pairing.manual === 'double_forfeit' ? 'double' : pairing.manual ? 'manual' : pairing.status;
-  const sequence = gameSequence(pairing.games);
   const finished = pairing.status === 'complete';
   // Double forfeit: nobody won, both lost.
   const lost = (side) => finished && pairing.winner !== side;
@@ -61,12 +59,6 @@ function Pairing({ pairing }) {
       <PlayerName player={pairing.player1} won={pairing.winner === 'p1'} lost={lost('p1')} left />
       <span className="score">{pairing.score ? `${pairing.score.p1} – ${pairing.score.p2}` : 'vs'}</span>
       <PlayerName player={pairing.player2} won={pairing.winner === 'p2'} lost={lost('p2')} />
-      <span
-        className="games"
-        title="Partidas de la serie desde el punto de vista del jugador de la izquierda: V victoria, D derrota, ½ tablas"
-      >
-        {sequence ?? ''}
-      </span>
       <StatusBadge status={badge} />
     </div>
   );
@@ -117,10 +109,9 @@ export function Round() {
         <>
           <h2>{active.label}</h2>
           <p className="meta-line">
-            {bestOfText(active.bestOf).replace(/^./, (c) => c.toUpperCase())}
-            {active.startedAt && ` · ${formatDate(active.startedAt)}`}
+            {active.startedAt && formatDate(active.startedAt)}
             {active.endedAt ? ` – ${formatDate(active.endedAt)}` : active.current ? ' – en curso' : ''}
-            {' · '}
+            {active.startedAt && ' · '}
             {played}/{total} resueltos
           </p>
           <div className="pairing-list">

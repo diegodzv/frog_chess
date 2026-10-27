@@ -89,8 +89,7 @@ export function Stats() {
       <Nav current="stats" />
       <h1>Estadísticas</h1>
       <p className="meta-line">
-        {data ? `${plural(data.gamesAnalyzed, 'victoria analizada', 'victorias analizadas')}` : 'Cargando...'}
-        {data?.updatedAt ? ` · Actualizado ${formatDate(data.updatedAt)}` : ''}
+        {data ? (data.updatedAt ? `Actualizado ${formatDate(data.updatedAt)}` : '') : 'Cargando...'}
       </p>
       {error && <p className="empty-state">No se pudieron cargar los datos.</p>}
       {data && (
@@ -100,12 +99,6 @@ export function Stats() {
               <StatCard key={card.key} card={card} rows={data[card.key]} />
             ))}
           </div>
-          <p className="legend">
-            Se actualizan a medida que se juegan las partidas en chess.com. Solo cuentan las victorias en partidas del
-            torneo; no cuentan las partidas abandonadas ni las de menos de {data.minMovesForRecords} jugadas, ni los
-            resultados decididos a suertes o por incomparecencia. Para las medias hacen falta al menos{' '}
-            {data.minWinsForAverage} victorias. Material: peón 1, caballo y alfil 3, torre 5, dama 9.
-          </p>
         </>
       )}
     </div>

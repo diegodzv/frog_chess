@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { datasetKey, withDataset } from '../dataset.js';
+import { RULES_URL } from '../config.js';
 
 const LINKS = [
   { href: 'index.html', label: 'Clasificación', key: 'standings' },
   { href: 'round.html', label: 'Rondas', key: 'round' },
   { href: 'bracket.html', label: 'Bracket', key: 'bracket' },
-  { href: 'stats.html', label: 'Estadísticas', key: 'stats' },
-  { href: 'register.html', label: 'Inscripción', key: 'register' }
+  { href: 'stats.html', label: 'Estadísticas', key: 'stats' }
 ];
 
 /** Lets you jump between the real data and any simulated tournament; only shown when sim data exists (local dev). */
@@ -56,12 +56,14 @@ export function Nav({ current }) {
               {link.label}
             </a>
           ))}
+          {RULES_URL && (
+            <a href={RULES_URL} target="_blank" rel="noreferrer">
+              Normas
+            </a>
+          )}
         </div>
         <DatasetSwitcher />
       </nav>
-      {datasetKey().startsWith('sim/') && (
-        <p className="sim-banner">Estás viendo un torneo simulado (jugadores y resultados ficticios).</p>
-      )}
     </>
   );
 }

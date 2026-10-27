@@ -1,7 +1,7 @@
 import { Nav } from '../components/Nav.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { PHASE_LABELS, bestOfText, formatDate, playerLink } from '../components/format.js';
+import { PHASE_LABELS, formatDate, playerLink } from '../components/format.js';
 
 const vd = (r) => `${r.win}-${r.loss}`;
 const vtd = (g) => `${g.win}-${g.draw}-${g.loss}`;
@@ -38,10 +38,6 @@ function FinalStandings({ final }) {
   return (
     <>
       <h2>Clasificación general{final.provisional ? ' (provisional)' : ''}</h2>
-      <p className="legend">
-        Primero quien llegó más lejos en las eliminatorias; dentro de cada grupo, más puntos y después más resistencia,
-        contando todo el torneo.
-      </p>
       <div className="table-wrap">
         <table className="standings">
           <thead>
@@ -116,12 +112,6 @@ export function Standings() {
       {started && (
         <>
           {standings.final && <FinalStandings final={standings.final} />}
-          <p className="legend">
-            {meta?.swissRounds} rondas suizas ({bestOfText(meta?.series?.swiss)}). Los {standings.cutoff} primeros pasan a
-            eliminatorias{provisional ? ' (provisional hasta la última ronda)' : ''}. Cada jugador tiene su resistencia:
-            el porcentaje de victorias medio de todos sus rivales, con su récord actual. Se ordena por puntos y, con los
-            mismos puntos, por resistencia y después por la resistencia de los rivales.
-          </p>
           <div className="table-wrap">
             <table className="standings">
               <thead>

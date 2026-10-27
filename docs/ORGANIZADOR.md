@@ -40,7 +40,7 @@ Los datos viven en `data/*.json` dentro del repo: cada cambio es un commit, así
    - *Solo las personas de mi organización pueden responder* + *Registrar nombre*: así cada respuesta lleva el correo, que el importador usa para quedarse con la última respuesta de quien conteste dos veces (el correo nunca se guarda en el repo).
    - *Una respuesta por persona*: desmarcado, para que puedan corregir su usuario respondiendo otra vez.
    - *Fecha de finalización*: domingo 8 de noviembre, 23:59.
-4. **Recopilar respuestas → Copiar vínculo**. Ese enlace va en el mensaje de Teams y, si quieres botón en la web, en `web/src/config.js` (`REGISTRATION_FORM_URL`).
+4. **Recopilar respuestas → Copiar vínculo**. Ese enlace va en el mensaje de Teams (la web no tiene página de inscripción).
 
 ### Importar las respuestas
 
@@ -86,17 +86,15 @@ A los jugadores se les comunica la ronda los lunes a las 9:00 y tienen hasta el 
      "overrides": [
        { "winner": "adalovelace", "loser": "bob", "reason": "tablas, sorteo" },
        { "winner": "carl", "loser": "dana", "reason": "dana no jugó" },
-       { "players": ["erin", "frank"], "outcome": "double_forfeit", "reason": "ninguno jugó" },
-       { "swap": ["j1", "j3"], "reason": "sus rivales no contestan" }
+       { "players": ["erin", "frank"], "outcome": "double_forfeit", "reason": "ninguno jugó" }
      ]
    }
    ```
 
-   - `winner`/`loser`: gana el `winner` (1-0 en la fase suiza). Para sorteos tras tablas y para incomparecencias.
+   - `winner`/`loser`: gana el `winner` (1-0 en la fase suiza). Para sorteos tras tablas y para quien no pudo jugar (pierde la partida). Los resultados manuales no cuentan para las estadísticas.
    - `double_forfeit`: ninguno jugó; derrota para los dos. Solo en la fase suiza.
-   - `swap` (**cambio de rival**, a partir del viernes 8:00): `j1` y `j3` pasan a jugar entre sí y sus rivales (`j2` y `j4`) entre sí. Se niega si alguna de las dos nuevas parejas ya se ha enfrentado (elige otro cambio) o si alguna partida ya tiene resultado. Con un número impar de afectados, el que sobra sigue con su rival original.
    - Mayúsculas/minúsculas y espacios no importan. `reason` es opcional. Cada entrada se aplica una vez.
-3. *Actions → Advance tournament → Run workflow → **`apply-overrides`***: aplica las entradas **sin pasar de ronda** y la web se actualiza (avisa a los afectados de un cambio de rival). Las entradas que no coinciden con nada quedan sin aplicar y el log lo avisa.
+3. *Actions → Advance tournament → Run workflow → **`apply-overrides`***: aplica las entradas **sin pasar de ronda** y la web se actualiza. Las entradas que no coinciden con nada quedan sin aplicar y el log lo avisa.
 4. **Lunes, antes de las 9:00**: **`next-round`** cierra la ronda y empareja la siguiente. Si quedan partidas sin jugar, añade sus overrides (`winner`/`loser` o `double_forfeit`) y usa **`force-next-round`**. Si aún falta alguna, el run falla con la lista y **no cambia nada**.
 
 Después de la 6.ª ronda suiza (domingo 20 de diciembre), `next-round` construye el cuadro de eliminatorias con los mejores clasificados (1.º contra el último, etc.). Hazlo cuando queráis empezar en enero: la ventana de la primera eliminatoria empieza en ese momento.

@@ -179,3 +179,25 @@ test('overall standings: only once the bracket exists; champion first, then by e
   assert.equal(final.rows[0].record.win, swissRow.record.win + Math.log2(cutoff));
   assert.ok(final.rows.every((r) => r.resistance >= 0 && r.resistance <= 1));
 });
+
+test('manual results (coin toss after a draw, no-show) never count for the stats: no game was played', async () => {
+  const { startTournament, applyPendingOverrides } = await import('../lib/tournamentFlow.mjs');
+  const { getUnresolvedMatches } = await import('../lib/tournamentEngine.mjs');
+  const roster = {
+    players: Array.from({ length: 8 }, (_, i) => ({ id: `p${i + 1}`, name: `P${i + 1}`, chesscomUsername: `j${i + 1}`, status: 'active' }))
+  };
+  const { engine, tournament } = startTournament({ tournament: { ...config, series: { swiss: 1 } }, roster, now: NOW });
+  const [drawn, ...rest] = getUnresolvedMatches(engine, 1);
+  // A drawn game seen by sync (only the sequence is stored), then decided by a coin toss.
+  drawn.set({ meta: { games: ['draw'] } });
+  const user = (id) => engine.getPlayer(id).getMeta().chesscomUsername;
+  const overrides = {
+    overrides: [drawn, ...rest].map((m) => ({ winner: user(m.player1.id), loser: user(m.player2.id), reason: 'sorteo / no jugó' }))
+  };
+  assert.equal(applyPendingOverrides({ engine, tournament, overrides }).applied, 4);
+
+  const stats = derivePublicData({ tournament, roster, engineState: JSON.parse(saveEngineTournament(engine)), now: NOW })['stats.json'];
+  assert.equal(stats.gamesAnalyzed, 0);
+  assert.deepEqual(stats.fastestByMoves, []);
+  assert.deepEqual(stats.mostCheckmates, []);
+});

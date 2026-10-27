@@ -22,8 +22,7 @@ import {
   finishTournament,
   getFinalRound,
   getRoundInfo,
-  getSeries,
-  swapOpponents
+  getSeries
 } from './tournamentEngine.mjs';
 
 function roundEntry(engine, number, now) {
@@ -107,24 +106,6 @@ function resolveOverride(ov, unresolved, engine) {
 }
 
 /**
- * `{ "swap": ["j1", "j3"] }`: j1 and j3 (chess.com usernames, each with a pending match this round) play
- * each other and their former opponents play each other. Returns false when a username is not in the
- * tournament (left as skipped); throws when the swap itself is not allowed (rematch, no pending match...).
- */
-function applySwap(ov, engine, round) {
-  const names = (Array.isArray(ov.swap) ? ov.swap : []).map(lower);
-  if (names.length !== 2 || !names[0] || !names[1] || names[0] === names[1]) return false;
-  const ids = names.map((n) => engine.getPlayers().find((p) => lower(p.getMeta().chesscomUsername) === n)?.getId());
-  if (ids.some((id) => !id)) return false;
-  try {
-    swapOpponents(engine, round, ids[0], ids[1]);
-  } catch (err) {
-    throw new Error(`Cambio de emparejamiento ${names.join(' / ')}: ${err.message}`);
-  }
-  return true;
-}
-
-/**
  * Applies the organizer's not-yet-applied overrides.json entries to the unresolved matches of the current
  * round, without advancing anything. Entries that match nothing pending (typo in a username or id, already
  * resolved, other round...) are left untouched, still `applied: false`, and reported in `skipped`.
@@ -138,13 +119,6 @@ export function applyPendingOverrides({ engine, tournament, overrides }) {
 
   for (const ov of next.overrides) {
     if (ov.applied) continue;
-    if (ov.swap) {
-      if (!applySwap(ov, engine, tournament.currentRound)) continue;
-      ov.applied = true;
-      applied++;
-      unresolved = getUnresolvedMatches(engine, tournament.currentRound);
-      continue;
-    }
     const found = resolveOverride(ov, unresolved, engine);
     if (!found) continue;
 

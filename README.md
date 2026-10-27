@@ -32,7 +32,7 @@ Toda la operación (puesta en marcha en GitHub, inscripción, resultados, rondas
 - **Inscripción**: cada jugador rellena un Microsoft Forms (nombre + usuario de chess.com). El organizador exporta las respuestas e importa el CSV con `scripts/import-players.mjs`; la acción `check-players` comprueba los usuarios contra chess.com.
 - **Inicio del torneo**: un organizador dispara manualmente el workflow `advance-round.yml` con `action=start-tournament` (pestaña Actions → Advance tournament → Run workflow).
 - **Durante una ronda**: `sync-results.yml` corre cada hora (y también manualmente), agrupa las partidas de cada pareja en chess.com dentro de la ventana de la ronda y resuelve las series decididas. Nunca adivina: partidas inconsistentes o con otro ritmo van a revisión y las no jugadas quedan pendientes. También alimenta la página de estadísticas.
-- **Avanzar de ronda**: el organizador dispara `advance-round.yml` con `action=next-round` cuando todas las partidas de la ronda están resueltas, o `action=force-next-round` tras rellenar `data/overrides.json` para las partidas que falten (sorteo tras tablas, incomparecencia, cambio de rival).
+- **Avanzar de ronda**: el organizador dispara `advance-round.yml` con `action=next-round` cuando todas las partidas de la ronda están resueltas, o `action=force-next-round` tras rellenar `data/overrides.json` para las partidas que falten (sorteo tras tablas o incomparecencia).
 - **Web**: se despliega sola en cada push a `main` que toque `data/public/**` o `web/**`.
 
 ## Limitaciones conocidas
