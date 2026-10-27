@@ -127,7 +127,7 @@ await writeFile(path.join(outRoot, 'index.json'), json({ datasets: index }), 'ut
 console.log(`\nDatasets escritos en ${outRoot}\n`);
 for (const { n, metrics: m, stats: s } of summary) {
   console.log(`━━ ${n} jugadores ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
-  console.log(`  Formato: ${m.swissRounds} rondas suizas (Bo3) → top ${m.playoffCutoff} → ${m.totalRounds - m.swissRounds} rondas eliminatorias → ${m.totalRounds} rondas en total`);
+  console.log(`  Formato: ${m.swissRounds} rondas suizas (Bo${config.series?.swiss ?? 3}) → top ${m.playoffCutoff} → ${m.totalRounds - m.swissRounds} rondas eliminatorias → ${m.totalRounds} rondas en total`);
   console.log(`  Partidas de ajedrez: ~${Math.round(s.totalGamesMean)} en total; máx. ${m.maxGamesPerPlayerInARound} por jugador en una ronda`);
   console.log(`  (${s.runs} simulaciones, ${s.invalidRuns} con incidencias)`);
   console.log(`  ¿Gana el mejor jugador (Elo oculto)?  ${pct(s.bestPlayerWins)}   · campeón entre los 3 mejores: ${pct(s.championInTop3)}   · puesto Elo medio del campeón: ${s.championMeanRatingRank.toFixed(1)}`);

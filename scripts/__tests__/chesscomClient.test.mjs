@@ -37,7 +37,7 @@ test('getPlayerProfile returns null on 404 without throwing', async () => {
   assert.equal(profile, null);
 });
 
-test('getPlayerGamesForMonth trims fields and converts end_time to ISO', async () => {
+test('getPlayerGamesForMonth keeps the fields the matcher and the stats need, drops the rest, end_time as ISO', async () => {
   globalThis.fetch = async () =>
     Response.json({
       games: [
@@ -49,14 +49,20 @@ test('getPlayerGamesForMonth trims fields and converts end_time to ISO', async (
           rated: true,
           white: { username: 'ada', result: 'win' },
           black: { username: 'carl', result: 'checkmated' },
-          pgn: 'this should be dropped'
+          time_control: '360+2',
+          pgn: '[Event "Live Chess"]',
+          fen: '8/8/8/8/8/8/8/K6k w - - 0 1',
+          tcn: 'this should be dropped'
         }
       ]
     });
 
   const games = await getPlayerGamesForMonth('ada', 2026, 6);
   assert.equal(games.length, 1);
-  assert.equal(games[0].pgn, undefined);
+  assert.equal(games[0].tcn, undefined);
+  assert.equal(games[0].pgn, '[Event "Live Chess"]');
+  assert.equal(games[0].fen, '8/8/8/8/8/8/8/K6k w - - 0 1');
+  assert.equal(games[0].timeControl, '360+2');
   assert.equal(games[0].white.username, 'ada');
   assert.equal(games[0].endTime, new Date(1749600000 * 1000).toISOString());
 });

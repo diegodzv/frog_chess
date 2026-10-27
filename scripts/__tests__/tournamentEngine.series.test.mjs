@@ -34,7 +34,7 @@ function started(n = 8) {
   return tournament;
 }
 
-test('auto format: swiss rounds = ceil(log2 n); cutoff = largest power of two <= n/2, between 4 and 16', () => {
+test('auto format: swiss rounds = ceil(log2 n); cutoff = largest power of two <= n/2, between 4 and 32', () => {
   const cases = [
     [8, 3, 4],
     [16, 4, 8],
@@ -42,7 +42,8 @@ test('auto format: swiss rounds = ceil(log2 n); cutoff = largest power of two <=
     [21, 5, 8],
     [40, 6, 16],
     [60, 6, 16],
-    [64, 6, 16]
+    [64, 6, 32],
+    [200, 8, 32]
   ];
   for (const [n, rounds, cutoff] of cases) {
     assert.deepEqual(resolveFormat(autoConfig, n), { swissRounds: rounds, playoffCutoff: cutoff }, `n=${n}`);

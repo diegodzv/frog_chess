@@ -19,3 +19,16 @@ export function formatDate(iso) {
 export function playerLink(player) {
   return player?.chesscomUsername ? `https://www.chess.com/member/${player.chesscomUsername}` : null;
 }
+
+/** "una sola partida" for Bo1, "al mejor de N" otherwise. */
+export function bestOfText(bestOf) {
+  return bestOf === 1 ? 'una sola partida' : `al mejor de ${bestOf}`;
+}
+
+/** 754 -> "12 min 34 s". */
+export function formatDuration(seconds) {
+  if (seconds == null) return '—';
+  const m = Math.floor(seconds / 60);
+  const s = Math.round(seconds % 60);
+  return m > 0 ? `${m} min ${s} s` : `${s} s`;
+}

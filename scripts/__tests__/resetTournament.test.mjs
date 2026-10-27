@@ -17,6 +17,7 @@ function startedDataDir({ cutoff = 'auto' } = {}) {
   cpSync(seedData, dir, { recursive: true });
   const { players } = generateRoster(12, makeRng(3));
   const config = JSON.parse(readFileSync(path.join(dir, 'tournament.json'), 'utf8'));
+  config.swissRounds = 'auto';
   config.playoffCutoff = { method: 'rank', value: cutoff };
   const { engine, tournament } = startTournament({ tournament: config, roster: { players } });
   const write = (f, v) => writeFileSync(path.join(dir, f), typeof v === 'string' ? v : JSON.stringify(v, null, 2));

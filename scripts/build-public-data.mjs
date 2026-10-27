@@ -17,6 +17,9 @@ import {
   getRoundInfo,
   resolveFormat
 } from './lib/tournamentEngine.mjs';
+import { buildStats, winsFromMatches } from './lib/gameStats.mjs';
+
+const round4 = (x) => Math.round((x ?? 0) * 10000) / 10000;
 
 const isResolved = (m) =>
   !m.active && [m.player1, m.player2].some((p) => p.win + p.loss + p.draw > 0);
@@ -125,9 +128,9 @@ function buildStandings({ tournament, engine, seeds, now }) {
       record: { win: r.win, loss: r.loss },
       games: { win: r.gameWin, loss: r.gameLoss, draw: r.gameDraw },
       byes: r.byes,
-      buchholz: s.tiebreaks.medianBuchholz,
-      sonnebornBerger: s.tiebreaks.sonnebornBerger,
-      gameDiff: s.tiebreaks.gameWinDifferential,
+      // Resistance: average match win % of the opponents, then of the opponents' opponents (0..1).
+      resistance: round4(s.tiebreaks.oppMatchWinPct),
+      opponentsResistance: round4(s.tiebreaks.oppOppMatchWinPct),
       qualified,
       // Once the bracket exists: how far they got. Before that, `qualified` is only provisional.
       outcome: bracketStarted ? (outcomes.get(id) ?? (qualified ? 'En juego' : 'Eliminado en fase suiza')) : null
@@ -205,6 +208,16 @@ function buildBracket({ tournament, engine, seeds, now }) {
   };
 }
 
+function buildStatsFile({ tournament, engine, seeds, now }) {
+  const empty = buildStats([], { player: () => null, roundLabel: () => null });
+  if (!engine) return { updatedAt: now, phase: tournament.phase, ...empty };
+  const stats = buildStats(winsFromMatches(engine.getMatches()), {
+    player: (id) => playerRef(engine, id, seeds),
+    roundLabel: (n) => tournament.rounds.find((r) => r.number === n)?.label ?? getRoundInfo(engine, n).label
+  });
+  return { updatedAt: now, phase: tournament.phase, ...stats };
+}
+
 function buildPlayers(roster, now) {
   return {
     updatedAt: now,
@@ -265,6 +278,7 @@ export function derivePublicData({ tournament, roster, engineState, now = new Da
     'standings.json': buildStandings(ctx),
     'rounds.json': buildRounds(ctx),
     'bracket.json': bracket,
+    'stats.json': buildStatsFile(ctx),
     'players.json': buildPlayers(roster, now)
   };
 }

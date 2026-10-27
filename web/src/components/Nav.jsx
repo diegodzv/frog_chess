@@ -5,6 +5,7 @@ const LINKS = [
   { href: 'index.html', label: 'Clasificación', key: 'standings' },
   { href: 'round.html', label: 'Rondas', key: 'round' },
   { href: 'bracket.html', label: 'Bracket', key: 'bracket' },
+  { href: 'stats.html', label: 'Estadísticas', key: 'stats' },
   { href: 'register.html', label: 'Inscripción', key: 'register' }
 ];
 

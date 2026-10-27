@@ -1,7 +1,8 @@
 import { Nav } from '../components/Nav.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { REGISTRATION_ISSUE_URL } from '../config.js';
+import { REGISTRATION_FORM_URL } from '../config.js';
+import { bestOfText } from '../components/format.js';
 
 export function Register() {
   const { data: meta } = useJson(dataUrl('meta.json'));
@@ -30,21 +31,25 @@ export function Register() {
 
       {isOpen && meta?.expectedFormat && (
         <p className="legend">
-          Formato con los {count} inscritos actuales: {meta.expectedFormat.swissRounds} rondas suizas (todas al mejor de{' '}
-          {meta.series?.swiss}) y pasan a eliminatorias los {meta.expectedFormat.playoffCutoff} mejores (al mejor de{' '}
-          {meta.series?.elimination}; semifinales y final al mejor de {meta.series?.final}). El formato se fija al cerrar la inscripción.
+          Formato con los {count} inscritos actuales: {meta.expectedFormat.swissRounds} rondas suizas ({bestOfText(meta.series?.swiss)})
+          y pasan a eliminatorias los {meta.expectedFormat.playoffCutoff} mejores (semifinales y final al mejor de{' '}
+          {meta.series?.final}). El número de clasificados se fija al cerrar la inscripción.
         </p>
       )}
 
       {isOpen ? (
         <>
           <p>
-            Para inscribirte, abre un issue en GitHub con tu nombre y tu usuario de chess.com. Un bot lo
-            validará automáticamente y te confirmará la inscripción en el propio issue.
+            Para inscribirte rellena el formulario con tu nombre y tu usuario de chess.com. La organización añade a los
+            inscritos a esta lista; puede tardar unos días en aparecer tu nombre.
           </p>
-          <a className="btn" href={REGISTRATION_ISSUE_URL} target="_blank" rel="noreferrer">
-            Inscribirme
-          </a>
+          {REGISTRATION_FORM_URL ? (
+            <a className="btn" href={REGISTRATION_FORM_URL} target="_blank" rel="noreferrer">
+              Inscribirme
+            </a>
+          ) : (
+            <p>El enlace al formulario está en el canal de Teams del torneo.</p>
+          )}
         </>
       ) : (
         <p className="empty-state">La inscripción ya no está abierta.</p>

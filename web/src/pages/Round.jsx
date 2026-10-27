@@ -3,7 +3,7 @@ import { Nav } from '../components/Nav.jsx';
 import { StatusBadge } from '../components/StatusBadge.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { formatDate, gameSequence } from '../components/format.js';
+import { bestOfText, formatDate, gameSequence } from '../components/format.js';
 
 const SHORT_LABEL = {
   'Dieciseisavos de final': '1/16',
@@ -117,7 +117,7 @@ export function Round() {
         <>
           <h2>{active.label}</h2>
           <p className="meta-line">
-            Al mejor de {active.bestOf}
+            {bestOfText(active.bestOf).replace(/^./, (c) => c.toUpperCase())}
             {active.startedAt && ` · ${formatDate(active.startedAt)}`}
             {active.endedAt ? ` – ${formatDate(active.endedAt)}` : active.current ? ' – en curso' : ''}
             {' · '}

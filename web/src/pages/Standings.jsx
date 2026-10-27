@@ -1,10 +1,11 @@
 import { Nav } from '../components/Nav.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { PHASE_LABELS, formatDate, playerLink } from '../components/format.js';
+import { PHASE_LABELS, bestOfText, formatDate, playerLink } from '../components/format.js';
 
 const vd = (r) => `${r.win}-${r.loss}`;
 const vtd = (g) => `${g.win}-${g.draw}-${g.loss}`;
+const pct = (x) => `${(x * 100).toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
 
 function OutcomeCell({ row, provisional }) {
   if (row.outcome) {
@@ -59,10 +60,10 @@ export function Standings() {
       {started && (
         <>
           <p className="legend">
-            {meta?.swissRounds} rondas suizas, todas al mejor de {meta?.series?.swiss}. Los {standings.cutoff} primeros
-            pasan a eliminatorias{provisional ? ' (provisional hasta la última ronda)' : ''}. Desempates: Buchholz
-            mediano → Sonneborn-Berger → diferencia de partidas. Las tablas no cuentan: se juega otra partida hasta que
-            alguien gana la serie.
+            {meta?.swissRounds} rondas suizas ({bestOfText(meta?.series?.swiss)}). Los {standings.cutoff} primeros pasan a
+            eliminatorias{provisional ? ' (provisional hasta la última ronda)' : ''}. A igualdad de puntos manda la
+            resistencia: el porcentaje de victorias medio de todos tus rivales; si sigue el empate, la resistencia media
+            de tus rivales.
           </p>
           <div className="table-wrap">
             <table className="standings">
@@ -73,9 +74,8 @@ export function Standings() {
                   <th title="Puntos: 1 por cada encuentro ganado (el bye cuenta como victoria)">Pts</th>
                   <th title="Encuentros (series): ganados-perdidos">V-D</th>
                   <th title="Partidas sueltas: victorias-tablas-derrotas">Partidas V-T-D</th>
-                  <th title="Buchholz mediano (fuerza de los rivales)">Buch.</th>
-                  <th title="Sonneborn-Berger">S-B</th>
-                  <th title="Diferencia de partidas ganadas y perdidas">Dif.</th>
+                  <th title="Resistencia: porcentaje de victorias medio de tus rivales">Resist.</th>
+                  <th title="Resistencia media de tus rivales">Resist. rivales</th>
                   <th>Estado</th>
                 </tr>
               </thead>
@@ -103,9 +103,8 @@ export function Standings() {
                     <td className="num strong">{row.points}</td>
                     <td className="num">{vd(row.record)}</td>
                     <td className="num">{vtd(row.games)}</td>
-                    <td className="num">{row.buchholz}</td>
-                    <td className="num">{row.sonnebornBerger}</td>
-                    <td className="num">{row.gameDiff > 0 ? `+${row.gameDiff}` : row.gameDiff}</td>
+                    <td className="num">{pct(row.resistance)}</td>
+                    <td className="num">{pct(row.opponentsResistance)}</td>
                     <td>
                       <OutcomeCell row={row} provisional={provisional} />
                     </td>

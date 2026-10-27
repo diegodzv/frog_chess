@@ -5,4 +5,8 @@ web/public/data/
 .DS_Store
 .env
 sim/
+prompt.txt
 
+# Microsoft Forms exports (they contain e-mails)
+*.csv
+*.xlsx

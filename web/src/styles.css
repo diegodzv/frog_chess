@@ -590,3 +590,69 @@ table a:hover {
   color: var(--accent);
   text-decoration: underline;
 }
+
+/* ---- Stats ---- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  margin-bottom: 0;
+}
+
+.stat-card h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.stat-unit {
+  margin: 0.1rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.stat-leader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-name {
+  font-weight: 600;
+}
+
+.stat-detail {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stat-rest {
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0 0 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.stat-rest li {
+  padding: 0.1rem 0;
+}
+
+.stat-rest li span:first-child {
+  color: var(--text);
+}
+
+.stat-rest-value {
+  float: right;
+  font-variant-numeric: tabular-nums;
+}

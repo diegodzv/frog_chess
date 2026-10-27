@@ -1,17 +1,40 @@
 #!/usr/bin/env node
 // Run by .github/workflows/advance-round.yml, triggered manually by an
-// organizer via workflow_dispatch. Actions: start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.
+// organizer via workflow_dispatch. Actions: check-players | start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.
 // The tournament logic lives in lib/tournamentFlow.mjs; this script only does I/O.
 
 import { loadEngineTournament, saveEngineTournament } from './lib/tournamentEngine.mjs';
 import { startTournament, advance, applyPendingOverrides } from './lib/tournamentFlow.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
+import { verifyRoster } from './lib/roster.mjs';
+import { getPlayerProfile } from './lib/chesscomClient.mjs';
 import { buildPublicData } from './build-public-data.mjs';
 
 function getAction() {
   const flag = process.argv.find((a) => a.startsWith('--action='));
   return flag ? flag.split('=')[1] : process.env.ACTION;
+}
+
+/**
+ * Checks the players imported from Microsoft Forms against chess.com (canonical casing, the account exists).
+ * Saves what could be verified even if some usernames are wrong, then fails listing them.
+ */
+async function checkPlayers() {
+  const { roster, verified, invalid } = await verifyRoster(await readJson('players.json'), getPlayerProfile);
+  if (verified.length > 0) {
+    await writeJson('players.json', roster);
+    await buildPublicData();
+    commitAndPush(`inscripción: ${verified.length} usuario(s) de chess.com comprobado(s)`);
+  }
+  console.log(`Comprobados: ${verified.length}${verified.length ? ` (${verified.map((p) => p.chesscomUsername).join(', ')})` : ''}.`);
+  if (invalid.length > 0) {
+    const list = invalid.map((p) => `${p.name} (${p.chesscomUsername}): ${p.reason}`).join('
+  - ');
+    throw new Error(`${invalid.length} usuario(s) sin validar:
+  - ${list}
+Corrige su usuario en data/players.json (o pon "status": "withdrawn") y repite check-players.`);
+  }
 }
 
 async function start() {
@@ -82,12 +105,13 @@ async function next(force) {
 
 async function main() {
   const action = getAction();
+  if (action === 'check-players') return checkPlayers();
   if (action === 'start-tournament') return start();
   if (action === 'apply-overrides') return applyOverrides();
   if (action === 'rebuild-public-data') return rebuildPublicData();
   if (action === 'next-round') return next(false);
   if (action === 'force-next-round') return next(true);
-  throw new Error(`Acción desconocida: "${action}". Usa start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.`);
+  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.`);
 }
 
 await main();

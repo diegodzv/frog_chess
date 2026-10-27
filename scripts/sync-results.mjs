@@ -1,21 +1,25 @@
 #!/usr/bin/env node
 // Run by .github/workflows/sync-results.yml on a schedule (and on-demand via
-// workflow_dispatch). Looks up chess.com game results for every pending
-// pairing in the active round and applies them to the tournament engine.
-// Never guesses: ambiguous or missing games are left pending and recorded in
-// data/needs-review.json for the organizer.
+// workflow_dispatch). Looks up the chess.com games of every pending pairing in
+// the active round, scores them as a best-of-N series and applies the finished
+// ones to the tournament engine. Never guesses: inconsistent games or games
+// played with the wrong settings go to data/needs-review.json for the organizer;
+// unfinished series (e.g. a drawn Bo1 waiting for a replay or a coin toss) stay
+// pending, with the games so far shown on the site.
 
-import { findGameForPairing } from './lib/resultMatcher.mjs';
+import { findSeriesForPairing } from './lib/resultMatcher.mjs';
 import {
   loadEngineTournament,
   saveEngineTournament,
   getUnresolvedMatches,
   getRoundInfo,
-  applyResult
+  applySeriesResult
 } from './lib/tournamentEngine.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
 import { buildPublicData } from './build-public-data.mjs';
+
+const sameJson = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
 async function main() {
   const tournament = await readJson('tournament.json');
@@ -37,76 +41,58 @@ async function main() {
   }
 
   const engine = loadEngineTournament(engineJson);
-
-  // findGameForPairing resolves a pairing from ONE chess.com game. In a Bo3/Bo5
-  // that would record a single game as a whole series, so refuse until the
-  // matcher aggregates the games of a series (scoreSeries in lib/series.mjs).
-  const { bestOf, label } = getRoundInfo(engine, tournament.currentRound);
-  if (bestOf > 1) {
-    console.log(`${label} es al mejor de ${bestOf}: el matcher aún no agrega series, no se resuelve nada automáticamente.`);
-    return;
-  }
-
+  const { bestOf } = getRoundInfo(engine, tournament.currentRound);
   const byId = new Map(engine.getPlayers().map((p) => [p.id, p]));
   const pending = getUnresolvedMatches(engine, tournament.currentRound);
 
   const needsReview = { items: [] };
-  let anyResolved = false;
+  let engineChanged = false;
 
   for (const match of pending) {
-    const p1 = byId.get(match.player1.id);
-    const p2 = byId.get(match.player2.id);
-    const usernameA = p1?.meta?.chesscomUsername;
-    const usernameB = p2?.meta?.chesscomUsername;
+    if (match.bye) continue;
+    const usernameA = byId.get(match.player1.id)?.meta?.chesscomUsername;
+    const usernameB = byId.get(match.player2.id)?.meta?.chesscomUsername;
     if (!usernameA || !usernameB) continue;
 
-    const result = await findGameForPairing({
+    const result = await findSeriesForPairing({
       usernameA,
       usernameB,
+      bestOf,
       timeClass: tournament.timeClass,
       rules: tournament.rules,
       requireRated: tournament.requireRated,
       windowStart: roundInfo.startedAt,
       windowEnd: roundInfo.endedAt
     });
+    const review = { matchId: match.id, round: tournament.currentRound, player1: usernameA, player2: usernameB, detectedAt: new Date().toISOString() };
 
-    if (result.status === 'resolved' && result.outcome === 'draw') {
-      // A drawn game decides nothing: another one has to be played.
-      console.log(`${usernameA} vs ${usernameB}: tablas, falta otra partida.`);
-    } else if (result.status === 'resolved') {
-      applyResult(engine, match.id, result.outcome);
-      match.meta = { ...match.meta, chesscom: { url: result.game.url, endTime: result.game.endTime } };
-      anyResolved = true;
-      console.log(`Resolved ${usernameA} vs ${usernameB}: ${result.outcome}`);
-    } else if (result.status === 'ambiguous') {
-      needsReview.items.push({
-        matchId: match.id,
-        round: tournament.currentRound,
-        player1: usernameA,
-        player2: usernameB,
-        reason: 'multiple_candidate_games',
-        candidates: result.candidates,
-        detectedAt: new Date().toISOString()
+    if (result.status === 'complete') {
+      const sequence = result.games.map((g) => g.result);
+      applySeriesResult(engine, match.id, result.score, {
+        games: sequence,
+        meta: { source: 'chesscom', chesscomGames: result.games }
       });
+      engineChanged = true;
+      console.log(`Resuelto ${usernameA} vs ${usernameB}: ${result.score.p1Wins}-${result.score.p2Wins} (${sequence.join(' ')})`);
+      if (result.ignored > 0) console.log(`  ${result.ignored} partida(s) posteriores a la decisión, ignoradas.`);
+    } else if (result.status === 'in_progress') {
+      // Shown on the site as the games so far; a drawn Bo1 needs a replay or a coin toss (override).
+      const sequence = result.games.map((g) => g.result);
+      if (!sameJson(match.meta?.games, sequence)) {
+        match.set({ meta: { games: sequence } });
+        engineChanged = true;
+      }
+      console.log(`${usernameA} vs ${usernameB}: en curso (${sequence.join(' ')}).`);
     } else if (result.status === 'inconsistent') {
-      needsReview.items.push({
-        matchId: match.id,
-        round: tournament.currentRound,
-        player1: usernameA,
-        player2: usernameB,
-        reason: 'inconsistent_result_codes',
-        game: { url: result.game.url, endTime: result.game.endTime },
-        detectedAt: new Date().toISOString()
-      });
+      needsReview.items.push({ ...review, reason: 'inconsistent_result_codes', game: { url: result.game.url, endTime: result.game.endTime } });
+    } else if (result.wrongFormat.length > 0) {
+      needsReview.items.push({ ...review, reason: 'wrong_format', games: result.wrongFormat });
     }
-    // 'not_found' -> stays pending silently, expected while the round is in progress.
+    // 'not_found' with nothing else -> stays pending silently, expected while the round is in progress.
   }
 
   await writeJson('needs-review.json', needsReview);
-
-  if (anyResolved) {
-    await writeJson('engine-state.json', saveEngineTournament(engine));
-  }
+  if (engineChanged) await writeJson('engine-state.json', saveEngineTournament(engine));
 
   await buildPublicData();
   const committed = commitAndPush(`sync: resultados chess.com (ronda ${tournament.currentRound})`);

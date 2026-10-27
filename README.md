@@ -10,9 +10,8 @@ El backend (motor de torneo, ciclo de vida, datos públicos) y la web están ver
 
 1. Node 20+ y npm. `cd scripts && npm install && npm test`; `cd web && npm install && npm run dev`.
 2. Antes de subir el repo, commitea los `package-lock.json` de `scripts/` y `web/` (los workflows usan `npm ci`).
-3. Edita `web/src/config.js` (y el `USER_AGENT` de `scripts/lib/chesscomClient.mjs`) con la URL real del repo.
-4. En GitHub: Settings → Pages → Source = **GitHub Actions**; Settings → Actions → General → Workflow permissions = **Read and write permissions**.
-5. Ajusta `data/tournament.json` (nombre, `timeClass`, tope de jugadores; las rondas suizas y el corte a eliminatorias son `"auto"` y dependen del número de inscritos).
+3. En GitHub: Settings → Pages → Source = **GitHub Actions**; Settings → Actions → General → Workflow permissions = **Read and write permissions**.
+4. Ajusta `data/tournament.json` (nombre, `timeClass` —6+2 es `blitz` en chess.com—, tope de jugadores, rondas suizas, corte a eliminatorias).
 
 ## Cómo llevar el torneo
 
@@ -24,15 +23,16 @@ Toda la operación (puesta en marcha en GitHub, inscripción, resultados, rondas
 
 ## Formato
 
-- Fase suiza de `ceil(log2(n))` rondas y eliminatoria con los 4-16 mejores (potencia de 2, hasta n/2). Todos los emparejamientos son al mejor de 3 partidas salvo semifinales y final, al mejor de 5.
-- Las tablas no cuentan: se juega otra partida hasta que alguien gana 2 (o 3 en Bo5). No hay encuentros empatados.
+- 6 rondas suizas semanales a una sola partida y eliminatoria con los mejores (potencia de 2, `auto` = hasta n/2 entre 4 y 32). Eliminatorias al mejor de 3, semifinales y final al mejor de 5.
+- Las tablas no cuentan: se juega otra partida (o, en la fase suiza, se echa a suertes). No hay encuentros empatados.
+- Desempate por resistencia: porcentaje de victorias medio de todos los rivales.
 
 ## Cómo funciona
 
-- **Inscripción**: cada jugador abre un issue con la plantilla "🐸 Inscripción al torneo" (nombre + usuario de chess.com). El workflow `register-player.yml` lo valida contra la API de chess.com y lo añade a `data/players.json`.
+- **Inscripción**: cada jugador rellena un Microsoft Forms (nombre + usuario de chess.com). El organizador exporta las respuestas e importa el CSV con `scripts/import-players.mjs`; la acción `check-players` comprueba los usuarios contra chess.com.
 - **Inicio del torneo**: un organizador dispara manualmente el workflow `advance-round.yml` con `action=start-tournament` (pestaña Actions → Advance tournament → Run workflow).
-- **Durante una ronda**: `sync-results.yml` corre cada hora (y también manualmente) y detecta resultados de partidas jugadas en chess.com que encajen con los emparejamientos activos. Nunca adivina: partidas ambiguas o sin jugar quedan pendientes.
-- **Avanzar de ronda**: el organizador dispara `advance-round.yml` con `action=next-round` cuando todas las partidas de la ronda están resueltas, o `action=force-next-round` tras rellenar `data/overrides.json` para las partidas que falten (walkover, no-show, etc.).
+- **Durante una ronda**: `sync-results.yml` corre cada hora (y también manualmente), agrupa las partidas de cada pareja en chess.com dentro de la ventana de la ronda y resuelve las series decididas. Nunca adivina: partidas inconsistentes o con otro ritmo van a revisión y las no jugadas quedan pendientes. También alimenta la página de estadísticas.
+- **Avanzar de ronda**: el organizador dispara `advance-round.yml` con `action=next-round` cuando todas las partidas de la ronda están resueltas, o `action=force-next-round` tras rellenar `data/overrides.json` para las partidas que falten (sorteo tras tablas, incomparecencia, cambio de rival).
 - **Web**: se despliega sola en cada push a `main` que toque `data/public/**` o `web/**`.
 
 ## Limitaciones conocidas

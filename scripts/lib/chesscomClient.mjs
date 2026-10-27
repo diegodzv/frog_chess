@@ -63,6 +63,9 @@ export async function getPlayerGamesForMonth(username, year, month) {
     timeClass: game.time_class,
     rules: game.rules,
     rated: game.rated,
+    timeControl: game.time_control ?? null,
+    pgn: game.pgn ?? null,
+    fen: game.fen ?? null,
     white: { username: game.white.username, result: game.white.result },
     black: { username: game.black.username, result: game.black.result }
   }));

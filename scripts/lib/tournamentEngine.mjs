@@ -22,20 +22,22 @@
 import Manager from 'tournament-organizer';
 import { DEFAULT_SERIES, bestOfFor, bracketRoundLabel, winsNeeded, walkoverScore } from './series.mjs';
 
-// Chess.com results give no rating tie-break of their own, so break points ties
-// with opponents' strength (median Buchholz), then who beat the stronger
-// opponents, then the game-level differential inside the series.
-export const DEFAULT_TIEBREAKS = ['median buchholz', 'sonneborn berger', 'game win differential'];
+// "Resistance", as in Play! Pokémon: break points ties with the average match
+// win percentage of ALL your opponents (their final record counts, so losing to
+// the 6-0 player hurts less than losing to the 1-5 one), then with the average
+// resistance of your opponents. Unlike Pokémon, the library applies no 25 %
+// floor and counts byes in an opponent's win percentage.
+export const DEFAULT_TIEBREAKS = ['opponent match win percentage', 'opponent opponent match win percentage'];
 
 const MIN_PLAYOFF_SIZE = 4; // we always want semifinals and a final
-const MAX_PLAYOFF_SIZE = 16;
+const MAX_PLAYOFF_SIZE = 32;
 
 /** Swiss rounds needed to (mostly) separate `playerCount` players: ceil(log2(n)). */
 export function autoSwissRounds(playerCount) {
   return Math.max(1, Math.ceil(Math.log2(playerCount)));
 }
 
-/** Largest power of two <= n/2, clamped to [4, 16] and never above the player count. */
+/** Largest power of two <= n/2, clamped to [4, 32] and never above the player count. */
 export function autoPlayoffCutoff(playerCount) {
   let size = MIN_PLAYOFF_SIZE;
   while (size * 2 <= playerCount / 2 && size * 2 <= MAX_PLAYOFF_SIZE) size *= 2;
@@ -239,6 +241,61 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
   match.set({ active: false, player1: lost, player2: lost, meta: { forfeit: 'double', ...opts.meta } });
   tournament.getPlayer(match.player1.id).updateMatch(match.id, lost);
   tournament.getPlayer(match.player2.id).updateMatch(match.id, lost);
+}
+
+/** Points of a player counting only finished matches (the same sum the library uses for pairUpDown). */
+function finishedPoints(tournament, player) {
+  return player
+    .getMatches()
+    .filter((m) => !tournament.getMatch(m.id).isActive())
+    .reduce((sum, m) => sum + (m.win > m.loss ? 1 : 0), 0);
+}
+
+/**
+ * Re-pairs two pending swiss matches of the same round: `aId` and `cId` (each in
+ * a different match, typically two players whose opponents never answered)
+ * face each other, and their former opponents face each other. Refuses
+ * rematches, byes, resolved matches and bracket rounds. The library has no
+ * re-pairing of its own, so both matches and the four players' match records
+ * are rewritten here; the original pairings are kept in each match's meta.
+ */
+export function swapOpponents(tournament, round, aId, cId) {
+  if (getRoundInfo(tournament, round).phase !== 'stage-one') {
+    throw new Error('Solo se pueden cambiar emparejamientos en la fase suiza.');
+  }
+  const name = (id) => tournament.getPlayer(id).getName();
+  const pendingMatchOf = (id) => {
+    const match = getUnresolvedMatches(tournament, round).find((m) => !m.bye && (m.player1.id === id || m.player2.id === id));
+    if (!match) throw new Error(`${name(id)} no tiene ninguna partida pendiente en la ronda ${round}.`);
+    return match;
+  };
+  const matchAB = pendingMatchOf(aId);
+  const matchCD = pendingMatchOf(cId);
+  if (matchAB.id === matchCD.id) throw new Error(`${name(aId)} y ${name(cId)} ya se enfrentan en esta ronda.`);
+
+  const opponentIn = (match, id) => (match.player1.id === id ? match.player2.id : match.player1.id);
+  const bId = opponentIn(matchAB, aId);
+  const dId = opponentIn(matchCD, cId);
+  for (const [x, y] of [[aId, cId], [bId, dId]]) {
+    if (tournament.getPlayer(x).getMatches().some((m) => m.opponent === y)) {
+      throw new Error(`${name(x)} y ${name(y)} ya se enfrentaron en otra ronda: elige otro cambio.`);
+    }
+  }
+
+  const rewrite = (match, p1, p2, previous) => {
+    match.set({ player1: { id: p1 }, player2: { id: p2 }, meta: { repairedFrom: previous } });
+    const pairUpDown = finishedPoints(tournament, tournament.getPlayer(p1)) !== finishedPoints(tournament, tournament.getPlayer(p2));
+    for (const [me, other] of [[p1, p2], [p2, p1]]) {
+      tournament.getPlayer(me).addMatch({ id: match.id, opponent: other, pairUpDown });
+    }
+  };
+  tournament.getPlayer(aId).removeMatch(matchAB.id);
+  tournament.getPlayer(bId).removeMatch(matchAB.id);
+  tournament.getPlayer(cId).removeMatch(matchCD.id);
+  tournament.getPlayer(dId).removeMatch(matchCD.id);
+  rewrite(matchAB, aId, cId, [aId, bId]);
+  rewrite(matchCD, bId, dId, [cId, dId]);
+  return { matches: [matchAB, matchCD], newPairs: [[aId, cId], [bId, dId]] };
 }
 
 // ---------------------------------------------------------------------------

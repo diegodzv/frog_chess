@@ -31,7 +31,7 @@ function derive(sim) {
 test('before the tournament starts everything is empty but well-formed', () => {
   const roster = { players: [{ id: 'p1', name: 'Ada', chesscomUsername: 'ada', status: 'active' }] };
   const files = derivePublicData({ tournament: { ...config, playerCap: config.playerCap }, roster, engineState: null, now: NOW });
-  assert.deepEqual(Object.keys(files).sort(), ['bracket.json', 'meta.json', 'players.json', 'rounds.json', 'standings.json']);
+  assert.deepEqual(Object.keys(files).sort(), ['bracket.json', 'meta.json', 'players.json', 'rounds.json', 'standings.json', 'stats.json']);
   assert.deepEqual(files['standings.json'].rows, []);
   assert.deepEqual(files['rounds.json'].rounds, []);
   assert.deepEqual(files['bracket.json'].rounds, []);

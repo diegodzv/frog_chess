@@ -129,6 +129,32 @@ export function simulateSeries(rng, ratingA, ratingB, bestOf, { baseDrawRate } =
   return { games, score };
 }
 
+/**
+ * Made-up chess.com details for a simulated game (lib/gameStats.mjs `describeGame` shape), so the stats page
+ * has something to show with simulated data. Not meant to be realistic beyond plausible ranges.
+ */
+function fakeGameDetails(rng, result, endTime) {
+  const moves = 12 + Math.floor(rng() * 55);
+  const roll = rng();
+  const termination =
+    result === 'draw' ? 'agreed' : roll < 0.55 ? 'resigned' : roll < 0.8 ? 'checkmated' : roll < 0.98 ? 'timeout' : 'abandoned';
+  const winner = 6 + Math.floor(rng() * 33);
+  const p1Color = rng() < 0.5 ? 'white' : 'black';
+  const p1Won = result === 'p1';
+  const winnerColor = p1Won === (p1Color === 'white') ? 'white' : 'black';
+  const loser = Math.max(0, winner - Math.floor(rng() * 15));
+  return {
+    url: null,
+    endTime,
+    result,
+    p1Color,
+    moves,
+    durationSec: Math.round(moves * (5 + rng() * 9)),
+    material: winnerColor === 'white' ? { white: winner, black: loser } : { white: loser, black: winner },
+    termination
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Running a whole tournament
 // ---------------------------------------------------------------------------
@@ -157,6 +183,8 @@ function playTournament({
   stopAt = null
 }) {
   const rng = makeRng(seed);
+  // Separate stream for the made-up game details, so they don't change the pairings and results of a seed.
+  const detailsRng = makeRng(seed + 7919);
   const { players, ratings } = generateRoster(playerCount, rng);
   const roster = { players };
 
@@ -195,7 +223,8 @@ function playTournament({
       const { games, score } = simulateSeries(rng, ratings[match.player1.id], ratings[match.player2.id], info.bestOf, {
         baseDrawRate
       });
-      applySeriesResult(engine, match.id, score, { games, meta: { source: 'simulated' } });
+      const chesscomGames = games.map((g) => fakeGameDetails(detailsRng, g, at()));
+      applySeriesResult(engine, match.id, score, { games, meta: { source: 'simulated', chesscomGames } });
       stats.games += games.length;
       for (const id of [match.player1.id, match.player2.id]) gamesByPlayer.set(id, (gamesByPlayer.get(id) ?? 0) + games.length);
     }

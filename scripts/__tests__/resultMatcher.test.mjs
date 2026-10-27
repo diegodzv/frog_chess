@@ -1,6 +1,6 @@
 import { test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { findGameForPairing } from '../lib/resultMatcher.mjs';
+import { findSeriesForPairing } from '../lib/resultMatcher.mjs';
 import { _resetCache } from '../lib/chesscomClient.mjs';
 
 const originalFetch = globalThis.fetch;
@@ -18,166 +18,147 @@ function mockGames(games) {
   globalThis.fetch = async () => Response.json({ games });
 }
 
+const CODES = {
+  win: ['win', 'checkmated'],
+  loss: ['resigned', 'win'],
+  draw: ['agreed', 'agreed']
+};
+
+let nextId = 1;
+/** A game in chess.com's archive format. `outcome` is from WHITE's point of view: 'win' | 'loss' | 'draw'. */
+function game(white, black, outcome, endIso, extra = {}) {
+  const [w, b] = CODES[outcome];
+  return {
+    url: `https://www.chess.com/game/live/${nextId++}`,
+    end_time: toEpochSeconds(endIso),
+    time_class: 'blitz',
+    rules: 'chess',
+    rated: true,
+    white: { username: white, result: w },
+    black: { username: black, result: b },
+    ...extra
+  };
+}
+
 const baseArgs = {
   usernameA: 'adalovelace',
   usernameB: 'carlbot',
-  timeClass: 'rapid',
+  bestOf: 1,
+  timeClass: 'blitz',
   rules: 'chess',
-  windowStart: '2026-06-01T00:00:00Z',
-  windowEnd: '2026-06-30T00:00:00Z'
+  windowStart: '2026-11-09T07:00:00Z',
+  windowEnd: '2026-11-15T22:59:59Z'
 };
 
-test('resolves a clean win for player A (white)', async () => {
-  mockGames([
-    {
-      url: 'https://www.chess.com/game/live/1',
-      end_time: toEpochSeconds('2026-06-10T18:00:00Z'),
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'adalovelace', result: 'win' },
-      black: { username: 'carlbot', result: 'checkmated' }
-    }
-  ]);
-
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'resolved');
-  assert.equal(result.outcome, 'a_win');
+test('Bo1: a win for A (white) completes the pairing', async () => {
+  mockGames([game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z')]);
+  const r = await findSeriesForPairing(baseArgs);
+  assert.equal(r.status, 'complete');
+  assert.equal(r.winner, 'p1');
+  assert.deepEqual(r.score, { p1Wins: 1, p2Wins: 0, draws: 0 });
+  assert.equal(r.games.length, 1);
+  assert.equal(r.games[0].result, 'p1');
+  assert.equal(r.games[0].p1Color, 'white');
+  assert.equal(r.games[0].termination, 'checkmated', 'the loser result code');
 });
 
-test('resolves a win for player B when B played white', async () => {
-  mockGames([
-    {
-      url: 'https://www.chess.com/game/live/2',
-      end_time: toEpochSeconds('2026-06-10T18:00:00Z'),
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'carlbot', result: 'win' },
-      black: { username: 'adalovelace', result: 'resigned' }
-    }
-  ]);
-
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'resolved');
-  assert.equal(result.outcome, 'b_win');
+test('Bo1: a win for B when B played white', async () => {
+  mockGames([game('carlbot', 'adalovelace', 'win', '2026-11-10T18:00:00Z')]);
+  const r = await findSeriesForPairing(baseArgs);
+  assert.equal(r.status, 'complete');
+  assert.equal(r.winner, 'p2');
+  assert.deepEqual(r.score, { p1Wins: 0, p2Wins: 1, draws: 0 });
+  assert.equal(r.games[0].p1Color, 'black');
 });
 
-test('resolves a draw', async () => {
-  mockGames([
-    {
-      url: 'https://www.chess.com/game/live/3',
-      end_time: toEpochSeconds('2026-06-10T18:00:00Z'),
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'adalovelace', result: 'agreed' },
-      black: { username: 'carlbot', result: 'agreed' }
-    }
-  ]);
-
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'resolved');
-  assert.equal(result.outcome, 'draw');
+test('Bo1: a single draw leaves the pairing in progress (replay or coin toss)', async () => {
+  mockGames([game('adalovelace', 'carlbot', 'draw', '2026-11-10T18:00:00Z')]);
+  const r = await findSeriesForPairing(baseArgs);
+  assert.equal(r.status, 'in_progress');
+  assert.deepEqual(r.games.map((g) => g.result), ['draw']);
 });
 
-test('returns not_found when no candidate game exists', async () => {
-  mockGames([]);
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'not_found');
+test('Bo1: a draw and then a win completes it with the draw recorded', async () => {
+  mockGames([
+    game('carlbot', 'adalovelace', 'loss', '2026-11-10T18:20:00Z'),
+    game('adalovelace', 'carlbot', 'draw', '2026-11-10T18:00:00Z')
+  ]);
+  const r = await findSeriesForPairing(baseArgs);
+  assert.equal(r.status, 'complete');
+  assert.deepEqual(r.score, { p1Wins: 1, p2Wins: 0, draws: 1 });
+  assert.deepEqual(r.games.map((g) => g.result), ['draw', 'p1'], 'chronological, whatever the archive order');
 });
 
-test('ignores a game just outside the round window', async () => {
+test('Bo3: games after the series is decided are ignored', async () => {
   mockGames([
-    {
-      url: 'https://www.chess.com/game/live/4',
-      end_time: toEpochSeconds('2026-07-01T00:00:01Z'), // 1s after windowEnd
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'adalovelace', result: 'win' },
-      black: { username: 'carlbot', result: 'resigned' }
-    }
+    game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z'),
+    game('carlbot', 'adalovelace', 'win', '2026-11-10T18:15:00Z'),
+    game('adalovelace', 'carlbot', 'win', '2026-11-10T18:30:00Z'),
+    game('carlbot', 'adalovelace', 'win', '2026-11-10T18:45:00Z')
   ]);
-
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'not_found');
+  const r = await findSeriesForPairing({ ...baseArgs, bestOf: 3 });
+  assert.equal(r.status, 'complete');
+  assert.deepEqual(r.score, { p1Wins: 2, p2Wins: 1, draws: 0 });
+  assert.equal(r.games.length, 3);
+  assert.equal(r.ignored, 1);
 });
 
-test('flags multiple candidate games as ambiguous instead of guessing', async () => {
+test('Bo3: one win each is still in progress', async () => {
   mockGames([
-    {
-      url: 'https://www.chess.com/game/live/5',
-      end_time: toEpochSeconds('2026-06-10T10:00:00Z'),
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'adalovelace', result: 'win' },
-      black: { username: 'carlbot', result: 'resigned' }
-    },
-    {
-      url: 'https://www.chess.com/game/live/6',
-      end_time: toEpochSeconds('2026-06-10T14:00:00Z'),
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'carlbot', result: 'win' },
-      black: { username: 'adalovelace', result: 'resigned' }
-    }
+    game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z'),
+    game('adalovelace', 'carlbot', 'loss', '2026-11-10T18:15:00Z')
   ]);
-
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'ambiguous');
-  assert.equal(result.candidates.length, 2);
+  const r = await findSeriesForPairing({ ...baseArgs, bestOf: 3 });
+  assert.equal(r.status, 'in_progress');
+  assert.deepEqual(r.score, { p1Wins: 1, p2Wins: 1, draws: 0 });
 });
 
-test('flags inconsistent result codes instead of guessing a winner', async () => {
+test('no games between the two inside the window -> not_found', async () => {
   mockGames([
-    {
-      url: 'https://www.chess.com/game/live/7',
-      end_time: toEpochSeconds('2026-06-10T10:00:00Z'),
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'adalovelace', result: 'win' },
-      black: { username: 'carlbot', result: 'win' } // both claim a win: inconsistent
-    }
+    game('adalovelace', 'carlbot', 'win', '2026-11-08T18:00:00Z'), // before the round
+    game('adalovelace', 'someoneelse', 'win', '2026-11-10T18:00:00Z')
   ]);
-
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'inconsistent');
+  const r = await findSeriesForPairing(baseArgs);
+  assert.equal(r.status, 'not_found');
+  assert.deepEqual(r.wrongFormat, []);
 });
 
-test('filters out games of the wrong time class', async () => {
+test('games with the wrong time class, variant or unrated (when rated is required) never count, but are reported', async () => {
   mockGames([
-    {
-      url: 'https://www.chess.com/game/live/8',
-      end_time: toEpochSeconds('2026-06-10T10:00:00Z'),
-      time_class: 'blitz',
-      rules: 'chess',
-      rated: true,
-      white: { username: 'adalovelace', result: 'win' },
-      black: { username: 'carlbot', result: 'resigned' }
-    }
+    game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z', { time_class: 'rapid' }),
+    game('adalovelace', 'carlbot', 'win', '2026-11-10T18:10:00Z', { rules: 'chess960' }),
+    game('adalovelace', 'carlbot', 'win', '2026-11-10T18:20:00Z', { rated: false })
   ]);
-
-  const result = await findGameForPairing(baseArgs);
-  assert.equal(result.status, 'not_found');
+  const r = await findSeriesForPairing({ ...baseArgs, requireRated: true });
+  assert.equal(r.status, 'not_found');
+  assert.deepEqual(r.wrongFormat.map((g) => g.timeClass), ['rapid', 'blitz', 'blitz']);
 });
 
-test('requireRated excludes unrated games', async () => {
-  mockGames([
-    {
-      url: 'https://www.chess.com/game/live/9',
-      end_time: toEpochSeconds('2026-06-10T10:00:00Z'),
-      time_class: 'rapid',
-      rules: 'chess',
-      rated: false,
-      white: { username: 'adalovelace', result: 'win' },
-      black: { username: 'carlbot', result: 'resigned' }
-    }
-  ]);
+test('usernames match case-insensitively', async () => {
+  mockGames([game('AdaLovelace', 'CarlBot', 'win', '2026-11-10T18:00:00Z')]);
+  const r = await findSeriesForPairing(baseArgs);
+  assert.equal(r.status, 'complete');
+});
 
-  const result = await findGameForPairing({ ...baseArgs, requireRated: true });
-  assert.equal(result.status, 'not_found');
+test('inconsistent result codes -> inconsistent (needs review)', async () => {
+  const g = game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z');
+  g.black.result = 'win';
+  mockGames([g]);
+  const r = await findSeriesForPairing(baseArgs);
+  assert.equal(r.status, 'inconsistent');
+});
+
+test('the counted games carry the stats details from the PGN and FEN', async () => {
+  mockGames([
+    game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z', {
+      time_control: '360+2',
+      pgn: '[Event "Live Chess"]\n\n1. e4 {[%clk 0:06:01.5]} 1... e5 {[%clk 0:06:00.9]} 2. Qh5 {[%clk 0:05:55]} 2... Ke7 {[%clk 0:05:50]} 3. Qxe5# {[%clk 0:05:52]} 1-0',
+      fen: 'rnbq1bnr/ppppkppp/8/4Q3/4P3/8/PPPP1PPP/RNB1KBNR b KQ - 0 3'
+    })
+  ]);
+  const r = await findSeriesForPairing(baseArgs);
+  const [g] = r.games;
+  assert.equal(g.moves, 3);
+  assert.equal(g.durationSec, (360 + 6 - 352) + (360 + 4 - 350));
+  assert.deepEqual(g.material, { white: 39, black: 38 });
 });
