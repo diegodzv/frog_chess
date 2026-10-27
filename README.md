@@ -17,6 +17,10 @@ El backend (motor de torneo, ciclo de vida, datos públicos) y la web están ver
 
 Toda la operación (puesta en marcha en GitHub, inscripción, resultados, rondas, reinicio tras las pruebas) está en [`docs/ORGANIZADOR.md`](docs/ORGANIZADOR.md).
 
+## Normas
+
+Las normas del torneo están en [`NORMAS.md`](NORMAS.md) y en la pestaña **Normas** de la web, que se genera desde ese fichero.
+
 ## Simular un torneo
 
 `cd scripts && npm run sim` genera torneos completos con jugadores y partidas ficticias (20, 40 y 60 jugadores por defecto) en `sim/` y muestra estadísticas del formato. No toca `data/`. Para verlos: `cd web && npm run dev` y abre `index.html?data=sim/n40` (o usa el selector "Datos" de la barra superior). Opciones: `--players=32 --seed=7 --runs=500 --no-show=0.05`.

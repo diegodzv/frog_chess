@@ -6,6 +6,7 @@ on:
     paths:
       - 'data/public/**'
       - 'web/**'
+      - 'NORMAS.md'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch: {}
 

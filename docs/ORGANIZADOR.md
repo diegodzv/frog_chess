@@ -1,6 +1,6 @@
 # Guía del organizador
 
-Cómo se maneja el torneo de principio a fin. Casi todo se hace desde GitHub (navegador): no hay servidor que mantener. Las normas para los participantes están en el documento de normas del torneo.
+Cómo se maneja el torneo de principio a fin. Casi todo se hace desde GitHub (navegador): no hay servidor que mantener. Las normas para los participantes están en [`NORMAS.md`](../NORMAS.md) y en la pestaña **Normas** de la web (se genera desde ese fichero: edítalo en GitHub y la web se actualiza sola).
 
 - Repositorio: <https://github.com/diegodzv/frog_chess>
 - Web del torneo: <https://diegodzv.github.io/frog_chess/>
@@ -86,13 +86,15 @@ A los jugadores se les comunica la ronda los lunes a las 9:00 y tienen hasta el 
      "overrides": [
        { "winner": "adalovelace", "loser": "bob", "reason": "tablas, sorteo" },
        { "winner": "carl", "loser": "dana", "reason": "dana no jugó" },
-       { "players": ["erin", "frank"], "outcome": "double_forfeit", "reason": "ninguno jugó" }
+       { "players": ["erin", "frank"], "outcome": "double_forfeit", "reason": "ninguno jugó" },
+       { "drop": "gus", "reason": "deja el torneo" }
      ]
    }
    ```
 
    - `winner`/`loser`: gana el `winner` (1-0 en la fase suiza). Para sorteos tras tablas y para quien no pudo jugar (pierde la partida). Los resultados manuales no cuentan para las estadísticas.
    - `double_forfeit`: ninguno jugó; derrota para los dos. Solo en la fase suiza.
+   - `drop` (**abandono**): la partida pendiente del jugador (de esta ronda o, en eliminatorias, la que tenga activa) cuenta como derrota y gana su rival; desde ahí no se le empareja. Si quedan jugadores impares, la librería da un bye cada ronda (al azar entre quienes tienen menos victorias y no han descansado). Nunca ocupa plaza en el cuadro: si está entre los clasificados, entra el siguiente. Sus partidas jugadas siguen contando. Se puede aplicar en cualquier momento con `apply-overrides`.
    - Mayúsculas/minúsculas y espacios no importan. `reason` es opcional. Cada entrada se aplica una vez.
 3. *Actions → Advance tournament → Run workflow → **`apply-overrides`***: aplica las entradas **sin pasar de ronda** y la web se actualiza. Las entradas que no coinciden con nada quedan sin aplicar y el log lo avisa.
 4. **Lunes, antes de las 9:00**: **`next-round`** cierra la ronda y empareja la siguiente. Si quedan partidas sin jugar, añade sus overrides (`winner`/`loser` o `double_forfeit`) y usa **`force-next-round`**. Si aún falta alguna, el run falla con la lista y **no cambia nada**.
@@ -117,5 +119,4 @@ La página **Estadísticas** se actualiza con cada partida que resuelve el bot: 
 
 ## 8. Lo que aún no hace
 
-- **Bajas durante el torneo**: no hay un botón «abandonar». Si alguien se va a mitad, sus rivales ganan por walkover cada ronda; si se clasificara al cuadro habría que darle walkover al rival.
 - Recordatorios a los jugadores, plazos impuestos por la web, ni cambio de usuario de chess.com a mitad de torneo.

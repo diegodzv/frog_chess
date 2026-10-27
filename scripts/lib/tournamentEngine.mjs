@@ -243,6 +243,57 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
   tournament.getPlayer(match.player2.id).updateMatch(match.id, lost);
 }
 
+/**
+ * A player leaves the tournament. Any match of theirs still unresolved counts as a loss (the opponent wins it
+ * as a walkover, also in the bracket); afterwards the library stops pairing them (`removePlayer`), so an odd
+ * number of players left means a bye every swiss round, which the library gives as usual (worst record without
+ * a previous bye). Their past results stay. `meta.dropped` records the round, for the standings.
+ */
+export function dropPlayer(tournament, id, { meta } = {}) {
+  const player = tournament.getPlayer(id);
+  if (player.getMeta().dropped) throw new Error(`${player.getName()} ya se había retirado.`);
+  const round = tournament.getRoundNumber();
+  if (!player.isActive() && tournament.getStatus() !== 'stage-one') {
+    throw new Error(`${player.getName()} ya está fuera del torneo (eliminado o no clasificado).`);
+  }
+  for (const match of tournament.getActiveMatches()) {
+    if (match.bye || (match.player1.id !== id && match.player2.id !== id)) continue;
+    const outcome = match.player1.id === id ? 'player2_win' : 'player1_win';
+    applyResult(tournament, match.id, outcome, { meta: { source: 'override', outcome, forfeit: 'drop', ...meta } });
+  }
+  if (tournament.getPlayer(id).isActive()) tournament.removePlayer(id);
+  player.set({ meta: { ...player.getMeta(), dropped: { round } } });
+}
+
+/**
+ * The library cuts the top `advance.value` places of the standings, dropped players included, so a dropped
+ * player would take a bracket place and leave it one short. Widen the cut just enough to take `cutoff` active
+ * players (as in Play! Pokémon: whoever drops never makes the top cut), then restore it.
+ */
+function nextRoundSkippingDropped(tournament) {
+  const { advance } = tournament.getStageTwo();
+  if (tournament.getRoundNumber() !== getLastSwissRound(tournament) || advance.method !== 'rank') {
+    tournament.nextRound();
+    return;
+  }
+  let places = 0;
+  let active = 0;
+  for (const s of tournament.getStandings()) {
+    if (active === advance.value) break;
+    places++;
+    if (s.player.isActive()) active++;
+  }
+  if (active < advance.value) {
+    throw new Error(`Solo quedan ${active} jugadores en el torneo: no se puede formar un cuadro de ${advance.value}.`);
+  }
+  tournament.set({ stageTwo: { advance: { ...advance, value: places } } });
+  try {
+    tournament.nextRound();
+  } finally {
+    tournament.set({ stageTwo: { advance } });
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Advancing
 // ---------------------------------------------------------------------------
@@ -256,7 +307,7 @@ export function advanceRound(tournament) {
   if (tournament.getStatus() !== 'stage-one') {
     throw new Error('advanceRound solo aplica a la fase suiza; en eliminatorias los cruces avanzan al registrar resultados.');
   }
-  tournament.nextRound();
+  nextRoundSkippingDropped(tournament);
 }
 
 /** Marks the tournament as finished (the library never does it by itself). */

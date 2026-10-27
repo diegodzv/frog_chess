@@ -114,10 +114,16 @@ function buildStandings({ tournament, engine, seeds, now }) {
   const outcomes = finalRound ? bracketOutcomes(engine, finalRound, lastSwiss) : new Map();
   const bracketStarted = engine.getStatus() !== 'stage-one';
 
+  // Who is (or provisionally would be) in the bracket: a dropped player never takes a place.
+  const inBracket = new Set(
+    engine.getMatches().filter((m) => m.round > lastSwiss).flatMap((m) => [m.player1.id, m.player2.id]).filter(Boolean)
+  );
+  let placesTaken = 0;
   const rows = getSwissStandings(engine).map((s, i) => {
     const id = s.player.getId();
     const r = records.get(id) ?? { win: 0, loss: 0, gameWin: 0, gameLoss: 0, gameDraw: 0, byes: 0 };
-    const qualified = cutoff != null && i < cutoff;
+    const dropped = Boolean(s.player.getMeta().dropped);
+    const qualified = bracketStarted ? inBracket.has(id) : cutoff != null && !dropped && placesTaken++ < cutoff;
     return {
       rank: i + 1,
       playerId: id,
@@ -131,8 +137,13 @@ function buildStandings({ tournament, engine, seeds, now }) {
       resistance: round4(s.tiebreaks.oppMatchWinPct),
       opponentsResistance: round4(s.tiebreaks.oppOppMatchWinPct),
       qualified,
+      dropped,
       // Once the bracket exists: how far they got. Before that, `qualified` is only provisional.
-      outcome: bracketStarted ? (outcomes.get(id) ?? (qualified ? 'En juego' : 'Eliminado en fase suiza')) : null
+      outcome: dropped
+        ? 'Retirado'
+        : bracketStarted
+          ? (outcomes.get(id) ?? (qualified ? 'En juego' : 'Eliminado en fase suiza'))
+          : null
     };
   });
 
@@ -159,7 +170,9 @@ function buildFinalStandings(engine, seeds, outcomes, phase) {
       record: { win: r.win, loss: r.loss },
       resistance: round4(s.tiebreaks.oppMatchWinPct),
       opponentsResistance: round4(s.tiebreaks.oppOppMatchWinPct),
-      outcome: outcomes.get(id) ?? (s.player.isActive() ? 'En juego' : 'Eliminado en fase suiza')
+      outcome: s.player.getMeta().dropped
+        ? 'Retirado'
+        : (outcomes.get(id) ?? (s.player.isActive() ? 'En juego' : 'Eliminado en fase suiza'))
     };
   });
   return { provisional: phase !== 'complete', rows };

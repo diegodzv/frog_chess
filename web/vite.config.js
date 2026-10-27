@@ -10,13 +10,16 @@ export default defineConfig({
   // Relative base so the build works from any GitHub Pages subpath
   // (https://<user>.github.io/<repo>/) without hardcoding the repo name.
   base: './',
+  // The rules page imports ../NORMAS.md (repo root).
+  server: { fs: { allow: ['..'] } },
   build: {
     rollupOptions: {
       input: {
         standings: resolve(dirname, 'index.html'),
         round: resolve(dirname, 'round.html'),
         bracket: resolve(dirname, 'bracket.html'),
-        stats: resolve(dirname, 'stats.html')
+        stats: resolve(dirname, 'stats.html'),
+        normas: resolve(dirname, 'normas.html')
       }
     }
   }

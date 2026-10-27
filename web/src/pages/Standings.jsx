@@ -82,6 +82,7 @@ export function Standings() {
   const rows = standings?.rows ?? [];
   const provisional = standings?.phase === 'stage-one';
   const started = rows.length > 0;
+  const lastQualifiedRank = Math.max(0, ...rows.filter((r) => r.qualified).map((r) => r.rank));
 
   return (
     <div className="page wide">
@@ -130,7 +131,7 @@ export function Standings() {
                 {rows.map((row) => (
                   <tr
                     key={row.playerId}
-                    className={`${row.qualified ? 'qualified' : ''} ${row.rank === standings.cutoff ? 'cutoff-line' : ''}`}
+                    className={`${row.qualified ? 'qualified' : ''} ${row.rank === lastQualifiedRank ? 'cutoff-line' : ''}`}
                   >
                     <td className="num">{row.rank}</td>
                     <td>

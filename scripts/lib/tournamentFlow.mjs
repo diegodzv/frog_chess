@@ -22,7 +22,8 @@ import {
   finishTournament,
   getFinalRound,
   getRoundInfo,
-  getSeries
+  getSeries,
+  dropPlayer
 } from './tournamentEngine.mjs';
 
 function roundEntry(engine, number, now) {
@@ -106,6 +107,9 @@ function resolveOverride(ov, unresolved, engine) {
 }
 
 /**
+ * `{ "drop": "username" }` withdraws a player (see dropPlayer): their pending matches are lost, they are not
+ * paired again and never take a bracket place.
+ *
  * Applies the organizer's not-yet-applied overrides.json entries to the unresolved matches of the current
  * round, without advancing anything. Entries that match nothing pending (typo in a username or id, already
  * resolved, other round...) are left untouched, still `applied: false`, and reported in `skipped`.
@@ -119,6 +123,19 @@ export function applyPendingOverrides({ engine, tournament, overrides }) {
 
   for (const ov of next.overrides) {
     if (ov.applied) continue;
+    if (ov.drop) {
+      const player = engine.getPlayers().find((p) => usernameOf(engine, p.getId()) === lower(ov.drop));
+      if (!player) continue;
+      try {
+        dropPlayer(engine, player.getId(), { meta: ov.reason ? { reason: ov.reason } : {} });
+      } catch (err) {
+        throw new Error(`Retirada de ${ov.drop}: ${err.message}`);
+      }
+      ov.applied = true;
+      applied++;
+      unresolved = getUnresolvedMatches(engine, tournament.currentRound);
+      continue;
+    }
     const found = resolveOverride(ov, unresolved, engine);
     if (!found) continue;
 

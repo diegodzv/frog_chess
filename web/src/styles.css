@@ -628,3 +628,30 @@ table a:hover {
   float: right;
   font-variant-numeric: tabular-nums;
 }
+
+/* ---- Rules (rendered NORMAS.md) ---- */
+.prose {
+  line-height: 1.6;
+  max-width: 75ch;
+}
+
+.prose h1 {
+  margin-bottom: 1rem;
+}
+
+.prose h2 {
+  margin-top: 2rem;
+}
+
+.prose table {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.prose li {
+  margin: 0.25rem 0;
+}
+
+.prose a {
+  color: var(--accent);
+}
