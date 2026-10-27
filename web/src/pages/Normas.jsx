@@ -7,7 +7,7 @@ const html = marked.parse(rules);
 
 export function Normas() {
   return (
-    <div className="page">
+    <div className="page wide">
       <Nav current="normas" />
       <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
     </div>

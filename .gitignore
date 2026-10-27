@@ -10,3 +10,4 @@ prompt.txt
 # Microsoft Forms exports (they contain e-mails)
 *.csv
 *.xlsx
+CLAUDE.md
