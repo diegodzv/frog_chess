@@ -1,0 +1,15 @@
+{
+  "name": "Frog Chess",
+  "timeClass": "rapid",
+  "timeControl": "420+5",
+  "rules": "chess",
+  "requireRated": false,
+  "playerCap": { "min": 8, "max": 200 },
+  "swissRounds": 6,
+  "playoffCutoff": { "method": "rank", "value": "auto" },
+  "series": { "swiss": 1, "elimination": 3, "semifinal": 3, "final": 3 },
+  "tiebreaks": ["opponent match win percentage", "opponent opponent match win percentage"],
+  "phase": "registration",
+  "currentRound": 0,
+  "rounds": []
+}

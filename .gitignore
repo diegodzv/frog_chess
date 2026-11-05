@@ -1,0 +1,13 @@
+node_modules/
+dist/
+web/public/data/
+*.log
+.DS_Store
+.env
+sim/
+prompt.txt
+
+# Microsoft Forms exports (they contain e-mails)
+*.csv
+*.xlsx
+CLAUDE.md
