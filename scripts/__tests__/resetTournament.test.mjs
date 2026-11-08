@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { cpSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,15 +10,28 @@ import { saveEngineTournament } from '../lib/tournamentEngine.mjs';
 import { generateRoster, makeRng } from '../lib/simulation.mjs';
 
 const script = fileURLToPath(new URL('../dev/reset-tournament.mjs', import.meta.url));
-const seedData = fileURLToPath(new URL('../../data', import.meta.url));
+
+// Its own tournament in registration (never the repo's data/, which changes once the real tournament starts).
+const baseConfig = {
+  name: 'Reset Cup',
+  timeClass: 'rapid',
+  timeControl: '420+5',
+  rules: 'chess',
+  requireRated: false,
+  playerCap: { min: 8, max: 200 },
+  swissRounds: 'auto',
+  playoffCutoff: { method: 'rank', value: 'auto' },
+  series: { swiss: 1, elimination: 3, semifinal: 3, final: 3 },
+  phase: 'registration',
+  currentRound: 0,
+  rounds: []
+};
 
 function startedDataDir({ cutoff = 'auto' } = {}) {
   const dir = mkdtempSync(path.join(tmpdir(), 'frog-reset-'));
-  cpSync(seedData, dir, { recursive: true });
+  mkdirSync(path.join(dir, 'public'));
   const { players } = generateRoster(12, makeRng(3));
-  const config = JSON.parse(readFileSync(path.join(dir, 'tournament.json'), 'utf8'));
-  config.swissRounds = 'auto';
-  config.playoffCutoff = { method: 'rank', value: cutoff };
+  const config = { ...baseConfig, playoffCutoff: { method: 'rank', value: cutoff } };
   const { engine, tournament } = startTournament({ tournament: config, roster: { players } });
   const write = (f, v) => writeFileSync(path.join(dir, f), typeof v === 'string' ? v : JSON.stringify(v, null, 2));
   write('players.json', { players });

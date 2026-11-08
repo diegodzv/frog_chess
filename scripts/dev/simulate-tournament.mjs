@@ -31,6 +31,13 @@ const snapshotSize = Number(args.snapshots ?? 40);
 const outRoot = path.resolve(args.out ?? path.join(REPO_ROOT, 'sim'));
 
 const config = JSON.parse(await readFile(path.join(REPO_ROOT, 'data', 'tournament.json'), 'utf8'));
+// Once the real tournament has started, tournament.json holds the format resolved for its roster; simulate
+// with what was configured (e.g. "auto"), as reset-tournament does.
+if (config.configured) {
+  Object.assign(config, config.configured);
+  delete config.configured;
+  delete config.playerCount;
+}
 if (args['swiss-rounds']) config.swissRounds = Number(args['swiss-rounds']);
 if (args.cutoff) config.playoffCutoff = { method: 'rank', value: Number(args.cutoff) };
 config.phase = 'registration';
