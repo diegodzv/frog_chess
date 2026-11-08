@@ -108,7 +108,8 @@ export function createEngineTournament(config, players) {
   const tournament = manager.createTournament(config.name, buildSettings(config, format, series), config.name);
   for (const player of active) {
     const created = tournament.createPlayer(player.name, player.id);
-    created.meta = { ...created.meta, chesscomUsername: player.chesscomUsername };
+    // chesscomPending: the username is not confirmed yet (shown nowhere, never synced) until it is corrected.
+    created.meta = { ...created.meta, chesscomUsername: player.chesscomUsername, chesscomPending: player.chesscomVerified === false };
   }
   return tournament;
 }

@@ -201,3 +201,20 @@ test('manual results (coin toss after a draw, no-show) never count for the stats
   assert.deepEqual(stats.fastestByMoves, []);
   assert.deepEqual(stats.mostCheckmates, []);
 });
+
+test('before any game: standings alphabetical, everybody first, nobody in the playoff zone; unconfirmed usernames hidden', async () => {
+  const { startTournament } = await import('../lib/tournamentFlow.mjs');
+  const roster = {
+    players: ['Zoe', 'Ana', 'Marta', 'Bea'].map((name, i) => ({ id: `p${i}`, name, chesscomUsername: `u${i}`, status: 'active' }))
+  };
+  roster.players[1].chesscomVerified = false;
+  const started = startTournament({ tournament: { ...config, playerCap: { min: 2, max: 64 } }, roster, now: NOW, allowUnverified: true });
+  const files = derivePublicData({ tournament: started.tournament, roster, engineState: JSON.parse(saveEngineTournament(started.engine)), now: NOW });
+  const { rows } = files['standings.json'];
+  assert.deepEqual(rows.map((r) => r.name), ['Ana', 'Bea', 'Marta', 'Zoe']);
+  assert.ok(rows.every((r) => r.rank === 1 && !r.qualified));
+  assert.equal(rows.find((r) => r.name === 'Ana').chesscomUsername, null);
+  assert.equal(files['players.json'].players.find((p) => p.name === 'Ana').chesscomUsername, null);
+  const pairing = files['rounds.json'].rounds[0].pairings.find((p) => [p.player1.name, p.player2.name].includes('Ana'));
+  assert.equal([pairing.player1, pairing.player2].find((p) => p.name === 'Ana').chesscomUsername, null);
+});

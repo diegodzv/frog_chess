@@ -45,7 +45,7 @@ function describeMatch(match, engine) {
  * With `levels` ({ playerId: 1-4 }, from the registration form), round 1 pairs players of similar level
  * (lib/levelPairing.mjs) instead of the library's random draw.
  */
-export function startTournament({ tournament, roster, now = new Date().toISOString(), levels = null, rng = Math.random }) {
+export function startTournament({ tournament, roster, now = new Date().toISOString(), levels = null, rng = Math.random, allowUnverified = false }) {
   if (tournament.phase !== 'registration') {
     throw new Error(`No se puede iniciar: fase actual es "${tournament.phase}", no "registration".`);
   }
@@ -55,7 +55,7 @@ export function startTournament({ tournament, roster, now = new Date().toISOStri
   }
   // Imported offline (the office firewall blocks chess.com): the check-players action has to confirm them first.
   const unverified = active.filter((p) => p.chesscomVerified === false);
-  if (unverified.length > 0) {
+  if (unverified.length > 0 && !allowUnverified) {
     throw new Error(
       `Hay ${unverified.length} usuario(s) de chess.com sin comprobar (${unverified.map((p) => p.chesscomUsername).join(', ')}). Ejecuta la acción check-players antes de iniciar.`
     );

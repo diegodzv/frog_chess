@@ -72,6 +72,8 @@ async function start() {
     levels: await readLevels(roster),
     // --seed=<n>: reproducible round-1 draw (same roster + levels + seed = same pairings, e.g. a preview).
     rng: getFlag('seed') ? makeRng(Number(getFlag('seed'))) : undefined,
+    // --allow-unverified: start even if some usernames are unconfirmed (hidden on the site, not synced until fixed).
+    allowUnverified: process.argv.includes('--allow-unverified'),
     // --start-at=<ISO date>: when round 1 opens (games before it don't count). Default: now.
     now: getFlag('start-at') ? new Date(getFlag('start-at')).toISOString() : undefined
   });

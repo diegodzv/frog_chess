@@ -24,10 +24,13 @@ const round4 = (x) => Math.round((x ?? 0) * 10000) / 10000;
 const isResolved = (m) =>
   !m.active && [m.player1, m.player2].some((p) => p.win + p.loss + p.draw > 0);
 
+/** chess.com username to show, or null while it is unconfirmed (it could be someone else's account). */
+const publicUsername = (player) => (player.getMeta().chesscomPending ? null : (player.getMeta().chesscomUsername ?? null));
+
 function playerRef(engine, id, seeds) {
   if (!id) return null;
   const p = engine.getPlayer(id);
-  return { id, name: p.getName(), chesscomUsername: p.getMeta().chesscomUsername ?? null, seed: seeds.get(id) ?? null };
+  return { id, name: p.getName(), chesscomUsername: publicUsername(p), seed: seeds.get(id) ?? null };
 }
 
 /** Series score of a pairing, from the point of view of its player1. */
@@ -128,7 +131,7 @@ function buildStandings({ tournament, engine, seeds, now }) {
       rank: i + 1,
       playerId: id,
       name: s.player.getName(),
-      chesscomUsername: s.player.getMeta().chesscomUsername ?? null,
+      chesscomUsername: publicUsername(s.player),
       points: s.matchPoints,
       record: { win: r.win, loss: r.loss },
       games: { win: r.gameWin, loss: r.gameLoss, draw: r.gameDraw },
@@ -147,6 +150,13 @@ function buildStandings({ tournament, engine, seeds, now }) {
     };
   });
 
+  // Before any game is played everybody is level: alphabetical, all first, nobody "in the playoff zone" yet.
+  const anyPlayed = engine.getMatches().some((m) => m.round <= lastSwiss && !m.bye && isResolved(m));
+  if (!anyPlayed) {
+    rows.sort((x, y) => x.name.localeCompare(y.name, 'es'));
+    for (const row of rows) Object.assign(row, { rank: 1, qualified: false });
+  }
+
   return { ...emptyResult, rows, final: bracketStarted ? buildFinalStandings(engine, seeds, outcomes, tournament.phase) : null };
 }
 
@@ -164,7 +174,7 @@ function buildFinalStandings(engine, seeds, outcomes, phase) {
       rank: i + 1,
       playerId: id,
       name: s.player.getName(),
-      chesscomUsername: s.player.getMeta().chesscomUsername ?? null,
+      chesscomUsername: publicUsername(s.player),
       seed: seeds.get(id) ?? null,
       points: s.matchPoints,
       record: { win: r.win, loss: r.loss },
@@ -262,7 +272,7 @@ function buildPlayers(roster, now) {
     players: roster.players.map((p) => ({
       id: p.id,
       name: p.name,
-      chesscomUsername: p.chesscomUsername,
+      chesscomUsername: p.chesscomVerified === false ? null : p.chesscomUsername,
       status: p.status
     }))
   };

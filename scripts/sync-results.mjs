@@ -53,6 +53,8 @@ async function main() {
     const usernameA = byId.get(match.player1.id)?.meta?.chesscomUsername;
     const usernameB = byId.get(match.player2.id)?.meta?.chesscomUsername;
     if (!usernameA || !usernameB) continue;
+    // An unconfirmed username could be someone else's account: never read results for it.
+    if (byId.get(match.player1.id)?.meta?.chesscomPending || byId.get(match.player2.id)?.meta?.chesscomPending) continue;
 
     const result = await findSeriesForPairing({
       usernameA,
