@@ -244,6 +244,40 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
 }
 
 /**
+ * Replaces the library's pairings of a round that has not been played yet (used for round 1, which the
+ * library draws at random, to pair by level instead). `pairs` are [idA, idB]; `bye` is the id of the player
+ * resting, if the number of players is odd. Both the matches and the players' match records are rewritten,
+ * since the library avoids rematches by reading the latter.
+ */
+export function setRoundPairings(tournament, round, { pairs, bye = null }) {
+  const matches = tournament.getMatches().filter((m) => m.round === round);
+  const games = matches.filter((m) => !m.bye);
+  const byes = matches.filter((m) => m.bye);
+  if (games.some((m) => !m.active)) throw new Error(`La ronda ${round} ya tiene resultados: no se puede reemparejar.`);
+  if (games.length !== pairs.length || byes.length !== (bye ? 1 : 0)) {
+    throw new Error(`La ronda ${round} tiene ${games.length} partidas y ${byes.length} bye(s); se recibieron ${pairs.length} y ${bye ? 1 : 0}.`);
+  }
+  const ids = [...pairs.flat(), ...(bye ? [bye] : [])];
+  const roundPlayers = matches.flatMap((m) => [m.player1.id, m.player2.id]).filter(Boolean);
+  if (new Set(ids).size !== ids.length || ids.length !== roundPlayers.length || ids.some((id) => !roundPlayers.includes(id))) {
+    throw new Error('Los emparejamientos deben incluir una sola vez a cada jugador de la ronda.');
+  }
+
+  for (const m of matches) for (const id of [m.player1.id, m.player2.id].filter(Boolean)) tournament.getPlayer(id).removeMatch(m.id);
+  games.forEach((match, i) => {
+    const [a, b] = pairs[i];
+    match.set({ player1: { id: a }, player2: { id: b } });
+    tournament.getPlayer(a).addMatch({ id: match.id, opponent: b });
+    tournament.getPlayer(b).addMatch({ id: match.id, opponent: a });
+  });
+  if (bye) {
+    const match = byes[0];
+    match.set({ player1: { id: bye } });
+    tournament.getPlayer(bye).addMatch({ id: match.id, opponent: null, bye: true, win: match.player1.win });
+  }
+}
+
+/**
  * A player leaves the tournament. Any match of theirs still unresolved counts as a loss (the opponent wins it
  * as a walkover, also in the bracket); afterwards the library stops pairing them (`removePlayer`), so an odd
  * number of players left means a bye every swiss round, which the library gives as usual (worst record without

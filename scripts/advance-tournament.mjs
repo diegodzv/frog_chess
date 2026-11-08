@@ -7,13 +7,40 @@ import { loadEngineTournament, saveEngineTournament } from './lib/tournamentEngi
 import { startTournament, advance, applyPendingOverrides } from './lib/tournamentFlow.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
+import { readFile } from 'node:fs/promises';
 import { verifyRoster } from './lib/roster.mjs';
+import { levelFromAnswer } from './lib/levelPairing.mjs';
 import { getPlayerProfile } from './lib/chesscomClient.mjs';
 import { buildPublicData } from './build-public-data.mjs';
 
+function getFlag(name) {
+  const flag = process.argv.find((a) => a.startsWith(`--${name}=`));
+  return flag ? flag.slice(name.length + 3) : null;
+}
+
 function getAction() {
-  const flag = process.argv.find((a) => a.startsWith('--action='));
-  return flag ? flag.split('=')[1] : process.env.ACTION;
+  return getFlag('action') ?? process.env.ACTION;
+}
+
+/**
+ * --levels=<file.json>: { "chesscomUsername": 1-4 | "form answer" } -> { playerId: level }. Kept outside the
+ * repo (self-reported levels are not published); only used to pair round 1 by level.
+ */
+async function readLevels(roster) {
+  const file = getFlag('levels');
+  if (!file) return null;
+  const byUser = JSON.parse(await readFile(file, 'utf8'));
+  const levels = {};
+  for (const [username, value] of Object.entries(byUser)) {
+    const player = roster.players.find((p) => p.status === 'active' && p.chesscomUsername.toLowerCase() === username.toLowerCase());
+    const level = typeof value === 'number' ? value : levelFromAnswer(value);
+    if (!player) throw new Error(`--levels: "${username}" no es ningún jugador inscrito.`);
+    if (level == null) throw new Error(`--levels: nivel no reconocido para ${username}: "${value}".`);
+    levels[player.id] = level;
+  }
+  const missing = roster.players.filter((p) => p.status === 'active' && levels[p.id] == null);
+  if (missing.length) console.warn(`Sin nivel (se emparejan como el nivel más bajo): ${missing.map((p) => p.chesscomUsername).join(', ')}`);
+  return levels;
 }
 
 /**
@@ -29,8 +56,7 @@ async function checkPlayers() {
   }
   console.log(`Comprobados: ${verified.length}${verified.length ? ` (${verified.map((p) => p.chesscomUsername).join(', ')})` : ''}.`);
   if (invalid.length > 0) {
-    const list = invalid.map((p) => `${p.name} (${p.chesscomUsername}): ${p.reason}`).join('
-  - ');
+    const list = invalid.map((p) => `${p.name} (${p.chesscomUsername}): ${p.reason}`).join('\n  - ');
     throw new Error(`${invalid.length} usuario(s) sin validar:
   - ${list}
 Corrige su usuario en data/players.json (o pon "status": "withdrawn") y repite check-players.`);
@@ -38,9 +64,13 @@ Corrige su usuario en data/players.json (o pon "status": "withdrawn") y repite c
 }
 
 async function start() {
+  const roster = await readJson('players.json');
   const { engine, tournament } = startTournament({
     tournament: await readJson('tournament.json'),
-    roster: await readJson('players.json')
+    roster,
+    levels: await readLevels(roster),
+    // --start-at=<ISO date>: when round 1 opens (games before it don't count). Default: now.
+    now: getFlag('start-at') ? new Date(getFlag('start-at')).toISOString() : undefined
   });
 
   await writeJson('engine-state.json', saveEngineTournament(engine));

@@ -23,8 +23,10 @@ import {
   getFinalRound,
   getRoundInfo,
   getSeries,
-  dropPlayer
+  dropPlayer,
+  setRoundPairings
 } from './tournamentEngine.mjs';
+import { pairByLevel } from './levelPairing.mjs';
 
 function roundEntry(engine, number, now) {
   const { phase, label, bestOf } = getRoundInfo(engine, number);
@@ -40,8 +42,10 @@ function describeMatch(match, engine) {
  * Creates the engine tournament from the roster and opens round 1.
  * Also resolves the "auto" swiss rounds / playoff cutoff into concrete numbers
  * for the registered player count, and records them in tournament.json.
+ * With `levels` ({ playerId: 1-4 }, from the registration form), round 1 pairs players of similar level
+ * (lib/levelPairing.mjs) instead of the library's random draw.
  */
-export function startTournament({ tournament, roster, now = new Date().toISOString() }) {
+export function startTournament({ tournament, roster, now = new Date().toISOString(), levels = null, rng = Math.random }) {
   if (tournament.phase !== 'registration') {
     throw new Error(`No se puede iniciar: fase actual es "${tournament.phase}", no "registration".`);
   }
@@ -59,6 +63,10 @@ export function startTournament({ tournament, roster, now = new Date().toISOStri
 
   const engine = createEngineTournament(tournament, roster.players);
   engine.startTournament();
+  if (levels) {
+    const players = engine.getPlayers().map((p) => ({ id: p.getId(), level: levels[p.getId()] ?? null }));
+    setRoundPairings(engine, engine.getRoundNumber(), pairByLevel(players, rng));
+  }
 
   const next = structuredClone(tournament);
   // Keep what was configured (possibly "auto") so a reset can restore it; swissRounds/playoffCutoff become concrete numbers.
