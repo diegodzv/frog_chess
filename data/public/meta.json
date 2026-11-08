@@ -1,22 +1,22 @@
 {
   "name": "Frog Chess",
-  "phase": "registration",
-  "currentRound": 0,
-  "currentRoundLabel": null,
+  "phase": "stage-one",
+  "currentRound": 1,
+  "currentRoundLabel": "Ronda 1",
   "swissRounds": 6,
-  "playoffCutoff": null,
+  "playoffCutoff": 8,
   "series": {
     "swiss": 1,
     "elimination": 3,
     "semifinal": 3,
     "final": 3
   },
-  "playerCount": 0,
+  "playerCount": 30,
   "expectedFormat": null,
   "playerCap": {
     "min": 8,
     "max": 200
   },
   "champion": null,
-  "updatedAt": "2026-10-27T12:14:36.367Z"
+  "updatedAt": "2026-11-08T09:49:49.174Z"
 }

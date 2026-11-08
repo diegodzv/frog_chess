@@ -1,1 +1,1081 @@
-null
+{
+  "id": "Frog Chess",
+  "matches": [
+    {
+      "active": true,
+      "bye": false,
+      "id": "7c61dccd-9c7b-458a-ad38-147c8005bb79",
+      "loss": false,
+      "match": 1,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_diego-morante-parra-32c467",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "0e5c78fa-2e7b-4ad2-b73c-6771a9e156ba",
+      "loss": false,
+      "match": 2,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_alejandro-garcia-castillo-58ed7d",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_tania-duran-vicente-cc6c24",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "20d2ff52-26c8-4b87-b5c1-08b7c1550f51",
+      "loss": false,
+      "match": 3,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_victor-manuel-espada-rodriguez-dc0280",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_andres-chica-linares-885e0c",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
+      "loss": false,
+      "match": 4,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_david-del-blanco-taranilla-dc5ea2",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_miguel-aragon-lazcano-29de38",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "05544c00-398f-4b72-b614-213f5ed9644d",
+      "loss": false,
+      "match": 5,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_lucas-llobet-cusi-354632",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_alvaro-castro-sampedro-2685b6",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "c9d9039d-e22e-45e9-9b9e-bfb37c1268ce",
+      "loss": false,
+      "match": 6,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_pedro-atares-rodriguez-44b837",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_luis-gontan-moreno-651b3b",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "e995829b-f749-4305-a6ba-76a6a1a16460",
+      "loss": false,
+      "match": 7,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_alberto-ruiz-rancano-41fb08",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_albert-sanchez-fernandez-47fe38",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "08920baf-34d5-4a5d-a874-8feb0ccaffd8",
+      "loss": false,
+      "match": 8,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_erik-nogues-lavin-8b1828",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "c3db9446-821b-4169-bde0-210f6d6a79a3",
+      "loss": false,
+      "match": 9,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_antonio-manuel-martin-garcia-c24f9d",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_adrian-alamo-castro-b9b27d",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "b0b99d4b-189a-49b1-96c5-e0b7906391ec",
+      "loss": false,
+      "match": 10,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_diego-diaz-vidal-4f1507",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_david-prats-vargas-ee9dca",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "b8919838-4587-40bd-92cd-2ba05483c8fc",
+      "loss": false,
+      "match": 11,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_emilio-garcia-quintana-935a82",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "da2d0204-e078-4971-bdae-54fe4cc8e0af",
+      "loss": false,
+      "match": 12,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_jose-luis-gomez-anton-3f5575",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_daniel-alocen-pinillos-a8390a",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "c1d14d8d-f575-487f-9e2a-0e6d912ae29c",
+      "loss": false,
+      "match": 13,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_johan-stevens-bautista-parra-cd3247",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_lucia-valles-escudero-f202a0",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "68ba3d54-f77a-4165-aa41-eccb2be30994",
+      "loss": false,
+      "match": 14,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_angel-tena-jimenez-b2ec4e",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_isabel-garcia-bergers-d56cf3",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
+      "loss": false,
+      "match": 15,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_oscar-marin-flores-a2cc66",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_raul-morchon-fuentes-3193bc",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    }
+  ],
+  "meta": {
+    "series": {
+      "elimination": 3,
+      "final": 3,
+      "semifinal": 3,
+      "swiss": 1
+    }
+  },
+  "name": "Frog Chess",
+  "players": [
+    {
+      "active": true,
+      "id": "p_alberto-ruiz-rancano-41fb08",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e995829b-f749-4305-a6ba-76a6a1a16460",
+          "loss": 0,
+          "opponent": "p_albert-sanchez-fernandez-47fe38",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "TheGambel99"
+      },
+      "name": "Alberto Ruiz Rancaño",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_diego-diaz-vidal-4f1507",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "b0b99d4b-189a-49b1-96c5-e0b7906391ec",
+          "loss": 0,
+          "opponent": "p_david-prats-vargas-ee9dca",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "diegodzv"
+      },
+      "name": "Diego Díaz Vidal",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_raul-morchon-fuentes-3193bc",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
+          "loss": 0,
+          "opponent": "p_oscar-marin-flores-a2cc66",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "ichraxx"
+      },
+      "name": "Raúl Morchón Fuentes",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_lucas-llobet-cusi-354632",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "05544c00-398f-4b72-b614-213f5ed9644d",
+          "loss": 0,
+          "opponent": "p_alvaro-castro-sampedro-2685b6",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "Lucasllobet"
+      },
+      "name": "Lucas Llobet Cusi",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_victor-manuel-espada-rodriguez-dc0280",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "20d2ff52-26c8-4b87-b5c1-08b7c1550f51",
+          "loss": 0,
+          "opponent": "p_andres-chica-linares-885e0c",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "vittichenko"
+      },
+      "name": "Víctor Manuel Espada Rodríguez",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_daniel-alocen-pinillos-a8390a",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "da2d0204-e078-4971-bdae-54fe4cc8e0af",
+          "loss": 0,
+          "opponent": "p_jose-luis-gomez-anton-3f5575",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "PerfectRiver"
+      },
+      "name": "Daniel Alocen Pinillos",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_miguel-aragon-lazcano-29de38",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
+          "loss": 0,
+          "opponent": "p_david-del-blanco-taranilla-dc5ea2",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "M_l_K_l"
+      },
+      "name": "Miguel Aragón Lazcano",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_alejandro-garcia-castillo-58ed7d",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "0e5c78fa-2e7b-4ad2-b73c-6771a9e156ba",
+          "loss": 0,
+          "opponent": "p_tania-duran-vicente-cc6c24",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "AGarcia98"
+      },
+      "name": "Alejandro García Castillo",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_diego-morante-parra-32c467",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "7c61dccd-9c7b-458a-ad38-147c8005bb79",
+          "loss": 0,
+          "opponent": "p_sergio-bernardez-molina-7de06b",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "diegommmmmmm"
+      },
+      "name": "Diego Morante Parra",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_emilio-garcia-quintana-935a82",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "b8919838-4587-40bd-92cd-2ba05483c8fc",
+          "loss": 0,
+          "opponent": "p_josep-oriol-elias-albajes-31219d",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "emiliogq"
+      },
+      "name": "Emilio García Quintana",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_sergio-bernardez-molina-7de06b",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "7c61dccd-9c7b-458a-ad38-147c8005bb79",
+          "loss": 0,
+          "opponent": "p_diego-morante-parra-32c467",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "sergiako_98"
+      },
+      "name": "Sergio Bernardez Molina",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_luis-gontan-moreno-651b3b",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c9d9039d-e22e-45e9-9b9e-bfb37c1268ce",
+          "loss": 0,
+          "opponent": "p_pedro-atares-rodriguez-44b837",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "luisGM1985"
+      },
+      "name": "Luis Gontán Moreno",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_david-prats-vargas-ee9dca",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "b0b99d4b-189a-49b1-96c5-e0b7906391ec",
+          "loss": 0,
+          "opponent": "p_diego-diaz-vidal-4f1507",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "Devittot"
+      },
+      "name": "David Prats Vargas",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_oscar-marin-flores-a2cc66",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
+          "loss": 0,
+          "opponent": "p_raul-morchon-fuentes-3193bc",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "oscaarmfl"
+      },
+      "name": "Óscar Marín Flores",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_angel-tena-jimenez-b2ec4e",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "68ba3d54-f77a-4165-aa41-eccb2be30994",
+          "loss": 0,
+          "opponent": "p_isabel-garcia-bergers-d56cf3",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "angeltena26"
+      },
+      "name": "Ángel Tena Jiménez",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_andres-chica-linares-885e0c",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "20d2ff52-26c8-4b87-b5c1-08b7c1550f51",
+          "loss": 0,
+          "opponent": "p_victor-manuel-espada-rodriguez-dc0280",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "sensuao"
+      },
+      "name": "Andrés Chica Linares",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_jose-luis-gomez-anton-3f5575",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "da2d0204-e078-4971-bdae-54fe4cc8e0af",
+          "loss": 0,
+          "opponent": "p_daniel-alocen-pinillos-a8390a",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "ToteBoss"
+      },
+      "name": "José Luis Gómez Antón",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_johan-stevens-bautista-parra-cd3247",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c1d14d8d-f575-487f-9e2a-0e6d912ae29c",
+          "loss": 0,
+          "opponent": "p_lucia-valles-escudero-f202a0",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": true,
+        "chesscomUsername": "johan_pendiente"
+      },
+      "name": "Johan Stevens Bautista Parra",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_antonio-manuel-martin-garcia-c24f9d",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c3db9446-821b-4169-bde0-210f6d6a79a3",
+          "loss": 0,
+          "opponent": "p_adrian-alamo-castro-b9b27d",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "PangWM"
+      },
+      "name": "Antonio Manuel Martín García",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_adrian-alamo-castro-b9b27d",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c3db9446-821b-4169-bde0-210f6d6a79a3",
+          "loss": 0,
+          "opponent": "p_antonio-manuel-martin-garcia-c24f9d",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "regis_occisor"
+      },
+      "name": "Adrián Álamo Castro",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_hector-rodriguez-vegue-bd3889",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "08920baf-34d5-4a5d-a874-8feb0ccaffd8",
+          "loss": 0,
+          "opponent": "p_erik-nogues-lavin-8b1828",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "Vegue82"
+      },
+      "name": "Héctor Rodríguez Vegue",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_alvaro-castro-sampedro-2685b6",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "05544c00-398f-4b72-b614-213f5ed9644d",
+          "loss": 0,
+          "opponent": "p_lucas-llobet-cusi-354632",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "alvastro0055"
+      },
+      "name": "Álvaro Castro Sampedro",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_albert-sanchez-fernandez-47fe38",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e995829b-f749-4305-a6ba-76a6a1a16460",
+          "loss": 0,
+          "opponent": "p_alberto-ruiz-rancano-41fb08",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "murakaii"
+      },
+      "name": "Albert Sánchez Fernández",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_pedro-atares-rodriguez-44b837",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c9d9039d-e22e-45e9-9b9e-bfb37c1268ce",
+          "loss": 0,
+          "opponent": "p_luis-gontan-moreno-651b3b",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "CharlesDegoulash"
+      },
+      "name": "Pedro Atarés Rodríguez",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_josep-oriol-elias-albajes-31219d",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "b8919838-4587-40bd-92cd-2ba05483c8fc",
+          "loss": 0,
+          "opponent": "p_emilio-garcia-quintana-935a82",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "iLostTheGame420"
+      },
+      "name": "Josep Oriol Elias Albajes",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_erik-nogues-lavin-8b1828",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "08920baf-34d5-4a5d-a874-8feb0ccaffd8",
+          "loss": 0,
+          "opponent": "p_hector-rodriguez-vegue-bd3889",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": true,
+        "chesscomUsername": "erik_pendiente"
+      },
+      "name": "Erik Nogués Lavín",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_david-del-blanco-taranilla-dc5ea2",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
+          "loss": 0,
+          "opponent": "p_miguel-aragon-lazcano-29de38",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "kronista"
+      },
+      "name": "David Del Blanco Taranilla",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_isabel-garcia-bergers-d56cf3",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "68ba3d54-f77a-4165-aa41-eccb2be30994",
+          "loss": 0,
+          "opponent": "p_angel-tena-jimenez-b2ec4e",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": true,
+        "chesscomUsername": "isabel_pendiente"
+      },
+      "name": "Isabel García Bergers",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_tania-duran-vicente-cc6c24",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "0e5c78fa-2e7b-4ad2-b73c-6771a9e156ba",
+          "loss": 0,
+          "opponent": "p_alejandro-garcia-castillo-58ed7d",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "eskimogrrrl77"
+      },
+      "name": "Tania Durán Vicente",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_lucia-valles-escudero-f202a0",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c1d14d8d-f575-487f-9e2a-0e6d912ae29c",
+          "loss": 0,
+          "opponent": "p_johan-stevens-bautista-parra-cd3247",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "lvallese"
+      },
+      "name": "Lucía Valles Escudero",
+      "value": 0
+    }
+  ],
+  "round": 1,
+  "scoring": {
+    "bestOf": 1,
+    "bye": 1,
+    "draw": 0.5,
+    "loss": 0,
+    "tiebreaks": [
+      "opponent match win percentage",
+      "opponent opponent match win percentage"
+    ],
+    "win": 1
+  },
+  "seating": false,
+  "sorting": "none",
+  "stageOne": {
+    "consolation": false,
+    "format": "swiss",
+    "initialRound": 1,
+    "maxPlayers": 0,
+    "rounds": 6
+  },
+  "stageTwo": {
+    "advance": {
+      "method": "rank",
+      "value": 8
+    },
+    "consolation": false,
+    "format": "single-elimination"
+  },
+  "status": "stage-one"
+}

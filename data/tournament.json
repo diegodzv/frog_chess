@@ -4,12 +4,43 @@
   "timeControl": "420+5",
   "rules": "chess",
   "requireRated": false,
-  "playerCap": { "min": 8, "max": 200 },
+  "playerCap": {
+    "min": 8,
+    "max": 200
+  },
   "swissRounds": 6,
-  "playoffCutoff": { "method": "rank", "value": "auto" },
-  "series": { "swiss": 1, "elimination": 3, "semifinal": 3, "final": 3 },
-  "tiebreaks": ["opponent match win percentage", "opponent opponent match win percentage"],
-  "phase": "registration",
-  "currentRound": 0,
-  "rounds": []
+  "playoffCutoff": {
+    "method": "rank",
+    "value": 8
+  },
+  "series": {
+    "swiss": 1,
+    "elimination": 3,
+    "semifinal": 3,
+    "final": 3
+  },
+  "tiebreaks": [
+    "opponent match win percentage",
+    "opponent opponent match win percentage"
+  ],
+  "phase": "stage-one",
+  "currentRound": 1,
+  "rounds": [
+    {
+      "number": 1,
+      "phase": "stage-one",
+      "label": "Ronda 1",
+      "bestOf": 1,
+      "startedAt": "2026-11-09T08:00:00.000Z",
+      "endedAt": null
+    }
+  ],
+  "configured": {
+    "swissRounds": 6,
+    "playoffCutoff": {
+      "method": "rank",
+      "value": "auto"
+    }
+  },
+  "playerCount": 30
 }
