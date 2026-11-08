@@ -4,7 +4,7 @@
   "currentRound": 1,
   "currentRoundLabel": "Ronda 1",
   "swissRounds": 6,
-  "playoffCutoff": 8,
+  "playoffCutoff": 16,
   "series": {
     "swiss": 1,
     "elimination": 3,
@@ -18,5 +18,5 @@
     "max": 200
   },
   "champion": null,
-  "updatedAt": "2026-11-08T09:49:49.174Z"
+  "updatedAt": "2026-11-08T10:15:42.081Z"
 }

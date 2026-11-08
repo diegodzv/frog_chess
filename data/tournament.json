@@ -11,7 +11,7 @@
   "swissRounds": 6,
   "playoffCutoff": {
     "method": "rank",
-    "value": 8
+    "value": 16
   },
   "series": {
     "swiss": 1,
@@ -39,7 +39,7 @@
     "swissRounds": 6,
     "playoffCutoff": {
       "method": "rank",
-      "value": "auto"
+      "value": 16
     }
   },
   "playerCount": 30

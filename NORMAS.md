@@ -42,7 +42,7 @@ Cada ronda suiza dura una semana: los emparejamientos se publican el lunes a las
 El torneo tiene dos fases:
 
 1. **Rondas suizas.** Todos juegan las seis rondas, una partida por semana. En cada ronda te enfrentas a alguien con tu mismo número de victorias, o lo más parecido posible, y nunca repites rival.
-2. **Eliminatorias.** Los mejores de la clasificación suiza pasan a un cuadro de eliminación directa: quien pierde queda fuera. Cuántos pasan, y con qué criterio, está por decidir.
+2. **Eliminatorias.** Los 16 primeros de la clasificación suiza pasan a un cuadro de eliminación directa (octavos, cuartos, semifinales y final): quien pierde queda fuera.
 
 ## Rondas suizas
 
@@ -81,7 +81,7 @@ Cuando empiezan las eliminatorias se publica también una **clasificación gener
 - Empiezan en enero, el lunes 11 o el lunes 18 (por decidir).
 - El cuadro se ordena por la clasificación suiza: el 1.º juega contra el último clasificado, el 2.º contra el penúltimo, y así sucesivamente. Si los favoritos van ganando, los mejor clasificados no se cruzan hasta las últimas rondas.
 - Quien pierde un cruce queda fuera del torneo. No hay partido por el tercer puesto.
-- Las semifinales y la final son al mejor de 3: gana quien llegue antes a 2 victorias, y las tablas no cuentan. El formato de las rondas anteriores está por decidir.
+- Las semifinales y la final son al mejor de 3: gana quien llegue antes a 2 victorias, y las tablas no cuentan. El formato de octavos y cuartos de final está por decidir.
 
 ## Partidas en chess.com
 
@@ -103,4 +103,4 @@ No cuentan las partidas abandonadas, las de menos de 5 jugadas ni los resultados
 
 ## Pendiente de decidir
 
-- Eliminatorias: cuántos pasan y con qué criterio, fecha de inicio (11 o 18 de enero), cuántas partidas tienen los cruces anteriores a semifinales y cuánto tiempo hay para cada ronda.
+- Eliminatorias: fecha de inicio (11 o 18 de enero), cuántas partidas tienen los octavos y los cuartos de final y cuánto tiempo hay para cada ronda.

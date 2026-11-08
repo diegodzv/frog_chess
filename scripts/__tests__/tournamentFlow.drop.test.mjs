@@ -128,3 +128,14 @@ test('dropping twice fails; an unknown username is left unapplied', () => {
   assert.equal(result.applied, 0);
   assert.equal(result.skipped.length, 1);
 });
+
+test('setPlayoffCutoff: changeable during the swiss stage, then the bracket is built with the new size', async () => {
+  const { setPlayoffCutoff } = await import('../lib/tournamentEngine.mjs');
+  let { engine, tournament } = setup(16);
+  assert.throws(() => setPlayoffCutoff(engine, 6), /potencia de 2/);
+  assert.throws(() => setPlayoffCutoff(engine, 32), /supera/);
+  setPlayoffCutoff(engine, 8);
+  for (let round = 1; round <= getLastSwissRound(engine); round++) tournament = playRound(engine, tournament);
+  assert.equal(playersIn(engine, getLastSwissRound(engine) + 1).length, 8);
+  assert.throws(() => setPlayoffCutoff(engine, 4), /fase suiza/);
+});

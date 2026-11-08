@@ -3,7 +3,7 @@
 // organizer via workflow_dispatch. Actions: check-players | start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.
 // The tournament logic lives in lib/tournamentFlow.mjs; this script only does I/O.
 
-import { loadEngineTournament, saveEngineTournament } from './lib/tournamentEngine.mjs';
+import { loadEngineTournament, saveEngineTournament, setPlayoffCutoff } from './lib/tournamentEngine.mjs';
 import { startTournament, advance, applyPendingOverrides } from './lib/tournamentFlow.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
@@ -111,6 +111,24 @@ async function applyOverrides() {
 }
 
 /** Regenerates data/public/*.json (e.g. after editing players.json by hand) and commits it. */
+/**
+ * set-cutoff --value=<n>: how many players go through to the bracket (power of two), decided during the swiss
+ * stage. Also recorded as the configured value, so a reset keeps the organizers' decision.
+ */
+async function setCutoff() {
+  const value = Number(getFlag('value') ?? process.env.CUTOFF);
+  const engine = loadEngineTournament(await readJson('engine-state.json'));
+  setPlayoffCutoff(engine, value);
+  const tournament = await readJson('tournament.json');
+  tournament.playoffCutoff = { method: 'rank', value };
+  if (tournament.configured) tournament.configured.playoffCutoff = { method: 'rank', value };
+  await writeJson('engine-state.json', saveEngineTournament(engine));
+  await writeJson('tournament.json', tournament);
+  await buildPublicData();
+  commitAndPush(`torneo: pasan a eliminatorias los ${value} primeros`);
+  console.log(`Playoff cutoff set to ${value}.`);
+}
+
 async function rebuildPublicData() {
   await buildPublicData();
   const committed = commitAndPush('datos públicos: reconstruidos a mano');
@@ -144,9 +162,10 @@ async function main() {
   if (action === 'start-tournament') return start();
   if (action === 'apply-overrides') return applyOverrides();
   if (action === 'rebuild-public-data') return rebuildPublicData();
+  if (action === 'set-cutoff') return setCutoff();
   if (action === 'next-round') return next(false);
   if (action === 'force-next-round') return next(true);
-  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.`);
+  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | next-round | force-next-round.`);
 }
 
 await main();

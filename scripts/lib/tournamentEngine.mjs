@@ -245,6 +245,20 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
 }
 
 /**
+ * Changes how many players go through to the bracket. Only during the swiss stage (the bracket is built when
+ * the last swiss round closes); it must be a power of two and fit the players still in the tournament.
+ */
+export function setPlayoffCutoff(tournament, value) {
+  if (tournament.getStatus() !== 'stage-one') {
+    throw new Error('El corte solo se puede cambiar durante la fase suiza: el cuadro ya está hecho.');
+  }
+  const active = tournament.getPlayers().filter((p) => p.isActive()).length;
+  if (!isPowerOfTwo(value)) throw new Error(`El corte de playoffs debe ser potencia de 2 (recibido: ${value}).`);
+  if (value > active) throw new Error(`El corte (${value}) supera el número de jugadores en el torneo (${active}).`);
+  tournament.set({ stageTwo: { advance: { ...tournament.getStageTwo().advance, value } } });
+}
+
+/**
  * Replaces the library's pairings of a round that has not been played yet (used for round 1, which the
  * library draws at random, to pair by level instead). `pairs` are [idA, idB]; `bye` is the id of the player
  * resting, if the number of players is odd. Both the matches and the players' match records are rewritten,

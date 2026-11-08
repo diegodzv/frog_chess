@@ -1072,7 +1072,7 @@
   "stageTwo": {
     "advance": {
       "method": "rank",
-      "value": 8
+      "value": 16
     },
     "consolation": false,
     "format": "single-elimination"
