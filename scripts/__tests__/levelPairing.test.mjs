@@ -106,7 +106,8 @@ test('advance-tournament.mjs start-tournament --levels --start-at runs as a proc
   write('engine-state.json', 'null');
   write('overrides.json', { overrides: [] });
   const byUser = Object.fromEntries(r.players.map((p) => [p.chesscomUsername.toUpperCase(), levels[p.id]]));
-  byUser[r.players[0].chesscomUsername] = 'Juego mucho.';
+  // A form answer instead of a number, for one of the two level-4 players.
+  byUser[r.players.find((p) => levels[p.id] === 4).chesscomUsername] = 'Juego mucho.';
   write('levels.json', byUser);
 
   const script = fileURLToPath(new URL('../advance-tournament.mjs', import.meta.url));

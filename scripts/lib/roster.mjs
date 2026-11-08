@@ -166,6 +166,12 @@ function pick(reg) {
   return { line: reg.line, name: reg.name, username: reg.username };
 }
 
+/** chess.com username with its real casing (from the profile URL), falling back to the API's lowercase one. */
+export function canonicalUsername(profile) {
+  const fromUrl = /\/member\/([^/?#]+)/.exec(profile.url ?? '')?.[1];
+  return fromUrl && fromUrl.toLowerCase() === String(profile.username).toLowerCase() ? fromUrl : profile.username;
+}
+
 /**
  * Checks every active, not-yet-verified player against chess.com: fixes the username's casing to the canonical
  * one and marks it verified, or reports it as missing. `getProfile(username)` resolves to the profile or null;
@@ -185,13 +191,14 @@ export async function verifyRoster(roster, getProfile) {
       continue;
     }
     const clash = next.players.find(
-      (p) => p !== player && p.status === 'active' && p.chesscomUsername.toLowerCase() === profile.username.toLowerCase()
+      (p) => p !== player && p.status === 'active' && p.chesscomUsername.toLowerCase() === String(profile.username).toLowerCase()
     );
     if (clash) {
       invalid.push({ ...player, reason: `es la misma cuenta que ${clash.name}` });
       continue;
     }
-    player.chesscomUsername = profile.username;
+    // The API's `username` is always lowercase; the profile URL keeps the casing the player chose.
+    player.chesscomUsername = canonicalUsername(profile);
     player.chesscomPlayerId = profile.player_id;
     player.chesscomVerified = true;
     verified.push(player);

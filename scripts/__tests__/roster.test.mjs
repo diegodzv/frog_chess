@@ -166,3 +166,10 @@ test('import-players.mjs refuses once registration is closed', () => {
   assert.equal(r.status, 1);
   assert.match(r.stderr, /cerrada/);
 });
+
+test('canonicalUsername keeps the casing of the profile URL (the API username is lowercase)', async () => {
+  const { canonicalUsername } = await import('../lib/roster.mjs');
+  assert.equal(canonicalUsername({ username: 'thegambel99', url: 'https://www.chess.com/member/TheGambel99' }), 'TheGambel99');
+  assert.equal(canonicalUsername({ username: 'adalovelace' }), 'adalovelace');
+  assert.equal(canonicalUsername({ username: 'bob', url: 'https://www.chess.com/member/someoneelse' }), 'bob');
+});
