@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T09:49:48.874Z",
+  "updatedAt": "2026-11-10T09:15:06.163Z",
   "players": [
     {
       "id": "p_alberto-ruiz-rancano-41fb08",
@@ -106,7 +106,7 @@
     {
       "id": "p_johan-stevens-bautista-parra-cd3247",
       "name": "Johan Stevens Bautista Parra",
-      "chesscomUsername": null,
+      "chesscomUsername": "mrtewe",
       "status": "active"
     },
     {
@@ -154,7 +154,7 @@
     {
       "id": "p_erik-nogues-lavin-8b1828",
       "name": "Erik Nogués Lavín",
-      "chesscomUsername": null,
+      "chesscomUsername": "E-Kasiparov",
       "status": "active"
     },
     {

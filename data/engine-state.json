@@ -227,12 +227,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "b0b99d4b-189a-49b1-96c5-e0b7906391ec",
       "loss": false,
       "match": 10,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-10T09:06:11.000Z",
+            "material": {
+              "black": 17,
+              "white": 30
+            },
+            "moves": 21,
+            "p1Color": "white",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 217,
+              "white": 245
+            },
+            "url": "https://www.chess.com/game/live/186900121224"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -241,12 +264,12 @@
         "draw": 0,
         "id": "p_diego-diaz-vidal-4f1507",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_david-prats-vargas-ee9dca",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -444,7 +467,7 @@
           "opponent": "p_david-prats-vargas-ee9dca",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -682,7 +705,7 @@
           "bye": false,
           "draw": 0,
           "id": "b0b99d4b-189a-49b1-96c5-e0b7906391ec",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_diego-diaz-vidal-4f1507",
           "pairUpDown": false,
           "seating": null,
@@ -800,8 +823,8 @@
         }
       ],
       "meta": {
-        "chesscomPending": true,
-        "chesscomUsername": "johan_pendiente"
+        "chesscomPending": false,
+        "chesscomUsername": "mrtewe"
       },
       "name": "Johan Stevens Bautista Parra",
       "value": 0
@@ -976,8 +999,8 @@
         }
       ],
       "meta": {
-        "chesscomPending": true,
-        "chesscomUsername": "erik_pendiente"
+        "chesscomPending": false,
+        "chesscomUsername": "E-Kasiparov"
       },
       "name": "Erik Nogués Lavín",
       "value": 0

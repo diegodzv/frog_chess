@@ -173,11 +173,12 @@
     {
       "id": "p_johan-stevens-bautista-parra-cd3247",
       "name": "Johan Stevens Bautista Parra",
-      "chesscomUsername": "johan_pendiente",
+      "chesscomUsername": "mrtewe",
       "status": "active",
       "registeredAt": "2026-11-08T09:49:43.573Z",
       "source": "microsoft-forms",
-      "chesscomVerified": false
+      "chesscomVerified": true,
+      "chesscomPlayerId": 620527902
     },
     {
       "id": "p_antonio-manuel-martin-garcia-c24f9d",
@@ -252,11 +253,12 @@
     {
       "id": "p_erik-nogues-lavin-8b1828",
       "name": "Erik Nogués Lavín",
-      "chesscomUsername": "erik_pendiente",
+      "chesscomUsername": "E-Kasiparov",
       "status": "active",
       "registeredAt": "2026-11-08T09:49:43.573Z",
       "source": "microsoft-forms",
-      "chesscomVerified": false
+      "chesscomVerified": true,
+      "chesscomPlayerId": 620549622
     },
     {
       "id": "p_david-del-blanco-taranilla-dc5ea2",

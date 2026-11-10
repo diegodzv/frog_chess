@@ -1,16 +1,29 @@
 {
-  "updatedAt": "2026-11-10T07:22:07.803Z",
+  "updatedAt": "2026-11-10T09:15:16.582Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 1,
+  "gamesAnalyzed": 2,
   "minMovesForRecords": 5,
   "minWinsForAverage": 1,
   "fastestByMoves": [
     {
       "player": {
+        "id": "p_diego-diaz-vidal-4f1507",
+        "name": "Diego Díaz Vidal",
+        "chesscomUsername": "diegodzv",
+        "seed": 1
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 21,
+      "timeSec": 245,
+      "material": 30
+    },
+    {
+      "player": {
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 1
+        "seed": 2
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -22,10 +35,23 @@
   "fastestByTime": [
     {
       "player": {
+        "id": "p_diego-diaz-vidal-4f1507",
+        "name": "Diego Díaz Vidal",
+        "chesscomUsername": "diegodzv",
+        "seed": 1
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 21,
+      "timeSec": 245,
+      "material": 30
+    },
+    {
+      "player": {
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 1
+        "seed": 2
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -37,10 +63,21 @@
   "fastestAverageByMoves": [
     {
       "player": {
+        "id": "p_diego-diaz-vidal-4f1507",
+        "name": "Diego Díaz Vidal",
+        "chesscomUsername": "diegodzv",
+        "seed": 1
+      },
+      "wins": 1,
+      "avgMoves": 21,
+      "avgTimeSec": 245
+    },
+    {
+      "player": {
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 1
+        "seed": 2
       },
       "wins": 1,
       "avgMoves": 49,
@@ -50,10 +87,21 @@
   "fastestAverageByTime": [
     {
       "player": {
+        "id": "p_diego-diaz-vidal-4f1507",
+        "name": "Diego Díaz Vidal",
+        "chesscomUsername": "diegodzv",
+        "seed": 1
+      },
+      "wins": 1,
+      "avgMoves": 21,
+      "avgTimeSec": 245
+    },
+    {
+      "player": {
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 1
+        "seed": 2
       },
       "wins": 1,
       "avgMoves": 49,
@@ -63,10 +111,23 @@
   "mostMaterial": [
     {
       "player": {
+        "id": "p_diego-diaz-vidal-4f1507",
+        "name": "Diego Díaz Vidal",
+        "chesscomUsername": "diegodzv",
+        "seed": 1
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 21,
+      "timeSec": 245,
+      "material": 30
+    },
+    {
+      "player": {
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 1
+        "seed": 2
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -78,10 +139,19 @@
   "mostCheckmates": [
     {
       "player": {
+        "id": "p_diego-diaz-vidal-4f1507",
+        "name": "Diego Díaz Vidal",
+        "chesscomUsername": "diegodzv",
+        "seed": 1
+      },
+      "checkmates": 1
+    },
+    {
+      "player": {
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 1
+        "seed": 2
       },
       "checkmates": 1
     }
