@@ -152,12 +152,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "e995829b-f749-4305-a6ba-76a6a1a16460",
       "loss": false,
       "match": 7,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-10T11:17:52.000Z",
+            "material": {
+              "black": 17,
+              "white": 6
+            },
+            "moves": 47,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "resigned",
+            "timeUsed": {
+              "black": 511,
+              "white": 288
+            },
+            "url": "https://www.chess.com/game/live/186905975114"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -166,12 +189,12 @@
         "draw": 0,
         "id": "p_alberto-ruiz-rancano-41fb08",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_albert-sanchez-fernandez-47fe38",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -445,7 +468,7 @@
           "opponent": "p_albert-sanchez-fernandez-47fe38",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -925,7 +948,7 @@
           "bye": false,
           "draw": 0,
           "id": "e995829b-f749-4305-a6ba-76a6a1a16460",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_alberto-ruiz-rancano-41fb08",
           "pairUpDown": false,
           "seating": null,

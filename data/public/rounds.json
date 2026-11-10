@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T09:15:16.582Z",
+  "updatedAt": "2026-11-10T12:23:41.278Z",
   "phase": "stage-one",
   "currentRound": 1,
   "rounds": [
@@ -19,13 +19,13 @@
             "id": "p_diego-morante-parra-32c467",
             "name": "Diego Morante Parra",
             "chesscomUsername": "diegommmmmmm",
-            "seed": 12
+            "seed": 13
           },
           "player2": {
             "id": "p_sergio-bernardez-molina-7de06b",
             "name": "Sergio Bernardez Molina",
             "chesscomUsername": "sergiako_98",
-            "seed": 13
+            "seed": 14
           },
           "bye": false,
           "status": "pending",
@@ -41,7 +41,7 @@
             "id": "p_alejandro-garcia-castillo-58ed7d",
             "name": "Alejandro García Castillo",
             "chesscomUsername": "AGarcia98",
-            "seed": 11
+            "seed": 12
           },
           "player2": {
             "id": "p_tania-duran-vicente-cc6c24",
@@ -63,13 +63,13 @@
             "id": "p_victor-manuel-espada-rodriguez-dc0280",
             "name": "Víctor Manuel Espada Rodríguez",
             "chesscomUsername": "vittichenko",
-            "seed": 8
+            "seed": 9
           },
           "player2": {
             "id": "p_andres-chica-linares-885e0c",
             "name": "Andrés Chica Linares",
             "chesscomUsername": "sensuao",
-            "seed": 17
+            "seed": 18
           },
           "bye": false,
           "status": "pending",
@@ -91,7 +91,7 @@
             "id": "p_miguel-aragon-lazcano-29de38",
             "name": "Miguel Aragón Lazcano",
             "chesscomUsername": "M_l_K_l",
-            "seed": 10
+            "seed": 11
           },
           "bye": false,
           "status": "pending",
@@ -107,13 +107,13 @@
             "id": "p_lucas-llobet-cusi-354632",
             "name": "Lucas Llobet Cusi",
             "chesscomUsername": "Lucasllobet",
-            "seed": 7
+            "seed": 8
           },
           "player2": {
             "id": "p_alvaro-castro-sampedro-2685b6",
             "name": "Álvaro Castro Sampedro",
             "chesscomUsername": "alvastro0055",
-            "seed": 23
+            "seed": 24
           },
           "bye": false,
           "status": "pending",
@@ -135,7 +135,7 @@
             "id": "p_luis-gontan-moreno-651b3b",
             "name": "Luis Gontán Moreno",
             "chesscomUsername": "luisGM1985",
-            "seed": 14
+            "seed": 15
           },
           "bye": false,
           "status": "pending",
@@ -151,19 +151,25 @@
             "id": "p_alberto-ruiz-rancano-41fb08",
             "name": "Alberto Ruiz Rancaño",
             "chesscomUsername": "TheGambel99",
-            "seed": 5
+            "seed": 1
           },
           "player2": {
             "id": "p_albert-sanchez-fernandez-47fe38",
             "name": "Albert Sánchez Fernández",
             "chesscomUsername": "murakaii",
-            "seed": 24
+            "seed": 6
           },
           "bye": false,
-          "status": "pending",
-          "score": null,
-          "winner": null,
-          "games": null,
+          "status": "complete",
+          "score": {
+            "p1": 1,
+            "p2": 0,
+            "draws": 0
+          },
+          "winner": "p1",
+          "games": [
+            "p1"
+          ],
           "manual": null
         },
         {
@@ -173,7 +179,7 @@
             "id": "p_hector-rodriguez-vegue-bd3889",
             "name": "Héctor Rodríguez Vegue",
             "chesscomUsername": "Vegue82",
-            "seed": 22
+            "seed": 23
           },
           "player2": {
             "id": "p_erik-nogues-lavin-8b1828",
@@ -195,13 +201,13 @@
             "id": "p_antonio-manuel-martin-garcia-c24f9d",
             "name": "Antonio Manuel Martín García",
             "chesscomUsername": "PangWM",
-            "seed": 20
+            "seed": 21
           },
           "player2": {
             "id": "p_adrian-alamo-castro-b9b27d",
             "name": "Adrián Álamo Castro",
             "chesscomUsername": "regis_occisor",
-            "seed": 21
+            "seed": 22
           },
           "bye": false,
           "status": "pending",
@@ -217,13 +223,13 @@
             "id": "p_diego-diaz-vidal-4f1507",
             "name": "Diego Díaz Vidal",
             "chesscomUsername": "diegodzv",
-            "seed": 1
+            "seed": 2
           },
           "player2": {
             "id": "p_david-prats-vargas-ee9dca",
             "name": "David Prats Vargas",
             "chesscomUsername": "Devittot",
-            "seed": 4
+            "seed": 5
           },
           "bye": false,
           "status": "complete",
@@ -245,13 +251,13 @@
             "id": "p_josep-oriol-elias-albajes-31219d",
             "name": "Josep Oriol Elias Albajes",
             "chesscomUsername": "iLostTheGame420",
-            "seed": 2
+            "seed": 3
           },
           "player2": {
             "id": "p_emilio-garcia-quintana-935a82",
             "name": "Emilio García Quintana",
             "chesscomUsername": "emiliogq",
-            "seed": 3
+            "seed": 4
           },
           "bye": false,
           "status": "complete",
@@ -273,13 +279,13 @@
             "id": "p_jose-luis-gomez-anton-3f5575",
             "name": "José Luis Gómez Antón",
             "chesscomUsername": "ToteBoss",
-            "seed": 18
+            "seed": 19
           },
           "player2": {
             "id": "p_daniel-alocen-pinillos-a8390a",
             "name": "Daniel Alocen Pinillos",
             "chesscomUsername": "PerfectRiver",
-            "seed": 9
+            "seed": 10
           },
           "bye": false,
           "status": "pending",
@@ -295,7 +301,7 @@
             "id": "p_johan-stevens-bautista-parra-cd3247",
             "name": "Johan Stevens Bautista Parra",
             "chesscomUsername": "mrtewe",
-            "seed": 19
+            "seed": 20
           },
           "player2": {
             "id": "p_lucia-valles-escudero-f202a0",
@@ -317,7 +323,7 @@
             "id": "p_angel-tena-jimenez-b2ec4e",
             "name": "Ángel Tena Jiménez",
             "chesscomUsername": "angeltena26",
-            "seed": 16
+            "seed": 17
           },
           "player2": {
             "id": "p_isabel-garcia-bergers-d56cf3",
@@ -339,13 +345,13 @@
             "id": "p_oscar-marin-flores-a2cc66",
             "name": "Óscar Marín Flores",
             "chesscomUsername": "oscaarmfl",
-            "seed": 15
+            "seed": 16
           },
           "player2": {
             "id": "p_raul-morchon-fuentes-3193bc",
             "name": "Raúl Morchón Fuentes",
             "chesscomUsername": "ichraxx",
-            "seed": 6
+            "seed": 7
           },
           "bye": false,
           "status": "pending",
