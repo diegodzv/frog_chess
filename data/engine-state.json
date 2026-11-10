@@ -252,12 +252,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "b8919838-4587-40bd-92cd-2ba05483c8fc",
       "loss": false,
       "match": 11,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-09T13:32:26.000Z",
+            "material": {
+              "black": 0,
+              "white": 13
+            },
+            "moves": 49,
+            "p1Color": "white",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 629,
+              "white": 367
+            },
+            "url": "https://www.chess.com/game/live/186845169872"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -266,12 +289,12 @@
         "draw": 0,
         "id": "p_josep-oriol-elias-albajes-31219d",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_emilio-garcia-quintana-935a82",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -593,7 +616,7 @@
           "bye": false,
           "draw": 0,
           "id": "b8919838-4587-40bd-92cd-2ba05483c8fc",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_josep-oriol-elias-albajes-31219d",
           "pairUpDown": false,
           "seating": null,
@@ -927,7 +950,7 @@
           "opponent": "p_emilio-garcia-quintana-935a82",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

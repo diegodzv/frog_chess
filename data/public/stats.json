@@ -1,13 +1,89 @@
 {
-  "updatedAt": "2026-11-08T09:49:49.174Z",
+  "updatedAt": "2026-11-10T07:22:07.803Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 0,
+  "gamesAnalyzed": 1,
   "minMovesForRecords": 5,
   "minWinsForAverage": 1,
-  "fastestByMoves": [],
-  "fastestByTime": [],
-  "fastestAverageByMoves": [],
-  "fastestAverageByTime": [],
-  "mostMaterial": [],
-  "mostCheckmates": []
+  "fastestByMoves": [
+    {
+      "player": {
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "name": "Josep Oriol Elias Albajes",
+        "chesscomUsername": "iLostTheGame420",
+        "seed": 1
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 49,
+      "timeSec": 367,
+      "material": 13
+    }
+  ],
+  "fastestByTime": [
+    {
+      "player": {
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "name": "Josep Oriol Elias Albajes",
+        "chesscomUsername": "iLostTheGame420",
+        "seed": 1
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 49,
+      "timeSec": 367,
+      "material": 13
+    }
+  ],
+  "fastestAverageByMoves": [
+    {
+      "player": {
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "name": "Josep Oriol Elias Albajes",
+        "chesscomUsername": "iLostTheGame420",
+        "seed": 1
+      },
+      "wins": 1,
+      "avgMoves": 49,
+      "avgTimeSec": 367
+    }
+  ],
+  "fastestAverageByTime": [
+    {
+      "player": {
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "name": "Josep Oriol Elias Albajes",
+        "chesscomUsername": "iLostTheGame420",
+        "seed": 1
+      },
+      "wins": 1,
+      "avgMoves": 49,
+      "avgTimeSec": 367
+    }
+  ],
+  "mostMaterial": [
+    {
+      "player": {
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "name": "Josep Oriol Elias Albajes",
+        "chesscomUsername": "iLostTheGame420",
+        "seed": 1
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 49,
+      "timeSec": 367,
+      "material": 13
+    }
+  ],
+  "mostCheckmates": [
+    {
+      "player": {
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "name": "Josep Oriol Elias Albajes",
+        "chesscomUsername": "iLostTheGame420",
+        "seed": 1
+      },
+      "checkmates": 1
+    }
+  ]
 }
