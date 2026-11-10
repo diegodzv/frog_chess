@@ -3,12 +3,12 @@
 // organizer via workflow_dispatch. Actions: check-players | start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.
 // The tournament logic lives in lib/tournamentFlow.mjs; this script only does I/O.
 
-import { loadEngineTournament, saveEngineTournament, setPlayoffCutoff } from './lib/tournamentEngine.mjs';
+import { loadEngineTournament, saveEngineTournament, setPlayoffCutoff, setPlayerUsername } from './lib/tournamentEngine.mjs';
 import { startTournament, advance, applyPendingOverrides } from './lib/tournamentFlow.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
 import { readFile } from 'node:fs/promises';
-import { verifyRoster } from './lib/roster.mjs';
+import { verifyRoster, changeUsername } from './lib/roster.mjs';
 import { levelFromAnswer } from './lib/levelPairing.mjs';
 import { makeRng } from './lib/simulation.mjs';
 import { getPlayerProfile } from './lib/chesscomClient.mjs';
@@ -129,6 +129,29 @@ async function setCutoff() {
   console.log(`Playoff cutoff set to ${value}.`);
 }
 
+/**
+ * set-username --player=<current username> --to=<new username>: corrects a player's chess.com account (checked on
+ * chess.com) in players.json and, once the tournament has started, in the engine, so their games are synced.
+ */
+async function setUsername() {
+  const from = getFlag('player') ?? process.env.PLAYER;
+  const to = getFlag('to') ?? process.env.TO;
+  if (!from || !to) throw new Error('Uso: --action=set-username --player=<usuario actual> --to=<usuario nuevo>');
+  const profile = await getPlayerProfile(to);
+  if (!profile) throw new Error(`No existe ningún usuario de chess.com llamado "${to}".`);
+  const { roster, player } = changeUsername(await readJson('players.json'), from, profile);
+  await writeJson('players.json', roster);
+  const engineState = await readJson('engine-state.json');
+  if (engineState) {
+    const engine = loadEngineTournament(engineState);
+    setPlayerUsername(engine, player.id, player.chesscomUsername);
+    await writeJson('engine-state.json', saveEngineTournament(engine));
+  }
+  await buildPublicData();
+  commitAndPush(`inscripción: ${player.name} juega con el usuario ${player.chesscomUsername}`);
+  console.log(`${player.name}: ${from} -> ${player.chesscomUsername}`);
+}
+
 async function rebuildPublicData() {
   await buildPublicData();
   const committed = commitAndPush('datos públicos: reconstruidos a mano');
@@ -163,9 +186,10 @@ async function main() {
   if (action === 'apply-overrides') return applyOverrides();
   if (action === 'rebuild-public-data') return rebuildPublicData();
   if (action === 'set-cutoff') return setCutoff();
+  if (action === 'set-username') return setUsername();
   if (action === 'next-round') return next(false);
   if (action === 'force-next-round') return next(true);
-  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | next-round | force-next-round.`);
+  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | set-username | next-round | force-next-round.`);
 }
 
 await main();

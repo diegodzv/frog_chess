@@ -3,7 +3,7 @@ import { Nav } from '../components/Nav.jsx';
 import { StatusBadge } from '../components/StatusBadge.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { formatDate } from '../components/format.js';
+import { formatDate, roundEndDate } from '../components/format.js';
 
 const SHORT_LABEL = {
   'Dieciseisavos de final': '1/16',
@@ -72,8 +72,10 @@ export function Round() {
   const current = rounds.find((r) => r.current) ?? rounds[rounds.length - 1];
   const active = rounds.find((r) => r.number === selected) ?? current;
 
-  const played = active ? active.pairings.filter((p) => p.status === 'complete' || p.status === 'bye').length : 0;
-  const total = active?.pairings.length ?? 0;
+  // Games only: a bye is not a game to play.
+  const games = active ? active.pairings.filter((p) => !p.bye) : [];
+  const played = games.filter((p) => p.status === 'complete').length;
+  const total = games.length;
 
   return (
     <div className="page wide">
@@ -109,10 +111,9 @@ export function Round() {
         <>
           <h2>{active.label}</h2>
           <p className="meta-line">
-            {active.startedAt && formatDate(active.startedAt)}
-            {active.endedAt ? ` – ${formatDate(active.endedAt)}` : active.current ? ' – en curso' : ''}
-            {active.startedAt && ' · '}
-            {played}/{total} resueltos
+            {active.startedAt && `${formatDate(active.startedAt)} – ${formatDate(roundEndDate(active.startedAt))} · `}
+            {active.current && 'en curso · '}
+            {played}/{total} partidas jugadas
           </p>
           <div className="pairing-list">
             {active.pairings.map((pairing) => (

@@ -244,6 +244,12 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
   tournament.getPlayer(match.player2.id).updateMatch(match.id, lost);
 }
 
+/** Sets a player's (corrected, confirmed) chess.com username: shown on the site and synced from now on. */
+export function setPlayerUsername(tournament, id, username) {
+  const player = tournament.getPlayer(id);
+  player.set({ meta: { ...player.getMeta(), chesscomUsername: username, chesscomPending: false } });
+}
+
 /**
  * Changes how many players go through to the bracket. Only during the swiss stage (the bracket is built when
  * the last swiss round closes); it must be a power of two and fit the players still in the tournament.

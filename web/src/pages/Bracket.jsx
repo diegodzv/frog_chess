@@ -46,7 +46,7 @@ export function Bracket() {
 
       {error && <p className="empty-state">No se pudieron cargar los datos.</p>}
 
-      {notStarted && <p className="empty-state">El bracket se activará cuando termine la fase suiza.</p>}
+      {notStarted && <p className="empty-state">La fase final comenzará cuando termine la fase suiza.</p>}
 
       {bracket?.champion && (
         <div className="champion-banner">

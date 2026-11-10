@@ -173,3 +173,38 @@ test('canonicalUsername keeps the casing of the profile URL (the API username is
   assert.equal(canonicalUsername({ username: 'adalovelace' }), 'adalovelace');
   assert.equal(canonicalUsername({ username: 'bob', url: 'https://www.chess.com/member/someoneelse' }), 'bob');
 });
+
+test('set-username corrects an unconfirmed account once the tournament has started (players.json, engine, site)', async () => {
+  const { loadEngineTournament, saveEngineTournament } = await import('../lib/tournamentEngine.mjs');
+  const dir = dataDir();
+  const players = ['adalovelace', 'bob', 'erik_pendiente', 'dave'].map((u, i) => ({
+    id: `p${i}`, name: `Jugador ${i}`, chesscomUsername: u, status: 'active', chesscomVerified: u !== 'erik_pendiente'
+  }));
+  const started = startTournament({ tournament: baseTournament, roster: { players }, allowUnverified: true });
+  writeFileSync(path.join(dir, 'players.json'), JSON.stringify({ players }));
+  writeFileSync(path.join(dir, 'tournament.json'), JSON.stringify(started.tournament));
+  writeFileSync(path.join(dir, 'engine-state.json'), saveEngineTournament(started.engine));
+
+  const script = fileURLToPath(new URL('../advance-tournament.mjs', import.meta.url));
+  const run = (...args) =>
+    spawnSync(process.execPath, ['--import', stub, script, '--action=set-username', ...args], {
+      env: { ...process.env, FROG_DATA_DIR: dir, FROG_SKIP_GIT: '1' },
+      encoding: 'utf8'
+    });
+
+  const missing = run('--player=erik_pendiente', '--to=nadie');
+  assert.notEqual(missing.status, 0);
+  assert.match(missing.stderr, /No existe/);
+  const taken = run('--player=erik_pendiente', '--to=bob');
+  assert.match(taken.stderr, /ya es de Jugador 1/);
+
+  const ok = run('--player=ERIK_PENDIENTE', '--to=carl');
+  assert.equal(ok.status, 0, ok.stderr);
+  const erik = JSON.parse(readFileSync(path.join(dir, 'players.json'), 'utf8')).players[2];
+  assert.deepEqual([erik.chesscomUsername, erik.chesscomVerified, erik.chesscomPlayerId], ['Carl', true, 103]);
+  const engine = loadEngineTournament(JSON.parse(readFileSync(path.join(dir, 'engine-state.json'), 'utf8')));
+  assert.equal(engine.getPlayer('p2').getMeta().chesscomUsername, 'Carl');
+  assert.equal(engine.getPlayer('p2').getMeta().chesscomPending, false);
+  const standings = JSON.parse(readFileSync(path.join(dir, 'public', 'standings.json'), 'utf8'));
+  assert.equal(standings.rows.find((r) => r.playerId === 'p2').chesscomUsername, 'Carl');
+});

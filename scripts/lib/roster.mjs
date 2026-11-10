@@ -173,6 +173,21 @@ export function canonicalUsername(profile) {
 }
 
 /**
+ * Corrects a player's chess.com username (e.g. one that was mistyped in the form) with a profile already fetched
+ * from chess.com. `from` is the username currently stored. Returns a new roster and the updated player.
+ */
+export function changeUsername(roster, from, profile) {
+  const next = structuredClone(roster);
+  const player = next.players.find((p) => p.status === 'active' && p.chesscomUsername.toLowerCase() === String(from).toLowerCase());
+  if (!player) throw new Error(`No hay ningún jugador inscrito con el usuario "${from}".`);
+  const username = canonicalUsername(profile);
+  const clash = next.players.find((p) => p !== player && p.status === 'active' && p.chesscomUsername.toLowerCase() === username.toLowerCase());
+  if (clash) throw new Error(`El usuario "${username}" ya es de ${clash.name}.`);
+  Object.assign(player, { chesscomUsername: username, chesscomPlayerId: profile.player_id, chesscomVerified: true });
+  return { roster: next, player };
+}
+
+/**
  * Checks every active, not-yet-verified player against chess.com: fixes the username's casing to the canonical
  * one and marks it verified, or reports it as missing. `getProfile(username)` resolves to the profile or null;
  * network errors propagate.
