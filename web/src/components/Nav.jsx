@@ -4,7 +4,7 @@ import { datasetKey, withDataset } from '../dataset.js';
 const LINKS = [
   { href: 'index.html', label: 'Clasificación', key: 'standings' },
   { href: 'round.html', label: 'Rondas', key: 'round' },
-  { href: 'bracket.html', label: 'Bracket', key: 'bracket' },
+  { href: 'bracket.html', label: 'Fase final', key: 'bracket' },
   { href: 'stats.html', label: 'Estadísticas', key: 'stats' },
   { href: 'normas.html', label: 'Normas', key: 'normas' }
 ];

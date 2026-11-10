@@ -18,7 +18,7 @@ function OutcomeCell({ row, provisional }) {
     return <span className={cls}>{row.outcome}</span>;
   }
   if (row.qualified) {
-    return <span className="outcome-qualified">{provisional ? 'En zona de playoffs' : 'Clasificado'}</span>;
+    return <span className="outcome-qualified">{provisional ? 'Avanza a fase final' : 'Clasificado'}</span>;
   }
   return null;
 }

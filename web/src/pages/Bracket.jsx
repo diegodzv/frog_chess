@@ -42,7 +42,7 @@ export function Bracket() {
   return (
     <div className="page wide">
       <Nav current="bracket" />
-      <h1>Fase eliminatoria</h1>
+      <h1>Fase final</h1>
 
       {error && <p className="empty-state">No se pudieron cargar los datos.</p>}
 

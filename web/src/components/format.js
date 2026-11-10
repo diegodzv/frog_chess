@@ -1,7 +1,7 @@
 export const PHASE_LABELS = {
   registration: 'Inscripción abierta',
   'stage-one': 'Fase suiza',
-  'stage-two': 'Fase eliminatoria',
+  'stage-two': 'Fase final',
   complete: 'Torneo finalizado'
 };
 
