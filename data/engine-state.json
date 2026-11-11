@@ -2,12 +2,35 @@
   "id": "Frog Chess",
   "matches": [
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "7c61dccd-9c7b-458a-ad38-147c8005bb79",
       "loss": false,
       "match": 1,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-11T14:24:42.000Z",
+            "material": {
+              "black": 11,
+              "white": 8
+            },
+            "moves": 41,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 559,
+              "white": 506
+            },
+            "url": "https://www.chess.com/game/live/186985293432"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -15,14 +38,14 @@
       "player1": {
         "draw": 0,
         "id": "p_diego-morante-parra-32c467",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_sergio-bernardez-molina-7de06b",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 1
     },
@@ -644,7 +667,7 @@
           "bye": false,
           "draw": 0,
           "id": "7c61dccd-9c7b-458a-ad38-147c8005bb79",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_sergio-bernardez-molina-7de06b",
           "pairUpDown": false,
           "seating": null,
@@ -692,7 +715,7 @@
           "opponent": "p_diego-morante-parra-32c467",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-10T12:23:41.278Z",
+  "updatedAt": "2026-11-11T14:30:03.048Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 3,
+  "gamesAnalyzed": 4,
   "minMovesForRecords": 5,
   "minWinsForAverage": 1,
   "fastestByMoves": [
@@ -17,6 +17,19 @@
       "moves": 21,
       "timeSec": 245,
       "material": 30
+    },
+    {
+      "player": {
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "name": "Sergio Bernardez Molina",
+        "chesscomUsername": "sergiako_98",
+        "seed": 3
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 41,
+      "timeSec": 559,
+      "material": 11
     },
     {
       "player": {
@@ -36,7 +49,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -64,7 +77,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -84,6 +97,19 @@
       "moves": 47,
       "timeSec": 511,
       "material": 17
+    },
+    {
+      "player": {
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "name": "Sergio Bernardez Molina",
+        "chesscomUsername": "sergiako_98",
+        "seed": 3
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 41,
+      "timeSec": 559,
+      "material": 11
     }
   ],
   "fastestAverageByMoves": [
@@ -97,6 +123,17 @@
       "wins": 1,
       "avgMoves": 21,
       "avgTimeSec": 245
+    },
+    {
+      "player": {
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "name": "Sergio Bernardez Molina",
+        "chesscomUsername": "sergiako_98",
+        "seed": 3
+      },
+      "wins": 1,
+      "avgMoves": 41,
+      "avgTimeSec": 559
     },
     {
       "player": {
@@ -114,7 +151,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 3
+        "seed": 4
       },
       "wins": 1,
       "avgMoves": 49,
@@ -138,7 +175,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 3
+        "seed": 4
       },
       "wins": 1,
       "avgMoves": 49,
@@ -154,6 +191,17 @@
       "wins": 1,
       "avgMoves": 47,
       "avgTimeSec": 511
+    },
+    {
+      "player": {
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "name": "Sergio Bernardez Molina",
+        "chesscomUsername": "sergiako_98",
+        "seed": 3
+      },
+      "wins": 1,
+      "avgMoves": 41,
+      "avgTimeSec": 559
     }
   ],
   "mostMaterial": [
@@ -188,16 +236,38 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
       "moves": 49,
       "timeSec": 367,
       "material": 13
+    },
+    {
+      "player": {
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "name": "Sergio Bernardez Molina",
+        "chesscomUsername": "sergiako_98",
+        "seed": 3
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 41,
+      "timeSec": 559,
+      "material": 11
     }
   ],
   "mostCheckmates": [
+    {
+      "player": {
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "name": "Sergio Bernardez Molina",
+        "chesscomUsername": "sergiako_98",
+        "seed": 3
+      },
+      "checkmates": 1
+    },
     {
       "player": {
         "id": "p_diego-diaz-vidal-4f1507",
@@ -212,7 +282,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 3
+        "seed": 4
       },
       "checkmates": 1
     }
