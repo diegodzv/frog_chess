@@ -1,22 +1,3 @@
 {
-  "items": [
-    {
-      "matchId": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
-      "round": 1,
-      "player1": "kronista",
-      "player2": "M_l_K_l",
-      "detectedAt": "2026-11-11T02:40:53.591Z",
-      "reason": "wrong_format",
-      "games": [
-        {
-          "url": "https://www.chess.com/game/live/186924847372",
-          "endTime": "2026-11-10T16:32:02.000Z",
-          "timeClass": "blitz",
-          "timeControl": "425",
-          "rules": "chess",
-          "rated": true
-        }
-      ]
-    }
-  ]
+  "items": []
 }
