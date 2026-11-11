@@ -47,8 +47,8 @@ function Pairing({ pairing }) {
     );
   }
 
-  const badge =
-    pairing.manual === 'double' || pairing.manual === 'double_forfeit' ? 'double' : pairing.manual ? 'manual' : pairing.status;
+  // A result entered by the organizers (coin toss, walkover) shows as any other finished game.
+  const badge = pairing.manual === 'double' || pairing.manual === 'double_forfeit' ? 'double' : pairing.status;
   const finished = pairing.status === 'complete';
   // Double forfeit: nobody won, both lost.
   const lost = (side) => finished && pairing.winner !== side;

@@ -3,7 +3,6 @@ const LABELS = {
   complete: 'Completada',
   bye: 'Bye',
   waiting: 'Por jugar',
-  manual: 'Resultado manual',
   double: 'Doble forfeit',
   needs_review: 'Revisar'
 };

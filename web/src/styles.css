@@ -412,10 +412,6 @@ table.standings tr.cutoff-line td {
   background: var(--muted);
 }
 
-.badge-manual {
-  background: #7a5ea8;
-}
-
 .badge-double {
   background: var(--review);
 }
