@@ -77,12 +77,16 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
       "loss": false,
       "match": 4,
-      "meta": {},
+      "meta": {
+        "outcome": "player1_win",
+        "reason": "jugada a 7+0 (425) en vez de 7+5; aceptada por la organización, no cuenta para las estadísticas",
+        "source": "override"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -91,12 +95,12 @@
         "draw": 0,
         "id": "p_david-del-blanco-taranilla-dc5ea2",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_miguel-aragon-lazcano-29de38",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -596,7 +600,7 @@
           "bye": false,
           "draw": 0,
           "id": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_david-del-blanco-taranilla-dc5ea2",
           "pairUpDown": false,
           "seating": null,
@@ -1040,7 +1044,7 @@
           "opponent": "p_miguel-aragon-lazcano-29de38",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

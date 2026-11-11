@@ -1,3 +1,10 @@
 {
-  "overrides": []
+  "overrides": [
+    {
+      "winner": "kronista",
+      "loser": "M_l_K_l",
+      "reason": "jugada a 7+0 (425) en vez de 7+5; aceptada por la organización, no cuenta para las estadísticas",
+      "applied": true
+    }
+  ]
 }
