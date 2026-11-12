@@ -561,7 +561,7 @@ table a:hover {
 /* ---- Stats ---- */
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
@@ -611,12 +611,21 @@ table a:hover {
   padding: 0.1rem 0;
 }
 
-.stat-rest li span:first-child {
+/* Name and value on the same row, so a long name never pushes the values out of line. */
+.stat-rest-row {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 0.75rem;
+  vertical-align: top;
+}
+
+.stat-rest-row > span:first-child {
   color: var(--text);
 }
 
 .stat-rest-value {
-  float: right;
+  white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
 

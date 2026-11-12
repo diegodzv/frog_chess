@@ -62,8 +62,10 @@ function StatCard({ card, rows }) {
             <ol className="stat-rest" start={2}>
               {rest.map((row, i) => (
                 <li key={i}>
-                  <span>{row.player?.name}</span>
-                  <span className="stat-rest-value">{card.value(row)}</span>
+                  <span className="stat-rest-row">
+                    <span>{row.player?.name}</span>
+                    <span className="stat-rest-value">{card.value(row)}</span>
+                  </span>
                 </li>
               ))}
             </ol>
