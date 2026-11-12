@@ -250,12 +250,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "08920baf-34d5-4a5d-a874-8feb0ccaffd8",
       "loss": false,
       "match": 8,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-12T17:43:19.000Z",
+            "material": {
+              "black": 28,
+              "white": 8
+            },
+            "moves": 28,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 248,
+              "white": 549
+            },
+            "url": "https://www.chess.com/game/live/187068273502"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -264,12 +287,12 @@
         "draw": 0,
         "id": "p_hector-rodriguez-vegue-bd3889",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_erik-nogues-lavin-8b1828",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -1004,7 +1027,7 @@
           "opponent": "p_erik-nogues-lavin-8b1828",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1110,7 +1133,7 @@
           "bye": false,
           "draw": 0,
           "id": "08920baf-34d5-4a5d-a874-8feb0ccaffd8",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_hector-rodriguez-vegue-bd3889",
           "pairUpDown": false,
           "seating": null,

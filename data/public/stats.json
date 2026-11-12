@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-12T10:53:49.868Z",
+  "updatedAt": "2026-11-12T17:58:01.643Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 7,
+  "gamesAnalyzed": 8,
   "minMovesForRecords": 5,
   "minWinsForAverage": 1,
   "fastestByMoves": [
@@ -46,6 +46,19 @@
     },
     {
       "player": {
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "name": "Héctor Rodríguez Vegue",
+        "chesscomUsername": "Vegue82",
+        "seed": 7
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 28,
+      "timeSec": 248,
+      "material": 28
+    },
+    {
+      "player": {
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
@@ -56,19 +69,6 @@
       "moves": 29,
       "timeSec": 290,
       "material": 28
-    },
-    {
-      "player": {
-        "id": "p_sergio-bernardez-molina-7de06b",
-        "name": "Sergio Bernardez Molina",
-        "chesscomUsername": "sergiako_98",
-        "seed": 5
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 41,
-      "timeSec": 559,
-      "material": 11
     }
   ],
   "fastestByTime": [
@@ -113,6 +113,19 @@
     },
     {
       "player": {
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "name": "Héctor Rodríguez Vegue",
+        "chesscomUsername": "Vegue82",
+        "seed": 7
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 28,
+      "timeSec": 248,
+      "material": 28
+    },
+    {
+      "player": {
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
@@ -123,19 +136,6 @@
       "moves": 29,
       "timeSec": 290,
       "material": 28
-    },
-    {
-      "player": {
-        "id": "p_josep-oriol-elias-albajes-31219d",
-        "name": "Josep Oriol Elias Albajes",
-        "chesscomUsername": "iLostTheGame420",
-        "seed": 7
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 49,
-      "timeSec": 367,
-      "material": 13
     }
   ],
   "fastestAverageByMoves": [
@@ -174,6 +174,17 @@
     },
     {
       "player": {
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "name": "Héctor Rodríguez Vegue",
+        "chesscomUsername": "Vegue82",
+        "seed": 7
+      },
+      "wins": 1,
+      "avgMoves": 28,
+      "avgTimeSec": 248
+    },
+    {
+      "player": {
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
@@ -182,17 +193,6 @@
       "wins": 1,
       "avgMoves": 29,
       "avgTimeSec": 290
-    },
-    {
-      "player": {
-        "id": "p_sergio-bernardez-molina-7de06b",
-        "name": "Sergio Bernardez Molina",
-        "chesscomUsername": "sergiako_98",
-        "seed": 5
-      },
-      "wins": 1,
-      "avgMoves": 41,
-      "avgTimeSec": 559
     }
   ],
   "fastestAverageByTime": [
@@ -231,6 +231,17 @@
     },
     {
       "player": {
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "name": "Héctor Rodríguez Vegue",
+        "chesscomUsername": "Vegue82",
+        "seed": 7
+      },
+      "wins": 1,
+      "avgMoves": 28,
+      "avgTimeSec": 248
+    },
+    {
+      "player": {
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
@@ -239,17 +250,6 @@
       "wins": 1,
       "avgMoves": 29,
       "avgTimeSec": 290
-    },
-    {
-      "player": {
-        "id": "p_josep-oriol-elias-albajes-31219d",
-        "name": "Josep Oriol Elias Albajes",
-        "chesscomUsername": "iLostTheGame420",
-        "seed": 7
-      },
-      "wins": 1,
-      "avgMoves": 49,
-      "avgTimeSec": 367
     }
   ],
   "mostMaterial": [
@@ -281,6 +281,19 @@
     },
     {
       "player": {
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "name": "Héctor Rodríguez Vegue",
+        "chesscomUsername": "Vegue82",
+        "seed": 7
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 28,
+      "timeSec": 248,
+      "material": 28
+    },
+    {
+      "player": {
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
@@ -304,19 +317,6 @@
       "moves": 23,
       "timeSec": 210,
       "material": 25
-    },
-    {
-      "player": {
-        "id": "p_alberto-ruiz-rancano-41fb08",
-        "name": "Alberto Ruiz Rancaño",
-        "chesscomUsername": "TheGambel99",
-        "seed": 1
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 47,
-      "timeSec": 511,
-      "material": 17
     }
   ],
   "mostCheckmates": [
@@ -326,6 +326,15 @@
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
         "seed": 5
+      },
+      "checkmates": 1
+    },
+    {
+      "player": {
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "name": "Héctor Rodríguez Vegue",
+        "chesscomUsername": "Vegue82",
+        "seed": 7
       },
       "checkmates": 1
     },
@@ -352,7 +361,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 7
+        "seed": 8
       },
       "checkmates": 1
     }
