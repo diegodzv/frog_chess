@@ -4,7 +4,6 @@ import { dataUrl } from '../dataset.js';
 import { PHASE_LABELS, formatDate, playerLink } from '../components/format.js';
 
 const vd = (r) => `${r.win}-${r.loss}`;
-const vtd = (g) => `${g.win}-${g.draw}-${g.loss}`;
 const pct = (x) => `${(x * 100).toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
 
 function OutcomeCell({ row, provisional }) {
@@ -121,7 +120,6 @@ export function Standings() {
                   <th>Jugador</th>
                   <th title="Puntos: 1 por cada encuentro ganado (el bye cuenta como victoria)">Pts</th>
                   <th title="Encuentros (series): ganados-perdidos">V-D</th>
-                  <th title="Partidas sueltas: victorias-tablas-derrotas">Partidas V-T-D</th>
                   <th title="Resistencia: porcentaje de victorias medio de tus rivales">Resist.</th>
                   <th title="Resistencia media de tus rivales">Resist. rivales</th>
                   <th>Estado</th>
@@ -144,7 +142,6 @@ export function Standings() {
                     </td>
                     <td className="num strong">{row.points}</td>
                     <td className="num">{vd(row.record)}</td>
-                    <td className="num">{vtd(row.games)}</td>
                     <td className="num">{pct(row.resistance)}</td>
                     <td className="num">{pct(row.opponentsResistance)}</td>
                     <td>
