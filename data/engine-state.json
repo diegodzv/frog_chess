@@ -396,12 +396,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "da2d0204-e078-4971-bdae-54fe4cc8e0af",
       "loss": false,
       "match": 12,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-12T10:12:09.000Z",
+            "material": {
+              "black": 14,
+              "white": 25
+            },
+            "moves": 23,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "resigned",
+            "timeUsed": {
+              "black": 200,
+              "white": 210
+            },
+            "url": "https://www.chess.com/game/live/187041468940"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -409,14 +432,14 @@
       "player1": {
         "draw": 0,
         "id": "p_jose-luis-gomez-anton-3f5575",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_daniel-alocen-pinillos-a8390a",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 1
     },
@@ -628,7 +651,7 @@
           "opponent": "p_jose-luis-gomez-anton-3f5575",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -866,7 +889,7 @@
           "bye": false,
           "draw": 0,
           "id": "da2d0204-e078-4971-bdae-54fe4cc8e0af",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_daniel-alocen-pinillos-a8390a",
           "pairUpDown": false,
           "seating": null,

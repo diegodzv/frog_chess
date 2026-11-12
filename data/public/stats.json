@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-12T01:21:52.482Z",
+  "updatedAt": "2026-11-12T10:16:07.116Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 5,
+  "gamesAnalyzed": 6,
   "minMovesForRecords": 5,
   "minWinsForAverage": 1,
   "fastestByMoves": [
@@ -10,7 +10,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -33,10 +33,23 @@
     },
     {
       "player": {
+        "id": "p_daniel-alocen-pinillos-a8390a",
+        "name": "Daniel Alocen Pinillos",
+        "chesscomUsername": "PerfectRiver",
+        "seed": 3
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 23,
+      "timeSec": 210,
+      "material": 25
+    },
+    {
+      "player": {
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 4
+        "seed": 5
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -56,19 +69,6 @@
       "moves": 47,
       "timeSec": 511,
       "material": 17
-    },
-    {
-      "player": {
-        "id": "p_josep-oriol-elias-albajes-31219d",
-        "name": "Josep Oriol Elias Albajes",
-        "chesscomUsername": "iLostTheGame420",
-        "seed": 5
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 49,
-      "timeSec": 367,
-      "material": 13
     }
   ],
   "fastestByTime": [
@@ -77,13 +77,26 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
       "moves": 20,
       "timeSec": 205,
       "material": 30
+    },
+    {
+      "player": {
+        "id": "p_daniel-alocen-pinillos-a8390a",
+        "name": "Daniel Alocen Pinillos",
+        "chesscomUsername": "PerfectRiver",
+        "seed": 3
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 23,
+      "timeSec": 210,
+      "material": 25
     },
     {
       "player": {
@@ -103,7 +116,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 5
+        "seed": 6
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -123,19 +136,6 @@
       "moves": 47,
       "timeSec": 511,
       "material": 17
-    },
-    {
-      "player": {
-        "id": "p_sergio-bernardez-molina-7de06b",
-        "name": "Sergio Bernardez Molina",
-        "chesscomUsername": "sergiako_98",
-        "seed": 4
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 41,
-      "timeSec": 559,
-      "material": 11
     }
   ],
   "fastestAverageByMoves": [
@@ -144,7 +144,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "wins": 1,
       "avgMoves": 20,
@@ -163,10 +163,21 @@
     },
     {
       "player": {
+        "id": "p_daniel-alocen-pinillos-a8390a",
+        "name": "Daniel Alocen Pinillos",
+        "chesscomUsername": "PerfectRiver",
+        "seed": 3
+      },
+      "wins": 1,
+      "avgMoves": 23,
+      "avgTimeSec": 210
+    },
+    {
+      "player": {
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 4
+        "seed": 5
       },
       "wins": 1,
       "avgMoves": 41,
@@ -182,17 +193,6 @@
       "wins": 1,
       "avgMoves": 47,
       "avgTimeSec": 511
-    },
-    {
-      "player": {
-        "id": "p_josep-oriol-elias-albajes-31219d",
-        "name": "Josep Oriol Elias Albajes",
-        "chesscomUsername": "iLostTheGame420",
-        "seed": 5
-      },
-      "wins": 1,
-      "avgMoves": 49,
-      "avgTimeSec": 367
     }
   ],
   "fastestAverageByTime": [
@@ -201,11 +201,22 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "wins": 1,
       "avgMoves": 20,
       "avgTimeSec": 205
+    },
+    {
+      "player": {
+        "id": "p_daniel-alocen-pinillos-a8390a",
+        "name": "Daniel Alocen Pinillos",
+        "chesscomUsername": "PerfectRiver",
+        "seed": 3
+      },
+      "wins": 1,
+      "avgMoves": 23,
+      "avgTimeSec": 210
     },
     {
       "player": {
@@ -223,7 +234,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 5
+        "seed": 6
       },
       "wins": 1,
       "avgMoves": 49,
@@ -239,17 +250,6 @@
       "wins": 1,
       "avgMoves": 47,
       "avgTimeSec": 511
-    },
-    {
-      "player": {
-        "id": "p_sergio-bernardez-molina-7de06b",
-        "name": "Sergio Bernardez Molina",
-        "chesscomUsername": "sergiako_98",
-        "seed": 4
-      },
-      "wins": 1,
-      "avgMoves": 41,
-      "avgTimeSec": 559
     }
   ],
   "mostMaterial": [
@@ -258,7 +258,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -281,6 +281,19 @@
     },
     {
       "player": {
+        "id": "p_daniel-alocen-pinillos-a8390a",
+        "name": "Daniel Alocen Pinillos",
+        "chesscomUsername": "PerfectRiver",
+        "seed": 3
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 23,
+      "timeSec": 210,
+      "material": 25
+    },
+    {
+      "player": {
         "id": "p_alberto-ruiz-rancano-41fb08",
         "name": "Alberto Ruiz Rancaño",
         "chesscomUsername": "TheGambel99",
@@ -297,26 +310,13 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 5
+        "seed": 6
       },
       "round": 1,
       "roundLabel": "Ronda 1",
       "moves": 49,
       "timeSec": 367,
       "material": 13
-    },
-    {
-      "player": {
-        "id": "p_sergio-bernardez-molina-7de06b",
-        "name": "Sergio Bernardez Molina",
-        "chesscomUsername": "sergiako_98",
-        "seed": 4
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 41,
-      "timeSec": 559,
-      "material": 11
     }
   ],
   "mostCheckmates": [
@@ -325,7 +325,7 @@
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 4
+        "seed": 5
       },
       "checkmates": 1
     },
@@ -343,7 +343,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 5
+        "seed": 6
       },
       "checkmates": 1
     }
