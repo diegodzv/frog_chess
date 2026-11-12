@@ -50,12 +50,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "0e5c78fa-2e7b-4ad2-b73c-6771a9e156ba",
       "loss": false,
       "match": 2,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-11T19:06:09.000Z",
+            "material": {
+              "black": 23,
+              "white": 30
+            },
+            "moves": 20,
+            "p1Color": "white",
+            "result": "p1",
+            "termination": "timeout",
+            "timeUsed": {
+              "black": 482,
+              "white": 205
+            },
+            "url": "https://www.chess.com/game/live/187003777712"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -64,12 +87,12 @@
         "draw": 0,
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_tania-duran-vicente-cc6c24",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -649,7 +672,7 @@
           "opponent": "p_tania-duran-vicente-cc6c24",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1107,7 +1130,7 @@
           "bye": false,
           "draw": 0,
           "id": "0e5c78fa-2e7b-4ad2-b73c-6771a9e156ba",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_alejandro-garcia-castillo-58ed7d",
           "pairUpDown": false,
           "seating": null,
