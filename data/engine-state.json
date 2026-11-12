@@ -275,12 +275,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "c3db9446-821b-4169-bde0-210f6d6a79a3",
       "loss": false,
       "match": 9,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-12T10:52:30.000Z",
+            "material": {
+              "black": 28,
+              "white": 6
+            },
+            "moves": 29,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 290,
+              "white": 342
+            },
+            "url": "https://www.chess.com/game/live/187043287228"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -289,12 +312,12 @@
         "draw": 0,
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_adrian-alamo-castro-b9b27d",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -937,7 +960,7 @@
           "opponent": "p_adrian-alamo-castro-b9b27d",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -955,7 +978,7 @@
           "bye": false,
           "draw": 0,
           "id": "c3db9446-821b-4169-bde0-210f6d6a79a3",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_antonio-manuel-martin-garcia-c24f9d",
           "pairUpDown": false,
           "seating": null,
@@ -1139,8 +1162,8 @@
         }
       ],
       "meta": {
-        "chesscomPending": true,
-        "chesscomUsername": "isabel_pendiente"
+        "chesscomPending": false,
+        "chesscomUsername": "igarciab11"
       },
       "name": "Isabel García Bergers",
       "value": 0

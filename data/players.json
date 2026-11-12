@@ -273,11 +273,12 @@
     {
       "id": "p_isabel-garcia-bergers-d56cf3",
       "name": "Isabel García Bergers",
-      "chesscomUsername": "isabel_pendiente",
+      "chesscomUsername": "igarciab11",
       "status": "active",
       "registeredAt": "2026-11-08T09:49:43.573Z",
       "source": "microsoft-forms",
-      "chesscomVerified": false
+      "chesscomVerified": true,
+      "chesscomPlayerId": 621427428
     },
     {
       "id": "p_tania-duran-vicente-cc6c24",
