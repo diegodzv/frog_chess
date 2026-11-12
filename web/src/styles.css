@@ -599,11 +599,6 @@ table a:hover {
   font-size: 1.2rem;
 }
 
-.stat-detail {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
 .stat-rest {
   margin: 0.75rem 0 0;
   padding: 0.5rem 0 0 1.25rem;

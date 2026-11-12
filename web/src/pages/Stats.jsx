@@ -10,43 +10,37 @@ const CARDS = [
     key: 'fastestByMoves',
     title: 'Victoria más rápida',
     unit: 'en jugadas',
-    value: (r) => plural(r.moves, 'jugada', 'jugadas'),
-    detail: (r) => `${formatDuration(r.timeSec)} en su reloj · ${r.roundLabel}`
+    value: (r) => plural(r.moves, 'jugada', 'jugadas')
   },
   {
     key: 'fastestByTime',
     title: 'Victoria más rápida',
     unit: 'tiempo gastado en su reloj',
-    value: (r) => formatDuration(r.timeSec),
-    detail: (r) => `${plural(r.moves, 'jugada', 'jugadas')} · ${r.roundLabel}`
+    value: (r) => formatDuration(r.timeSec)
   },
   {
     key: 'fastestAverageByMoves',
     title: 'Gana más rápido de media',
     unit: 'en jugadas',
-    value: (r) => `${r.avgMoves.toLocaleString('es-ES')} jugadas`,
-    detail: (r) => plural(r.wins, 'victoria', 'victorias')
+    value: (r) => `${r.avgMoves.toLocaleString('es-ES')} jugadas`
   },
   {
     key: 'fastestAverageByTime',
     title: 'Gana más rápido de media',
     unit: 'tiempo gastado en su reloj',
-    value: (r) => formatDuration(r.avgTimeSec),
-    detail: (r) => plural(r.wins, 'victoria', 'victorias')
+    value: (r) => formatDuration(r.avgTimeSec)
   },
   {
     key: 'mostMaterial',
     title: 'Victoria con más material',
     unit: 'piezas que le quedaban en el tablero',
-    value: (r) => plural(r.material, 'punto', 'puntos'),
-    detail: (r) => `${plural(r.moves, 'jugada', 'jugadas')} · ${r.roundLabel}`
+    value: (r) => plural(r.material, 'punto', 'puntos')
   },
   {
     key: 'mostCheckmates',
     title: 'Más jaques mate',
     unit: 'en todo el torneo',
-    value: (r) => plural(r.checkmates, 'mate', 'mates'),
-    detail: () => null
+    value: (r) => plural(r.checkmates, 'mate', 'mates')
   }
 ];
 
@@ -63,7 +57,6 @@ function StatCard({ card, rows }) {
           <div className="stat-leader">
             <span className="stat-value">{card.value(leader)}</span>
             <span className="stat-name">{leader.player?.name}</span>
-            {card.detail(leader) && <span className="stat-detail">{card.detail(leader)}</span>}
           </div>
           {rest.length > 0 && (
             <ol className="stat-rest" start={2}>
