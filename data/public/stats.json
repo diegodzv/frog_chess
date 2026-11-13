@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-12T17:58:01.643Z",
+  "updatedAt": "2026-11-13T10:22:14.022Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 8,
+  "gamesAnalyzed": 10,
   "minMovesForRecords": 5,
   "minWinsForAverage": 1,
   "fastestByMoves": [
@@ -46,28 +46,28 @@
     },
     {
       "player": {
+        "id": "p_pedro-atares-rodriguez-44b837",
+        "name": "Pedro Atarés Rodríguez",
+        "chesscomUsername": "CharlesDegoulash",
+        "seed": 9
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 24,
+      "timeSec": 243,
+      "material": 22
+    },
+    {
+      "player": {
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 7
+        "seed": 8
       },
       "round": 1,
       "roundLabel": "Ronda 1",
       "moves": 28,
       "timeSec": 248,
-      "material": 28
-    },
-    {
-      "player": {
-        "id": "p_antonio-manuel-martin-garcia-c24f9d",
-        "name": "Antonio Manuel Martín García",
-        "chesscomUsername": "PangWM",
-        "seed": 6
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 29,
-      "timeSec": 290,
       "material": 28
     }
   ],
@@ -100,6 +100,19 @@
     },
     {
       "player": {
+        "id": "p_pedro-atares-rodriguez-44b837",
+        "name": "Pedro Atarés Rodríguez",
+        "chesscomUsername": "CharlesDegoulash",
+        "seed": 9
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 24,
+      "timeSec": 243,
+      "material": 22
+    },
+    {
+      "player": {
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
@@ -116,25 +129,12 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 7
+        "seed": 8
       },
       "round": 1,
       "roundLabel": "Ronda 1",
       "moves": 28,
       "timeSec": 248,
-      "material": 28
-    },
-    {
-      "player": {
-        "id": "p_antonio-manuel-martin-garcia-c24f9d",
-        "name": "Antonio Manuel Martín García",
-        "chesscomUsername": "PangWM",
-        "seed": 6
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 29,
-      "timeSec": 290,
       "material": 28
     }
   ],
@@ -174,25 +174,25 @@
     },
     {
       "player": {
+        "id": "p_pedro-atares-rodriguez-44b837",
+        "name": "Pedro Atarés Rodríguez",
+        "chesscomUsername": "CharlesDegoulash",
+        "seed": 9
+      },
+      "wins": 1,
+      "avgMoves": 24,
+      "avgTimeSec": 243
+    },
+    {
+      "player": {
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 7
+        "seed": 8
       },
       "wins": 1,
       "avgMoves": 28,
       "avgTimeSec": 248
-    },
-    {
-      "player": {
-        "id": "p_antonio-manuel-martin-garcia-c24f9d",
-        "name": "Antonio Manuel Martín García",
-        "chesscomUsername": "PangWM",
-        "seed": 6
-      },
-      "wins": 1,
-      "avgMoves": 29,
-      "avgTimeSec": 290
     }
   ],
   "fastestAverageByTime": [
@@ -220,6 +220,17 @@
     },
     {
       "player": {
+        "id": "p_pedro-atares-rodriguez-44b837",
+        "name": "Pedro Atarés Rodríguez",
+        "chesscomUsername": "CharlesDegoulash",
+        "seed": 9
+      },
+      "wins": 1,
+      "avgMoves": 24,
+      "avgTimeSec": 243
+    },
+    {
+      "player": {
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
@@ -234,22 +245,11 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 7
+        "seed": 8
       },
       "wins": 1,
       "avgMoves": 28,
       "avgTimeSec": 248
-    },
-    {
-      "player": {
-        "id": "p_antonio-manuel-martin-garcia-c24f9d",
-        "name": "Antonio Manuel Martín García",
-        "chesscomUsername": "PangWM",
-        "seed": 6
-      },
-      "wins": 1,
-      "avgMoves": 29,
-      "avgTimeSec": 290
     }
   ],
   "mostMaterial": [
@@ -284,7 +284,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 7
+        "seed": 8
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -297,7 +297,7 @@
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
-        "seed": 6
+        "seed": 7
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -307,16 +307,16 @@
     },
     {
       "player": {
-        "id": "p_daniel-alocen-pinillos-a8390a",
-        "name": "Daniel Alocen Pinillos",
-        "chesscomUsername": "PerfectRiver",
-        "seed": 3
+        "id": "p_andres-chica-linares-885e0c",
+        "name": "Andrés Chica Linares",
+        "chesscomUsername": "sensuao",
+        "seed": 6
       },
       "round": 1,
       "roundLabel": "Ronda 1",
-      "moves": 23,
-      "timeSec": 210,
-      "material": 25
+      "moves": 36,
+      "timeSec": 458,
+      "material": 27
     }
   ],
   "mostCheckmates": [
@@ -331,10 +331,19 @@
     },
     {
       "player": {
+        "id": "p_andres-chica-linares-885e0c",
+        "name": "Andrés Chica Linares",
+        "chesscomUsername": "sensuao",
+        "seed": 6
+      },
+      "checkmates": 1
+    },
+    {
+      "player": {
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 7
+        "seed": 8
       },
       "checkmates": 1
     },
@@ -343,7 +352,7 @@
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
-        "seed": 6
+        "seed": 7
       },
       "checkmates": 1
     },
@@ -353,15 +362,6 @@
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
         "seed": 2
-      },
-      "checkmates": 1
-    },
-    {
-      "player": {
-        "id": "p_josep-oriol-elias-albajes-31219d",
-        "name": "Josep Oriol Elias Albajes",
-        "chesscomUsername": "iLostTheGame420",
-        "seed": 8
       },
       "checkmates": 1
     }

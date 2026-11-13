@@ -98,12 +98,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "20d2ff52-26c8-4b87-b5c1-08b7c1550f51",
       "loss": false,
       "match": 3,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-13T10:20:35.000Z",
+            "material": {
+              "black": 27,
+              "white": 11
+            },
+            "moves": 36,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 458,
+              "white": 577
+            },
+            "url": "https://www.chess.com/game/live/187111958248"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -111,14 +134,14 @@
       "player1": {
         "draw": 0,
         "id": "p_victor-manuel-espada-rodriguez-dc0280",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_andres-chica-linares-885e0c",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 1
     },
@@ -177,12 +200,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "c9d9039d-e22e-45e9-9b9e-bfb37c1268ce",
       "loss": false,
       "match": 6,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-13T10:17:31.000Z",
+            "material": {
+              "black": 14,
+              "white": 22
+            },
+            "moves": 24,
+            "p1Color": "white",
+            "result": "p1",
+            "termination": "resigned",
+            "timeUsed": {
+              "black": 388,
+              "white": 243
+            },
+            "url": "https://www.chess.com/game/live/187112142422"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -191,12 +237,12 @@
         "draw": 0,
         "id": "p_pedro-atares-rodriguez-44b837",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_luis-gontan-moreno-651b3b",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -671,7 +717,7 @@
           "bye": false,
           "draw": 0,
           "id": "20d2ff52-26c8-4b87-b5c1-08b7c1550f51",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_andres-chica-linares-885e0c",
           "pairUpDown": false,
           "seating": null,
@@ -825,7 +871,7 @@
           "bye": false,
           "draw": 0,
           "id": "c9d9039d-e22e-45e9-9b9e-bfb37c1268ce",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_pedro-atares-rodriguez-44b837",
           "pairUpDown": false,
           "seating": null,
@@ -917,7 +963,7 @@
           "opponent": "p_victor-manuel-espada-rodriguez-dc0280",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1093,7 +1139,7 @@
           "opponent": "p_luis-gontan-moreno-651b3b",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
