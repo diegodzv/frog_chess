@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-13T12:07:59.996Z",
+  "updatedAt": "2026-11-13T14:09:59.756Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 11,
+  "gamesAnalyzed": 12,
   "minMovesForRecords": 5,
   "minWinsForAverage": 1,
   "fastestByMoves": [
@@ -10,7 +10,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 4
+        "seed": 5
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -36,7 +36,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -49,7 +49,7 @@
         "id": "p_pedro-atares-rodriguez-44b837",
         "name": "Pedro Atarés Rodríguez",
         "chesscomUsername": "CharlesDegoulash",
-        "seed": 10
+        "seed": 11
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -62,7 +62,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 9
+        "seed": 10
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -77,7 +77,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 4
+        "seed": 5
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -90,7 +90,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -103,7 +103,7 @@
         "id": "p_pedro-atares-rodriguez-44b837",
         "name": "Pedro Atarés Rodríguez",
         "chesscomUsername": "CharlesDegoulash",
-        "seed": 10
+        "seed": 11
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -129,7 +129,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 9
+        "seed": 10
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -144,7 +144,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 4
+        "seed": 5
       },
       "wins": 1,
       "avgMoves": 20,
@@ -166,7 +166,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 3
+        "seed": 4
       },
       "wins": 1,
       "avgMoves": 23,
@@ -177,7 +177,7 @@
         "id": "p_pedro-atares-rodriguez-44b837",
         "name": "Pedro Atarés Rodríguez",
         "chesscomUsername": "CharlesDegoulash",
-        "seed": 10
+        "seed": 11
       },
       "wins": 1,
       "avgMoves": 24,
@@ -188,7 +188,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 9
+        "seed": 10
       },
       "wins": 1,
       "avgMoves": 28,
@@ -201,7 +201,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 4
+        "seed": 5
       },
       "wins": 1,
       "avgMoves": 20,
@@ -212,7 +212,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 3
+        "seed": 4
       },
       "wins": 1,
       "avgMoves": 23,
@@ -223,7 +223,7 @@
         "id": "p_pedro-atares-rodriguez-44b837",
         "name": "Pedro Atarés Rodríguez",
         "chesscomUsername": "CharlesDegoulash",
-        "seed": 10
+        "seed": 11
       },
       "wins": 1,
       "avgMoves": 24,
@@ -245,7 +245,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 9
+        "seed": 10
       },
       "wins": 1,
       "avgMoves": 28,
@@ -258,7 +258,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 6
+        "seed": 7
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -271,7 +271,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 4
+        "seed": 5
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -294,28 +294,28 @@
     },
     {
       "player": {
+        "id": "p_lucas-llobet-cusi-354632",
+        "name": "Lucas Llobet Cusi",
+        "chesscomUsername": "Lucasllobet",
+        "seed": 3
+      },
+      "round": 1,
+      "roundLabel": "Ronda 1",
+      "moves": 33,
+      "timeSec": 276,
+      "material": 30
+    },
+    {
+      "player": {
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 9
+        "seed": 10
       },
       "round": 1,
       "roundLabel": "Ronda 1",
       "moves": 28,
       "timeSec": 248,
-      "material": 28
-    },
-    {
-      "player": {
-        "id": "p_antonio-manuel-martin-garcia-c24f9d",
-        "name": "Antonio Manuel Martín García",
-        "chesscomUsername": "PangWM",
-        "seed": 8
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 29,
-      "timeSec": 290,
       "material": 28
     }
   ],
@@ -325,7 +325,7 @@
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 5
+        "seed": 6
       },
       "checkmates": 1
     },
@@ -334,7 +334,16 @@
         "id": "p_andres-chica-linares-885e0c",
         "name": "Andrés Chica Linares",
         "chesscomUsername": "sensuao",
-        "seed": 7
+        "seed": 8
+      },
+      "checkmates": 1
+    },
+    {
+      "player": {
+        "id": "p_lucas-llobet-cusi-354632",
+        "name": "Lucas Llobet Cusi",
+        "chesscomUsername": "Lucasllobet",
+        "seed": 3
       },
       "checkmates": 1
     },
@@ -343,7 +352,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 9
+        "seed": 10
       },
       "checkmates": 1
     },
@@ -352,16 +361,7 @@
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
-        "seed": 8
-      },
-      "checkmates": 1
-    },
-    {
-      "player": {
-        "id": "p_diego-diaz-vidal-4f1507",
-        "name": "Diego Díaz Vidal",
-        "chesscomUsername": "diegodzv",
-        "seed": 2
+        "seed": 9
       },
       "checkmates": 1
     }

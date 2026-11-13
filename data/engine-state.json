@@ -175,12 +175,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "05544c00-398f-4b72-b614-213f5ed9644d",
       "loss": false,
       "match": 5,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-13T12:49:27.000Z",
+            "material": {
+              "black": 30,
+              "white": 15
+            },
+            "moves": 33,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 276,
+              "white": 362
+            },
+            "url": "https://www.chess.com/game/live/187120326082"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -189,12 +212,12 @@
         "draw": 0,
         "id": "p_lucas-llobet-cusi-354632",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_alvaro-castro-sampedro-2685b6",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 1
@@ -722,7 +745,7 @@
           "opponent": "p_alvaro-castro-sampedro-2685b6",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1114,7 +1137,7 @@
           "bye": false,
           "draw": 0,
           "id": "05544c00-398f-4b72-b614-213f5ed9644d",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_lucas-llobet-cusi-354632",
           "pairUpDown": false,
           "seating": null,
