@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T14:42:42.782Z",
+  "updatedAt": "2026-11-13T19:45:18.961Z",
   "phase": "stage-one",
   "currentRound": 1,
   "rounds": [
@@ -421,7 +421,9 @@
           "status": "pending",
           "score": null,
           "winner": null,
-          "games": null,
+          "games": [
+            "draw"
+          ],
           "manual": null
         }
       ]

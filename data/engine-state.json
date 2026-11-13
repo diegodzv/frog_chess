@@ -660,7 +660,11 @@
       "id": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
       "loss": false,
       "match": 15,
-      "meta": {},
+      "meta": {
+        "games": [
+          "draw"
+        ]
+      },
       "path": {
         "loss": null,
         "win": null
