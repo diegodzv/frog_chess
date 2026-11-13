@@ -559,12 +559,35 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "c1d14d8d-f575-487f-9e2a-0e6d912ae29c",
       "loss": false,
       "match": 13,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-13T14:20:34.000Z",
+            "material": {
+              "black": 20,
+              "white": 25
+            },
+            "moves": 28,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "timeout",
+            "timeUsed": {
+              "black": 531,
+              "white": 503
+            },
+            "url": "https://www.chess.com/game/live/187125525894"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -572,14 +595,14 @@
       "player1": {
         "draw": 0,
         "id": "p_johan-stevens-bautista-parra-cd3247",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_lucia-valles-escudero-f202a0",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 1
     },
@@ -1049,7 +1072,7 @@
           "bye": false,
           "draw": 0,
           "id": "c1d14d8d-f575-487f-9e2a-0e6d912ae29c",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_lucia-valles-escudero-f202a0",
           "pairUpDown": false,
           "seating": null,
@@ -1317,7 +1340,7 @@
           "opponent": "p_johan-stevens-bautista-parra-cd3247",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
