@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T19:45:18.961Z",
+  "updatedAt": "2026-11-15T21:30:52.309Z",
   "phase": "stage-one",
   "currentRound": 1,
   "rounds": [
@@ -38,7 +38,8 @@
           "games": [
             "p2"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "0e5c78fa-2e7b-4ad2-b73c-6771a9e156ba",
@@ -66,7 +67,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "20d2ff52-26c8-4b87-b5c1-08b7c1550f51",
@@ -94,7 +96,8 @@
           "games": [
             "p2"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
@@ -120,7 +123,8 @@
           },
           "winner": "p1",
           "games": null,
-          "manual": "player1_win"
+          "manual": "player1_win",
+          "coinToss": false
         },
         {
           "matchId": "05544c00-398f-4b72-b614-213f5ed9644d",
@@ -148,7 +152,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "c9d9039d-e22e-45e9-9b9e-bfb37c1268ce",
@@ -176,7 +181,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "e995829b-f749-4305-a6ba-76a6a1a16460",
@@ -204,7 +210,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "08920baf-34d5-4a5d-a874-8feb0ccaffd8",
@@ -232,7 +239,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "c3db9446-821b-4169-bde0-210f6d6a79a3",
@@ -260,7 +268,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "b0b99d4b-189a-49b1-96c5-e0b7906391ec",
@@ -288,7 +297,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "b8919838-4587-40bd-92cd-2ba05483c8fc",
@@ -316,7 +326,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "da2d0204-e078-4971-bdae-54fe4cc8e0af",
@@ -344,7 +355,8 @@
           "games": [
             "p2"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "c1d14d8d-f575-487f-9e2a-0e6d912ae29c",
@@ -372,7 +384,8 @@
           "games": [
             "p2"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "68ba3d54-f77a-4165-aa41-eccb2be30994",
@@ -400,7 +413,8 @@
           "games": [
             "p1"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         },
         {
           "matchId": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
@@ -424,7 +438,8 @@
           "games": [
             "draw"
           ],
-          "manual": null
+          "manual": null,
+          "coinToss": false
         }
       ]
     }
