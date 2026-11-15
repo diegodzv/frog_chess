@@ -126,3 +126,46 @@ test('advance-tournament.mjs start-tournament --levels --start-at runs as a proc
   assert.equal(levels[strong.player1.id], levels[strong.player2.id]);
   assert.equal(JSON.parse(readFileSync(path.join(dir, 'public', 'rounds.json'), 'utf8')).rounds[0].pairings.length, 4);
 });
+
+test('manual-result (workflow «Resultado manual»): applies one result, can open the next round, refuses a wrong pair', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'frog-manual-'));
+  mkdirSync(path.join(dir, 'public'));
+  const { roster: r } = roster({ 3: 2, 2: 2 });
+  const started = startTournament({ tournament: config, roster: r, now: '2026-11-09T08:00:00.000Z' });
+  const write = (f, v) => writeFileSync(path.join(dir, f), typeof v === 'string' ? v : JSON.stringify(v, null, 2));
+  write('tournament.json', started.tournament);
+  write('players.json', r);
+  write('engine-state.json', saveEngineTournament(started.engine));
+  write('overrides.json', { overrides: [] });
+  const [m1, m2] = getUnresolvedMatches(started.engine, 1);
+  const user = (id) => started.engine.getPlayer(id).getMeta().chesscomUsername;
+
+  const script = fileURLToPath(new URL('../advance-tournament.mjs', import.meta.url));
+  const run = (env) =>
+    spawnSync(process.execPath, [script], {
+      env: { ...process.env, FROG_DATA_DIR: dir, FROG_SKIP_GIT: '1', ACTION: 'manual-result', ...env },
+      encoding: 'utf8'
+    });
+  const read = (f) => JSON.parse(readFileSync(path.join(dir, f), 'utf8'));
+
+  // Two players who don't face each other: refused, nothing written.
+  const wrong = run({ RESULT: 'gana-jugador-1', PLAYER_A: user(m1.player1.id), PLAYER_B: user(m2.player1.id) });
+  assert.notEqual(wrong.status, 0);
+  assert.match(wrong.stderr, /No hay ninguna partida pendiente/);
+  assert.deepEqual(read('overrides.json'), { overrides: [] });
+
+  // Coin toss after a draw: player2 of the first table wins (with an @ and spaces, as typed on a phone).
+  const toss = run({ RESULT: 'gana-jugador-1', PLAYER_A: ` @${user(m1.player2.id)} `, PLAYER_B: user(m1.player1.id), REASON: 'sorteo' });
+  assert.equal(toss.status, 0, toss.stderr);
+  let engine = loadEngineTournament(read('engine-state.json'));
+  assert.deepEqual([engine.getMatch(m1.id).player1.win, engine.getMatch(m1.id).player2.win], [0, 1]);
+  assert.equal(read('tournament.json').currentRound, 1, 'sin abrir la siguiente ronda');
+
+  // Nobody played the other table: both lose, and the round closes.
+  const both = run({ RESULT: 'pierden-los-dos', PLAYER_A: user(m2.player1.id), PLAYER_B: user(m2.player2.id), ADVANCE: 'true' });
+  assert.equal(both.status, 0, both.stderr);
+  engine = loadEngineTournament(read('engine-state.json'));
+  assert.equal(engine.getMatch(m2.id).getMeta().forfeit, 'double');
+  assert.equal(read('tournament.json').currentRound, 2);
+  assert.equal(read('public/rounds.json').rounds.length, 2);
+});

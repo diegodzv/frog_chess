@@ -110,7 +110,6 @@ async function applyOverrides() {
   console.log(`Applied ${applied} override(s) to round ${tournament.currentRound}.`);
 }
 
-/** Regenerates data/public/*.json (e.g. after editing players.json by hand) and commits it. */
 /**
  * set-cutoff --value=<n>: how many players go through to the bracket (power of two), decided during the swiss
  * stage. Also recorded as the configured value, so a reset keeps the organizers' decision.
@@ -152,10 +151,45 @@ async function setUsername() {
   console.log(`${player.name}: ${from} -> ${player.chesscomUsername}`);
 }
 
+/** Regenerates data/public/*.json (e.g. after editing players.json by hand) and commits it. */
 async function rebuildPublicData() {
   await buildPublicData();
   const committed = commitAndPush('datos públicos: reconstruidos a mano');
   console.log(committed ? 'Public data rebuilt and committed.' : 'Public data already up to date.');
+}
+
+const RESULT_KINDS = { 'gana-jugador-1': 'winner', winner: 'winner', 'pierden-los-dos': 'double_forfeit', double_forfeit: 'double_forfeit' };
+
+/**
+ * manual-result (workflow "Resultado manual", usable from the phone): adds an overrides.json entry for one pairing
+ * of the current round and applies it; with ADVANCE=true it then closes the round and opens the next one
+ * (force-next-round). RESULT=gana-jugador-1: PLAYER_A beats PLAYER_B (coin toss after a draw, walkover);
+ * RESULT=pierden-los-dos: neither played, both lose. Refuses, changing nothing, if the two usernames are not a
+ * pending pairing of the current round.
+ */
+async function manualResult() {
+  const kind = RESULT_KINDS[String(process.env.RESULT ?? '').trim()];
+  const a = String(process.env.PLAYER_A ?? '').trim().replace(/^@/, '');
+  const b = String(process.env.PLAYER_B ?? '').trim().replace(/^@/, '');
+  const reason = String(process.env.REASON ?? '').trim();
+  if (!kind) throw new Error(`Resultado no reconocido: "${process.env.RESULT}". Usa gana-jugador-1 o pierden-los-dos.`);
+  if (!a || !b) throw new Error('Faltan los usuarios de chess.com de los dos jugadores.');
+
+  const entry = kind === 'winner' ? { winner: a, loser: b } : { players: [a, b], outcome: 'double_forfeit' };
+  if (reason) entry.reason = reason;
+
+  const tournament = await readJson('tournament.json');
+  const engineJson = await readJson('engine-state.json');
+  const current = await readJson('overrides.json');
+  const withEntry = { overrides: [...current.overrides, entry] };
+  // Try it on a throwaway copy first: nothing is written if the entry matches no pending pairing.
+  const probe = applyPendingOverrides({ engine: loadEngineTournament(engineJson), tournament, overrides: withEntry });
+  if (!probe.overrides.overrides.at(-1).applied) {
+    throw new Error(`No hay ninguna partida pendiente de la ronda ${tournament.currentRound} entre "${a}" y "${b}". Revisa los usuarios (en la web, pestaña Rondas) o si esa partida ya tiene resultado.`);
+  }
+  await writeJson('overrides.json', withEntry);
+  console.log(kind === 'winner' ? `Resultado: gana ${a} a ${b}.` : `Resultado: ${a} y ${b} pierden los dos.`);
+  return process.env.ADVANCE === 'true' ? next(true) : applyOverrides();
 }
 
 async function next(force) {
@@ -187,9 +221,10 @@ async function main() {
   if (action === 'rebuild-public-data') return rebuildPublicData();
   if (action === 'set-cutoff') return setCutoff();
   if (action === 'set-username') return setUsername();
+  if (action === 'manual-result') return manualResult();
   if (action === 'next-round') return next(false);
   if (action === 'force-next-round') return next(true);
-  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | set-username | next-round | force-next-round.`);
+  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | set-username | manual-result | next-round | force-next-round.`);
 }
 
 await main();

@@ -1,0 +1,93 @@
+name: Resultado manual
+
+# Form to enter one result by hand (coin toss after a draw, a game that wasn't played) from the GitHub app or
+# website, optionally opening the next round in the same run. Syncs chess.com first, so a game played at the
+# last minute is never overwritten. The inputs reach the script only through env, never interpolated.
+
+on:
+  workflow_dispatch:
+    inputs:
+      resultado:
+        description: 'Resultado'
+        required: true
+        type: choice
+        options:
+          - gana-jugador-1
+          - pierden-los-dos
+      jugador_1:
+        description: 'Usuario de chess.com del jugador 1 (el que gana, si gana alguien)'
+        required: true
+        type: string
+      jugador_2:
+        description: 'Usuario de chess.com del jugador 2'
+        required: true
+        type: string
+      motivo:
+        description: 'Motivo (opcional, p. ej. "sorteo tras tablas")'
+        required: false
+        type: string
+      abrir_siguiente_ronda:
+        description: 'Después, cerrar la ronda y abrir la siguiente (como force-next-round)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write # to dispatch deploy-pages.yml
+
+concurrency:
+  group: tournament-data
+  cancel-in-progress: false
+
+jobs:
+  manual-result:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: npm ci
+
+      - name: Configure git identity
+        run: |
+          git config user.name "frog-chess-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: Remember current commit
+        id: head
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Sync results from chess.com first
+        working-directory: scripts
+        run: node sync-results.mjs
+
+      - name: Enter the result
+        working-directory: scripts
+        env:
+          ACTION: manual-result
+          RESULT: ${{ inputs.resultado }}
+          PLAYER_A: ${{ inputs.jugador_1 }}
+          PLAYER_B: ${{ inputs.jugador_2 }}
+          REASON: ${{ inputs.motivo }}
+          ADVANCE: ${{ inputs.abrir_siguiente_ronda }}
+        run: node advance-tournament.mjs
+
+      # Pushes made with the workflow's GITHUB_TOKEN don't trigger other workflows, so the site has to be
+      # redeployed explicitly whenever this run committed new data.
+      - name: Redeploy the site if the bot committed
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE: ${{ steps.head.outputs.sha }}
+        run: |
+          if [ "$(git rev-parse HEAD)" != "$BEFORE" ]; then
+            gh workflow run deploy-pages.yml --ref "${{ github.event.repository.default_branch || 'main' }}"
+          fi
