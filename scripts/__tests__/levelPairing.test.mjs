@@ -169,3 +169,31 @@ test('manual-result (workflow «Resultado manual»): applies one result, can ope
   assert.equal(read('tournament.json').currentRound, 2);
   assert.equal(read('public/rounds.json').rounds.length, 2);
 });
+
+test('manual-result sorteo-gana-jugador-1: completes the drawn game and flags it as a coin toss for the site', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'frog-toss-'));
+  mkdirSync(path.join(dir, 'public'));
+  const { roster: r } = roster({ 3: 2, 2: 2 });
+  const started = startTournament({ tournament: config, roster: r, now: '2026-11-09T08:00:00.000Z' });
+  const [drawn, other] = getUnresolvedMatches(started.engine, 1);
+  drawn.set({ meta: { games: ['draw'] } }); // what sync-results stores for a drawn Bo1
+  const write = (f, v) => writeFileSync(path.join(dir, f), typeof v === 'string' ? v : JSON.stringify(v, null, 2));
+  write('tournament.json', started.tournament);
+  write('players.json', r);
+  write('engine-state.json', saveEngineTournament(started.engine));
+  write('overrides.json', { overrides: [] });
+  const user = (id) => started.engine.getPlayer(id).getMeta().chesscomUsername;
+
+  const script = fileURLToPath(new URL('../advance-tournament.mjs', import.meta.url));
+  const run = spawnSync(process.execPath, [script], {
+    env: { ...process.env, FROG_DATA_DIR: dir, FROG_SKIP_GIT: '1', ACTION: 'manual-result', RESULT: 'sorteo-gana-jugador-1', PLAYER_A: user(drawn.player1.id), PLAYER_B: user(drawn.player2.id) },
+    encoding: 'utf8'
+  });
+  assert.equal(run.status, 0, run.stderr);
+  const pairings = JSON.parse(readFileSync(path.join(dir, 'public', 'rounds.json'), 'utf8')).rounds[0].pairings;
+  const tossed = pairings.find((p) => p.matchId === drawn.id);
+  assert.equal(tossed.status, 'complete');
+  assert.equal(tossed.winner, 'p1');
+  assert.equal(tossed.coinToss, true);
+  assert.equal(pairings.find((p) => p.matchId === other.id).coinToss, false);
+});

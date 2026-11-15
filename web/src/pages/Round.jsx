@@ -59,7 +59,10 @@ function Pairing({ pairing }) {
       <PlayerName player={pairing.player1} won={pairing.winner === 'p1'} lost={lost('p1')} left />
       <span className="score">{pairing.score ? `${pairing.score.p1} – ${pairing.score.p2}` : 'vs'}</span>
       <PlayerName player={pairing.player2} won={pairing.winner === 'p2'} lost={lost('p2')} />
-      <StatusBadge status={badge} />
+      <span className="status-cell">
+        <StatusBadge status={badge} />
+        {pairing.coinToss && <span className="row-note">Decidido por sorteo</span>}
+      </span>
     </div>
   );
 }

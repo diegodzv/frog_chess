@@ -13,6 +13,7 @@ on:
         type: choice
         options:
           - gana-jugador-1
+          - sorteo-gana-jugador-1
           - pierden-los-dos
       jugador_1:
         description: 'Usuario de chess.com del jugador 1 (el que gana, si gana alguien)'

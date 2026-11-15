@@ -158,12 +158,20 @@ async function rebuildPublicData() {
   console.log(committed ? 'Public data rebuilt and committed.' : 'Public data already up to date.');
 }
 
-const RESULT_KINDS = { 'gana-jugador-1': 'winner', winner: 'winner', 'pierden-los-dos': 'double_forfeit', double_forfeit: 'double_forfeit' };
+const RESULT_KINDS = {
+  'gana-jugador-1': 'winner',
+  winner: 'winner',
+  'sorteo-gana-jugador-1': 'coin_toss',
+  coin_toss: 'coin_toss',
+  'pierden-los-dos': 'double_forfeit',
+  double_forfeit: 'double_forfeit'
+};
 
 /**
  * manual-result (workflow "Resultado manual", usable from the phone): adds an overrides.json entry for one pairing
  * of the current round and applies it; with ADVANCE=true it then closes the round and opens the next one
- * (force-next-round). RESULT=gana-jugador-1: PLAYER_A beats PLAYER_B (coin toss after a draw, walkover);
+ * (force-next-round). RESULT=gana-jugador-1: PLAYER_A beats PLAYER_B (walkover); RESULT=sorteo-gana-jugador-1: the same,
+ * decided by drawing lots after a drawn game (the site shows a note);
  * RESULT=pierden-los-dos: neither played, both lose. Refuses, changing nothing, if the two usernames are not a
  * pending pairing of the current round.
  */
@@ -172,10 +180,11 @@ async function manualResult() {
   const a = String(process.env.PLAYER_A ?? '').trim().replace(/^@/, '');
   const b = String(process.env.PLAYER_B ?? '').trim().replace(/^@/, '');
   const reason = String(process.env.REASON ?? '').trim();
-  if (!kind) throw new Error(`Resultado no reconocido: "${process.env.RESULT}". Usa gana-jugador-1 o pierden-los-dos.`);
+  if (!kind) throw new Error(`Resultado no reconocido: "${process.env.RESULT}". Usa gana-jugador-1, sorteo-gana-jugador-1 o pierden-los-dos.`);
   if (!a || !b) throw new Error('Faltan los usuarios de chess.com de los dos jugadores.');
 
-  const entry = kind === 'winner' ? { winner: a, loser: b } : { players: [a, b], outcome: 'double_forfeit' };
+  const entry =
+    kind === 'double_forfeit' ? { players: [a, b], outcome: 'double_forfeit' } : { winner: a, loser: b, ...(kind === 'coin_toss' ? { coinToss: true } : {}) };
   if (reason) entry.reason = reason;
 
   const tournament = await readJson('tournament.json');
@@ -188,7 +197,7 @@ async function manualResult() {
     throw new Error(`No hay ninguna partida pendiente de la ronda ${tournament.currentRound} entre "${a}" y "${b}". Revisa los usuarios (en la web, pestaña Rondas) o si esa partida ya tiene resultado.`);
   }
   await writeJson('overrides.json', withEntry);
-  console.log(kind === 'winner' ? `Resultado: gana ${a} a ${b}.` : `Resultado: ${a} y ${b} pierden los dos.`);
+  console.log(kind === 'double_forfeit' ? `Resultado: ${a} y ${b} pierden los dos.` : `Resultado: gana ${a} a ${b}${kind === 'coin_toss' ? ' (sorteo)' : ''}.`);
   return process.env.ADVANCE === 'true' ? next(true) : applyOverrides();
 }
 

@@ -148,7 +148,8 @@ export function applyPendingOverrides({ engine, tournament, overrides }) {
     if (!found) continue;
 
     const { match, outcome } = found;
-    const meta = { source: 'override', outcome, ...(ov.reason ? { reason: ov.reason } : {}) };
+    // coinToss: decided by drawing lots after a drawn game (shown as a note on the site).
+    const meta = { source: 'override', outcome, ...(ov.reason ? { reason: ov.reason } : {}), ...(ov.coinToss ? { coinToss: true } : {}) };
     try {
       if (outcome === 'double_forfeit') applyDoubleForfeit(engine, match, { meta });
       else applyResult(engine, match.id, outcome, { meta });

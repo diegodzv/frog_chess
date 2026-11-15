@@ -61,7 +61,8 @@ function buildPairing(engine, m, seeds, currentRound) {
     winner: m.bye ? 'p1' : pairingWinner(m),
     games: m.meta?.games ?? null,
     // 'double' = nobody showed up; an override outcome means the organizer entered the result by hand.
-    manual: forfeit ?? null
+    manual: forfeit ?? null,
+    coinToss: Boolean(m.meta?.coinToss)
   };
 }
 
