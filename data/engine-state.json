@@ -655,7 +655,7 @@
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
       "loss": false,
@@ -663,8 +663,61 @@
       "meta": {
         "games": [
           "draw"
-        ]
+        ],
+        "outcome": "player2_win",
+        "reason": "Sorteo tras tablas",
+        "source": "override"
       },
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_oscar-marin-flores-a2cc66",
+        "loss": 1,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_raul-morchon-fuentes-3193bc",
+        "loss": 0,
+        "win": 1
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "d09c5eb2-9a36-4acc-8511-3cd41e04bce2",
+      "loss": false,
+      "match": 1,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_daniel-alocen-pinillos-a8390a",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_alvaro-castro-sampedro-2685b6",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "8cccb8a9-aa52-493e-b9c9-0b273f9d3217",
+      "loss": false,
+      "match": 2,
+      "meta": {},
       "path": {
         "loss": null,
         "win": null
@@ -677,11 +730,336 @@
       },
       "player2": {
         "draw": 0,
+        "id": "p_albert-sanchez-fernandez-47fe38",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "148ac2dc-9800-4624-9af6-1b57d8b8f7b8",
+      "loss": false,
+      "match": 3,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_andres-chica-linares-885e0c",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_hector-rodriguez-vegue-bd3889",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "daeb803a-9e74-40f1-894b-59ac8470eca5",
+      "loss": false,
+      "match": 4,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_lucas-llobet-cusi-354632",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_diego-diaz-vidal-4f1507",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "19ba177d-0ec1-4d3d-ac9e-0c5d589518df",
+      "loss": false,
+      "match": 5,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_alberto-ruiz-rancano-41fb08",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_alejandro-garcia-castillo-58ed7d",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "15a8d5b7-c895-4586-b478-390353352032",
+      "loss": false,
+      "match": 6,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
         "id": "p_raul-morchon-fuentes-3193bc",
         "loss": 0,
         "win": 0
       },
-      "round": 1
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "e379a9eb-4d16-43bc-8f95-488cbf34080f",
+      "loss": false,
+      "match": 7,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_tania-duran-vicente-cc6c24",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_jose-luis-gomez-anton-3f5575",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "76723a26-ed5a-406f-9e23-dbfd3a05dc0e",
+      "loss": false,
+      "match": 8,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_victor-manuel-espada-rodriguez-dc0280",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_miguel-aragon-lazcano-29de38",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "e5f46c09-1c2a-40a5-a461-7083a57097e6",
+      "loss": false,
+      "match": 9,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_angel-tena-jimenez-b2ec4e",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_david-del-blanco-taranilla-dc5ea2",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "3b5dd499-b883-4e7a-9384-efc49408594d",
+      "loss": false,
+      "match": 10,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_luis-gontan-moreno-651b3b",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_emilio-garcia-quintana-935a82",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "2e24eb3d-5789-4a8f-9ff4-eb3d49ab58ed",
+      "loss": false,
+      "match": 11,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_pedro-atares-rodriguez-44b837",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_lucia-valles-escudero-f202a0",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "715cc0dd-d46e-45ce-a114-ba90929d8912",
+      "loss": false,
+      "match": 12,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_adrian-alamo-castro-b9b27d",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_diego-morante-parra-32c467",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "df8f897f-477b-4950-91b5-b5813382584b",
+      "loss": false,
+      "match": 13,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_erik-nogues-lavin-8b1828",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_david-prats-vargas-ee9dca",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "c92b3642-f89a-4f85-b1ec-d51a6a7256e7",
+      "loss": false,
+      "match": 14,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_johan-stevens-bautista-parra-cd3247",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_isabel-garcia-bergers-d56cf3",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "14f67ec5-adcd-4065-986e-6eb41a37382b",
+      "loss": false,
+      "match": 15,
+      "meta": {},
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_sergio-bernardez-molina-7de06b",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_antonio-manuel-martin-garcia-c24f9d",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
     }
   ],
   "meta": {
@@ -707,6 +1085,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "19ba177d-0ec1-4d3d-ac9e-0c5d589518df",
+          "loss": 0,
+          "opponent": "p_alejandro-garcia-castillo-58ed7d",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -729,6 +1117,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "daeb803a-9e74-40f1-894b-59ac8470eca5",
+          "loss": 0,
+          "opponent": "p_lucas-llobet-cusi-354632",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -748,6 +1146,16 @@
           "id": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
           "loss": 0,
           "opponent": "p_oscar-marin-flores-a2cc66",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "15a8d5b7-c895-4586-b478-390353352032",
+          "loss": 0,
+          "opponent": "p_josep-oriol-elias-albajes-31219d",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -773,6 +1181,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "daeb803a-9e74-40f1-894b-59ac8470eca5",
+          "loss": 0,
+          "opponent": "p_diego-diaz-vidal-4f1507",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -792,6 +1210,16 @@
           "id": "20d2ff52-26c8-4b87-b5c1-08b7c1550f51",
           "loss": 1,
           "opponent": "p_andres-chica-linares-885e0c",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "76723a26-ed5a-406f-9e23-dbfd3a05dc0e",
+          "loss": 0,
+          "opponent": "p_miguel-aragon-lazcano-29de38",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -817,6 +1245,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "d09c5eb2-9a36-4acc-8511-3cd41e04bce2",
+          "loss": 0,
+          "opponent": "p_alvaro-castro-sampedro-2685b6",
+          "pairUpDown": true,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -836,6 +1274,16 @@
           "id": "016804e9-3440-4e33-b4e5-9a080b97b7f1",
           "loss": 1,
           "opponent": "p_david-del-blanco-taranilla-dc5ea2",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "76723a26-ed5a-406f-9e23-dbfd3a05dc0e",
+          "loss": 0,
+          "opponent": "p_victor-manuel-espada-rodriguez-dc0280",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -861,6 +1309,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "19ba177d-0ec1-4d3d-ac9e-0c5d589518df",
+          "loss": 0,
+          "opponent": "p_alberto-ruiz-rancano-41fb08",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -880,6 +1338,16 @@
           "id": "7c61dccd-9c7b-458a-ad38-147c8005bb79",
           "loss": 1,
           "opponent": "p_sergio-bernardez-molina-7de06b",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "715cc0dd-d46e-45ce-a114-ba90929d8912",
+          "loss": 0,
+          "opponent": "p_adrian-alamo-castro-b9b27d",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -905,6 +1373,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "3b5dd499-b883-4e7a-9384-efc49408594d",
+          "loss": 0,
+          "opponent": "p_luis-gontan-moreno-651b3b",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -927,6 +1405,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "14f67ec5-adcd-4065-986e-6eb41a37382b",
+          "loss": 0,
+          "opponent": "p_antonio-manuel-martin-garcia-c24f9d",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -946,6 +1434,16 @@
           "id": "c9d9039d-e22e-45e9-9b9e-bfb37c1268ce",
           "loss": 1,
           "opponent": "p_pedro-atares-rodriguez-44b837",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "3b5dd499-b883-4e7a-9384-efc49408594d",
+          "loss": 0,
+          "opponent": "p_emilio-garcia-quintana-935a82",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -971,6 +1469,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "df8f897f-477b-4950-91b5-b5813382584b",
+          "loss": 0,
+          "opponent": "p_erik-nogues-lavin-8b1828",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -988,8 +1496,18 @@
           "bye": false,
           "draw": 0,
           "id": "f3c01cbe-ad4c-4758-bd22-c0ce54c7f846",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_raul-morchon-fuentes-3193bc",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "8cccb8a9-aa52-493e-b9c9-0b273f9d3217",
+          "loss": 0,
+          "opponent": "p_albert-sanchez-fernandez-47fe38",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -1015,6 +1533,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e5f46c09-1c2a-40a5-a461-7083a57097e6",
+          "loss": 0,
+          "opponent": "p_david-del-blanco-taranilla-dc5ea2",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1037,6 +1565,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "148ac2dc-9800-4624-9af6-1b57d8b8f7b8",
+          "loss": 0,
+          "opponent": "p_hector-rodriguez-vegue-bd3889",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1056,6 +1594,16 @@
           "id": "da2d0204-e078-4971-bdae-54fe4cc8e0af",
           "loss": 1,
           "opponent": "p_daniel-alocen-pinillos-a8390a",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e379a9eb-4d16-43bc-8f95-488cbf34080f",
+          "loss": 0,
+          "opponent": "p_tania-duran-vicente-cc6c24",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -1081,6 +1629,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c92b3642-f89a-4f85-b1ec-d51a6a7256e7",
+          "loss": 0,
+          "opponent": "p_isabel-garcia-bergers-d56cf3",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1103,6 +1661,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "14f67ec5-adcd-4065-986e-6eb41a37382b",
+          "loss": 0,
+          "opponent": "p_sergio-bernardez-molina-7de06b",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1122,6 +1690,16 @@
           "id": "c3db9446-821b-4169-bde0-210f6d6a79a3",
           "loss": 1,
           "opponent": "p_antonio-manuel-martin-garcia-c24f9d",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "715cc0dd-d46e-45ce-a114-ba90929d8912",
+          "loss": 0,
+          "opponent": "p_diego-morante-parra-32c467",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -1147,6 +1725,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "148ac2dc-9800-4624-9af6-1b57d8b8f7b8",
+          "loss": 0,
+          "opponent": "p_andres-chica-linares-885e0c",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1169,6 +1757,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "d09c5eb2-9a36-4acc-8511-3cd41e04bce2",
+          "loss": 0,
+          "opponent": "p_daniel-alocen-pinillos-a8390a",
+          "pairUpDown": true,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1188,6 +1786,16 @@
           "id": "e995829b-f749-4305-a6ba-76a6a1a16460",
           "loss": 1,
           "opponent": "p_alberto-ruiz-rancano-41fb08",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "8cccb8a9-aa52-493e-b9c9-0b273f9d3217",
+          "loss": 0,
+          "opponent": "p_oscar-marin-flores-a2cc66",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -1213,6 +1821,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "2e24eb3d-5789-4a8f-9ff4-eb3d49ab58ed",
+          "loss": 0,
+          "opponent": "p_lucia-valles-escudero-f202a0",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1235,6 +1853,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "15a8d5b7-c895-4586-b478-390353352032",
+          "loss": 0,
+          "opponent": "p_raul-morchon-fuentes-3193bc",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1254,6 +1882,16 @@
           "id": "08920baf-34d5-4a5d-a874-8feb0ccaffd8",
           "loss": 1,
           "opponent": "p_hector-rodriguez-vegue-bd3889",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "df8f897f-477b-4950-91b5-b5813382584b",
+          "loss": 0,
+          "opponent": "p_david-prats-vargas-ee9dca",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -1279,6 +1917,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e5f46c09-1c2a-40a5-a461-7083a57097e6",
+          "loss": 0,
+          "opponent": "p_angel-tena-jimenez-b2ec4e",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1298,6 +1946,16 @@
           "id": "68ba3d54-f77a-4165-aa41-eccb2be30994",
           "loss": 1,
           "opponent": "p_angel-tena-jimenez-b2ec4e",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "c92b3642-f89a-4f85-b1ec-d51a6a7256e7",
+          "loss": 0,
+          "opponent": "p_johan-stevens-bautista-parra-cd3247",
           "pairUpDown": false,
           "seating": null,
           "win": 0
@@ -1323,6 +1981,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e379a9eb-4d16-43bc-8f95-488cbf34080f",
+          "loss": 0,
+          "opponent": "p_jose-luis-gomez-anton-3f5575",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1345,6 +2013,16 @@
           "pairUpDown": false,
           "seating": null,
           "win": 1
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "2e24eb3d-5789-4a8f-9ff4-eb3d49ab58ed",
+          "loss": 0,
+          "opponent": "p_pedro-atares-rodriguez-44b837",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
         }
       ],
       "meta": {
@@ -1355,7 +2033,7 @@
       "value": 0
     }
   ],
-  "round": 1,
+  "round": 2,
   "scoring": {
     "bestOf": 1,
     "bye": 1,

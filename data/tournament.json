@@ -24,7 +24,7 @@
     "opponent opponent match win percentage"
   ],
   "phase": "stage-one",
-  "currentRound": 1,
+  "currentRound": 2,
   "rounds": [
     {
       "number": 1,
@@ -32,6 +32,14 @@
       "label": "Ronda 1",
       "bestOf": 1,
       "startedAt": "2026-11-09T08:00:00.000Z",
+      "endedAt": "2026-11-16T07:46:09.774Z"
+    },
+    {
+      "number": 2,
+      "phase": "stage-one",
+      "label": "Ronda 2",
+      "bestOf": 1,
+      "startedAt": "2026-11-16T07:46:09.774Z",
       "endedAt": null
     }
   ],

@@ -1,8 +1,8 @@
 {
   "name": "Frog Chess",
   "phase": "stage-one",
-  "currentRound": 1,
-  "currentRoundLabel": "Ronda 1",
+  "currentRound": 2,
+  "currentRoundLabel": "Ronda 2",
   "swissRounds": 6,
   "playoffCutoff": 16,
   "series": {
@@ -18,5 +18,5 @@
     "max": 200
   },
   "champion": null,
-  "updatedAt": "2026-11-08T10:15:42.081Z"
+  "updatedAt": "2026-11-16T07:46:09.786Z"
 }

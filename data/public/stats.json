@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T14:42:42.782Z",
+  "updatedAt": "2026-11-16T07:46:09.786Z",
   "phase": "stage-one",
   "gamesAnalyzed": 13,
   "minMovesForRecords": 5,
@@ -23,7 +23,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 2
+        "seed": 3
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -36,7 +36,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 4
+        "seed": 15
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -90,7 +90,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 4
+        "seed": 15
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -116,7 +116,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 2
+        "seed": 3
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -155,7 +155,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 2
+        "seed": 3
       },
       "wins": 1,
       "avgMoves": 21,
@@ -166,7 +166,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 4
+        "seed": 15
       },
       "wins": 1,
       "avgMoves": 23,
@@ -212,7 +212,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 4
+        "seed": 15
       },
       "wins": 1,
       "avgMoves": 23,
@@ -234,7 +234,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 2
+        "seed": 3
       },
       "wins": 1,
       "avgMoves": 21,
@@ -284,7 +284,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 2
+        "seed": 3
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -297,7 +297,7 @@
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 3
+        "seed": 1
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -343,7 +343,7 @@
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 3
+        "seed": 1
       },
       "checkmates": 1
     },
