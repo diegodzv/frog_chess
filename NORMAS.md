@@ -32,7 +32,7 @@ Cada ronda suiza dura una semana: los emparejamientos se publican el lunes a las
 1. **Crear la cuenta** (si no la tienes): entra en [chess.com](https://www.chess.com), pulsa **Regístrate** y elige un nombre de usuario. Es gratis; no hace falta ninguna suscripción.
 2. **Encontrar a tu rival**: en la pestaña **Rondas** de la web del torneo, junto a su nombre está su usuario de chess.com (@usuario), con un enlace a su perfil.
 3. **Retarle**: en chess.com, **Jugar → Jugar online → Desafío personalizado** (o el botón **Desafiar** de su perfil). Escribe su usuario y ajusta:
-   - **Ritmo**: 7 minutos con 5 segundos de incremento (7 | 5). Si no aparece en la lista, créalo como ritmo personalizado.
+   - **Ritmo**: 10 minutos, sin incremento (10 | 0). Suele aparecer en la lista como «10 min»; si no, créalo como ritmo personalizado con 10 minutos y 0 segundos de incremento.
    - **Puntuable**: desactivado. Son partidas amistosas.
    - **Color**: aleatorio.
 4. Envía el desafío. Tu rival lo acepta desde sus notificaciones de chess.com; si los dos estáis conectados, la partida empieza al momento.
@@ -87,7 +87,7 @@ Cuando empiezan las eliminatorias se publica también una **clasificación gener
 
 - Todas las partidas se juegan en chess.com, con los usuarios inscritos, desafiando directamente a tu rival.
 - **Partidas amistosas** (no puntuables) y **color aleatorio**.
-- **Ritmo**: 7 minutos por jugador con 5 segundos de incremento por jugada (7 | 5).
+- **Ritmo**: 10 minutos por jugador, sin incremento (10 | 0), desde la ronda 2. La ronda 1 se jugó a 7 minutos con 5 segundos de incremento (7 | 5).
 - Los resultados se toman de chess.com automáticamente. Juega con el ritmo del torneo: las partidas con cualquier otro ritmo no cuentan.
 
 ## Estadísticas
@@ -95,7 +95,6 @@ Cuando empiezan las eliminatorias se publica también una **clasificación gener
 La web lleva unas estadísticas que se actualizan a medida que se juegan las partidas. Solo aparece quien gana, nunca quien pierde.
 
 - Victoria más rápida, en jugadas y en tiempo (el que gastó el ganador en su reloj).
-- Quién gana más rápido de media, en jugadas y en tiempo (el que gastó en su reloj).
 - Victoria con más material en el tablero (peón 1, caballo y alfil 3, torre 5, dama 9).
 - Más jaques mate.
 

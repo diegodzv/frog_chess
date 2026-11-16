@@ -25,7 +25,7 @@ Los datos viven en `data/*.json` dentro del repo: cada cambio es un commit, así
 2. **Activar Pages**: *Settings → Pages → Build and deployment → Source = **GitHub Actions***. Hazlo *antes* del primer push (o relanza después *Actions → Deploy Pages → Run workflow*).
 3. **Permisos**: los workflows ya piden los permisos que necesitan. Si un run falla con un 403 al hacer push, activa *Settings → Actions → General → Workflow permissions → Read and write permissions*.
 4. **Comprobar** en la pestaña *Actions* que salen en verde `CI` y `Deploy Pages`, y que abre <https://diegodzv.github.io/frog_chess/>.
-5. **Ritmo de juego**: en `data/tournament.json`, `timeControl` es el ritmo exacto en segundos (`"420+5"` = 7 minutos + 5 s por jugada) y `timeClass` su categoría en chess.com (7+5 es `rapid`). Solo cuentan las partidas con ese ritmo exacto; si `requireRated` es `true`, además tienen que ser puntuables (ahora es `false`: partidas amistosas).
+5. **Ritmo de juego**: en `data/tournament.json`, `timeControl` es el ritmo exacto en segundos (`"600"` = 10 minutos sin incremento, desde la ronda 2; la ronda 1 fue `"420+5"`) y `timeClass` su categoría en chess.com (10+0 es `rapid`). Si cambia el ritmo a mitad de torneo, basta con cambiar estos dos valores: solo afectan a la ronda en curso y a las siguientes. Solo cuentan las partidas con ese ritmo exacto; si `requireRated` es `true`, además tienen que ser puntuables (ahora es `false`: partidas amistosas).
 
 ## 2. Inscripción con Microsoft Forms
 
@@ -108,7 +108,7 @@ Igual que arriba, ronda a ronda. El bot agrega las partidas de cada serie (al me
 
 ## 6. Estadísticas
 
-La página **Estadísticas** se actualiza con cada partida que resuelve el bot: victoria más rápida (en jugadas y en el tiempo que gastó el ganador en su reloj), quién gana más rápido de media (desde la primera victoria), victoria con más material y más jaques mate. Solo nombra al ganador. No cuentan las partidas abandonadas, las de menos de 5 jugadas ni los resultados metidos a mano.
+La página **Estadísticas** se actualiza con cada partida que resuelve el bot: victoria más rápida (en jugadas y en el tiempo que gastó el ganador en su reloj), victoria con más material y más jaques mate. Solo nombra al ganador. No cuentan las partidas abandonadas, las de menos de 5 jugadas ni los resultados metidos a mano.
 
 ## 7. Si algo sale mal
 

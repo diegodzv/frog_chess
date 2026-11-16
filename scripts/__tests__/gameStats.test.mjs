@@ -8,8 +8,7 @@ import {
   describeGame,
   winsFromMatches,
   buildStats,
-  MIN_MOVES_FOR_RECORDS,
-  MIN_WINS_FOR_AVERAGE
+  MIN_MOVES_FOR_RECORDS
 } from '../lib/gameStats.mjs';
 
 // Scholar's mate as chess.com publishes it (tags + clock comments).
@@ -125,16 +124,6 @@ test('buildStats: records name only the winner and skip abandoned or too-short g
   assert.ok(!JSON.stringify(stats).includes('loser'));
 });
 
-test('buildStats: averages rank every winner (from the first win) by mean moves / time', () => {
-  const stats = buildStats(
-    [win('A', 20, 300, 10), win('A', 30, 500, 10), win('B', 15, 200, 10), win('C', 40, 100, 10), win('C', 40, 100, 10)],
-    { player: ref, roundLabel: label }
-  );
-  assert.equal(MIN_WINS_FOR_AVERAGE, 1);
-  assert.deepEqual(stats.fastestAverageByMoves.map((r) => [r.player.id, r.avgMoves, r.wins]), [['B', 15, 1], ['A', 25, 2], ['C', 40, 2]]);
-  assert.deepEqual(stats.fastestAverageByTime.map((r) => [r.player.id, r.avgTimeSec]), [['C', 100], ['B', 200], ['A', 400]]);
-});
-
 test('buildStats: most checkmates counts mates per winner', () => {
   const stats = buildStats(
     [win('A', 20, 300, 10, 'checkmated'), win('A', 25, 300, 10, 'checkmated'), win('B', 20, 300, 10, 'checkmated'), win('B', 20, 300, 10)],
@@ -145,7 +134,7 @@ test('buildStats: most checkmates counts mates per winner', () => {
 
 test('buildStats with no games is empty but well-formed', () => {
   const stats = buildStats([], { player: ref, roundLabel: label });
-  for (const key of ['fastestByMoves', 'fastestByTime', 'fastestAverageByMoves', 'fastestAverageByTime', 'mostMaterial', 'mostCheckmates']) {
+  for (const key of ['fastestByMoves', 'fastestByTime', 'mostMaterial', 'mostCheckmates']) {
     assert.deepEqual(stats[key], [], key);
   }
   assert.equal(stats.gamesAnalyzed, 0);

@@ -8,8 +8,6 @@ const PIECE_VALUES = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
 
 /** Wins shorter than this (arranged results, misclicks) or by abandonment don't enter the speed/material records. */
 export const MIN_MOVES_FOR_RECORDS = 5;
-/** Wins needed before a player appears in the "fastest on average" ranking (1: visible from round 1). */
-export const MIN_WINS_FOR_AVERAGE = 1;
 const TOP = 5;
 
 export function parsePgnTags(pgn) {
@@ -145,29 +143,6 @@ export function buildStats(wins, { player, roundLabel }) {
     .slice(0, TOP)
     .map(record);
 
-  const perPlayer = new Map();
-  for (const w of eligible) {
-    if (!perPlayer.has(w.winnerId)) perPlayer.set(w.winnerId, []);
-    perPlayer.get(w.winnerId).push(w);
-  }
-  const average = (list, key) => {
-    const values = list.map((w) => w[key]).filter((v) => v != null);
-    return values.length ? values.reduce((s, v) => s + v, 0) / values.length : null;
-  };
-  const averages = [...perPlayer.entries()]
-    .filter(([, list]) => list.length >= MIN_WINS_FOR_AVERAGE)
-    .map(([id, list]) => ({
-      player: player(id),
-      wins: list.length,
-      avgMoves: Math.round(average(list, 'moves') * 10) / 10,
-      avgTimeSec: average(list, 'timeSec') == null ? null : Math.round(average(list, 'timeSec'))
-    }));
-  const fastestAverageByMoves = [...averages].sort((a, b) => a.avgMoves - b.avgMoves || b.wins - a.wins).slice(0, TOP);
-  const fastestAverageByTime = averages
-    .filter((a) => a.avgTimeSec != null)
-    .sort((a, b) => a.avgTimeSec - b.avgTimeSec || b.wins - a.wins)
-    .slice(0, TOP);
-
   const mates = new Map();
   for (const w of wins) if (w.termination === 'checkmated') mates.set(w.winnerId, (mates.get(w.winnerId) ?? 0) + 1);
   const mostCheckmates = [...mates.entries()]
@@ -178,11 +153,8 @@ export function buildStats(wins, { player, roundLabel }) {
   return {
     gamesAnalyzed: wins.length,
     minMovesForRecords: MIN_MOVES_FOR_RECORDS,
-    minWinsForAverage: MIN_WINS_FOR_AVERAGE,
     fastestByMoves,
     fastestByTime,
-    fastestAverageByMoves,
-    fastestAverageByTime,
     mostMaterial,
     mostCheckmates
   };

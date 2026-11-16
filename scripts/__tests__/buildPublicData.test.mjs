@@ -218,3 +218,34 @@ test('before any game: standings alphabetical, everybody first, nobody in the pl
   const pairing = files['rounds.json'].rounds[0].pairings.find((p) => [p.player1.name, p.player2.name].includes('Ana'));
   assert.equal([pairing.player1, pairing.player2].find((p) => p.name === 'Ana').chesscomUsername, null);
 });
+
+test('mid-round: resistance only counts finished games, and at equal points fewer losses ranks first', async () => {
+  const { startTournament, advance } = await import('../lib/tournamentFlow.mjs');
+  const { getUnresolvedMatches, applyResult } = await import('../lib/tournamentEngine.mjs');
+  const roster = { players: Array.from({ length: 8 }, (_, i) => ({ id: `p${i}`, name: `P${i}`, chesscomUsername: `u${i}`, status: 'active' })) };
+  const cfg = { ...config, swissRounds: 3, playoffCutoff: { method: 'rank', value: 4 }, series: { swiss: 1 } };
+  let { engine, tournament } = startTournament({ tournament: cfg, roster, now: NOW });
+  for (const m of getUnresolvedMatches(engine, 1)) applyResult(engine, m.id, 'player1_win');
+  ({ tournament } = advance({ engine, tournament, overrides: { overrides: [] }, now: NOW }));
+  // One round-2 game played (a winner beats a winner... or whatever the draw gave); the rest still pending.
+  const [played] = getUnresolvedMatches(engine, 2);
+  applyResult(engine, played.id, 'player1_win');
+
+  const { rows } = derivePublicData({ tournament, roster, engineState: JSON.parse(saveEngineTournament(engine)), now: NOW })['standings.json'];
+  const byId = new Map(rows.map((r) => [r.playerId, r]));
+  const r2Pending = new Set(getUnresolvedMatches(engine, 2).flatMap((m) => [m.player1.id, m.player2.id]));
+  for (const r of rows) {
+    if (!r2Pending.has(r.playerId)) continue;
+    // Still on one game: their only finished opponent ended round 1 with the opposite record.
+    const expected = r.record.win === 1 ? 0 : 1;
+    const opp = engine.getMatches().find((m) => m.round === 1 && [m.player1.id, m.player2.id].includes(r.playerId));
+    const oppId = opp.player1.id === r.playerId ? opp.player2.id : opp.player1.id;
+    if (!r2Pending.has(oppId)) continue; // that opponent already played round 2: their win % moved, as it should
+    assert.equal(r.resistance, expected, `${r.name}: ${r.record.win}-${r.record.loss}`);
+  }
+  // Equal points: the 1-0 players (round 2 pending) rank above a 1-1 player who already played round 2.
+  const oneOne = rows.find((r) => r.record.win === 1 && r.record.loss === 1);
+  const oneZero = rows.filter((r) => r.record.win === 1 && r.record.loss === 0);
+  if (oneOne) assert.ok(oneZero.every((r) => r.rank < oneOne.rank));
+  assert.ok(byId.size === 8);
+});

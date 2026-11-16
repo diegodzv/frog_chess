@@ -107,6 +107,27 @@ function bracketOutcomes(engine, finalRound, lastSwiss) {
   return outcomes;
 }
 
+/**
+ * Resistance counted over FINISHED games only. The library lists as opponents everyone met up to the current
+ * round, including the opponent of a game still to be played, so mid-round two players with the same record
+ * got different values (and the ranking moved with unplayed games). Same formula otherwise: the average match
+ * win % of the opponents, then the average resistance of the opponents. With no game pending it gives exactly
+ * the library's values (which is what the bracket is seeded from, at the end of the swiss stage).
+ */
+function resistanceOf(engine, scores, maxRound) {
+  const winPct = new Map(scores.map((s) => [s.player.getId(), s.tiebreaks.matchWinPct]));
+  const opponents = new Map(scores.map((s) => [s.player.getId(), []]));
+  for (const m of engine.getMatches()) {
+    if (m.round > maxRound || m.bye || m.active || !isResolved(m) || !m.player1.id || !m.player2.id) continue;
+    opponents.get(m.player1.id)?.push(m.player2.id);
+    opponents.get(m.player2.id)?.push(m.player1.id);
+  }
+  const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0);
+  const resistance = new Map([...opponents].map(([id, opp]) => [id, mean(opp.map((o) => winPct.get(o) ?? 0))]));
+  const opponentsResistance = new Map([...opponents].map(([id, opp]) => [id, mean(opp.map((o) => resistance.get(o) ?? 0))]));
+  return (id) => ({ resistance: resistance.get(id) ?? 0, opponentsResistance: opponentsResistance.get(id) ?? 0 });
+}
+
 function buildStandings({ tournament, engine, seeds, now }) {
   const cutoff = tournament.playoffCutoff?.value ?? null;
   const emptyResult = { updatedAt: now, phase: tournament.phase, round: tournament.currentRound, cutoff, rows: [] };
@@ -122,8 +143,24 @@ function buildStandings({ tournament, engine, seeds, now }) {
   const inBracket = new Set(
     engine.getMatches().filter((m) => m.round > lastSwiss).flatMap((m) => [m.player1.id, m.player2.id]).filter(Boolean)
   );
+  const scores = getSwissStandings(engine);
+  const resistance = resistanceOf(engine, scores, lastSwiss);
+  // Points, then fewer losses (mid-round, a 1-1 who already played this week shouldn't rank above the 1-0s
+  // still to play; once a round closes everybody has played the same games, so this changes nothing), then
+  // resistance, then the opponents' resistance; the library's order breaks any remaining tie.
+  const losses = (id) => records.get(id)?.loss ?? 0;
+  const ordered = scores
+    .map((s, order) => ({ s, order, ...resistance(s.player.getId()) }))
+    .sort(
+      (a, b) =>
+        b.s.matchPoints - a.s.matchPoints ||
+        losses(a.s.player.getId()) - losses(b.s.player.getId()) ||
+        b.resistance - a.resistance ||
+        b.opponentsResistance - a.opponentsResistance ||
+        a.order - b.order
+    );
   let placesTaken = 0;
-  const rows = getSwissStandings(engine).map((s, i) => {
+  const rows = ordered.map(({ s, resistance: res, opponentsResistance: oppRes }, i) => {
     const id = s.player.getId();
     const r = records.get(id) ?? { win: 0, loss: 0, gameWin: 0, gameLoss: 0, gameDraw: 0, byes: 0 };
     const dropped = Boolean(s.player.getMeta().dropped);
@@ -138,8 +175,8 @@ function buildStandings({ tournament, engine, seeds, now }) {
       games: { win: r.gameWin, loss: r.gameLoss, draw: r.gameDraw },
       byes: r.byes,
       // Resistance: average match win % of the opponents, then of the opponents' opponents (0..1).
-      resistance: round4(s.tiebreaks.oppMatchWinPct),
-      opponentsResistance: round4(s.tiebreaks.oppOppMatchWinPct),
+      resistance: round4(res),
+      opponentsResistance: round4(oppRes),
       qualified,
       dropped,
       // Once the bracket exists: how far they got. Before that, `qualified` is only provisional.
@@ -168,7 +205,9 @@ function buildStandings({ tournament, engine, seeds, now }) {
  */
 function buildFinalStandings(engine, seeds, outcomes, phase) {
   const records = seriesRecords(engine, Infinity);
-  const rows = engine.getStandings().map((s, i) => {
+  const scores = engine.getStandings();
+  const resistance = resistanceOf(engine, scores, Infinity);
+  const rows = scores.map((s, i) => {
     const id = s.player.getId();
     const r = records.get(id) ?? { win: 0, loss: 0 };
     return {
@@ -179,8 +218,8 @@ function buildFinalStandings(engine, seeds, outcomes, phase) {
       seed: seeds.get(id) ?? null,
       points: s.matchPoints,
       record: { win: r.win, loss: r.loss },
-      resistance: round4(s.tiebreaks.oppMatchWinPct),
-      opponentsResistance: round4(s.tiebreaks.oppOppMatchWinPct),
+      resistance: round4(resistance(id).resistance),
+      opponentsResistance: round4(resistance(id).opponentsResistance),
       outcome: s.player.getMeta().dropped
         ? 'Retirado'
         : (outcomes.get(id) ?? (s.player.isActive() ? 'En juego' : 'Eliminado en fase suiza'))
