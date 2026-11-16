@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T22:50:02.219Z",
+  "updatedAt": "2026-11-16T22:55:26.242Z",
   "phase": "stage-one",
   "currentRound": 2,
   "rounds": [
@@ -577,70 +577,8 @@
       "current": true,
       "pairings": [
         {
-          "matchId": "d09c5eb2-9a36-4acc-8511-3cd41e04bce2",
-          "table": 1,
-          "player1": {
-            "id": "p_daniel-alocen-pinillos-a8390a",
-            "name": "Daniel Alocen Pinillos",
-            "chesscomUsername": "PerfectRiver",
-            "seed": 16,
-            "record": {
-              "win": 1,
-              "loss": 0
-            }
-          },
-          "player2": {
-            "id": "p_alvaro-castro-sampedro-2685b6",
-            "name": "Álvaro Castro Sampedro",
-            "chesscomUsername": "alvastro0055",
-            "seed": 17,
-            "record": {
-              "win": 0,
-              "loss": 1
-            }
-          },
-          "bye": false,
-          "status": "pending",
-          "score": null,
-          "winner": null,
-          "games": null,
-          "manual": null,
-          "coinToss": false
-        },
-        {
-          "matchId": "8cccb8a9-aa52-493e-b9c9-0b273f9d3217",
-          "table": 2,
-          "player1": {
-            "id": "p_oscar-marin-flores-a2cc66",
-            "name": "Óscar Marín Flores",
-            "chesscomUsername": "oscaarmfl",
-            "seed": 23,
-            "record": {
-              "win": 0,
-              "loss": 1
-            }
-          },
-          "player2": {
-            "id": "p_albert-sanchez-fernandez-47fe38",
-            "name": "Albert Sánchez Fernández",
-            "chesscomUsername": "murakaii",
-            "seed": 26,
-            "record": {
-              "win": 0,
-              "loss": 1
-            }
-          },
-          "bye": false,
-          "status": "pending",
-          "score": null,
-          "winner": null,
-          "games": null,
-          "manual": null,
-          "coinToss": false
-        },
-        {
           "matchId": "148ac2dc-9800-4624-9af6-1b57d8b8f7b8",
-          "table": 3,
+          "table": 1,
           "player1": {
             "id": "p_andres-chica-linares-885e0c",
             "name": "Andrés Chica Linares",
@@ -671,7 +609,7 @@
         },
         {
           "matchId": "daeb803a-9e74-40f1-894b-59ac8470eca5",
-          "table": 4,
+          "table": 2,
           "player1": {
             "id": "p_lucas-llobet-cusi-354632",
             "name": "Lucas Llobet Cusi",
@@ -702,7 +640,7 @@
         },
         {
           "matchId": "19ba177d-0ec1-4d3d-ac9e-0c5d589518df",
-          "table": 5,
+          "table": 3,
           "player1": {
             "id": "p_alberto-ruiz-rancano-41fb08",
             "name": "Alberto Ruiz Rancaño",
@@ -733,7 +671,7 @@
         },
         {
           "matchId": "15a8d5b7-c895-4586-b478-390353352032",
-          "table": 6,
+          "table": 4,
           "player1": {
             "id": "p_josep-oriol-elias-albajes-31219d",
             "name": "Josep Oriol Elias Albajes",
@@ -763,8 +701,163 @@
           "coinToss": false
         },
         {
-          "matchId": "e379a9eb-4d16-43bc-8f95-488cbf34080f",
+          "matchId": "e5f46c09-1c2a-40a5-a461-7083a57097e6",
+          "table": 5,
+          "player1": {
+            "id": "p_angel-tena-jimenez-b2ec4e",
+            "name": "Ángel Tena Jiménez",
+            "chesscomUsername": "angeltena26",
+            "seed": 11,
+            "record": {
+              "win": 1,
+              "loss": 0
+            }
+          },
+          "player2": {
+            "id": "p_david-del-blanco-taranilla-dc5ea2",
+            "name": "David Del Blanco Taranilla",
+            "chesscomUsername": "kronista",
+            "seed": 15,
+            "record": {
+              "win": 1,
+              "loss": 0
+            }
+          },
+          "bye": false,
+          "status": "pending",
+          "score": null,
+          "winner": null,
+          "games": null,
+          "manual": null,
+          "coinToss": false
+        },
+        {
+          "matchId": "2e24eb3d-5789-4a8f-9ff4-eb3d49ab58ed",
+          "table": 6,
+          "player1": {
+            "id": "p_pedro-atares-rodriguez-44b837",
+            "name": "Pedro Atarés Rodríguez",
+            "chesscomUsername": "CharlesDegoulash",
+            "seed": 1,
+            "record": {
+              "win": 1,
+              "loss": 0
+            }
+          },
+          "player2": {
+            "id": "p_lucia-valles-escudero-f202a0",
+            "name": "Lucía Valles Escudero",
+            "chesscomUsername": "lvallese",
+            "seed": 5,
+            "record": {
+              "win": 1,
+              "loss": 0
+            }
+          },
+          "bye": false,
+          "status": "pending",
+          "score": null,
+          "winner": null,
+          "games": null,
+          "manual": null,
+          "coinToss": false
+        },
+        {
+          "matchId": "14f67ec5-adcd-4065-986e-6eb41a37382b",
           "table": 7,
+          "player1": {
+            "id": "p_sergio-bernardez-molina-7de06b",
+            "name": "Sergio Bernardez Molina",
+            "chesscomUsername": "sergiako_98",
+            "seed": 10,
+            "record": {
+              "win": 1,
+              "loss": 0
+            }
+          },
+          "player2": {
+            "id": "p_antonio-manuel-martin-garcia-c24f9d",
+            "name": "Antonio Manuel Martín García",
+            "chesscomUsername": "PangWM",
+            "seed": 13,
+            "record": {
+              "win": 1,
+              "loss": 0
+            }
+          },
+          "bye": false,
+          "status": "pending",
+          "score": null,
+          "winner": null,
+          "games": null,
+          "manual": null,
+          "coinToss": false
+        },
+        {
+          "matchId": "d09c5eb2-9a36-4acc-8511-3cd41e04bce2",
+          "table": 8,
+          "player1": {
+            "id": "p_daniel-alocen-pinillos-a8390a",
+            "name": "Daniel Alocen Pinillos",
+            "chesscomUsername": "PerfectRiver",
+            "seed": 16,
+            "record": {
+              "win": 1,
+              "loss": 0
+            }
+          },
+          "player2": {
+            "id": "p_alvaro-castro-sampedro-2685b6",
+            "name": "Álvaro Castro Sampedro",
+            "chesscomUsername": "alvastro0055",
+            "seed": 17,
+            "record": {
+              "win": 0,
+              "loss": 1
+            }
+          },
+          "bye": false,
+          "status": "pending",
+          "score": null,
+          "winner": null,
+          "games": null,
+          "manual": null,
+          "coinToss": false
+        },
+        {
+          "matchId": "8cccb8a9-aa52-493e-b9c9-0b273f9d3217",
+          "table": 9,
+          "player1": {
+            "id": "p_oscar-marin-flores-a2cc66",
+            "name": "Óscar Marín Flores",
+            "chesscomUsername": "oscaarmfl",
+            "seed": 23,
+            "record": {
+              "win": 0,
+              "loss": 1
+            }
+          },
+          "player2": {
+            "id": "p_albert-sanchez-fernandez-47fe38",
+            "name": "Albert Sánchez Fernández",
+            "chesscomUsername": "murakaii",
+            "seed": 26,
+            "record": {
+              "win": 0,
+              "loss": 1
+            }
+          },
+          "bye": false,
+          "status": "pending",
+          "score": null,
+          "winner": null,
+          "games": null,
+          "manual": null,
+          "coinToss": false
+        },
+        {
+          "matchId": "e379a9eb-4d16-43bc-8f95-488cbf34080f",
+          "table": 10,
           "player1": {
             "id": "p_tania-duran-vicente-cc6c24",
             "name": "Tania Durán Vicente",
@@ -795,7 +888,7 @@
         },
         {
           "matchId": "76723a26-ed5a-406f-9e23-dbfd3a05dc0e",
-          "table": 8,
+          "table": 11,
           "player1": {
             "id": "p_victor-manuel-espada-rodriguez-dc0280",
             "name": "Víctor Manuel Espada Rodríguez",
@@ -825,39 +918,8 @@
           "coinToss": false
         },
         {
-          "matchId": "e5f46c09-1c2a-40a5-a461-7083a57097e6",
-          "table": 9,
-          "player1": {
-            "id": "p_angel-tena-jimenez-b2ec4e",
-            "name": "Ángel Tena Jiménez",
-            "chesscomUsername": "angeltena26",
-            "seed": 11,
-            "record": {
-              "win": 1,
-              "loss": 0
-            }
-          },
-          "player2": {
-            "id": "p_david-del-blanco-taranilla-dc5ea2",
-            "name": "David Del Blanco Taranilla",
-            "chesscomUsername": "kronista",
-            "seed": 15,
-            "record": {
-              "win": 1,
-              "loss": 0
-            }
-          },
-          "bye": false,
-          "status": "pending",
-          "score": null,
-          "winner": null,
-          "games": null,
-          "manual": null,
-          "coinToss": false
-        },
-        {
           "matchId": "3b5dd499-b883-4e7a-9384-efc49408594d",
-          "table": 10,
+          "table": 12,
           "player1": {
             "id": "p_luis-gontan-moreno-651b3b",
             "name": "Luis Gontán Moreno",
@@ -893,39 +955,8 @@
           "coinToss": false
         },
         {
-          "matchId": "2e24eb3d-5789-4a8f-9ff4-eb3d49ab58ed",
-          "table": 11,
-          "player1": {
-            "id": "p_pedro-atares-rodriguez-44b837",
-            "name": "Pedro Atarés Rodríguez",
-            "chesscomUsername": "CharlesDegoulash",
-            "seed": 1,
-            "record": {
-              "win": 1,
-              "loss": 0
-            }
-          },
-          "player2": {
-            "id": "p_lucia-valles-escudero-f202a0",
-            "name": "Lucía Valles Escudero",
-            "chesscomUsername": "lvallese",
-            "seed": 5,
-            "record": {
-              "win": 1,
-              "loss": 0
-            }
-          },
-          "bye": false,
-          "status": "pending",
-          "score": null,
-          "winner": null,
-          "games": null,
-          "manual": null,
-          "coinToss": false
-        },
-        {
           "matchId": "715cc0dd-d46e-45ce-a114-ba90929d8912",
-          "table": 12,
+          "table": 13,
           "player1": {
             "id": "p_adrian-alamo-castro-b9b27d",
             "name": "Adrián Álamo Castro",
@@ -956,7 +987,7 @@
         },
         {
           "matchId": "df8f897f-477b-4950-91b5-b5813382584b",
-          "table": 13,
+          "table": 14,
           "player1": {
             "id": "p_erik-nogues-lavin-8b1828",
             "name": "Erik Nogués Lavín",
@@ -987,7 +1018,7 @@
         },
         {
           "matchId": "c92b3642-f89a-4f85-b1ec-d51a6a7256e7",
-          "table": 14,
+          "table": 15,
           "player1": {
             "id": "p_johan-stevens-bautista-parra-cd3247",
             "name": "Johan Stevens Bautista Parra",
@@ -1006,37 +1037,6 @@
             "record": {
               "win": 0,
               "loss": 1
-            }
-          },
-          "bye": false,
-          "status": "pending",
-          "score": null,
-          "winner": null,
-          "games": null,
-          "manual": null,
-          "coinToss": false
-        },
-        {
-          "matchId": "14f67ec5-adcd-4065-986e-6eb41a37382b",
-          "table": 15,
-          "player1": {
-            "id": "p_sergio-bernardez-molina-7de06b",
-            "name": "Sergio Bernardez Molina",
-            "chesscomUsername": "sergiako_98",
-            "seed": 10,
-            "record": {
-              "win": 1,
-              "loss": 0
-            }
-          },
-          "player2": {
-            "id": "p_antonio-manuel-martin-garcia-c24f9d",
-            "name": "Antonio Manuel Martín García",
-            "chesscomUsername": "PangWM",
-            "seed": 13,
-            "record": {
-              "win": 1,
-              "loss": 0
             }
           },
           "bye": false,

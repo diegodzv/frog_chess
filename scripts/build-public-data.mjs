@@ -238,6 +238,19 @@ function buildFinalStandings(engine, seeds, outcomes, phase) {
   return { provisional: phase !== 'complete', rows };
 }
 
+/**
+ * Swiss rounds: tables ordered as in rk9, the pairs with most wins first (by the better player of the pair,
+ * then the pair's total), the bye last, and renumbered 1..n in that order. Bracket rounds keep the bracket order.
+ */
+function orderTables(pairings, swiss) {
+  if (!swiss) return pairings;
+  const wins = (p) => p?.record?.win ?? 0;
+  const key = (x) => (x.bye ? [-1, -1] : [Math.max(wins(x.player1), wins(x.player2)), wins(x.player1) + wins(x.player2)]);
+  return [...pairings]
+    .sort((a, b) => key(b)[0] - key(a)[0] || key(b)[1] - key(a)[1] || a.table - b.table)
+    .map((p, i) => ({ ...p, table: i + 1 }));
+}
+
 function buildRounds({ tournament, engine, seeds, now }) {
   if (!engine) return { updatedAt: now, phase: tournament.phase, currentRound: tournament.currentRound, rounds: [] };
   const lastSwiss = getLastSwissRound(engine);
@@ -256,7 +269,7 @@ function buildRounds({ tournament, engine, seeds, now }) {
       startedAt: info.startedAt,
       endedAt: info.endedAt,
       current: info.number === tournament.currentRound && tournament.phase !== 'complete',
-      pairings: matches.map((m) => buildPairing(engine, m, seeds, tournament.currentRound))
+      pairings: orderTables(matches.map((m) => buildPairing(engine, m, seeds, tournament.currentRound)), info.number <= lastSwiss)
     };
   });
 

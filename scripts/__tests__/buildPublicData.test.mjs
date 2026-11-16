@@ -263,4 +263,8 @@ test('each paired player carries their record at the start of that round (rk9 st
   for (const p of r2.pairings) {
     for (const side of [p.player1, p.player2].filter(Boolean)) assert.equal(`${side.record.win}-${side.record.loss}`, afterR1.get(side.id));
   }
+  // Tables ordered by wins (best player of the pair), numbered 1..n, bye last.
+  const best = (p) => (p.bye ? -1 : Math.max(p.player1.record.win, p.player2.record.win));
+  r2.pairings.forEach((p, i) => assert.equal(p.table, i + 1));
+  for (let i = 1; i < r2.pairings.length; i++) assert.ok(best(r2.pairings[i - 1]) >= best(r2.pairings[i]));
 });
