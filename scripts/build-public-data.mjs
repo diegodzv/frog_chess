@@ -47,14 +47,24 @@ function pairingWinner(m) {
 
 // The library activates a bracket match as soon as both feeders finish, but the
 // round only opens when the organizer advances: until then it's 'waiting', not 'pending'.
+//
+// Each player carries their record (wins-losses) at the start of that round, as rk9 shows it: the results the
+// pairing was made from, not affected by games played during the week.
 function buildPairing(engine, m, seeds, currentRound) {
   const resolved = isResolved(m);
   const forfeit = m.meta?.forfeit ?? (m.meta?.source === 'override' ? m.meta.outcome : null);
+  const before = seriesRecords(engine, m.round - 1);
+  const withRecord = (id) => {
+    const ref = playerRef(engine, id, seeds);
+    if (!ref) return null;
+    const r = before.get(id) ?? { win: 0, loss: 0 };
+    return { ...ref, record: { win: r.win, loss: r.loss } };
+  };
   return {
     matchId: m.id,
     table: m.match,
-    player1: playerRef(engine, m.player1.id, seeds),
-    player2: m.bye ? null : playerRef(engine, m.player2.id, seeds),
+    player1: withRecord(m.player1.id),
+    player2: m.bye ? null : withRecord(m.player2.id),
     bye: Boolean(m.bye),
     status: m.bye ? 'bye' : resolved ? 'complete' : m.active && m.round <= currentRound ? 'pending' : 'waiting',
     score: resolved && !m.bye ? pairingScore(m) : null,

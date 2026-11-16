@@ -19,7 +19,10 @@ function PlayerName({ player, won, lost, left }) {
   return (
     <span className={`pname ${left ? 'left' : ''} ${won ? 'won' : ''} ${lost ? 'lost' : ''}`}>
       <span className="pname-text">
-        <span>{player?.name ?? '—'}</span>
+        <span>
+          {player?.name ?? '—'}
+          {player?.record && <span className="record"> ({player.record.win}-{player.record.loss})</span>}
+        </span>
         {player?.chesscomUsername && (
           <a
             className="cc-user"

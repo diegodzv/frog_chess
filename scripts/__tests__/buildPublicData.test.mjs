@@ -249,3 +249,18 @@ test('mid-round: resistance only counts finished games, and at equal points fewe
   if (oneOne) assert.ok(oneZero.every((r) => r.rank < oneOne.rank));
   assert.ok(byId.size === 8);
 });
+
+test('each paired player carries their record at the start of that round (rk9 style)', () => {
+  const files = derive(simulateTournament({ config, playerCount: 20, seed: 5, noShowRate: 0 }));
+  const [r1, r2] = files['rounds.json'].rounds;
+  assert.ok(r1.pairings.every((p) => p.player1.record.win === 0 && p.player1.record.loss === 0));
+  // Round 2 shows exactly the round-1 outcome of each player.
+  const afterR1 = new Map();
+  for (const p of r1.pairings) {
+    afterR1.set(p.player1.id, p.winner === 'p1' ? '1-0' : '0-1');
+    if (p.player2) afterR1.set(p.player2.id, p.winner === 'p2' ? '1-0' : '0-1');
+  }
+  for (const p of r2.pairings) {
+    for (const side of [p.player1, p.player2].filter(Boolean)) assert.equal(`${side.record.win}-${side.record.loss}`, afterR1.get(side.id));
+  }
+});

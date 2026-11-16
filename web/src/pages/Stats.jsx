@@ -7,12 +7,6 @@ const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 const CARDS = [
   {
-    key: 'mostCheckmates',
-    title: 'Más jaques mate',
-    unit: 'en todo el torneo',
-    value: (r) => plural(r.checkmates, 'mate', 'mates')
-  },
-  {
     key: 'fastestByMoves',
     title: 'Victoria más rápida',
     unit: 'en jugadas',
@@ -23,6 +17,12 @@ const CARDS = [
     title: 'Victoria más rápida',
     unit: 'tiempo gastado en su reloj',
     value: (r) => formatDuration(r.timeSec)
+  },
+  {
+    key: 'mostCheckmates',
+    title: 'Más jaques mate',
+    unit: 'en todo el torneo',
+    value: (r) => plural(r.checkmates, 'mate', 'mates')
   },
   {
     key: 'mostMaterial',
