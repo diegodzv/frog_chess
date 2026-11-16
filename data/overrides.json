@@ -10,7 +10,8 @@
       "winner": "ichraxx",
       "loser": "oscaarmfl",
       "reason": "Sorteo tras tablas",
-      "applied": true
+      "applied": true,
+      "coinToss": true
     }
   ]
 }

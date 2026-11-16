@@ -1,7 +1,7 @@
 {
   "name": "Frog Chess",
   "timeClass": "rapid",
-  "timeControl": "420+5",
+  "timeControl": "600",
   "rules": "chess",
   "requireRated": false,
   "playerCap": {

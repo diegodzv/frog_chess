@@ -1,9 +1,8 @@
 {
-  "updatedAt": "2026-11-16T11:52:10.563Z",
+  "updatedAt": "2026-11-16T22:44:16.910Z",
   "phase": "stage-one",
   "gamesAnalyzed": 14,
   "minMovesForRecords": 5,
-  "minWinsForAverage": 1,
   "fastestByMoves": [
     {
       "player": {
@@ -136,120 +135,6 @@
       "moves": 21,
       "timeSec": 245,
       "material": 30
-    }
-  ],
-  "fastestAverageByMoves": [
-    {
-      "player": {
-        "id": "p_luis-gontan-moreno-651b3b",
-        "name": "Luis Gontán Moreno",
-        "chesscomUsername": "luisGM1985",
-        "seed": 3
-      },
-      "wins": 1,
-      "avgMoves": 14,
-      "avgTimeSec": 165
-    },
-    {
-      "player": {
-        "id": "p_alejandro-garcia-castillo-58ed7d",
-        "name": "Alejandro García Castillo",
-        "chesscomUsername": "AGarcia98",
-        "seed": 9
-      },
-      "wins": 1,
-      "avgMoves": 20,
-      "avgTimeSec": 205
-    },
-    {
-      "player": {
-        "id": "p_diego-diaz-vidal-4f1507",
-        "name": "Diego Díaz Vidal",
-        "chesscomUsername": "diegodzv",
-        "seed": 7
-      },
-      "wins": 1,
-      "avgMoves": 21,
-      "avgTimeSec": 245
-    },
-    {
-      "player": {
-        "id": "p_daniel-alocen-pinillos-a8390a",
-        "name": "Daniel Alocen Pinillos",
-        "chesscomUsername": "PerfectRiver",
-        "seed": 16
-      },
-      "wins": 1,
-      "avgMoves": 23,
-      "avgTimeSec": 210
-    },
-    {
-      "player": {
-        "id": "p_pedro-atares-rodriguez-44b837",
-        "name": "Pedro Atarés Rodríguez",
-        "chesscomUsername": "CharlesDegoulash",
-        "seed": 1
-      },
-      "wins": 1,
-      "avgMoves": 24,
-      "avgTimeSec": 243
-    }
-  ],
-  "fastestAverageByTime": [
-    {
-      "player": {
-        "id": "p_luis-gontan-moreno-651b3b",
-        "name": "Luis Gontán Moreno",
-        "chesscomUsername": "luisGM1985",
-        "seed": 3
-      },
-      "wins": 1,
-      "avgMoves": 14,
-      "avgTimeSec": 165
-    },
-    {
-      "player": {
-        "id": "p_alejandro-garcia-castillo-58ed7d",
-        "name": "Alejandro García Castillo",
-        "chesscomUsername": "AGarcia98",
-        "seed": 9
-      },
-      "wins": 1,
-      "avgMoves": 20,
-      "avgTimeSec": 205
-    },
-    {
-      "player": {
-        "id": "p_daniel-alocen-pinillos-a8390a",
-        "name": "Daniel Alocen Pinillos",
-        "chesscomUsername": "PerfectRiver",
-        "seed": 16
-      },
-      "wins": 1,
-      "avgMoves": 23,
-      "avgTimeSec": 210
-    },
-    {
-      "player": {
-        "id": "p_pedro-atares-rodriguez-44b837",
-        "name": "Pedro Atarés Rodríguez",
-        "chesscomUsername": "CharlesDegoulash",
-        "seed": 1
-      },
-      "wins": 1,
-      "avgMoves": 24,
-      "avgTimeSec": 243
-    },
-    {
-      "player": {
-        "id": "p_diego-diaz-vidal-4f1507",
-        "name": "Diego Díaz Vidal",
-        "chesscomUsername": "diegodzv",
-        "seed": 7
-      },
-      "wins": 1,
-      "avgMoves": 21,
-      "avgTimeSec": 245
     }
   ],
   "mostMaterial": [

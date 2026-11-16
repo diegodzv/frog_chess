@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T11:52:10.563Z",
+  "updatedAt": "2026-11-16T22:44:16.910Z",
   "phase": "stage-one",
   "currentRound": 2,
   "rounds": [
@@ -443,7 +443,7 @@
             "draw"
           ],
           "manual": "player2_win",
-          "coinToss": false
+          "coinToss": true
         }
       ]
     },

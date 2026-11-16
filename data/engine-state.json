@@ -661,6 +661,7 @@
       "loss": false,
       "match": 15,
       "meta": {
+        "coinToss": true,
         "games": [
           "draw"
         ],
