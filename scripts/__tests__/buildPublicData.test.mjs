@@ -250,10 +250,13 @@ test('mid-round: resistance only counts finished games, and at equal points fewe
   assert.ok(byId.size === 8);
 });
 
-test('each paired player carries their record at the start of that round (rk9 style)', () => {
+test('each paired player carries their current record, and tables are ordered by the record at pairing time', () => {
   const files = derive(simulateTournament({ config, playerCount: 20, seed: 5, noShowRate: 0 }));
   const [r1, r2] = files['rounds.json'].rounds;
-  assert.ok(r1.pairings.every((p) => p.player1.record.win === 0 && p.player1.record.loss === 0));
+  assert.ok(r1.pairings.every((p) => p.player1.recordAtPairing.win === 0 && p.player1.recordAtPairing.loss === 0));
+  // The record shown is the current one, over the whole tournament: the same as in the overall standings.
+  const current = new Map(files['standings.json'].final.rows.map((r) => [r.playerId, `${r.record.win}-${r.record.loss}`]));
+  for (const p of r1.pairings) assert.equal(`${p.player1.record.win}-${p.player1.record.loss}`, current.get(p.player1.id));
   // Round 2 shows exactly the round-1 outcome of each player.
   const afterR1 = new Map();
   for (const p of r1.pairings) {
@@ -261,10 +264,10 @@ test('each paired player carries their record at the start of that round (rk9 st
     if (p.player2) afterR1.set(p.player2.id, p.winner === 'p2' ? '1-0' : '0-1');
   }
   for (const p of r2.pairings) {
-    for (const side of [p.player1, p.player2].filter(Boolean)) assert.equal(`${side.record.win}-${side.record.loss}`, afterR1.get(side.id));
+    for (const side of [p.player1, p.player2].filter(Boolean)) assert.equal(`${side.recordAtPairing.win}-${side.recordAtPairing.loss}`, afterR1.get(side.id));
   }
   // Tables ordered by wins (best player of the pair), numbered 1..n, bye last.
-  const best = (p) => (p.bye ? -1 : Math.max(p.player1.record.win, p.player2.record.win));
+  const best = (p) => (p.bye ? -1 : Math.max(p.player1.recordAtPairing.win, p.player2.recordAtPairing.win));
   r2.pairings.forEach((p, i) => assert.equal(p.table, i + 1));
   for (let i = 1; i < r2.pairings.length; i++) assert.ok(best(r2.pairings[i - 1]) >= best(r2.pairings[i]));
 });

@@ -48,17 +48,19 @@ function pairingWinner(m) {
 // The library activates a bracket match as soon as both feeders finish, but the
 // round only opens when the organizer advances: until then it's 'waiting', not 'pending'.
 //
-// Each player carries their record (wins-losses) at the start of that round, as rk9 shows it: the results the
-// pairing was made from, not affected by games played during the week.
+// Each player carries their current record (wins-losses, every game played so far) and, for ordering the
+// tables, the record they had when the round was paired (it doesn't move while the week's games are played).
 function buildPairing(engine, m, seeds, currentRound) {
   const resolved = isResolved(m);
   const forfeit = m.meta?.forfeit ?? (m.meta?.source === 'override' ? m.meta.outcome : null);
   const before = seriesRecords(engine, m.round - 1);
+  const now = seriesRecords(engine, Infinity);
   const withRecord = (id) => {
     const ref = playerRef(engine, id, seeds);
     if (!ref) return null;
-    const r = before.get(id) ?? { win: 0, loss: 0 };
-    return { ...ref, record: { win: r.win, loss: r.loss } };
+    const r = now.get(id) ?? { win: 0, loss: 0 };
+    const b = before.get(id) ?? { win: 0, loss: 0 };
+    return { ...ref, record: { win: r.win, loss: r.loss }, recordAtPairing: { win: b.win, loss: b.loss } };
   };
   return {
     matchId: m.id,
@@ -244,7 +246,7 @@ function buildFinalStandings(engine, seeds, outcomes, phase) {
  */
 function orderTables(pairings, swiss) {
   if (!swiss) return pairings;
-  const wins = (p) => p?.record?.win ?? 0;
+  const wins = (p) => p?.recordAtPairing?.win ?? 0;
   const key = (x) => (x.bye ? [-1, -1] : [Math.max(wins(x.player1), wins(x.player2)), wins(x.player1) + wins(x.player2)]);
   return [...pairings]
     .sort((a, b) => key(b)[0] - key(a)[0] || key(b)[1] - key(a)[1] || a.table - b.table)
