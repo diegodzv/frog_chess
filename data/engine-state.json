@@ -811,12 +811,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "19ba177d-0ec1-4d3d-ac9e-0c5d589518df",
       "loss": false,
       "match": 5,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-17T16:10:59.000Z",
+            "material": {
+              "black": 29,
+              "white": 28
+            },
+            "moves": 16,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 328,
+              "white": 125
+            },
+            "url": "https://www.chess.com/game/live/187414358930"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -824,14 +847,14 @@
       "player1": {
         "draw": 0,
         "id": "p_alberto-ruiz-rancano-41fb08",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     },
@@ -1032,12 +1055,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "715cc0dd-d46e-45ce-a114-ba90929d8912",
       "loss": false,
       "match": 12,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-17T16:42:20.000Z",
+            "material": {
+              "black": 3,
+              "white": 22
+            },
+            "moves": 28,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 441,
+              "white": 165
+            },
+            "url": "https://www.chess.com/game/live/187416371958"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1045,14 +1091,14 @@
       "player1": {
         "draw": 0,
         "id": "p_adrian-alamo-castro-b9b27d",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_diego-morante-parra-32c467",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     },
@@ -1183,7 +1229,7 @@
           "bye": false,
           "draw": 0,
           "id": "19ba177d-0ec1-4d3d-ac9e-0c5d589518df",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_alejandro-garcia-castillo-58ed7d",
           "pairUpDown": false,
           "seating": null,
@@ -1411,7 +1457,7 @@
           "opponent": "p_alberto-ruiz-rancano-41fb08",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1443,7 +1489,7 @@
           "opponent": "p_adrian-alamo-castro-b9b27d",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1791,7 +1837,7 @@
           "bye": false,
           "draw": 0,
           "id": "715cc0dd-d46e-45ce-a114-ba90929d8912",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_diego-morante-parra-32c467",
           "pairUpDown": false,
           "seating": null,
