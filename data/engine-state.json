@@ -859,12 +859,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "15a8d5b7-c895-4586-b478-390353352032",
       "loss": false,
       "match": 6,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-17T19:19:36.000Z",
+            "material": {
+              "black": 5,
+              "white": 26
+            },
+            "moves": 36,
+            "p1Color": "white",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 456,
+              "white": 348
+            },
+            "url": "https://www.chess.com/game/live/187426373656"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -873,12 +896,12 @@
         "draw": 0,
         "id": "p_josep-oriol-elias-albajes-31219d",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_raul-morchon-fuentes-3193bc",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 2
@@ -1293,7 +1316,7 @@
           "bye": false,
           "draw": 0,
           "id": "15a8d5b7-c895-4586-b478-390353352032",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_josep-oriol-elias-albajes-31219d",
           "pairUpDown": false,
           "seating": null,
@@ -2001,7 +2024,7 @@
           "opponent": "p_raul-morchon-fuentes-3193bc",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

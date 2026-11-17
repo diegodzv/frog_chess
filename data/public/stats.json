@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-17T19:15:57.824Z",
+  "updatedAt": "2026-11-17T21:33:45.570Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 19,
+  "gamesAnalyzed": 20,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -48,7 +48,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 9
+        "seed": 8
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -102,7 +102,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 10
+        "seed": 9
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -143,7 +143,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 11
+        "seed": 10
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -195,7 +195,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 9
+        "seed": 8
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -216,10 +216,19 @@
     },
     {
       "player": {
+        "id": "p_josep-oriol-elias-albajes-31219d",
+        "name": "Josep Oriol Elias Albajes",
+        "chesscomUsername": "iLostTheGame420",
+        "seed": 4
+      },
+      "checkmates": 2
+    },
+    {
+      "player": {
         "id": "p_andres-chica-linares-885e0c",
         "name": "Andrés Chica Linares",
         "chesscomUsername": "sensuao",
-        "seed": 12
+        "seed": 11
       },
       "checkmates": 1
     },
@@ -228,7 +237,7 @@
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 5
+        "seed": 6
       },
       "checkmates": 1
     },
@@ -237,15 +246,6 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 14
-      },
-      "checkmates": 1
-    },
-    {
-      "player": {
-        "id": "p_antonio-manuel-martin-garcia-c24f9d",
-        "name": "Antonio Manuel Martín García",
-        "chesscomUsername": "PangWM",
         "seed": 13
       },
       "checkmates": 1
