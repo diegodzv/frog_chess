@@ -713,12 +713,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "8cccb8a9-aa52-493e-b9c9-0b273f9d3217",
       "loss": false,
       "match": 2,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-17T14:18:05.000Z",
+            "material": {
+              "black": 17,
+              "white": 1
+            },
+            "moves": 53,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 354,
+              "white": 534
+            },
+            "url": "https://www.chess.com/game/live/187406220902"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -726,14 +749,14 @@
       "player1": {
         "draw": 0,
         "id": "p_oscar-marin-flores-a2cc66",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_albert-sanchez-fernandez-47fe38",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     },
@@ -961,12 +984,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "2e24eb3d-5789-4a8f-9ff4-eb3d49ab58ed",
       "loss": false,
       "match": 11,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-17T13:23:59.000Z",
+            "material": {
+              "black": 15,
+              "white": 31
+            },
+            "moves": 22,
+            "p1Color": "white",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 489,
+              "white": 361
+            },
+            "url": "https://www.chess.com/game/live/187402784282"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -975,12 +1021,12 @@
         "draw": 0,
         "id": "p_pedro-atares-rodriguez-44b837",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_lucia-valles-escudero-f202a0",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 2
@@ -1061,12 +1107,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "14f67ec5-adcd-4065-986e-6eb41a37382b",
       "loss": false,
       "match": 15,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-17T14:32:34.000Z",
+            "material": {
+              "black": 15,
+              "white": 2
+            },
+            "moves": 58,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 476,
+              "white": 550
+            },
+            "url": "https://www.chess.com/game/live/187407013732"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1075,12 +1144,12 @@
         "draw": 0,
         "id": "p_sergio-bernardez-molina-7de06b",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 2
@@ -1438,7 +1507,7 @@
           "opponent": "p_antonio-manuel-martin-garcia-c24f9d",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1530,7 +1599,7 @@
           "bye": false,
           "draw": 0,
           "id": "8cccb8a9-aa52-493e-b9c9-0b273f9d3217",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_albert-sanchez-fernandez-47fe38",
           "pairUpDown": false,
           "seating": null,
@@ -1690,7 +1759,7 @@
           "bye": false,
           "draw": 0,
           "id": "14f67ec5-adcd-4065-986e-6eb41a37382b",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_sergio-bernardez-molina-7de06b",
           "pairUpDown": false,
           "seating": null,
@@ -1822,7 +1891,7 @@
           "opponent": "p_oscar-marin-flores-a2cc66",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -1854,7 +1923,7 @@
           "opponent": "p_lucia-valles-escudero-f202a0",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -2042,7 +2111,7 @@
           "bye": false,
           "draw": 0,
           "id": "2e24eb3d-5789-4a8f-9ff4-eb3d49ab58ed",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_pedro-atares-rodriguez-44b837",
           "pairUpDown": false,
           "seating": null,
