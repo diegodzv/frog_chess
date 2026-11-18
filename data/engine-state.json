@@ -761,12 +761,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "148ac2dc-9800-4624-9af6-1b57d8b8f7b8",
       "loss": false,
       "match": 3,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-18T08:32:22.000Z",
+            "material": {
+              "black": 0,
+              "white": 16
+            },
+            "moves": 51,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 346,
+              "white": 545
+            },
+            "url": "https://www.chess.com/game/live/187459997084"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -774,14 +797,14 @@
       "player1": {
         "draw": 0,
         "id": "p_andres-chica-linares-885e0c",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_hector-rodriguez-vegue-bd3889",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     },
@@ -1732,7 +1755,7 @@
           "bye": false,
           "draw": 0,
           "id": "148ac2dc-9800-4624-9af6-1b57d8b8f7b8",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_hector-rodriguez-vegue-bd3889",
           "pairUpDown": false,
           "seating": null,
@@ -1896,7 +1919,7 @@
           "opponent": "p_andres-chica-linares-885e0c",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
