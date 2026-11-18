@@ -980,12 +980,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "e5f46c09-1c2a-40a5-a461-7083a57097e6",
       "loss": false,
       "match": 9,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-18T19:41:10.000Z",
+            "material": {
+              "black": 17,
+              "white": 2
+            },
+            "moves": 50,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 461,
+              "white": 470
+            },
+            "url": "https://www.chess.com/game/live/187500548148"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -993,14 +1016,14 @@
       "player1": {
         "draw": 0,
         "id": "p_angel-tena-jimenez-b2ec4e",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_david-del-blanco-taranilla-dc5ea2",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     },
@@ -1723,7 +1746,7 @@
           "bye": false,
           "draw": 0,
           "id": "e5f46c09-1c2a-40a5-a461-7083a57097e6",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_david-del-blanco-taranilla-dc5ea2",
           "pairUpDown": false,
           "seating": null,
@@ -2111,7 +2134,7 @@
           "opponent": "p_angel-tena-jimenez-b2ec4e",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

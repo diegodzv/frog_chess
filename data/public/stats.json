@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-18T08:33:16.414Z",
+  "updatedAt": "2026-11-18T20:01:38.887Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 21,
+  "gamesAnalyzed": 22,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -9,7 +9,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 8
+        "seed": 9
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -48,7 +48,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 9
+        "seed": 10
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -89,7 +89,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 8
+        "seed": 9
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -102,7 +102,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 10
+        "seed": 11
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -143,7 +143,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 11
+        "seed": 15
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -156,7 +156,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 8
+        "seed": 9
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -195,7 +195,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 9
+        "seed": 10
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -246,7 +246,7 @@
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 7
+        "seed": 8
       },
       "checkmates": 1
     }
