@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-20T12:07:46.104Z",
+  "updatedAt": "2026-11-20T12:39:45.719Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 24,
+  "gamesAnalyzed": 25,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -9,7 +9,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 10
+        "seed": 11
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -48,7 +48,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 11
+        "seed": 12
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -61,7 +61,7 @@
         "id": "p_pedro-atares-rodriguez-44b837",
         "name": "Pedro Atarés Rodríguez",
         "chesscomUsername": "CharlesDegoulash",
-        "seed": 2
+        "seed": 3
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -102,7 +102,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 10
+        "seed": 11
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -115,7 +115,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 13
+        "seed": 14
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -143,7 +143,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 16
+        "seed": 8
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -156,7 +156,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 10
+        "seed": 11
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -169,7 +169,7 @@
         "id": "p_pedro-atares-rodriguez-44b837",
         "name": "Pedro Atarés Rodríguez",
         "chesscomUsername": "CharlesDegoulash",
-        "seed": 2
+        "seed": 3
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -210,7 +210,7 @@
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 1
+        "seed": 2
       },
       "checkmates": 2
     },
@@ -237,7 +237,7 @@
         "id": "p_andres-chica-linares-885e0c",
         "name": "Andrés Chica Linares",
         "chesscomUsername": "sensuao",
-        "seed": 17
+        "seed": 18
       },
       "checkmates": 1
     },
@@ -246,7 +246,7 @@
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 9
+        "seed": 10
       },
       "checkmates": 1
     }

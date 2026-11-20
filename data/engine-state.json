@@ -1243,12 +1243,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "c92b3642-f89a-4f85-b1ec-d51a6a7256e7",
       "loss": false,
       "match": 14,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-20T12:29:51.000Z",
+            "material": {
+              "black": 15,
+              "white": 25
+            },
+            "moves": 42,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "timeout",
+            "timeUsed": {
+              "black": 409,
+              "white": 590
+            },
+            "url": "https://www.chess.com/game/live/187617034668"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1256,14 +1279,14 @@
       "player1": {
         "draw": 0,
         "id": "p_johan-stevens-bautista-parra-cd3247",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_isabel-garcia-bergers-d56cf3",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     },
@@ -1946,7 +1969,7 @@
           "bye": false,
           "draw": 0,
           "id": "c92b3642-f89a-4f85-b1ec-d51a6a7256e7",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_isabel-garcia-bergers-d56cf3",
           "pairUpDown": false,
           "seating": null,
@@ -2270,7 +2293,7 @@
           "opponent": "p_johan-stevens-bautista-parra-cd3247",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
