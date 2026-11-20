@@ -11,7 +11,7 @@ import { findSeriesForPairing } from './lib/resultMatcher.mjs';
 import {
   loadEngineTournament,
   saveEngineTournament,
-  getUnresolvedMatches,
+  getPendingMatches,
   getRoundInfo,
   applySeriesResult
 } from './lib/tournamentEngine.mjs';
@@ -41,9 +41,10 @@ async function main() {
   }
 
   const engine = loadEngineTournament(engineJson);
-  const { bestOf } = getRoundInfo(engine, tournament.currentRound);
+  // A chess.com game counts for one pairing only: those already recorded, plus those taken in this run.
+  const usedUrls = new Set(engine.getMatches().flatMap((m) => (m.meta?.chesscomGames ?? []).map((g) => g.url)));
   const byId = new Map(engine.getPlayers().map((p) => [p.id, p]));
-  const pending = getUnresolvedMatches(engine, tournament.currentRound);
+  const pending = getPendingMatches(engine, tournament.currentRound);
 
   const needsReview = { items: [] };
   let engineChanged = false;
@@ -56,18 +57,22 @@ async function main() {
     // An unconfirmed username could be someone else's account: never read results for it.
     if (byId.get(match.player1.id)?.meta?.chesscomPending || byId.get(match.player2.id)?.meta?.chesscomPending) continue;
 
+    // Catch-up matches of late joiners (earlier rounds) are searched from the moment they joined.
+    const late = match.meta?.lateEntry;
     const result = await findSeriesForPairing({
       usernameA,
       usernameB,
-      bestOf,
+      bestOf: getRoundInfo(engine, match.round).bestOf,
       timeClass: tournament.timeClass,
       timeControl: tournament.timeControl ?? null,
       rules: tournament.rules,
       requireRated: tournament.requireRated,
-      windowStart: roundInfo.startedAt,
-      windowEnd: roundInfo.endedAt
+      windowStart: late ? late.windowStart : roundInfo.startedAt,
+      windowEnd: roundInfo.endedAt,
+      excludeUrls: usedUrls
     });
-    const review = { matchId: match.id, round: tournament.currentRound, player1: usernameA, player2: usernameB, detectedAt: new Date().toISOString() };
+    for (const g of result.games ?? []) usedUrls.add(g.url);
+    const review = { matchId: match.id, round: match.round, player1: usernameA, player2: usernameB, detectedAt: new Date().toISOString() };
 
     if (result.status === 'complete') {
       const sequence = result.games.map((g) => g.result);

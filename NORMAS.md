@@ -53,6 +53,10 @@ El torneo tiene dos fases:
 5. **Partida no jugada.** Si no puedes jugar tu partida antes del domingo a las 23:59, se te da por perdida y la gana tu rival. Si no la juega ninguno de los dos, la perdéis los dos.
 6. **Descanso (bye).** Si el número de jugadores es impar, cada ronda una persona no tiene rival y se le cuenta como victoria. En la primera ronda se elige al azar; después, al azar entre quienes tienen menos victorias y aún no han descansado. Nadie descansa dos veces.
 
+## Incorporaciones con el torneo empezado
+
+Si dos personas se incorporan con la fase suiza ya empezada, juegan entre ellas una partida por cada ronda ya empezada, como si fueran sus partidas de esas rondas, y cuentan igual para la clasificación. Tienen que jugarlas antes de que empiece la ronda siguiente. Desde esa ronda se las empareja con normalidad y no vuelven a enfrentarse entre ellas en la fase suiza.
+
 ## Abandonos
 
 Si tienes que dejar el torneo, avisa a la organización.

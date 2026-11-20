@@ -244,6 +244,46 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
   tournament.getPlayer(match.player2.id).updateMatch(match.id, lost);
 }
 
+/**
+ * Two players who join once the swiss stage has started catch up by playing each other once for every round
+ * already opened (`rounds`, e.g. [1, 2]): the matches are added to those rounds, so their records and points
+ * count as if they had played them, and from the next round they are paired normally (never against each other
+ * again). `meta.lateEntry.windowStart` makes sync-results look for those games from that moment on, even if the
+ * rounds are already closed; the library won't open the next round until they are resolved.
+ *
+ * @param players [{ id, name, chesscomUsername }, { ... }]
+ */
+export function addLatePair(tournament, players, rounds, windowStart) {
+  if (tournament.getStatus() !== 'stage-one') throw new Error('Solo se pueden incorporar jugadores durante la fase suiza.');
+  if (players.length !== 2) throw new Error('Se incorporan de dos en dos: juegan entre ellos las rondas ya empezadas.');
+  for (const p of players) {
+    const created = tournament.createPlayer(p.name, p.id);
+    created.set({ meta: { chesscomUsername: p.chesscomUsername, chesscomPending: false } });
+  }
+  // The library doesn't export Match: take the class from an existing match.
+  const MatchClass = tournament.getMatches()[0].constructor;
+  const [a, b] = players.map((p) => p.id);
+  for (const round of rounds) {
+    const table = Math.max(0, ...tournament.getMatches().filter((m) => m.round === round).map((m) => m.match)) + 1;
+    const match = new MatchClass(crypto.randomUUID(), round, table);
+    match.set({ active: true, player1: { id: a }, player2: { id: b }, meta: { lateEntry: { windowStart } } });
+    tournament.set({ matches: [match] });
+    tournament.getPlayer(a).addMatch({ id: match.id, opponent: b });
+    tournament.getPlayer(b).addMatch({ id: match.id, opponent: a });
+  }
+}
+
+/**
+ * Unresolved matches that belong to the current round's business: those of `round` plus the catch-up matches of
+ * late joiners (addLatePair), which live in earlier rounds. Sorted by round, so the earliest is resolved first.
+ */
+export function getPendingMatches(tournament, round) {
+  return tournament
+    .getActiveMatches()
+    .filter((m) => m.round === round || (m.round < round && m.meta?.lateEntry))
+    .sort((x, y) => x.round - y.round || x.match - y.match);
+}
+
 /** Sets a player's (corrected, confirmed) chess.com username: shown on the site and synced from now on. */
 export function setPlayerUsername(tournament, id, username) {
   const player = tournament.getPlayer(id);

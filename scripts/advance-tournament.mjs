@@ -3,12 +3,12 @@
 // organizer via workflow_dispatch. Actions: check-players | start-tournament | apply-overrides | rebuild-public-data | next-round | force-next-round.
 // The tournament logic lives in lib/tournamentFlow.mjs; this script only does I/O.
 
-import { loadEngineTournament, saveEngineTournament, setPlayoffCutoff, setPlayerUsername } from './lib/tournamentEngine.mjs';
+import { loadEngineTournament, saveEngineTournament, setPlayoffCutoff, setPlayerUsername, addLatePair } from './lib/tournamentEngine.mjs';
 import { startTournament, advance, applyPendingOverrides } from './lib/tournamentFlow.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
 import { readFile } from 'node:fs/promises';
-import { verifyRoster, changeUsername } from './lib/roster.mjs';
+import { verifyRoster, changeUsername, slugify, canonicalUsername } from './lib/roster.mjs';
 import { levelFromAnswer } from './lib/levelPairing.mjs';
 import { makeRng } from './lib/simulation.mjs';
 import { getPlayerProfile } from './lib/chesscomClient.mjs';
@@ -151,6 +151,55 @@ async function setUsername() {
   console.log(`${player.name}: ${from} -> ${player.chesscomUsername}`);
 }
 
+/**
+ * add-late-pair --a=<user> --a-name=<name> --b=<user> --b-name=<name> [--rounds=1,2]: two players who join during
+ * the swiss stage play each other once for every round already opened (default: 1..current round), counted in
+ * those rounds; from the next round on they are paired normally. Both accounts are checked on chess.com.
+ */
+async function addLatePlayers() {
+  const tournament = await readJson('tournament.json');
+  if (tournament.phase !== 'stage-one') throw new Error('Solo se pueden incorporar jugadores durante la fase suiza.');
+  const entries = [
+    [getFlag('a') ?? process.env.PLAYER_A, getFlag('a-name') ?? process.env.NAME_A],
+    [getFlag('b') ?? process.env.PLAYER_B, getFlag('b-name') ?? process.env.NAME_B]
+  ];
+  if (entries.some(([u, n]) => !u || !n)) throw new Error('Uso: --action=add-late-pair --a=<usuario> --a-name=<nombre> --b=<usuario> --b-name=<nombre>');
+  const roster = await readJson('players.json');
+  const players = [];
+  for (const [username, name] of entries) {
+    const profile = await getPlayerProfile(String(username).replace(/^@/, ''));
+    if (!profile) throw new Error(`No existe ningún usuario de chess.com llamado "${username}".`);
+    const canonical = canonicalUsername(profile);
+    const clash = roster.players.find((p) => p.status === 'active' && p.chesscomUsername.toLowerCase() === canonical.toLowerCase());
+    if (clash) throw new Error(`El usuario "${canonical}" ya es de ${clash.name}.`);
+    players.push({
+      id: slugify(name, canonical),
+      name: String(name).trim(),
+      chesscomUsername: canonical,
+      status: 'active',
+      registeredAt: new Date().toISOString(),
+      source: 'late-entry',
+      chesscomVerified: true,
+      chesscomPlayerId: profile.player_id
+    });
+  }
+  const rounds = getFlag('rounds')
+    ? getFlag('rounds').split(',').map(Number)
+    : Array.from({ length: tournament.currentRound }, (_, i) => i + 1);
+  const current = tournament.rounds.find((r) => r.number === tournament.currentRound);
+
+  const engine = loadEngineTournament(await readJson('engine-state.json'));
+  addLatePair(engine, players, rounds, current?.startedAt ?? new Date().toISOString());
+  roster.players.push(...players);
+  tournament.playerCount = roster.players.filter((p) => p.status === 'active').length;
+  await writeJson('players.json', roster);
+  await writeJson('tournament.json', tournament);
+  await writeJson('engine-state.json', saveEngineTournament(engine));
+  await buildPublicData();
+  commitAndPush(`inscripción: se incorporan ${players.map((p) => p.name).join(' y ')} (rondas ${rounds.join(', ')} entre ellos)`);
+  console.log(`Incorporados ${players.map((p) => `${p.name} (${p.chesscomUsername})`).join(' y ')}: rondas ${rounds.join(', ')} entre ellos.`);
+}
+
 /** Regenerates data/public/*.json (e.g. after editing players.json by hand) and commits it. */
 async function rebuildPublicData() {
   await buildPublicData();
@@ -231,9 +280,10 @@ async function main() {
   if (action === 'set-cutoff') return setCutoff();
   if (action === 'set-username') return setUsername();
   if (action === 'manual-result') return manualResult();
+  if (action === 'add-late-pair') return addLatePlayers();
   if (action === 'next-round') return next(false);
   if (action === 'force-next-round') return next(true);
-  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | set-username | manual-result | next-round | force-next-round.`);
+  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | set-username | manual-result | add-late-pair | next-round | force-next-round.`);
 }
 
 await main();

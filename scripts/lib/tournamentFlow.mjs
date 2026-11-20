@@ -15,7 +15,7 @@
 
 import {
   createEngineTournament,
-  getUnresolvedMatches,
+  getPendingMatches,
   applyResult,
   applyDoubleForfeit,
   advanceRound,
@@ -126,7 +126,7 @@ function resolveOverride(ov, unresolved, engine) {
  */
 export function applyPendingOverrides({ engine, tournament, overrides }) {
   const next = structuredClone(overrides ?? { overrides: [] });
-  let unresolved = getUnresolvedMatches(engine, tournament.currentRound);
+  let unresolved = getPendingMatches(engine, tournament.currentRound);
   let applied = 0;
 
   for (const ov of next.overrides) {
@@ -141,7 +141,7 @@ export function applyPendingOverrides({ engine, tournament, overrides }) {
       }
       ov.applied = true;
       applied++;
-      unresolved = getUnresolvedMatches(engine, tournament.currentRound);
+      unresolved = getPendingMatches(engine, tournament.currentRound);
       continue;
     }
     const found = resolveOverride(ov, unresolved, engine);
@@ -181,7 +181,7 @@ export function advance({ engine, tournament, overrides, force = false, now = ne
   const round = nextTournament.currentRound;
 
   if (force) ({ overrides: nextOverrides } = applyPendingOverrides({ engine, tournament: nextTournament, overrides: nextOverrides }));
-  const unresolved = getUnresolvedMatches(engine, round);
+  const unresolved = getPendingMatches(engine, round);
 
   if (unresolved.length > 0) {
     const list = unresolved.map((m) => describeMatch(m, engine)).join('\n  - ');

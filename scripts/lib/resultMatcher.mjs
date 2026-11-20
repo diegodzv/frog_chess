@@ -65,7 +65,8 @@ export async function findSeriesForPairing({
   rules,
   requireRated = false,
   windowStart,
-  windowEnd
+  windowEnd,
+  excludeUrls = new Set()
 }) {
   const months = monthsBetween(windowStart, windowEnd ?? new Date());
   const windowStartMs = new Date(windowStart).getTime();
@@ -79,6 +80,8 @@ export async function findSeriesForPairing({
       const isAB = sameUser(game.white.username, usernameA) && sameUser(game.black.username, usernameB);
       const isBA = sameUser(game.white.username, usernameB) && sameUser(game.black.username, usernameA);
       if (!isAB && !isBA) continue;
+      // Already assigned to another pairing of the same two players (late joiners play each other twice).
+      if (excludeUrls.has(game.url)) continue;
 
       const endTimeMs = new Date(game.endTime).getTime();
       if (endTimeMs < windowStartMs || endTimeMs > windowEndMs) continue;

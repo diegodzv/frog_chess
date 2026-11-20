@@ -178,3 +178,16 @@ test('with an exact time control only those games count (7+5 = "420+5"); other r
   assert.equal(none.status, 'not_found');
   assert.equal(none.wrongFormat[0].timeControl, '600');
 });
+
+test('excludeUrls: a game already assigned to another pairing of the same two players is not counted again', async () => {
+  const g1 = game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z');
+  const g2 = game('adalovelace', 'carlbot', 'loss', '2026-11-10T18:30:00Z');
+  mockGames([g1, g2]);
+  const first = await findSeriesForPairing(baseArgs);
+  assert.equal(first.winner, 'p1');
+  _resetCache();
+  mockGames([g1, g2]);
+  const second = await findSeriesForPairing({ ...baseArgs, excludeUrls: new Set(first.games.map((g) => g.url)) });
+  assert.equal(second.status, 'complete');
+  assert.equal(second.winner, 'p2', 'la segunda partida es la de la otra ronda');
+});
