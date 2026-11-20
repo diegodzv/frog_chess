@@ -191,3 +191,13 @@ test('excludeUrls: a game already assigned to another pairing of the same two pl
   assert.equal(second.status, 'complete');
   assert.equal(second.winner, 'p2', 'la segunda partida es la de la otra ronda');
 });
+
+test('several accepted time controls (e.g. the old one, for one round)', async () => {
+  mockGames([game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z', { time_class: 'rapid', time_control: '420+5' })]);
+  const strict = await findSeriesForPairing({ ...baseArgs, timeClass: 'rapid', timeControl: '600' });
+  assert.equal(strict.status, 'not_found');
+  _resetCache();
+  mockGames([game('adalovelace', 'carlbot', 'win', '2026-11-10T18:00:00Z', { time_class: 'rapid', time_control: '420+5' })]);
+  const lenient = await findSeriesForPairing({ ...baseArgs, timeClass: 'rapid', timeControl: ['600', '420+5'] });
+  assert.equal(lenient.status, 'complete');
+});

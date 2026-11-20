@@ -86,7 +86,9 @@ export async function findSeriesForPairing({
       const endTimeMs = new Date(game.endTime).getTime();
       if (endTimeMs < windowStartMs || endTimeMs > windowEndMs) continue;
 
-      const wrongClock = game.timeClass !== timeClass || (timeControl != null && game.timeControl !== timeControl);
+      // timeControl: one accepted value or several (e.g. the old one, accepted for a round).
+      const accepted = timeControl == null ? null : [].concat(timeControl);
+      const wrongClock = game.timeClass !== timeClass || (accepted != null && !accepted.includes(game.timeControl));
       if (wrongClock || game.rules !== rules || (requireRated && !game.rated)) {
         wrongFormat.push({
           url: game.url,

@@ -64,7 +64,8 @@ async function main() {
       usernameB,
       bestOf: getRoundInfo(engine, match.round).bestOf,
       timeClass: tournament.timeClass,
-      timeControl: tournament.timeControl ?? null,
+      // The tournament's time control, plus any other accepted for the current round (rounds[].extraTimeControls).
+      timeControl: tournament.timeControl ? [tournament.timeControl, ...(roundInfo.extraTimeControls ?? [])] : null,
       rules: tournament.rules,
       requireRated: tournament.requireRated,
       windowStart: late ? late.windowStart : roundInfo.startedAt,
