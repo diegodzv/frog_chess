@@ -299,6 +299,26 @@
       "source": "microsoft-forms",
       "chesscomVerified": true,
       "chesscomPlayerId": 52530901
+    },
+    {
+      "id": "p_lara-visuna-perez-a74dc8",
+      "name": "Lara Visuña Pérez",
+      "chesscomUsername": "Laradona2",
+      "status": "active",
+      "registeredAt": "2026-11-20T12:02:41.204Z",
+      "source": "late-entry",
+      "chesscomVerified": true,
+      "chesscomPlayerId": 528946785
+    },
+    {
+      "id": "p_miguel-mateo-garcia-dd90a3",
+      "name": "Miguel Mateo García",
+      "chesscomUsername": "ISacMyQueen",
+      "status": "active",
+      "registeredAt": "2026-11-20T12:02:41.387Z",
+      "source": "late-entry",
+      "chesscomVerified": true,
+      "chesscomPlayerId": 34364100
     }
   ]
 }

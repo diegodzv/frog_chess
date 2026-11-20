@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T10:53:47.386Z",
+  "updatedAt": "2026-11-20T12:02:41.432Z",
   "players": [
     {
       "id": "p_alberto-ruiz-rancano-41fb08",
@@ -179,6 +179,18 @@
       "id": "p_lucia-valles-escudero-f202a0",
       "name": "Lucía Valles Escudero",
       "chesscomUsername": "lvallese",
+      "status": "active"
+    },
+    {
+      "id": "p_lara-visuna-perez-a74dc8",
+      "name": "Lara Visuña Pérez",
+      "chesscomUsername": "Laradona2",
+      "status": "active"
+    },
+    {
+      "id": "p_miguel-mateo-garcia-dd90a3",
+      "name": "Miguel Mateo García",
+      "chesscomUsername": "ISacMyQueen",
       "status": "active"
     }
   ]

@@ -1,3 +1,22 @@
 {
-  "items": []
+  "items": [
+    {
+      "matchId": "d09c5eb2-9a36-4acc-8511-3cd41e04bce2",
+      "round": 2,
+      "player1": "PerfectRiver",
+      "player2": "alvastro0055",
+      "detectedAt": "2026-11-20T12:02:42.196Z",
+      "reason": "wrong_format",
+      "games": [
+        {
+          "url": "https://www.chess.com/game/live/187614270142",
+          "endTime": "2026-11-20T11:30:38.000Z",
+          "timeClass": "rapid",
+          "timeControl": "420+5",
+          "rules": "chess",
+          "rated": true
+        }
+      ]
+    }
+  ]
 }

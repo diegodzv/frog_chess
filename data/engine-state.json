@@ -1291,6 +1291,64 @@
         "win": 0
       },
       "round": 2
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "dedc3b67-0d41-4e70-bee3-1c9d8de75534",
+      "loss": false,
+      "match": 16,
+      "meta": {
+        "lateEntry": {
+          "windowStart": "2026-11-16T07:46:09.774Z"
+        }
+      },
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_lara-visuna-perez-a74dc8",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_miguel-mateo-garcia-dd90a3",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 1
+    },
+    {
+      "active": true,
+      "bye": false,
+      "id": "e75a4ce6-4680-43de-9109-3b093f97c69b",
+      "loss": false,
+      "match": 16,
+      "meta": {
+        "lateEntry": {
+          "windowStart": "2026-11-16T07:46:09.774Z"
+        }
+      },
+      "path": {
+        "loss": null,
+        "win": null
+      },
+      "player1": {
+        "draw": 0,
+        "id": "p_lara-visuna-perez-a74dc8",
+        "loss": 0,
+        "win": 0
+      },
+      "player2": {
+        "draw": 0,
+        "id": "p_miguel-mateo-garcia-dd90a3",
+        "loss": 0,
+        "win": 0
+      },
+      "round": 2
     }
   ],
   "meta": {
@@ -2261,6 +2319,70 @@
         "chesscomUsername": "lvallese"
       },
       "name": "Lucía Valles Escudero",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_lara-visuna-perez-a74dc8",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "dedc3b67-0d41-4e70-bee3-1c9d8de75534",
+          "loss": 0,
+          "opponent": "p_miguel-mateo-garcia-dd90a3",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e75a4ce6-4680-43de-9109-3b093f97c69b",
+          "loss": 0,
+          "opponent": "p_miguel-mateo-garcia-dd90a3",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "Laradona2"
+      },
+      "name": "Lara Visuña Pérez",
+      "value": 0
+    },
+    {
+      "active": true,
+      "id": "p_miguel-mateo-garcia-dd90a3",
+      "matches": [
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "dedc3b67-0d41-4e70-bee3-1c9d8de75534",
+          "loss": 0,
+          "opponent": "p_lara-visuna-perez-a74dc8",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        },
+        {
+          "bye": false,
+          "draw": 0,
+          "id": "e75a4ce6-4680-43de-9109-3b093f97c69b",
+          "loss": 0,
+          "opponent": "p_lara-visuna-perez-a74dc8",
+          "pairUpDown": false,
+          "seating": null,
+          "win": 0
+        }
+      ],
+      "meta": {
+        "chesscomPending": false,
+        "chesscomUsername": "ISacMyQueen"
+      },
+      "name": "Miguel Mateo García",
       "value": 0
     }
   ],

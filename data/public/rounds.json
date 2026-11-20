@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T11:01:40.385Z",
+  "updatedAt": "2026-11-20T12:02:41.432Z",
   "phase": "stage-one",
   "currentRound": 2,
   "rounds": [
@@ -684,6 +684,45 @@
           ],
           "manual": "player2_win",
           "coinToss": true
+        },
+        {
+          "matchId": "dedc3b67-0d41-4e70-bee3-1c9d8de75534",
+          "table": 16,
+          "player1": {
+            "id": "p_lara-visuna-perez-a74dc8",
+            "name": "Lara Visuña Pérez",
+            "chesscomUsername": "Laradona2",
+            "seed": 31,
+            "record": {
+              "win": 0,
+              "loss": 0
+            },
+            "recordAtPairing": {
+              "win": 0,
+              "loss": 0
+            }
+          },
+          "player2": {
+            "id": "p_miguel-mateo-garcia-dd90a3",
+            "name": "Miguel Mateo García",
+            "chesscomUsername": "ISacMyQueen",
+            "seed": 32,
+            "record": {
+              "win": 0,
+              "loss": 0
+            },
+            "recordAtPairing": {
+              "win": 0,
+              "loss": 0
+            }
+          },
+          "bye": false,
+          "status": "pending",
+          "score": null,
+          "winner": null,
+          "games": null,
+          "manual": null,
+          "coinToss": false
         }
       ]
     },
@@ -1331,6 +1370,45 @@
             "recordAtPairing": {
               "win": 0,
               "loss": 1
+            }
+          },
+          "bye": false,
+          "status": "pending",
+          "score": null,
+          "winner": null,
+          "games": null,
+          "manual": null,
+          "coinToss": false
+        },
+        {
+          "matchId": "e75a4ce6-4680-43de-9109-3b093f97c69b",
+          "table": 16,
+          "player1": {
+            "id": "p_lara-visuna-perez-a74dc8",
+            "name": "Lara Visuña Pérez",
+            "chesscomUsername": "Laradona2",
+            "seed": 31,
+            "record": {
+              "win": 0,
+              "loss": 0
+            },
+            "recordAtPairing": {
+              "win": 0,
+              "loss": 0
+            }
+          },
+          "player2": {
+            "id": "p_miguel-mateo-garcia-dd90a3",
+            "name": "Miguel Mateo García",
+            "chesscomUsername": "ISacMyQueen",
+            "seed": 32,
+            "record": {
+              "win": 0,
+              "loss": 0
+            },
+            "recordAtPairing": {
+              "win": 0,
+              "loss": 0
             }
           },
           "bye": false,
