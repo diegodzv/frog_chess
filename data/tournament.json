@@ -40,7 +40,10 @@
       "label": "Ronda 2",
       "bestOf": 1,
       "startedAt": "2026-11-16T07:46:09.774Z",
-      "endedAt": null
+      "endedAt": null,
+      "extraTimeControls": [
+        "420+5"
+      ]
     }
   ],
   "configured": {
