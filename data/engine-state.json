@@ -832,12 +832,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "daeb803a-9e74-40f1-894b-59ac8470eca5",
       "loss": false,
       "match": 4,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-20T13:25:28.000Z",
+            "material": {
+              "black": 16,
+              "white": 1
+            },
+            "moves": 39,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 375,
+              "white": 595
+            },
+            "url": "https://www.chess.com/game/live/187620462074"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -846,12 +869,12 @@
         "draw": 0,
         "id": "p_lucas-llobet-cusi-354632",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_diego-diaz-vidal-4f1507",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 2
@@ -1457,7 +1480,7 @@
           "bye": false,
           "draw": 0,
           "id": "daeb803a-9e74-40f1-894b-59ac8470eca5",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_lucas-llobet-cusi-354632",
           "pairUpDown": false,
           "seating": null,
@@ -1525,7 +1548,7 @@
           "opponent": "p_diego-diaz-vidal-4f1507",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
