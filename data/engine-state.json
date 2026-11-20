@@ -955,12 +955,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "76723a26-ed5a-406f-9e23-dbfd3a05dc0e",
       "loss": false,
       "match": 8,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-20T09:19:30.000Z",
+            "material": {
+              "black": 15,
+              "white": 0
+            },
+            "moves": 54,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 355,
+              "white": 568
+            },
+            "url": "https://www.chess.com/game/live/187607105748"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -968,14 +991,14 @@
       "player1": {
         "draw": 0,
         "id": "p_victor-manuel-espada-rodriguez-dc0280",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_miguel-aragon-lazcano-29de38",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     },
@@ -1426,7 +1449,7 @@
           "bye": false,
           "draw": 0,
           "id": "76723a26-ed5a-406f-9e23-dbfd3a05dc0e",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_miguel-aragon-lazcano-29de38",
           "pairUpDown": false,
           "seating": null,
@@ -1494,7 +1517,7 @@
           "opponent": "p_victor-manuel-espada-rodriguez-dc0280",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-18T20:01:38.887Z",
+  "updatedAt": "2026-11-20T11:01:40.385Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 22,
+  "gamesAnalyzed": 23,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -22,7 +22,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -35,7 +35,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -76,7 +76,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -102,7 +102,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 11
+        "seed": 12
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -115,7 +115,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -128,7 +128,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 18
+        "seed": 19
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -182,7 +182,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 3
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -219,7 +219,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 5
+        "seed": 6
       },
       "checkmates": 2
     },
@@ -228,7 +228,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 4
+        "seed": 5
       },
       "checkmates": 2
     },
