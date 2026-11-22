@@ -222,7 +222,7 @@ const RESULT_KINDS = {
  * (force-next-round). RESULT=gana-jugador-1: PLAYER_A beats PLAYER_B (walkover); RESULT=sorteo-gana-jugador-1: the same,
  * decided by drawing lots after a drawn game (the site shows a note);
  * RESULT=pierden-los-dos: neither played, both lose. Refuses, changing nothing, if the two usernames are not a
- * pending pairing of the current round.
+ * pending pairing of the current round (with IF_PENDING=true it only warns: the game was already synced).
  */
 async function manualResult() {
   const kind = RESULT_KINDS[String(process.env.RESULT ?? '').trim()];
@@ -243,6 +243,12 @@ async function manualResult() {
   // Try it on a throwaway copy first: nothing is written if the entry matches no pending pairing.
   const probe = applyPendingOverrides({ engine: loadEngineTournament(engineJson), tournament, overrides: withEntry });
   if (!probe.overrides.overrides.at(-1).applied) {
+    // IF_PENDING=true (workflow "Cierre de ronda"): the game may have been played at the last minute and already
+    // synced from chess.com; that result stands and the manual one is dropped.
+    if (process.env.IF_PENDING === 'true') {
+      console.log(`::warning::${a} - ${b}: la partida ya tiene resultado (de chess.com); se ignora el resultado manual.`);
+      return;
+    }
     throw new Error(`No hay ninguna partida pendiente de la ronda ${tournament.currentRound} entre "${a}" y "${b}". Revisa los usuarios (en la web, pestaña Rondas) o si esa partida ya tiene resultado.`);
   }
   await writeJson('overrides.json', withEntry);
