@@ -1362,15 +1362,37 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "dedc3b67-0d41-4e70-bee3-1c9d8de75534",
       "loss": false,
       "match": 16,
       "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-22T12:17:01.000Z",
+            "material": {
+              "black": 31,
+              "white": 23
+            },
+            "moves": 21,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 256,
+              "white": 433
+            },
+            "url": "https://www.chess.com/game/live/187760751450"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
         "lateEntry": {
           "windowStart": "2026-11-16T07:46:09.774Z"
-        }
+        },
+        "source": "chesscom"
       },
       "path": {
         "loss": null,
@@ -1379,27 +1401,49 @@
       "player1": {
         "draw": 0,
         "id": "p_lara-visuna-perez-a74dc8",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_miguel-mateo-garcia-dd90a3",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 1
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "e75a4ce6-4680-43de-9109-3b093f97c69b",
       "loss": false,
       "match": 16,
       "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-22T12:28:03.000Z",
+            "material": {
+              "black": 27,
+              "white": 34
+            },
+            "moves": 23,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 431,
+              "white": 199
+            },
+            "url": "https://www.chess.com/game/live/187761427808"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
         "lateEntry": {
           "windowStart": "2026-11-16T07:46:09.774Z"
-        }
+        },
+        "source": "chesscom"
       },
       "path": {
         "loss": null,
@@ -1408,14 +1452,14 @@
       "player1": {
         "draw": 0,
         "id": "p_lara-visuna-perez-a74dc8",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_miguel-mateo-garcia-dd90a3",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 2
     }
@@ -2398,7 +2442,7 @@
           "bye": false,
           "draw": 0,
           "id": "dedc3b67-0d41-4e70-bee3-1c9d8de75534",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_miguel-mateo-garcia-dd90a3",
           "pairUpDown": false,
           "seating": null,
@@ -2408,7 +2452,7 @@
           "bye": false,
           "draw": 0,
           "id": "e75a4ce6-4680-43de-9109-3b093f97c69b",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_miguel-mateo-garcia-dd90a3",
           "pairUpDown": false,
           "seating": null,
@@ -2434,7 +2478,7 @@
           "opponent": "p_lara-visuna-perez-a74dc8",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         },
         {
           "bye": false,
@@ -2444,7 +2488,7 @@
           "opponent": "p_lara-visuna-perez-a74dc8",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
