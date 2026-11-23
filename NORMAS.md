@@ -29,12 +29,10 @@ Cada ronda suiza dura una semana: los emparejamientos se publican el lunes a las
 1. **Crear la cuenta** (si no la tienes): entra en [chess.com](https://www.chess.com), pulsa **Regístrate** y elige un nombre de usuario. Es gratis; no hace falta ninguna suscripción.
 2. **Encontrar a tu rival**: en la pestaña **Rondas** de la web del torneo, junto a su nombre está su usuario de chess.com (@usuario), con un enlace a su perfil.
 3. **Retarle**: en chess.com, **Jugar → Jugar online → Desafío personalizado** (o el botón **Desafiar** de su perfil). Escribe su usuario y ajusta:
-   - **Ritmo**: 10 minutos, sin incremento (10 | 0). Suele aparecer en la lista como «10 min»; si no, créalo como ritmo personalizado con 10 minutos y 0 segundos de incremento.
+   - **Ritmo**: 10 minutos cada persona (viene por defecto, no hace falta tocar nada).
    - **Puntuable**: desactivado. Son partidas amistosas.
    - **Color**: aleatorio.
 4. Envía el desafío. Tu rival lo acepta desde sus notificaciones de chess.com; si los dos estáis conectados, la partida empieza al momento.
-
-Las partidas con otro ritmo no cuentan. La ronda 1 se jugó a 7 minutos con 5 segundos de incremento (7 | 5).
 
 ## Formato
 
@@ -45,9 +43,9 @@ Las partidas con otro ritmo no cuentan. La ronda 1 se jugó a 7 minutos con 5 se
 
 1. **Acordar la partida.** Ponerte en contacto con tu rival es responsabilidad tuya. Acordad juntos el día y la hora.
 2. **Resultados.** Se toman de chess.com automáticamente; no hace falta avisar a nadie.
-3. **Tablas.** Jugáis otra partida o, si alguno de los dos lo prefiere, se echa a suertes: avisad a cualquiera de los organizadores y lo sortea (si queréis, en una llamada de Teams con vosotros).
+3. **Tablas.** Si la partida acaba en tablas, decidís entre jugar una partida de desempate o echar el resultado a suertes. Con que uno de los dos no quiera jugar otra partida, se echa a suertes: avisad a cualquiera de los organizadores y lo sortea (si queréis, en una llamada de Teams con vosotros).
 4. **Desconexiones.** Se aplica la regla de chess.com y su resultado es el que cuenta. Si pierdes la conexión, tienes 1 minuto para volver; ese minuto empieza a contar cuando te toca mover y, mientras, tu reloj sigue corriendo. Si tu posición está claramente perdida, solo tienes 15 segundos. Si no vuelves a tiempo, pierdes la partida por abandono. Si os desconectáis los dos y ninguno vuelve en 15 segundos, la partida acaba en tablas.
-5. **Partida no jugada.** Si no juegas tu partida antes del domingo a las 23:59, la pierdes y la gana tu rival. Si no la juega ninguno de los dos, la perdéis los dos.
+5. **Partida no jugada.** Si una partida no se juega antes del domingo a las 23:59, la perdéis los dos. Si tenéis algún problema para acordar el día y la hora, escribid a los organizadores.
 6. **Ronda cerrada.** Cuando se cierra una ronda, sus resultados son definitivos: ya no se puede jugar una partida pendiente ni cambiar ningún resultado, sea cual sea el motivo. Si prevés que no vas a poder jugar a tiempo, organízate con tu rival para jugar antes.
 7. **Descanso (bye).** Si el número de jugadores es impar, cada ronda una persona no tiene rival y se le cuenta como victoria. Descansa alguien elegido al azar entre quienes tienen menos victorias y aún no han descansado. Nadie descansa dos veces.
 
@@ -68,17 +66,11 @@ La clasificación ordena por puntos; con los mismos puntos, por resistencia, y s
 
 Cómo se calcula exactamente:
 
-- **Porcentaje de victorias** de un jugador = victorias ÷ encuentros con resultado. El bye cuenta como victoria; una partida no jugada, como derrota de quien la pierde.
+- **Porcentaje de victorias** de un jugador = victorias ÷ encuentros con resultado. El bye cuenta como victoria; una partida no jugada, como derrota.
 - **Resistencia** = suma del porcentaje de victorias de tus rivales ÷ número de rivales.
 - **Resistencia de los rivales** = suma de la resistencia de tus rivales ÷ número de rivales.
 - Son **rivales** todos aquellos con quienes tienes un encuentro con resultado, también si no se jugó y se dio por perdido. El bye no es un rival, y la partida de la semana no cuenta hasta que tiene resultado.
 - Se usa el récord **actual** de tus rivales, así que tu resistencia cambia cada semana según les vaya a ellos, aunque tú no juegues.
-
-Ejemplo: llevas tres rondas y te has enfrentado a A, que va 3-0 (100 %), a B, que va 2-1 (66,7 %), y a C, que va 0-3 (0 %). Tu resistencia es (100 + 66,7 + 0) ÷ 3 = 55,6 %. Cuentan todos tus rivales, no solo los que te ganaron: también suma haber ganado a rivales fuertes.
-
-La clasificación al terminar las rondas suizas decide quién pasa a las eliminatorias y su cabeza de serie.
-
-Cuando empiezan las eliminatorias se publica también una **clasificación general**: primero quien sigue en juego o llegó más lejos (campeón, finalista, semifinalistas…) y, dentro de cada grupo, por puntos y después por resistencia, contando todo el torneo (fase suiza y eliminatorias).
 
 ## Eliminatorias
 
