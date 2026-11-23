@@ -1578,12 +1578,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "f9200801-2a34-42f8-b88f-07da2cb1e7c5",
       "loss": false,
       "match": 3,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-23T10:29:52.000Z",
+            "material": {
+              "black": 24,
+              "white": 2
+            },
+            "moves": 36,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 160,
+              "white": 123
+            },
+            "url": "https://www.chess.com/game/live/187826110900"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1592,12 +1615,12 @@
         "draw": 0,
         "id": "p_sergio-bernardez-molina-7de06b",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_alejandro-garcia-castillo-58ed7d",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 3
@@ -2285,7 +2308,7 @@
           "bye": false,
           "draw": 0,
           "id": "f9200801-2a34-42f8-b88f-07da2cb1e7c5",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_sergio-bernardez-molina-7de06b",
           "pairUpDown": false,
           "seating": null,
@@ -2415,7 +2438,7 @@
           "opponent": "p_alejandro-garcia-castillo-58ed7d",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
