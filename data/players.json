@@ -326,8 +326,9 @@
       "status": "active",
       "registeredAt": "2026-11-23T08:37:00.854Z",
       "source": "late-entry",
-      "chesscomUsername": "pendiente-jorge-carlos-manzanares-martinez",
-      "chesscomVerified": false
+      "chesscomUsername": "jmanzanares74",
+      "chesscomVerified": true,
+      "chesscomPlayerId": 9687604
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T11:19:45.589Z",
+  "updatedAt": "2026-11-23T20:43:53.926Z",
   "phase": "stage-one",
   "currentRound": 3,
   "rounds": [
@@ -752,7 +752,7 @@
           "player1": {
             "id": "p_jorge-carlos-manzanares-martinez-b73b45",
             "name": "Jorge Carlos Manzanares Martínez",
-            "chesscomUsername": null,
+            "chesscomUsername": "jmanzanares74",
             "seed": 16,
             "record": {
               "win": 1,
@@ -1522,7 +1522,7 @@
           "player1": {
             "id": "p_jorge-carlos-manzanares-martinez-b73b45",
             "name": "Jorge Carlos Manzanares Martínez",
-            "chesscomUsername": null,
+            "chesscomUsername": "jmanzanares74",
             "seed": 16,
             "record": {
               "win": 1,
@@ -1926,7 +1926,7 @@
           "player1": {
             "id": "p_jorge-carlos-manzanares-martinez-b73b45",
             "name": "Jorge Carlos Manzanares Martínez",
-            "chesscomUsername": null,
+            "chesscomUsername": "jmanzanares74",
             "seed": 16,
             "record": {
               "win": 1,

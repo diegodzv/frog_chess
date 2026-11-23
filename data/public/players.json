@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T08:37:00.866Z",
+  "updatedAt": "2026-11-23T20:43:53.926Z",
   "players": [
     {
       "id": "p_alberto-ruiz-rancano-41fb08",
@@ -196,7 +196,7 @@
     {
       "id": "p_jorge-carlos-manzanares-martinez-b73b45",
       "name": "Jorge Carlos Manzanares Martínez",
-      "chesscomUsername": null,
+      "chesscomUsername": "jmanzanares74",
       "status": "active"
     }
   ]
