@@ -274,6 +274,34 @@ export function addLatePair(tournament, players, rounds, windowStart) {
 }
 
 /**
+ * A single player who joins once the swiss stage has started, with a record decided by the organizers instead of
+ * catch-up games: `results` gives a win or a loss for each round already opened (e.g. { 1: 'win', 2: 'loss' }).
+ * Each one is a finished match without an opponent (`meta.assigned`), like the library's own assignLoss: it counts
+ * in points and record but in nobody's tiebreaks, and it is not a bye, so the player can still get one later.
+ * From the next round on they are paired normally.
+ *
+ * @param player { id, name, chesscomUsername, chesscomPending }
+ */
+export function addLatePlayer(tournament, player, results) {
+  if (tournament.getStatus() !== 'stage-one') throw new Error('Solo se pueden incorporar jugadores durante la fase suiza.');
+  const entries = Object.entries(results).map(([round, result]) => [Number(round), result]);
+  if (entries.some(([round, result]) => !(round >= 1 && round <= tournament.getRoundNumber()) || !['win', 'loss'].includes(result))) {
+    throw new Error(`Resultados asignados no válidos: ${JSON.stringify(results)} (rondas 1-${tournament.getRoundNumber()}, "win" o "loss").`);
+  }
+  const created = tournament.createPlayer(player.name, player.id);
+  created.set({ meta: { chesscomUsername: player.chesscomUsername, chesscomPending: Boolean(player.chesscomPending) } });
+  const MatchClass = tournament.getMatches()[0].constructor;
+  for (const [round, result] of entries) {
+    const need = winsNeeded(getRoundInfo(tournament, round).bestOf);
+    const score = result === 'win' ? { win: need, loss: 0 } : { win: 0, loss: need };
+    const match = new MatchClass(crypto.randomUUID(), round, 0);
+    match.set({ active: false, player1: { id: player.id, ...score }, meta: { assigned: result } });
+    tournament.set({ matches: [match] });
+    created.addMatch({ id: match.id, opponent: null, ...score });
+  }
+}
+
+/**
  * Unresolved matches that belong to the current round's business: those of `round` plus the catch-up matches of
  * late joiners (addLatePair), which live in earlier rounds. Sorted by round, so the earliest is resolved first.
  */

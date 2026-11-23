@@ -66,10 +66,12 @@ function buildPairing(engine, m, seeds, currentRound) {
     matchId: m.id,
     table: m.match,
     player1: withRecord(m.player1.id),
-    player2: m.bye ? null : withRecord(m.player2.id),
+    player2: m.bye || m.meta?.assigned ? null : withRecord(m.player2.id),
     bye: Boolean(m.bye),
+    // Late joiner's result decided by the organizers, without an opponent (addLatePlayer): 'win' | 'loss'.
+    assigned: m.meta?.assigned ?? null,
     status: m.bye ? 'bye' : resolved ? 'complete' : m.active && m.round <= currentRound ? 'pending' : 'waiting',
-    score: resolved && !m.bye ? pairingScore(m) : null,
+    score: resolved && !m.bye && !m.meta?.assigned ? pairingScore(m) : null,
     winner: m.bye ? 'p1' : pairingWinner(m),
     games: m.meta?.games ?? null,
     // 'double' = nobody showed up; an override outcome means the organizer entered the result by hand.
@@ -90,6 +92,10 @@ function seriesRecords(engine, maxRound = getLastSwissRound(engine)) {
     if (m.bye) {
       rec(m.player1.id).win++;
       rec(m.player1.id).byes++;
+      continue;
+    }
+    if (m.meta?.assigned) {
+      rec(m.player1.id)[m.meta.assigned === 'win' ? 'win' : 'loss']++;
       continue;
     }
     for (const [me, other] of [[m.player1, m.player2], [m.player2, m.player1]]) {
@@ -242,12 +248,12 @@ function buildFinalStandings(engine, seeds, outcomes, phase) {
 
 /**
  * Swiss rounds: tables ordered as in rk9, the pairs with most wins first (by the better player of the pair,
- * then the pair's total), the bye last, and renumbered 1..n in that order. Bracket rounds keep the bracket order.
+ * then the pair's total), the bye and the assigned results last, and renumbered 1..n in that order. Bracket rounds keep the bracket order.
  */
 function orderTables(pairings, swiss) {
   if (!swiss) return pairings;
   const wins = (p) => p?.recordAtPairing?.win ?? 0;
-  const key = (x) => (x.bye ? [-1, -1] : [Math.max(wins(x.player1), wins(x.player2)), wins(x.player1) + wins(x.player2)]);
+  const key = (x) => (x.bye || x.assigned ? [-1, -1] : [Math.max(wins(x.player1), wins(x.player2)), wins(x.player1) + wins(x.player2)]);
   return [...pairings]
     .sort((a, b) => key(b)[0] - key(a)[0] || key(b)[1] - key(a)[1] || a.table - b.table)
     .map((p, i) => ({ ...p, table: i + 1 }));

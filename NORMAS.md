@@ -55,7 +55,7 @@ El torneo tiene dos fases:
 
 ## Incorporaciones con el torneo empezado
 
-Si dos personas se incorporan con la fase suiza ya empezada, juegan entre ellas una partida por cada ronda ya empezada, como si fueran sus partidas de esas rondas, y cuentan igual para la clasificación. Tienen que jugarlas antes de que empiece la ronda siguiente. Desde esa ronda se las empareja con normalidad y no vuelven a enfrentarse entre ellas en la fase suiza.
+Si dos personas se incorporan con la fase suiza ya empezada, juegan entre ellas una partida por cada ronda ya empezada, como si fueran sus partidas de esas rondas, y cuentan igual para la clasificación. Tienen que jugarlas antes de que empiece la ronda siguiente. Desde esa ronda se las empareja con normalidad y no vuelven a enfrentarse entre ellas en la fase suiza. Si se incorpora una sola persona, no juega esas rondas: la organización le asigna un resultado en cada una y se la empareja con normalidad desde la siguiente.
 
 ## Abandonos
 

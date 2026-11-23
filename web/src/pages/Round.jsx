@@ -51,6 +51,18 @@ function Pairing({ pairing }) {
     );
   }
 
+  // A late joiner's result for a round played before they joined, decided by the organizers.
+  if (pairing.assigned) {
+    const won = pairing.assigned === 'win';
+    return (
+      <div className="pairing-row bye-row">
+        <span className="table-no">·</span>
+        <PlayerName player={pairing.player1} won={won} lost={!won} />
+        <span className="bye-note">se incorporó más tarde: {won ? 'victoria' : 'derrota'} asignada</span>
+      </div>
+    );
+  }
+
   // A result entered by the organizers (coin toss, walkover) shows as any other finished game.
   const badge = pairing.manual === 'double' || pairing.manual === 'double_forfeit' ? 'double' : pairing.status;
   const finished = pairing.status === 'complete';
@@ -79,8 +91,8 @@ export function Round() {
   const current = rounds.find((r) => r.current) ?? rounds[rounds.length - 1];
   const active = rounds.find((r) => r.number === selected) ?? current;
 
-  // Games only: a bye is not a game to play.
-  const games = active ? active.pairings.filter((p) => !p.bye) : [];
+  // Games only: a bye or an assigned result is not a game to play.
+  const games = active ? active.pairings.filter((p) => !p.bye && !p.assigned) : [];
   const played = games.filter((p) => p.status === 'complete').length;
   const total = games.length;
 

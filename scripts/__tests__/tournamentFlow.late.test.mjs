@@ -9,6 +9,7 @@ import {
   getPendingMatches,
   applyResult,
   addLatePair,
+  addLatePlayer,
   loadEngineTournament,
   saveEngineTournament
 } from '../lib/tournamentEngine.mjs';
@@ -92,4 +93,49 @@ test('round 3 cannot open until the late games are resolved; then they count and
     assert.equal(row.record.win + row.record.loss, 2, 'dos partidas en su récord');
     assert.equal(row.points, 1);
   }
+});
+
+// A single late joiner: no catch-up games, a record decided by the organizers.
+
+function inRound2WithLatePlayer() {
+  let { engine, tournament } = startTournament({ tournament: config, roster, now: '2026-11-09T08:00:00.000Z' });
+  for (const m of getUnresolvedMatches(engine, 1)) applyResult(engine, m.id, 'player1_win');
+  ({ tournament } = advance({ engine, tournament, overrides: { overrides: [] }, now: '2026-11-16T08:00:00.000Z' }));
+  addLatePlayer(engine, { id: 'late_j', name: 'Jorge', chesscomUsername: 'pendiente-jorge', chesscomPending: true }, { 1: 'win', 2: 'loss' });
+  return { engine: loadEngineTournament(JSON.parse(saveEngineTournament(engine))), tournament };
+}
+
+test('a single late player gets a finished win and loss without opponent, and nothing pending', () => {
+  const { engine } = inRound2WithLatePlayer();
+  const mine = engine.getMatches().filter((m) => m.player1.id === 'late_j');
+  assert.deepEqual(mine.map((m) => [m.round, m.getMeta().assigned, m.active, m.player2.id]).sort(), [[1, 'win', false, null], [2, 'loss', false, null]]);
+  assert.equal(getPendingMatches(engine, 2).length, 4, 'solo las 4 mesas normales de la ronda 2');
+  assert.equal(engine.getPlayer('late_j').getMeta().chesscomPending, true);
+});
+
+test('the late player counts as 1-1 with 1 point, takes no bye and is paired normally in round 3', () => {
+  const { engine, tournament } = inRound2WithLatePlayer();
+  for (const m of getUnresolvedMatches(engine, 2)) applyResult(engine, m.id, 'player1_win');
+  const next = advance({ engine, tournament, overrides: { overrides: [] }, now: '2026-11-23T08:00:00.000Z' });
+  const r3 = engine.getMatches().filter((m) => m.round === 3);
+  const bye = r3.find((m) => m.bye);
+  assert.equal(r3.length, 5, '9 jugadores: 4 mesas y un bye');
+  assert.ok(bye && bye.player1.id !== 'late_j', 'descansa alguien con 0-2, no el recién llegado');
+  assert.ok(r3.some((m) => !m.bye && [m.player1.id, m.player2.id].includes('late_j')));
+
+  const players = { players: [...roster.players, { id: 'late_j', name: 'Jorge', chesscomUsername: 'pendiente-jorge', chesscomVerified: false, status: 'active' }] };
+  const data = derivePublicData({ tournament: next.tournament, roster: players, engineState: JSON.parse(saveEngineTournament(engine)), now: '2026-11-23T08:00:00.000Z' });
+  const row = data['standings.json'].rows.find((r) => r.playerId === 'late_j');
+  assert.deepEqual(row.record, { win: 1, loss: 1 });
+  assert.equal(row.points, 1);
+  assert.equal(row.byes, 0);
+  const assigned = data['rounds.json'].rounds.flatMap((r) => r.pairings.filter((p) => p.assigned).map((p) => [r.number, p.assigned, p.player1.id, p.player2, p.score]));
+  assert.deepEqual(assigned, [[1, 'win', 'late_j', null, null], [2, 'loss', 'late_j', null, null]]);
+});
+
+test('addLatePlayer rejects results for rounds not opened yet or unknown outcomes', () => {
+  const { engine } = inRound2WithLatePlayer();
+  assert.throws(() => addLatePlayer(engine, { id: 'x', name: 'X', chesscomUsername: 'x' }, { 3: 'win' }), /no válidos/);
+  assert.throws(() => addLatePlayer(engine, { id: 'y', name: 'Y', chesscomUsername: 'y' }, { 1: 'draw' }), /no válidos/);
+  assert.equal(engine.getPlayers().some((p) => ['x', 'y'].includes(p.getId())), false, 'no se crea el jugador');
 });
