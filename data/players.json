@@ -319,6 +319,15 @@
       "source": "late-entry",
       "chesscomVerified": true,
       "chesscomPlayerId": 34364100
+    },
+    {
+      "id": "p_jorge-carlos-manzanares-martinez-b73b45",
+      "name": "Jorge Carlos Manzanares Martínez",
+      "status": "active",
+      "registeredAt": "2026-11-23T08:37:00.854Z",
+      "source": "late-entry",
+      "chesscomUsername": "pendiente-jorge-carlos-manzanares-martinez",
+      "chesscomVerified": false
     }
   ]
 }

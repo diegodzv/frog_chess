@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T12:31:14.903Z",
+  "updatedAt": "2026-11-23T08:37:01.474Z",
   "phase": "stage-one",
   "gamesAnalyzed": 28,
   "minMovesForRecords": 5,
@@ -9,7 +9,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 12
+        "seed": 13
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -48,7 +48,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 19
+        "seed": 12
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -61,7 +61,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 8
+        "seed": 7
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -102,7 +102,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 12
+        "seed": 13
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -115,7 +115,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 14
+        "seed": 18
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -128,7 +128,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 8
+        "seed": 7
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -156,7 +156,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 8
+        "seed": 7
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -169,7 +169,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 12
+        "seed": 13
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -182,7 +182,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 8
+        "seed": 7
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -228,7 +228,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 7
+        "seed": 8
       },
       "checkmates": 2
     },
@@ -246,7 +246,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 8
+        "seed": 7
       },
       "checkmates": 2
     }

@@ -12,6 +12,24 @@
       "reason": "Sorteo tras tablas",
       "applied": true,
       "coinToss": true
+    },
+    {
+      "players": [
+        "eskimogrrrl77",
+        "ToteBoss"
+      ],
+      "outcome": "double_forfeit",
+      "reason": "partida no jugada",
+      "applied": true
+    },
+    {
+      "players": [
+        "E-Kasiparov",
+        "Devittot"
+      ],
+      "outcome": "double_forfeit",
+      "reason": "partida no jugada",
+      "applied": true
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T12:02:41.432Z",
+  "updatedAt": "2026-11-23T08:37:00.866Z",
   "players": [
     {
       "id": "p_alberto-ruiz-rancano-41fb08",
@@ -191,6 +191,12 @@
       "id": "p_miguel-mateo-garcia-dd90a3",
       "name": "Miguel Mateo García",
       "chesscomUsername": "ISacMyQueen",
+      "status": "active"
+    },
+    {
+      "id": "p_jorge-carlos-manzanares-martinez-b73b45",
+      "name": "Jorge Carlos Manzanares Martínez",
+      "chesscomUsername": null,
       "status": "active"
     }
   ]
