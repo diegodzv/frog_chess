@@ -67,10 +67,18 @@ Si tienes que dejar el torneo, avisa a la organización.
 La clasificación ordena por puntos; con los mismos puntos, por resistencia, y si sigue el empate, por la resistencia de los rivales. Los tres valores se ven en la web.
 
 1. **Puntos.** Victoria 1 punto, derrota 0. El descanso (bye) cuenta como victoria. No hay medios puntos.
-2. **Resistencia.** La media del porcentaje de victorias de todos los rivales a los que te has enfrentado, con su récord actual. Mide lo fuertes que han sido tus rivales.
+2. **Resistencia.** Mide lo fuertes que han sido tus rivales: es la media del porcentaje de victorias de todos ellos.
 3. **Resistencia de los rivales.** La media de la resistencia de tus rivales.
 
-Ejemplo: dos jugadores terminan 5-1. La única derrota de A fue contra alguien que acabó 6-0; la de B, contra alguien que acabó 1-5. Si el resto de sus rivales tuvieron récords parecidos, A queda por delante porque su resistencia es mayor. Cuentan los seis rivales, no solo el que te ganó: también suma haber ganado a rivales fuertes.
+Cómo se calcula exactamente:
+
+- **Porcentaje de victorias** de un jugador = victorias ÷ encuentros con resultado. El bye cuenta como victoria; una partida no jugada, como derrota de quien la pierde.
+- **Resistencia** = suma del porcentaje de victorias de tus rivales ÷ número de rivales.
+- **Resistencia de los rivales** = suma de la resistencia de tus rivales ÷ número de rivales.
+- Son **rivales** todos aquellos con quienes tienes un encuentro con resultado, también si no se jugó y se dio por perdido. El bye no es un rival, y la partida de la semana no cuenta hasta que tiene resultado.
+- Se usa el récord **actual** de tus rivales, así que tu resistencia cambia cada semana según les vaya a ellos, aunque tú no juegues.
+
+Ejemplo: llevas tres rondas y te has enfrentado a A, que va 3-0 (100 %), a B, que va 2-1 (66,7 %), y a C, que va 0-3 (0 %). Tu resistencia es (100 + 66,7 + 0) ÷ 3 = 55,6 %. Cuentan todos tus rivales, no solo los que te ganaron: también suma haber ganado a rivales fuertes.
 
 La clasificación al terminar las rondas suizas decide quién pasa a las eliminatorias y su cabeza de serie.
 
