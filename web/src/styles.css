@@ -250,15 +250,6 @@ table.standings tr.cutoff-line td {
   border-bottom: 2px dashed var(--accent);
 }
 
-.tag {
-  margin-left: 0.4rem;
-  padding: 0.05rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  color: var(--muted);
-  border: 1px solid var(--border);
-}
-
 .outcome-champion {
   font-weight: 700;
   color: #b8860b;

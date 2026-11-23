@@ -9,6 +9,12 @@ export function formatDate(iso) {
   return iso ? new Date(iso).toLocaleDateString('es-ES', { day: 'numeric', month: 'long' }) : null;
 }
 
+/** "23 de noviembre, 9:36" (the viewer's local time). */
+export function formatDateTime(iso) {
+  if (!iso) return null;
+  return `${formatDate(iso)}, ${new Date(iso).toLocaleTimeString('es-ES', { hour: 'numeric', minute: '2-digit' })}`;
+}
+
 /** Last day of a round: rounds open on a Monday and are played until that week's Sunday. */
 export function roundEndDate(startIso) {
   return startIso ? new Date(new Date(startIso).getTime() + 6 * 86_400_000).toISOString() : null;

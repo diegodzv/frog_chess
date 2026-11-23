@@ -3,7 +3,7 @@ import { Nav } from '../components/Nav.jsx';
 import { StatusBadge } from '../components/StatusBadge.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { formatDate, roundEndDate } from '../components/format.js';
+import { formatDate, formatDateTime, roundEndDate } from '../components/format.js';
 
 const SHORT_LABEL = {
   'Dieciseisavos de final': '1/16',
@@ -100,6 +100,7 @@ export function Round() {
     <div className="page wide">
       <Nav current="round" />
       <h1>Rondas</h1>
+      {data?.updatedAt && <p className="meta-line">Actualizado a {formatDateTime(data.updatedAt)}</p>}
 
       {error && <p className="empty-state">No se pudieron cargar los datos.</p>}
       {data && rounds.length === 0 && <p className="empty-state">No hay una ronda activa todavía.</p>}

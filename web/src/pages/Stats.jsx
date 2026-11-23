@@ -1,7 +1,7 @@
 import { Nav } from '../components/Nav.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { formatDate, formatDuration } from '../components/format.js';
+import { formatDateTime, formatDuration } from '../components/format.js';
 
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
@@ -72,7 +72,7 @@ export function Stats() {
       <Nav current="stats" />
       <h1>Estadísticas</h1>
       <p className="meta-line">
-        {data ? (data.updatedAt ? `Actualizado ${formatDate(data.updatedAt)}` : '') : 'Cargando...'}
+        {data ? (data.updatedAt ? `Actualizado a ${formatDateTime(data.updatedAt)}` : '') : 'Cargando...'}
       </p>
       {error && <p className="empty-state">No se pudieron cargar los datos.</p>}
       {data && (

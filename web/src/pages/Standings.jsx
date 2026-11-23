@@ -1,7 +1,7 @@
 import { Nav } from '../components/Nav.jsx';
 import { useJson } from '../hooks/useJson.js';
 import { dataUrl } from '../dataset.js';
-import { PHASE_LABELS, formatDate, playerLink } from '../components/format.js';
+import { PHASE_LABELS, formatDateTime, playerLink } from '../components/format.js';
 
 const vd = (r) => `${r.win}-${r.loss}`;
 const pct = (x) => `${(x * 100).toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
@@ -91,7 +91,7 @@ export function Standings() {
         {meta
           ? `${PHASE_LABELS[meta.phase] ?? meta.phase}${meta.currentRoundLabel ? ` · ${meta.currentRoundLabel}` : ''}`
           : 'Cargando...'}
-        {standings?.updatedAt ? ` · Actualizado ${formatDate(standings.updatedAt)}` : ''}
+        {standings?.updatedAt ? ` · Actualizado a ${formatDateTime(standings.updatedAt)}` : ''}
       </p>
 
       {meta?.champion && (
@@ -134,11 +134,6 @@ export function Standings() {
                     <td className="num">{row.rank}</td>
                     <td>
                       <PlayerCell row={row} />
-                      {row.byes > 0 && (
-                        <span className="tag" title="Ha tenido un bye">
-                          bye
-                        </span>
-                      )}
                     </td>
                     <td className="num strong">{row.points}</td>
                     <td className="num">{vd(row.record)}</td>
