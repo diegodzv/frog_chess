@@ -1901,12 +1901,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "fb5074a3-82fc-4402-b8a2-1bf12aa3833f",
       "loss": false,
       "match": 15,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-23T18:39:40.000Z",
+            "material": {
+              "black": 30,
+              "white": 8
+            },
+            "moves": 28,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 228,
+              "white": 481
+            },
+            "url": "https://www.chess.com/game/live/187856975656"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1915,12 +1938,12 @@
         "draw": 0,
         "id": "p_jorge-carlos-manzanares-martinez-b73b45",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_lucia-valles-escudero-f202a0",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 3
@@ -3232,7 +3255,7 @@
           "bye": false,
           "draw": 0,
           "id": "fb5074a3-82fc-4402-b8a2-1bf12aa3833f",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_jorge-carlos-manzanares-martinez-b73b45",
           "pairUpDown": false,
           "seating": null,
@@ -3362,7 +3385,7 @@
           "opponent": "p_lucia-valles-escudero-f202a0",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

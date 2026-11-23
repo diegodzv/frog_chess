@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-23T11:19:45.589Z",
+  "updatedAt": "2026-11-23T20:51:12.851Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 29,
+  "gamesAnalyzed": 30,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -9,7 +9,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 13
+        "seed": 15
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -48,7 +48,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 11
+        "seed": 12
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -89,7 +89,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 9
+        "seed": 10
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -115,7 +115,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 13
+        "seed": 15
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -143,7 +143,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 10
+        "seed": 11
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -169,7 +169,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 13
+        "seed": 15
       },
       "round": 2,
       "roundLabel": "Ronda 2",

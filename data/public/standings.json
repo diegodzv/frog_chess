@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T20:43:53.926Z",
+  "updatedAt": "2026-11-23T20:51:12.851Z",
   "phase": "stage-one",
   "round": 3,
   "cutoff": 16,
@@ -64,8 +64,8 @@
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.5,
+      "resistance": 0.4167,
+      "opponentsResistance": 0.5278,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -204,6 +204,28 @@
     },
     {
       "rank": 10,
+      "playerId": "p_jorge-carlos-manzanares-martinez-b73b45",
+      "name": "Jorge Carlos Manzanares Martínez",
+      "chesscomUsername": "jmanzanares74",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 1
+      },
+      "games": {
+        "win": 1,
+        "loss": 0,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.3333,
+      "opponentsResistance": 0.5556,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 11,
       "playerId": "p_angel-tena-jimenez-b2ec4e",
       "name": "Ángel Tena Jiménez",
       "chesscomUsername": "angeltena26",
@@ -225,7 +247,7 @@
       "outcome": null
     },
     {
-      "rank": 11,
+      "rank": 12,
       "playerId": "p_diego-diaz-vidal-4f1507",
       "name": "Diego Díaz Vidal",
       "chesscomUsername": "diegodzv",
@@ -247,7 +269,7 @@
       "outcome": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "playerId": "p_alberto-ruiz-rancano-41fb08",
       "name": "Alberto Ruiz Rancaño",
       "chesscomUsername": "TheGambel99",
@@ -269,7 +291,7 @@
       "outcome": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "playerId": "p_luis-gontan-moreno-651b3b",
       "name": "Luis Gontán Moreno",
       "chesscomUsername": "luisGM1985",
@@ -285,13 +307,13 @@
       },
       "byes": 0,
       "resistance": 0.5,
-      "opponentsResistance": 0.625,
+      "opponentsResistance": 0.5833,
       "qualified": true,
       "dropped": false,
       "outcome": null
     },
     {
-      "rank": 14,
+      "rank": 15,
       "playerId": "p_diego-morante-parra-32c467",
       "name": "Diego Morante Parra",
       "chesscomUsername": "diegommmmmmm",
@@ -313,7 +335,7 @@
       "outcome": null
     },
     {
-      "rank": 15,
+      "rank": 16,
       "playerId": "p_antonio-manuel-martin-garcia-c24f9d",
       "name": "Antonio Manuel Martín García",
       "chesscomUsername": "PangWM",
@@ -335,32 +357,10 @@
       "outcome": null
     },
     {
-      "rank": 16,
+      "rank": 17,
       "playerId": "p_miguel-aragon-lazcano-29de38",
       "name": "Miguel Aragón Lazcano",
       "chesscomUsername": "M_l_K_l",
-      "points": 1,
-      "record": {
-        "win": 1,
-        "loss": 1
-      },
-      "games": {
-        "win": 1,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.5,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 17,
-      "playerId": "p_lucia-valles-escudero-f202a0",
-      "name": "Lucía Valles Escudero",
-      "chesscomUsername": "lvallese",
       "points": 1,
       "record": {
         "win": 1,
@@ -439,7 +439,7 @@
       },
       "byes": 0,
       "resistance": 0.25,
-      "opponentsResistance": 0.625,
+      "opponentsResistance": 0.5833,
       "qualified": false,
       "dropped": false,
       "outcome": null
@@ -468,22 +468,22 @@
     },
     {
       "rank": 22,
-      "playerId": "p_jorge-carlos-manzanares-martinez-b73b45",
-      "name": "Jorge Carlos Manzanares Martínez",
-      "chesscomUsername": "jmanzanares74",
+      "playerId": "p_lucia-valles-escudero-f202a0",
+      "name": "Lucía Valles Escudero",
+      "chesscomUsername": "lvallese",
       "points": 1,
       "record": {
         "win": 1,
-        "loss": 1
+        "loss": 2
       },
       "games": {
-        "win": 0,
-        "loss": 0,
+        "win": 1,
+        "loss": 2,
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0,
-      "opponentsResistance": 0,
+      "resistance": 0.5556,
+      "opponentsResistance": 0.3889,
       "qualified": false,
       "dropped": false,
       "outcome": null
@@ -666,28 +666,6 @@
     },
     {
       "rank": 31,
-      "playerId": "p_johan-stevens-bautista-parra-cd3247",
-      "name": "Johan Stevens Bautista Parra",
-      "chesscomUsername": "mrtewe",
-      "points": 0,
-      "record": {
-        "win": 0,
-        "loss": 2
-      },
-      "games": {
-        "win": 0,
-        "loss": 2,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.375,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 32,
       "playerId": "p_jose-luis-gomez-anton-3f5575",
       "name": "José Luis Gómez Antón",
       "chesscomUsername": "ToteBoss",
@@ -704,6 +682,28 @@
       "byes": 0,
       "resistance": 0.5,
       "opponentsResistance": 0.1667,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 32,
+      "playerId": "p_johan-stevens-bautista-parra-cd3247",
+      "name": "Johan Stevens Bautista Parra",
+      "chesscomUsername": "mrtewe",
+      "points": 0,
+      "record": {
+        "win": 0,
+        "loss": 2
+      },
+      "games": {
+        "win": 0,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.4167,
+      "opponentsResistance": 0.4028,
       "qualified": false,
       "dropped": false,
       "outcome": null
