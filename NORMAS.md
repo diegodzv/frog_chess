@@ -51,10 +51,6 @@ Las partidas con otro ritmo no cuentan. La ronda 1 se jugó a 7 minutos con 5 se
 6. **Ronda cerrada.** Cuando se cierra una ronda, sus resultados son definitivos: ya no se puede jugar una partida pendiente ni cambiar ningún resultado, sea cual sea el motivo. Si prevés que no vas a poder jugar a tiempo, organízate con tu rival para jugar antes.
 7. **Descanso (bye).** Si el número de jugadores es impar, cada ronda una persona no tiene rival y se le cuenta como victoria. Descansa alguien elegido al azar entre quienes tienen menos victorias y aún no han descansado. Nadie descansa dos veces.
 
-## Incorporaciones con el torneo empezado
-
-Si dos personas se incorporan con la fase suiza ya empezada, juegan entre ellas una partida por cada ronda ya empezada, que cuenta como su partida de esa ronda. Tienen que jugarlas antes de que empiece la ronda siguiente, y no vuelven a enfrentarse entre ellas en la fase suiza. Si se incorpora una sola persona, no juega esas rondas: la organización le asigna un resultado en cada una. En los dos casos, desde la ronda siguiente se las empareja con normalidad.
-
 ## Abandonos
 
 Si tienes que dejar el torneo, avisa a la organización.
@@ -100,6 +96,3 @@ La web lleva unas estadísticas que se actualizan a medida que se juegan las par
 
 No cuentan las partidas abandonadas, las de menos de 5 jugadas ni los resultados decididos a suertes o por partida no jugada.
 
-## Pendiente de decidir
-
-- Eliminatorias: fecha de inicio (11 o 18 de enero), cuántas partidas tienen los octavos y los cuartos de final y cuánto tiempo hay para cada ronda.
