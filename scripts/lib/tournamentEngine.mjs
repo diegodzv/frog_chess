@@ -279,6 +279,8 @@ export function addLatePair(tournament, players, rounds, windowStart) {
  * Each one is a finished match without an opponent (`meta.assigned`), like the library's own assignLoss: it counts
  * in points and record but in nobody's tiebreaks, and it is not a bye, so the player can still get one later.
  * From the next round on they are paired normally.
+ * No longer exposed as an action (no more players will join); kept so the tests can build the assigned matches
+ * that the real data already holds (Jorge Carlos Manzanares, rounds 1 and 2).
  *
  * @param player { id, name, chesscomUsername, chesscomPending }
  */

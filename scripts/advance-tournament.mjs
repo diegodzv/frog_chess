@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // Run by .github/workflows/advance-round.yml, triggered manually by an
-// organizer via workflow_dispatch. Actions: check-players | start-tournament | apply-overrides | rebuild-public-data | add-late-pair | add-late-player | next-round | force-next-round.
+// organizer via workflow_dispatch. Actions: check-players | start-tournament | apply-overrides | rebuild-public-data | add-late-pair | next-round | force-next-round.
 // The tournament logic lives in lib/tournamentFlow.mjs; this script only does I/O.
 
-import { loadEngineTournament, saveEngineTournament, setPlayoffCutoff, setPlayerUsername, addLatePair, addLatePlayer } from './lib/tournamentEngine.mjs';
+import { loadEngineTournament, saveEngineTournament, setPlayoffCutoff, setPlayerUsername, addLatePair } from './lib/tournamentEngine.mjs';
 import { startTournament, advance, applyPendingOverrides } from './lib/tournamentFlow.mjs';
 import { readJson, writeJson } from './lib/repoData.mjs';
 import { commitAndPush } from './lib/commitAndPush.mjs';
@@ -200,54 +200,6 @@ async function addLatePlayers() {
   console.log(`Incorporados ${players.map((p) => `${p.name} (${p.chesscomUsername})`).join(' y ')}: rondas ${rounds.join(', ')} entre ellos.`);
 }
 
-/**
- * add-late-player --name=<name> --results=1:win,2:loss [--username=<chess.com user>]: one player joins during the
- * swiss stage with a record decided by the organizers for the rounds already opened (no catch-up games); from the
- * next round on they are paired normally. Without --username they get a provisional, unconfirmed one (hidden on the
- * site, never synced) until it is corrected with set-username --player=<provisional> --to=<real one>.
- */
-async function addOneLatePlayer() {
-  const tournament = await readJson('tournament.json');
-  if (tournament.phase !== 'stage-one') throw new Error('Solo se pueden incorporar jugadores durante la fase suiza.');
-  const name = String(getFlag('name') ?? process.env.NAME ?? '').trim();
-  const resultsFlag = getFlag('results') ?? process.env.RESULTS;
-  if (!name || !resultsFlag) throw new Error('Uso: --action=add-late-player --name=<nombre> --results=1:win,2:loss [--username=<usuario>]');
-  const results = Object.fromEntries(resultsFlag.split(',').map((r) => r.split(':').map((x) => x.trim())));
-  const roster = await readJson('players.json');
-
-  const username = String(getFlag('username') ?? process.env.USERNAME_CHESSCOM ?? '').trim().replace(/^@/, '');
-  let identity;
-  if (username) {
-    const profile = await getPlayerProfile(username);
-    if (!profile) throw new Error(`No existe ningún usuario de chess.com llamado "${username}".`);
-    identity = { chesscomUsername: canonicalUsername(profile), chesscomVerified: true, chesscomPlayerId: profile.player_id };
-  } else {
-    identity = { chesscomUsername: `pendiente-${slugify(name, name).replace(/^p_|-[0-9a-f]{6}$/g, '')}`, chesscomVerified: false };
-  }
-  const clash = roster.players.find((p) => p.status === 'active' && p.chesscomUsername.toLowerCase() === identity.chesscomUsername.toLowerCase());
-  if (clash) throw new Error(`El usuario "${identity.chesscomUsername}" ya es de ${clash.name}.`);
-  const player = {
-    id: slugify(name, identity.chesscomUsername),
-    name,
-    status: 'active',
-    registeredAt: new Date().toISOString(),
-    source: 'late-entry',
-    ...identity
-  };
-
-  const engine = loadEngineTournament(await readJson('engine-state.json'));
-  addLatePlayer(engine, { ...player, chesscomPending: !player.chesscomVerified }, results);
-  roster.players.push(player);
-  tournament.playerCount = roster.players.filter((p) => p.status === 'active').length;
-  await writeJson('players.json', roster);
-  await writeJson('tournament.json', tournament);
-  await writeJson('engine-state.json', saveEngineTournament(engine));
-  await buildPublicData();
-  const record = Object.entries(results).map(([round, r]) => `ronda ${round}: ${r === 'win' ? 'victoria' : 'derrota'}`).join(', ');
-  commitAndPush(`inscripción: se incorpora ${name} (${record}, asignadas)`);
-  console.log(`Incorporado ${name} (${player.chesscomUsername}${player.chesscomVerified ? '' : ', sin confirmar'}): ${record}.`);
-}
-
 /** Regenerates data/public/*.json (e.g. after editing players.json by hand) and commits it. */
 async function rebuildPublicData() {
   await buildPublicData();
@@ -335,10 +287,9 @@ async function main() {
   if (action === 'set-username') return setUsername();
   if (action === 'manual-result') return manualResult();
   if (action === 'add-late-pair') return addLatePlayers();
-  if (action === 'add-late-player') return addOneLatePlayer();
   if (action === 'next-round') return next(false);
   if (action === 'force-next-round') return next(true);
-  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | set-username | manual-result | add-late-pair | add-late-player | next-round | force-next-round.`);
+  throw new Error(`Acción desconocida: "${action}". Usa check-players | start-tournament | apply-overrides | rebuild-public-data | set-cutoff | set-username | manual-result | add-late-pair | next-round | force-next-round.`);
 }
 
 await main();
