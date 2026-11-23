@@ -51,7 +51,8 @@ El torneo tiene dos fases:
 3. **Una partida.** Cada ronda es una sola partida, jugada en chess.com con los usuarios inscritos.
 4. **Tablas.** Si la partida acaba en tablas, podéis jugar otra o echarlo a suertes; lo decidís vosotros. Si uno de los dos no quiere jugar otra partida, se echa a suertes. Para echarlo a suertes, avisad a cualquiera de los organizadores y lo sortea; si queréis, en una llamada de Teams con vosotros.
 5. **Partida no jugada.** Si no puedes jugar tu partida antes del domingo a las 23:59, se te da por perdida y la gana tu rival. Si no la juega ninguno de los dos, la perdéis los dos.
-6. **Descanso (bye).** Si el número de jugadores es impar, cada ronda una persona no tiene rival y se le cuenta como victoria. En la primera ronda se elige al azar; después, al azar entre quienes tienen menos victorias y aún no han descansado. Nadie descansa dos veces.
+6. **Ronda cerrada.** Cuando se cierra una ronda, sus resultados son definitivos: ya no se puede jugar una partida pendiente ni cambiar ningún resultado, sea cual sea el motivo. Si prevés que no vas a poder jugar a tiempo, organízate con tu rival para jugar antes.
+7. **Descanso (bye).** Si el número de jugadores es impar, cada ronda una persona no tiene rival y se le cuenta como victoria. En la primera ronda se elige al azar; después, al azar entre quienes tienen menos victorias y aún no han descansado. Nadie descansa dos veces.
 
 ## Incorporaciones con el torneo empezado
 
