@@ -250,6 +250,8 @@ export function applyDoubleForfeit(tournament, match, opts = {}) {
  * count as if they had played them, and from the next round they are paired normally (never against each other
  * again). `meta.lateEntry.windowStart` makes sync-results look for those games from that moment on, even if the
  * rounds are already closed; the library won't open the next round until they are resolved.
+ * No longer exposed as an action (no more players will join); kept so the tests can build the catch-up matches
+ * that the real data already holds (Lara Visuña and Miguel Mateo, rounds 1 and 2).
  *
  * @param players [{ id, name, chesscomUsername }, { ... }]
  */
