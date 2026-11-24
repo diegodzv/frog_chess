@@ -1651,12 +1651,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "bc453e34-4320-4b99-9d9d-f1d5244c2016",
       "loss": false,
       "match": 5,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-24T16:19:07.000Z",
+            "material": {
+              "black": 20,
+              "white": 2
+            },
+            "moves": 56,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 212,
+              "white": 211
+            },
+            "url": "https://www.chess.com/game/live/187923174784"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1665,12 +1688,12 @@
         "draw": 0,
         "id": "p_david-del-blanco-taranilla-dc5ea2",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_josep-oriol-elias-albajes-31219d",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 3
@@ -1776,12 +1799,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "2b43e207-bfc0-4f21-a743-ac7f231ca272",
       "loss": false,
       "match": 10,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-24T16:15:36.000Z",
+            "material": {
+              "black": 22,
+              "white": 25
+            },
+            "moves": 31,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 308,
+              "white": 360
+            },
+            "url": "https://www.chess.com/game/live/187922614020"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1789,14 +1835,14 @@
       "player1": {
         "draw": 0,
         "id": "p_diego-morante-parra-32c467",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_miguel-aragon-lazcano-29de38",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 3
     },
@@ -2316,7 +2362,7 @@
           "opponent": "p_diego-morante-parra-32c467",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -2396,7 +2442,7 @@
           "bye": false,
           "draw": 0,
           "id": "2b43e207-bfc0-4f21-a743-ac7f231ca272",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_miguel-aragon-lazcano-29de38",
           "pairUpDown": false,
           "seating": null,
@@ -3068,7 +3114,7 @@
           "bye": false,
           "draw": 0,
           "id": "bc453e34-4320-4b99-9d9d-f1d5244c2016",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_david-del-blanco-taranilla-dc5ea2",
           "pairUpDown": false,
           "seating": null,
@@ -3156,7 +3202,7 @@
           "opponent": "p_josep-oriol-elias-albajes-31219d",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
