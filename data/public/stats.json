@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-23T20:51:12.851Z",
+  "updatedAt": "2026-11-24T12:21:00.458Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 30,
+  "gamesAnalyzed": 31,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -9,7 +9,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 15
+        "seed": 16
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -22,7 +22,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 7
+        "seed": 6
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -35,7 +35,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 7
+        "seed": 6
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -45,29 +45,29 @@
     },
     {
       "player": {
+        "id": "p_albert-sanchez-fernandez-47fe38",
+        "name": "Albert Sánchez Fernández",
+        "chesscomUsername": "murakaii",
+        "seed": 11
+      },
+      "round": 3,
+      "roundLabel": "Ronda 3",
+      "moves": 21,
+      "timeSec": 226,
+      "material": 31
+    },
+    {
+      "player": {
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 12
+        "seed": 13
       },
       "round": 1,
       "roundLabel": "Ronda 1",
       "moves": 21,
       "timeSec": 245,
       "material": 30
-    },
-    {
-      "player": {
-        "id": "p_miguel-mateo-garcia-dd90a3",
-        "name": "Miguel Mateo García",
-        "chesscomUsername": "ISacMyQueen",
-        "seed": 6
-      },
-      "round": 1,
-      "roundLabel": "Ronda 1",
-      "moves": 21,
-      "timeSec": 256,
-      "material": 31
     }
   ],
   "fastestByTime": [
@@ -76,7 +76,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 7
+        "seed": 6
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -115,7 +115,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 15
+        "seed": 16
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -128,7 +128,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 18
+        "seed": 19
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -143,7 +143,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 11
+        "seed": 12
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -156,7 +156,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 6
+        "seed": 5
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -169,7 +169,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 15
+        "seed": 16
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -182,7 +182,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 6
+        "seed": 5
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -192,15 +192,15 @@
     },
     {
       "player": {
-        "id": "p_pedro-atares-rodriguez-44b837",
-        "name": "Pedro Atarés Rodríguez",
-        "chesscomUsername": "CharlesDegoulash",
-        "seed": 3
+        "id": "p_albert-sanchez-fernandez-47fe38",
+        "name": "Albert Sánchez Fernández",
+        "chesscomUsername": "murakaii",
+        "seed": 11
       },
-      "round": 2,
-      "roundLabel": "Ronda 2",
-      "moves": 22,
-      "timeSec": 361,
+      "round": 3,
+      "roundLabel": "Ronda 3",
+      "moves": 21,
+      "timeSec": 226,
       "material": 31
     }
   ],
@@ -219,7 +219,7 @@
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 4
+        "seed": 7
       },
       "checkmates": 2
     },
@@ -237,16 +237,16 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 5
+        "seed": 4
       },
       "checkmates": 2
     },
     {
       "player": {
-        "id": "p_miguel-mateo-garcia-dd90a3",
-        "name": "Miguel Mateo García",
-        "chesscomUsername": "ISacMyQueen",
-        "seed": 6
+        "id": "p_albert-sanchez-fernandez-47fe38",
+        "name": "Albert Sánchez Fernández",
+        "chesscomUsername": "murakaii",
+        "seed": 11
       },
       "checkmates": 2
     }

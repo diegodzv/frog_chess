@@ -1876,12 +1876,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "728c4abb-6d1f-4d95-abc9-ab84c70c6c5d",
       "loss": false,
       "match": 14,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-24T12:16:22.000Z",
+            "material": {
+              "black": 26,
+              "white": 31
+            },
+            "moves": 21,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 375,
+              "white": 226
+            },
+            "url": "https://www.chess.com/game/live/187906659614"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1889,14 +1912,14 @@
       "player1": {
         "draw": 0,
         "id": "p_diego-diaz-vidal-4f1507",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_albert-sanchez-fernandez-47fe38",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 3
     },
@@ -2079,7 +2102,7 @@
           "bye": false,
           "draw": 0,
           "id": "728c4abb-6d1f-4d95-abc9-ab84c70c6c5d",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_albert-sanchez-fernandez-47fe38",
           "pairUpDown": false,
           "seating": null,
@@ -2965,7 +2988,7 @@
           "opponent": "p_diego-diaz-vidal-4f1507",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
