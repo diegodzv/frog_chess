@@ -1774,12 +1774,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "ff68c8ed-d94d-43e5-a343-8ceb55269a18",
       "loss": false,
       "match": 9,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-25T14:08:45.000Z",
+            "material": {
+              "black": 26,
+              "white": 15
+            },
+            "moves": 21,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 254,
+              "white": 264
+            },
+            "url": "https://www.chess.com/game/live/187989417618"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1788,12 +1811,12 @@
         "draw": 0,
         "id": "p_johan-stevens-bautista-parra-cd3247",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_adrian-alamo-castro-b9b27d",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 3
@@ -2847,7 +2870,7 @@
           "opponent": "p_adrian-alamo-castro-b9b27d",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -2927,7 +2950,7 @@
           "bye": false,
           "draw": 0,
           "id": "ff68c8ed-d94d-43e5-a343-8ceb55269a18",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_johan-stevens-bautista-parra-cd3247",
           "pairUpDown": false,
           "seating": null,

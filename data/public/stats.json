@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-25T09:00:44.737Z",
+  "updatedAt": "2026-11-25T15:22:02.376Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 34,
+  "gamesAnalyzed": 35,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -61,7 +61,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 15
+        "seed": 16
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -89,7 +89,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 10
+        "seed": 11
       },
       "round": 2,
       "roundLabel": "Ronda 2",
