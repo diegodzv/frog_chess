@@ -2018,12 +2018,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "10d29be4-1e3b-4517-81f9-083a5378eeb9",
       "loss": false,
       "match": 16,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-25T08:58:54.000Z",
+            "material": {
+              "black": 22,
+              "white": 2
+            },
+            "moves": 52,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "resigned",
+            "timeUsed": {
+              "black": 536,
+              "white": 560
+            },
+            "url": "https://www.chess.com/game/live/187971163648"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -2032,12 +2055,12 @@
         "draw": 0,
         "id": "p_luis-gontan-moreno-651b3b",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_andres-chica-linares-885e0c",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 3
@@ -2572,7 +2595,7 @@
           "opponent": "p_andres-chica-linares-885e0c",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -2736,7 +2759,7 @@
           "bye": false,
           "draw": 0,
           "id": "10d29be4-1e3b-4517-81f9-083a5378eeb9",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_luis-gontan-moreno-651b3b",
           "pairUpDown": false,
           "seating": null,

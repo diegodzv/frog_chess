@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T17:00:28.631Z",
+  "updatedAt": "2026-11-25T09:00:44.737Z",
   "phase": "stage-one",
   "round": 3,
   "cutoff": 16,
@@ -64,36 +64,14 @@
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0.4167,
-      "opponentsResistance": 0.5278,
+      "resistance": 0.5,
+      "opponentsResistance": 0.5,
       "qualified": true,
       "dropped": false,
       "outcome": null
     },
     {
       "rank": 4,
-      "playerId": "p_hector-rodriguez-vegue-bd3889",
-      "name": "Héctor Rodríguez Vegue",
-      "chesscomUsername": "Vegue82",
-      "points": 2,
-      "record": {
-        "win": 2,
-        "loss": 0
-      },
-      "games": {
-        "win": 2,
-        "loss": 0,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.25,
-      "opponentsResistance": 0.5833,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 5,
       "playerId": "p_lucas-llobet-cusi-354632",
       "name": "Lucas Llobet Cusi",
       "chesscomUsername": "Lucasllobet",
@@ -110,6 +88,28 @@
       "byes": 0,
       "resistance": 0.1667,
       "opponentsResistance": 0.8333,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 5,
+      "playerId": "p_hector-rodriguez-vegue-bd3889",
+      "name": "Héctor Rodríguez Vegue",
+      "chesscomUsername": "Vegue82",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 0
+      },
+      "games": {
+        "win": 2,
+        "loss": 0,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.1667,
+      "opponentsResistance": 0.6111,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -175,7 +175,7 @@
       },
       "byes": 0,
       "resistance": 0.5,
-      "opponentsResistance": 0.5093,
+      "opponentsResistance": 0.537,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -204,6 +204,28 @@
     },
     {
       "rank": 10,
+      "playerId": "p_luis-gontan-moreno-651b3b",
+      "name": "Luis Gontán Moreno",
+      "chesscomUsername": "luisGM1985",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 1
+      },
+      "games": {
+        "win": 2,
+        "loss": 1,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.4444,
+      "opponentsResistance": 0.5741,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 11,
       "playerId": "p_miguel-aragon-lazcano-29de38",
       "name": "Miguel Aragón Lazcano",
       "chesscomUsername": "M_l_K_l",
@@ -219,13 +241,13 @@
       },
       "byes": 0,
       "resistance": 0.4444,
-      "opponentsResistance": 0.5833,
+      "opponentsResistance": 0.5556,
       "qualified": true,
       "dropped": false,
       "outcome": null
     },
     {
-      "rank": 11,
+      "rank": 12,
       "playerId": "p_jorge-carlos-manzanares-martinez-b73b45",
       "name": "Jorge Carlos Manzanares Martínez",
       "chesscomUsername": "jmanzanares74",
@@ -247,7 +269,7 @@
       "outcome": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "playerId": "p_albert-sanchez-fernandez-47fe38",
       "name": "Albert Sánchez Fernández",
       "chesscomUsername": "murakaii",
@@ -269,7 +291,7 @@
       "outcome": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "playerId": "p_angel-tena-jimenez-b2ec4e",
       "name": "Ángel Tena Jiménez",
       "chesscomUsername": "angeltena26",
@@ -291,7 +313,7 @@
       "outcome": null
     },
     {
-      "rank": 14,
+      "rank": 15,
       "playerId": "p_alberto-ruiz-rancano-41fb08",
       "name": "Alberto Ruiz Rancaño",
       "chesscomUsername": "TheGambel99",
@@ -308,28 +330,6 @@
       "byes": 0,
       "resistance": 0.6667,
       "opponentsResistance": 0.3889,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 15,
-      "playerId": "p_luis-gontan-moreno-651b3b",
-      "name": "Luis Gontán Moreno",
-      "chesscomUsername": "luisGM1985",
-      "points": 1,
-      "record": {
-        "win": 1,
-        "loss": 1
-      },
-      "games": {
-        "win": 1,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.5,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -358,28 +358,6 @@
     },
     {
       "rank": 17,
-      "playerId": "p_andres-chica-linares-885e0c",
-      "name": "Andrés Chica Linares",
-      "chesscomUsername": "sensuao",
-      "points": 1,
-      "record": {
-        "win": 1,
-        "loss": 1
-      },
-      "games": {
-        "win": 1,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.4167,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 18,
       "playerId": "p_raul-morchon-fuentes-3193bc",
       "name": "Raúl Morchón Fuentes",
       "chesscomUsername": "ichraxx",
@@ -401,7 +379,7 @@
       "outcome": null
     },
     {
-      "rank": 19,
+      "rank": 18,
       "playerId": "p_isabel-garcia-bergers-d56cf3",
       "name": "Isabel García Bergers",
       "chesscomUsername": "igarciab11",
@@ -423,7 +401,7 @@
       "outcome": null
     },
     {
-      "rank": 20,
+      "rank": 19,
       "playerId": "p_diego-diaz-vidal-4f1507",
       "name": "Diego Díaz Vidal",
       "chesscomUsername": "diegodzv",
@@ -445,7 +423,7 @@
       "outcome": null
     },
     {
-      "rank": 21,
+      "rank": 20,
       "playerId": "p_diego-morante-parra-32c467",
       "name": "Diego Morante Parra",
       "chesscomUsername": "diegommmmmmm",
@@ -467,7 +445,7 @@
       "outcome": null
     },
     {
-      "rank": 22,
+      "rank": 21,
       "playerId": "p_lucia-valles-escudero-f202a0",
       "name": "Lucía Valles Escudero",
       "chesscomUsername": "lvallese",
@@ -483,7 +461,29 @@
       },
       "byes": 0,
       "resistance": 0.5556,
-      "opponentsResistance": 0.3889,
+      "opponentsResistance": 0.4167,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 22,
+      "playerId": "p_andres-chica-linares-885e0c",
+      "name": "Andrés Chica Linares",
+      "chesscomUsername": "sensuao",
+      "points": 1,
+      "record": {
+        "win": 1,
+        "loss": 2
+      },
+      "games": {
+        "win": 1,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5556,
+      "opponentsResistance": 0.3704,
       "qualified": false,
       "dropped": false,
       "outcome": null
@@ -556,6 +556,28 @@
     },
     {
       "rank": 26,
+      "playerId": "p_emilio-garcia-quintana-935a82",
+      "name": "Emilio García Quintana",
+      "chesscomUsername": "emiliogq",
+      "points": 0,
+      "record": {
+        "win": 0,
+        "loss": 2
+      },
+      "games": {
+        "win": 0,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.6667,
+      "opponentsResistance": 0.4722,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 27,
       "playerId": "p_erik-nogues-lavin-8b1828",
       "name": "Erik Nogués Lavín",
       "chesscomUsername": "E-Kasiparov",
@@ -571,57 +593,13 @@
       },
       "byes": 0,
       "resistance": 0.6667,
-      "opponentsResistance": 0.2083,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 27,
-      "playerId": "p_emilio-garcia-quintana-935a82",
-      "name": "Emilio García Quintana",
-      "chesscomUsername": "emiliogq",
-      "points": 0,
-      "record": {
-        "win": 0,
-        "loss": 2
-      },
-      "games": {
-        "win": 0,
-        "loss": 2,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5833,
-      "opponentsResistance": 0.5,
+      "opponentsResistance": 0.1667,
       "qualified": false,
       "dropped": false,
       "outcome": null
     },
     {
       "rank": 28,
-      "playerId": "p_victor-manuel-espada-rodriguez-dc0280",
-      "name": "Víctor Manuel Espada Rodríguez",
-      "chesscomUsername": "vittichenko",
-      "points": 0,
-      "record": {
-        "win": 0,
-        "loss": 2
-      },
-      "games": {
-        "win": 0,
-        "loss": 2,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5833,
-      "opponentsResistance": 0.4722,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 29,
       "playerId": "p_oscar-marin-flores-a2cc66",
       "name": "Óscar Marín Flores",
       "chesscomUsername": "oscaarmfl",
@@ -638,6 +616,28 @@
       "byes": 0,
       "resistance": 0.5833,
       "opponentsResistance": 0.3056,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 29,
+      "playerId": "p_victor-manuel-espada-rodriguez-dc0280",
+      "name": "Víctor Manuel Espada Rodríguez",
+      "chesscomUsername": "vittichenko",
+      "points": 0,
+      "record": {
+        "win": 0,
+        "loss": 2
+      },
+      "games": {
+        "win": 0,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5,
+      "opponentsResistance": 0.5,
       "qualified": false,
       "dropped": false,
       "outcome": null

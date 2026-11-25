@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-24T17:00:28.631Z",
+  "updatedAt": "2026-11-25T09:00:44.737Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 33,
+  "gamesAnalyzed": 34,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -9,7 +9,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 18
+        "seed": 8
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -48,7 +48,7 @@
         "id": "p_albert-sanchez-fernandez-47fe38",
         "name": "Albert Sánchez Fernández",
         "chesscomUsername": "murakaii",
-        "seed": 12
+        "seed": 13
       },
       "round": 3,
       "roundLabel": "Ronda 3",
@@ -61,7 +61,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 14
+        "seed": 15
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -89,7 +89,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 11
+        "seed": 10
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -115,7 +115,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 18
+        "seed": 8
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -128,7 +128,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 16
+        "seed": 18
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -143,7 +143,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 13
+        "seed": 14
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -156,7 +156,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 4
+        "seed": 5
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -169,7 +169,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 18
+        "seed": 8
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -182,7 +182,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 4
+        "seed": 5
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -195,7 +195,7 @@
         "id": "p_albert-sanchez-fernandez-47fe38",
         "name": "Albert Sánchez Fernández",
         "chesscomUsername": "murakaii",
-        "seed": 12
+        "seed": 13
       },
       "round": 3,
       "roundLabel": "Ronda 3",
@@ -228,7 +228,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 9
+        "seed": 12
       },
       "checkmates": 2
     },
@@ -237,7 +237,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 5
+        "seed": 4
       },
       "checkmates": 2
     },
@@ -246,7 +246,7 @@
         "id": "p_albert-sanchez-fernandez-47fe38",
         "name": "Albert Sánchez Fernández",
         "chesscomUsername": "murakaii",
-        "seed": 12
+        "seed": 13
       },
       "checkmates": 2
     }
