@@ -1528,12 +1528,35 @@
       "round": 2
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "58c08b81-ac23-40f7-a722-08f65ae5aab7",
       "loss": false,
       "match": 1,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-26T17:12:01.000Z",
+            "material": {
+              "black": 14,
+              "white": 26
+            },
+            "moves": 29,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 289,
+              "white": 327
+            },
+            "url": "https://www.chess.com/game/live/188077746210"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1541,14 +1564,14 @@
       "player1": {
         "draw": 0,
         "id": "p_oscar-marin-flores-a2cc66",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_lara-visuna-perez-a74dc8",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 3
     },
@@ -1895,12 +1918,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "3ac3e0d6-2029-4c76-9c4e-da2a4f1522a4",
       "loss": false,
       "match": 12,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-26T15:45:27.000Z",
+            "material": {
+              "black": 12,
+              "white": 0
+            },
+            "moves": 50,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "resigned",
+            "timeUsed": {
+              "black": 353,
+              "white": 259
+            },
+            "url": "https://www.chess.com/game/live/188071531016"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1908,14 +1954,14 @@
       "player1": {
         "draw": 0,
         "id": "p_daniel-alocen-pinillos-a8390a",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_pedro-atares-rodriguez-44b837",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 3
     },
@@ -2362,7 +2408,7 @@
           "bye": false,
           "draw": 0,
           "id": "3ac3e0d6-2029-4c76-9c4e-da2a4f1522a4",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_pedro-atares-rodriguez-44b837",
           "pairUpDown": false,
           "seating": null,
@@ -2698,7 +2744,7 @@
           "bye": false,
           "draw": 0,
           "id": "58c08b81-ac23-40f7-a722-08f65ae5aab7",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_lara-visuna-perez-a74dc8",
           "pairUpDown": false,
           "seating": null,
@@ -3122,7 +3168,7 @@
           "opponent": "p_daniel-alocen-pinillos-a8390a",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -3416,7 +3462,7 @@
           "opponent": "p_oscar-marin-flores-a2cc66",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {

@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-25T15:22:02.376Z",
+  "updatedAt": "2026-11-26T22:52:00.698Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 35,
+  "gamesAnalyzed": 37,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -102,7 +102,7 @@
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 2
+        "seed": 3
       },
       "round": 3,
       "roundLabel": "Ronda 3",
@@ -156,7 +156,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 5
+        "seed": 4
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -182,7 +182,7 @@
         "id": "p_miguel-mateo-garcia-dd90a3",
         "name": "Miguel Mateo García",
         "chesscomUsername": "ISacMyQueen",
-        "seed": 5
+        "seed": 4
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -210,7 +210,7 @@
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 2
+        "seed": 3
       },
       "checkmates": 3
     },
@@ -237,7 +237,7 @@
         "id": "p_josep-oriol-elias-albajes-31219d",
         "name": "Josep Oriol Elias Albajes",
         "chesscomUsername": "iLostTheGame420",
-        "seed": 4
+        "seed": 5
       },
       "checkmates": 2
     },
