@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T22:52:00.698Z",
+  "updatedAt": "2026-11-27T11:50:33.488Z",
   "phase": "stage-one",
   "round": 3,
   "cutoff": 16,
@@ -21,13 +21,35 @@
       },
       "byes": 0,
       "resistance": 0.6111,
-      "opponentsResistance": 0.5648,
+      "opponentsResistance": 0.537,
       "qualified": true,
       "dropped": false,
       "outcome": null
     },
     {
       "rank": 2,
+      "playerId": "p_sergio-bernardez-molina-7de06b",
+      "name": "Sergio Bernardez Molina",
+      "chesscomUsername": "sergiako_98",
+      "points": 3,
+      "record": {
+        "win": 3,
+        "loss": 0
+      },
+      "games": {
+        "win": 3,
+        "loss": 0,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5556,
+      "opponentsResistance": 0.5,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 3,
       "playerId": "p_pedro-atares-rodriguez-44b837",
       "name": "Pedro Atarés Rodríguez",
       "chesscomUsername": "CharlesDegoulash",
@@ -44,28 +66,6 @@
       "byes": 0,
       "resistance": 0.5556,
       "opponentsResistance": 0.4815,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 3,
-      "playerId": "p_sergio-bernardez-molina-7de06b",
-      "name": "Sergio Bernardez Molina",
-      "chesscomUsername": "sergiako_98",
-      "points": 3,
-      "record": {
-        "win": 3,
-        "loss": 0
-      },
-      "games": {
-        "win": 3,
-        "loss": 0,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.5185,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -175,7 +175,7 @@
       },
       "byes": 0,
       "resistance": 0.5,
-      "opponentsResistance": 0.5,
+      "opponentsResistance": 0.5185,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -226,6 +226,28 @@
     },
     {
       "rank": 11,
+      "playerId": "p_antonio-manuel-martin-garcia-c24f9d",
+      "name": "Antonio Manuel Martín García",
+      "chesscomUsername": "PangWM",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 1
+      },
+      "games": {
+        "win": 2,
+        "loss": 1,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.4444,
+      "opponentsResistance": 0.5,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 12,
       "playerId": "p_jorge-carlos-manzanares-martinez-b73b45",
       "name": "Jorge Carlos Manzanares Martínez",
       "chesscomUsername": "jmanzanares74",
@@ -247,7 +269,7 @@
       "outcome": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "playerId": "p_daniel-alocen-pinillos-a8390a",
       "name": "Daniel Alocen Pinillos",
       "chesscomUsername": "PerfectRiver",
@@ -269,7 +291,7 @@
       "outcome": null
     },
     {
-      "rank": 13,
+      "rank": 14,
       "playerId": "p_albert-sanchez-fernandez-47fe38",
       "name": "Albert Sánchez Fernández",
       "chesscomUsername": "murakaii",
@@ -291,7 +313,7 @@
       "outcome": null
     },
     {
-      "rank": 14,
+      "rank": 15,
       "playerId": "p_angel-tena-jimenez-b2ec4e",
       "name": "Ángel Tena Jiménez",
       "chesscomUsername": "angeltena26",
@@ -306,14 +328,14 @@
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0.75,
-      "opponentsResistance": 0.5139,
+      "resistance": 0.6667,
+      "opponentsResistance": 0.5556,
       "qualified": true,
       "dropped": false,
       "outcome": null
     },
     {
-      "rank": 15,
+      "rank": 16,
       "playerId": "p_alberto-ruiz-rancano-41fb08",
       "name": "Alberto Ruiz Rancaño",
       "chesscomUsername": "TheGambel99",
@@ -335,51 +357,7 @@
       "outcome": null
     },
     {
-      "rank": 16,
-      "playerId": "p_antonio-manuel-martin-garcia-c24f9d",
-      "name": "Antonio Manuel Martín García",
-      "chesscomUsername": "PangWM",
-      "points": 1,
-      "record": {
-        "win": 1,
-        "loss": 1
-      },
-      "games": {
-        "win": 1,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.4444,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
       "rank": 17,
-      "playerId": "p_isabel-garcia-bergers-d56cf3",
-      "name": "Isabel García Bergers",
-      "chesscomUsername": "igarciab11",
-      "points": 1,
-      "record": {
-        "win": 1,
-        "loss": 1
-      },
-      "games": {
-        "win": 1,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.4167,
-      "opponentsResistance": 0.5139,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 18,
       "playerId": "p_raul-morchon-fuentes-3193bc",
       "name": "Raúl Morchón Fuentes",
       "chesscomUsername": "ichraxx",
@@ -401,29 +379,7 @@
       "outcome": null
     },
     {
-      "rank": 19,
-      "playerId": "p_lucia-valles-escudero-f202a0",
-      "name": "Lucía Valles Escudero",
-      "chesscomUsername": "lvallese",
-      "points": 1,
-      "record": {
-        "win": 1,
-        "loss": 2
-      },
-      "games": {
-        "win": 1,
-        "loss": 2,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.6667,
-      "opponentsResistance": 0.3889,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 20,
+      "rank": 18,
       "playerId": "p_lara-visuna-perez-a74dc8",
       "name": "Lara Visuña Pérez",
       "chesscomUsername": "Laradona2",
@@ -445,7 +401,29 @@
       "outcome": null
     },
     {
-      "rank": 21,
+      "rank": 19,
+      "playerId": "p_lucia-valles-escudero-f202a0",
+      "name": "Lucía Valles Escudero",
+      "chesscomUsername": "lvallese",
+      "points": 1,
+      "record": {
+        "win": 1,
+        "loss": 2
+      },
+      "games": {
+        "win": 1,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.6667,
+      "opponentsResistance": 0.3704,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 20,
       "playerId": "p_diego-diaz-vidal-4f1507",
       "name": "Diego Díaz Vidal",
       "chesscomUsername": "diegodzv",
@@ -467,7 +445,7 @@
       "outcome": null
     },
     {
-      "rank": 22,
+      "rank": 21,
       "playerId": "p_diego-morante-parra-32c467",
       "name": "Diego Morante Parra",
       "chesscomUsername": "diegommmmmmm",
@@ -483,13 +461,13 @@
       },
       "byes": 0,
       "resistance": 0.5556,
-      "opponentsResistance": 0.4444,
+      "opponentsResistance": 0.4815,
       "qualified": false,
       "dropped": false,
       "outcome": null
     },
     {
-      "rank": 23,
+      "rank": 22,
       "playerId": "p_andres-chica-linares-885e0c",
       "name": "Andrés Chica Linares",
       "chesscomUsername": "sensuao",
@@ -511,6 +489,28 @@
       "outcome": null
     },
     {
+      "rank": 23,
+      "playerId": "p_isabel-garcia-bergers-d56cf3",
+      "name": "Isabel García Bergers",
+      "chesscomUsername": "igarciab11",
+      "points": 1,
+      "record": {
+        "win": 1,
+        "loss": 2
+      },
+      "games": {
+        "win": 1,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5,
+      "opponentsResistance": 0.4444,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
       "rank": 24,
       "playerId": "p_johan-stevens-bautista-parra-cd3247",
       "name": "Johan Stevens Bautista Parra",
@@ -526,8 +526,8 @@
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0.2778,
-      "opponentsResistance": 0.4907,
+      "resistance": 0.2222,
+      "opponentsResistance": 0.537,
       "qualified": false,
       "dropped": false,
       "outcome": null
@@ -724,8 +724,8 @@
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0.3889,
-      "opponentsResistance": 0.4444,
+      "resistance": 0.4444,
+      "opponentsResistance": 0.4074,
       "qualified": false,
       "dropped": false,
       "outcome": null

@@ -1966,12 +1966,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "6b270424-38eb-46e6-82ad-518327e3a52b",
       "loss": false,
       "match": 13,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-27T10:21:11.000Z",
+            "material": {
+              "black": 22,
+              "white": 2
+            },
+            "moves": 54,
+            "p1Color": "black",
+            "result": "p1",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 404,
+              "white": 371
+            },
+            "url": "https://www.chess.com/game/live/188127975122"
+          }
+        ],
+        "games": [
+          "p1"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1980,12 +2003,12 @@
         "draw": 0,
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "player2": {
         "draw": 0,
         "id": "p_isabel-garcia-bergers-d56cf3",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "round": 3
@@ -2958,7 +2981,7 @@
           "opponent": "p_isabel-garcia-bergers-d56cf3",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -3332,7 +3355,7 @@
           "bye": false,
           "draw": 0,
           "id": "6b270424-38eb-46e6-82ad-518327e3a52b",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_antonio-manuel-martin-garcia-c24f9d",
           "pairUpDown": false,
           "seating": null,
