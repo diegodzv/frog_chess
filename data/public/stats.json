@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-27T12:35:00.880Z",
+  "updatedAt": "2026-11-27T14:47:33.496Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 39,
+  "gamesAnalyzed": 40,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -9,7 +9,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 8
+        "seed": 7
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -61,7 +61,7 @@
         "id": "p_diego-diaz-vidal-4f1507",
         "name": "Diego Díaz Vidal",
         "chesscomUsername": "diegodzv",
-        "seed": 17
+        "seed": 20
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -115,7 +115,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 8
+        "seed": 7
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -128,7 +128,7 @@
         "id": "p_diego-morante-parra-32c467",
         "name": "Diego Morante Parra",
         "chesscomUsername": "diegommmmmmm",
-        "seed": 19
+        "seed": 18
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -169,7 +169,7 @@
         "id": "p_luis-gontan-moreno-651b3b",
         "name": "Luis Gontán Moreno",
         "chesscomUsername": "luisGM1985",
-        "seed": 8
+        "seed": 7
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -216,10 +216,19 @@
     },
     {
       "player": {
+        "id": "p_miguel-mateo-garcia-dd90a3",
+        "name": "Miguel Mateo García",
+        "chesscomUsername": "ISacMyQueen",
+        "seed": 4
+      },
+      "checkmates": 3
+    },
+    {
+      "player": {
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 7
+        "seed": 8
       },
       "checkmates": 2
     },
@@ -238,15 +247,6 @@
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
         "seed": 10
-      },
-      "checkmates": 2
-    },
-    {
-      "player": {
-        "id": "p_josep-oriol-elias-albajes-31219d",
-        "name": "Josep Oriol Elias Albajes",
-        "chesscomUsername": "iLostTheGame420",
-        "seed": 5
       },
       "checkmates": 2
     }

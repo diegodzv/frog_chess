@@ -1649,12 +1649,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "2e8c93b0-5dce-4ed8-a61d-ee7491330951",
       "loss": false,
       "match": 4,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-27T12:42:24.000Z",
+            "material": {
+              "black": 1,
+              "white": 17
+            },
+            "moves": 48,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 421,
+              "white": 445
+            },
+            "url": "https://www.chess.com/game/live/188136184812"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1662,14 +1685,14 @@
       "player1": {
         "draw": 0,
         "id": "p_lucas-llobet-cusi-354632",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_miguel-mateo-garcia-dd90a3",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 3
     },
@@ -2370,7 +2393,7 @@
           "bye": false,
           "draw": 0,
           "id": "2e8c93b0-5dce-4ed8-a61d-ee7491330951",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_miguel-mateo-garcia-dd90a3",
           "pairUpDown": false,
           "seating": null,
@@ -3550,7 +3573,7 @@
           "opponent": "p_lucas-llobet-cusi-354632",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
