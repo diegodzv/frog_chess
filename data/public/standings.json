@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T14:47:33.496Z",
+  "updatedAt": "2026-11-27T23:16:39.567Z",
   "phase": "stage-one",
   "round": 3,
   "cutoff": 16,
@@ -43,7 +43,7 @@
       },
       "byes": 0,
       "resistance": 0.5556,
-      "opponentsResistance": 0.5185,
+      "opponentsResistance": 0.5556,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -87,7 +87,7 @@
       },
       "byes": 0,
       "resistance": 0.4444,
-      "opponentsResistance": 0.5926,
+      "opponentsResistance": 0.6296,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -116,6 +116,50 @@
     },
     {
       "rank": 6,
+      "playerId": "p_lucas-llobet-cusi-354632",
+      "name": "Lucas Llobet Cusi",
+      "chesscomUsername": "Lucasllobet",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 1
+      },
+      "games": {
+        "win": 2,
+        "loss": 1,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5556,
+      "opponentsResistance": 0.4815,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 7,
+      "playerId": "p_daniel-alocen-pinillos-a8390a",
+      "name": "Daniel Alocen Pinillos",
+      "chesscomUsername": "PerfectRiver",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 1
+      },
+      "games": {
+        "win": 2,
+        "loss": 1,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5556,
+      "opponentsResistance": 0.4074,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 8,
       "playerId": "p_alejandro-garcia-castillo-58ed7d",
       "name": "Alejandro García Castillo",
       "chesscomUsername": "AGarcia98",
@@ -131,13 +175,13 @@
       },
       "byes": 0,
       "resistance": 0.5,
-      "opponentsResistance": 0.5741,
+      "opponentsResistance": 0.5556,
       "qualified": true,
       "dropped": false,
       "outcome": null
     },
     {
-      "rank": 7,
+      "rank": 9,
       "playerId": "p_josep-oriol-elias-albajes-31219d",
       "name": "Josep Oriol Elias Albajes",
       "chesscomUsername": "iLostTheGame420",
@@ -159,7 +203,7 @@
       "outcome": null
     },
     {
-      "rank": 8,
+      "rank": 10,
       "playerId": "p_luis-gontan-moreno-651b3b",
       "name": "Luis Gontán Moreno",
       "chesscomUsername": "luisGM1985",
@@ -181,29 +225,7 @@
       "outcome": null
     },
     {
-      "rank": 9,
-      "playerId": "p_lucas-llobet-cusi-354632",
-      "name": "Lucas Llobet Cusi",
-      "chesscomUsername": "Lucasllobet",
-      "points": 2,
-      "record": {
-        "win": 2,
-        "loss": 1
-      },
-      "games": {
-        "win": 2,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.4444,
-      "opponentsResistance": 0.5556,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 10,
+      "rank": 11,
       "playerId": "p_miguel-aragon-lazcano-29de38",
       "name": "Miguel Aragón Lazcano",
       "chesscomUsername": "M_l_K_l",
@@ -225,7 +247,7 @@
       "outcome": null
     },
     {
-      "rank": 11,
+      "rank": 12,
       "playerId": "p_antonio-manuel-martin-garcia-c24f9d",
       "name": "Antonio Manuel Martín García",
       "chesscomUsername": "PangWM",
@@ -242,28 +264,6 @@
       "byes": 0,
       "resistance": 0.4444,
       "opponentsResistance": 0.5,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 12,
-      "playerId": "p_daniel-alocen-pinillos-a8390a",
-      "name": "Daniel Alocen Pinillos",
-      "chesscomUsername": "PerfectRiver",
-      "points": 2,
-      "record": {
-        "win": 2,
-        "loss": 1
-      },
-      "games": {
-        "win": 2,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.4444,
-      "opponentsResistance": 0.4815,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -483,7 +483,7 @@
       },
       "byes": 0,
       "resistance": 0.5556,
-      "opponentsResistance": 0.2963,
+      "opponentsResistance": 0.3333,
       "qualified": false,
       "dropped": false,
       "outcome": null
@@ -512,6 +512,28 @@
     },
     {
       "rank": 24,
+      "playerId": "p_alvaro-castro-sampedro-2685b6",
+      "name": "Álvaro Castro Sampedro",
+      "chesscomUsername": "alvastro0055",
+      "points": 1,
+      "record": {
+        "win": 1,
+        "loss": 2
+      },
+      "games": {
+        "win": 1,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.4444,
+      "opponentsResistance": 0.5185,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 25,
       "playerId": "p_johan-stevens-bautista-parra-cd3247",
       "name": "Johan Stevens Bautista Parra",
       "chesscomUsername": "mrtewe",
@@ -533,7 +555,7 @@
       "outcome": null
     },
     {
-      "rank": 25,
+      "rank": 26,
       "playerId": "p_jose-luis-gomez-anton-3f5575",
       "name": "José Luis Gómez Antón",
       "chesscomUsername": "ToteBoss",
@@ -549,13 +571,13 @@
       },
       "byes": 0,
       "resistance": 0.2222,
-      "opponentsResistance": 0.5,
+      "opponentsResistance": 0.5185,
       "qualified": false,
       "dropped": false,
       "outcome": null
     },
     {
-      "rank": 26,
+      "rank": 27,
       "playerId": "p_david-prats-vargas-ee9dca",
       "name": "David Prats Vargas",
       "chesscomUsername": "Devittot",
@@ -572,28 +594,6 @@
       "byes": 1,
       "resistance": 0.1667,
       "opponentsResistance": 0.6111,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 27,
-      "playerId": "p_alvaro-castro-sampedro-2685b6",
-      "name": "Álvaro Castro Sampedro",
-      "chesscomUsername": "alvastro0055",
-      "points": 0,
-      "record": {
-        "win": 0,
-        "loss": 2
-      },
-      "games": {
-        "win": 0,
-        "loss": 2,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.6667,
-      "opponentsResistance": 0.4444,
       "qualified": false,
       "dropped": false,
       "outcome": null
@@ -644,28 +644,6 @@
     },
     {
       "rank": 30,
-      "playerId": "p_tania-duran-vicente-cc6c24",
-      "name": "Tania Durán Vicente",
-      "chesscomUsername": "eskimogrrrl77",
-      "points": 0,
-      "record": {
-        "win": 0,
-        "loss": 2
-      },
-      "games": {
-        "win": 0,
-        "loss": 2,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.3611,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 31,
       "playerId": "p_emilio-garcia-quintana-935a82",
       "name": "Emilio García Quintana",
       "chesscomUsername": "emiliogq",
@@ -687,7 +665,7 @@
       "outcome": null
     },
     {
-      "rank": 32,
+      "rank": 31,
       "playerId": "p_oscar-marin-flores-a2cc66",
       "name": "Óscar Marín Flores",
       "chesscomUsername": "oscaarmfl",
@@ -709,7 +687,7 @@
       "outcome": null
     },
     {
-      "rank": 33,
+      "rank": 32,
       "playerId": "p_adrian-alamo-castro-b9b27d",
       "name": "Adrián Álamo Castro",
       "chesscomUsername": "regis_occisor",
@@ -726,6 +704,28 @@
       "byes": 0,
       "resistance": 0.4444,
       "opponentsResistance": 0.4074,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 33,
+      "playerId": "p_tania-duran-vicente-cc6c24",
+      "name": "Tania Durán Vicente",
+      "chesscomUsername": "eskimogrrrl77",
+      "points": 0,
+      "record": {
+        "win": 0,
+        "loss": 3
+      },
+      "games": {
+        "win": 0,
+        "loss": 3,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.4444,
+      "opponentsResistance": 0.3889,
       "qualified": false,
       "dropped": false,
       "outcome": null
