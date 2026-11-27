@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T11:50:33.488Z",
+  "updatedAt": "2026-11-27T12:35:00.880Z",
   "phase": "stage-one",
   "round": 3,
   "cutoff": 16,
@@ -28,6 +28,28 @@
     },
     {
       "rank": 2,
+      "playerId": "p_pedro-atares-rodriguez-44b837",
+      "name": "Pedro Atarés Rodríguez",
+      "chesscomUsername": "CharlesDegoulash",
+      "points": 3,
+      "record": {
+        "win": 3,
+        "loss": 0
+      },
+      "games": {
+        "win": 3,
+        "loss": 0,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5556,
+      "opponentsResistance": 0.5185,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 3,
       "playerId": "p_sergio-bernardez-molina-7de06b",
       "name": "Sergio Bernardez Molina",
       "chesscomUsername": "sergiako_98",
@@ -44,28 +66,6 @@
       "byes": 0,
       "resistance": 0.5556,
       "opponentsResistance": 0.5,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 3,
-      "playerId": "p_pedro-atares-rodriguez-44b837",
-      "name": "Pedro Atarés Rodríguez",
-      "chesscomUsername": "CharlesDegoulash",
-      "points": 3,
-      "record": {
-        "win": 3,
-        "loss": 0
-      },
-      "games": {
-        "win": 3,
-        "loss": 0,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5556,
-      "opponentsResistance": 0.4815,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -138,28 +138,6 @@
     },
     {
       "rank": 7,
-      "playerId": "p_josep-oriol-elias-albajes-31219d",
-      "name": "Josep Oriol Elias Albajes",
-      "chesscomUsername": "iLostTheGame420",
-      "points": 2,
-      "record": {
-        "win": 2,
-        "loss": 1
-      },
-      "games": {
-        "win": 2,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.5,
-      "opponentsResistance": 0.537,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 8,
       "playerId": "p_alejandro-garcia-castillo-58ed7d",
       "name": "Alejandro García Castillo",
       "chesscomUsername": "AGarcia98",
@@ -175,7 +153,29 @@
       },
       "byes": 0,
       "resistance": 0.5,
-      "opponentsResistance": 0.5185,
+      "opponentsResistance": 0.5741,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 8,
+      "playerId": "p_josep-oriol-elias-albajes-31219d",
+      "name": "Josep Oriol Elias Albajes",
+      "chesscomUsername": "iLostTheGame420",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 1
+      },
+      "games": {
+        "win": 2,
+        "loss": 1,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.5,
+      "opponentsResistance": 0.5,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -197,7 +197,7 @@
       },
       "byes": 0,
       "resistance": 0.4444,
-      "opponentsResistance": 0.5926,
+      "opponentsResistance": 0.5556,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -226,6 +226,28 @@
     },
     {
       "rank": 11,
+      "playerId": "p_daniel-alocen-pinillos-a8390a",
+      "name": "Daniel Alocen Pinillos",
+      "chesscomUsername": "PerfectRiver",
+      "points": 2,
+      "record": {
+        "win": 2,
+        "loss": 1
+      },
+      "games": {
+        "win": 2,
+        "loss": 1,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.4444,
+      "opponentsResistance": 0.537,
+      "qualified": true,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 12,
       "playerId": "p_antonio-manuel-martin-garcia-c24f9d",
       "name": "Antonio Manuel Martín García",
       "chesscomUsername": "PangWM",
@@ -247,7 +269,7 @@
       "outcome": null
     },
     {
-      "rank": 12,
+      "rank": 13,
       "playerId": "p_jorge-carlos-manzanares-martinez-b73b45",
       "name": "Jorge Carlos Manzanares Martínez",
       "chesscomUsername": "jmanzanares74",
@@ -264,28 +286,6 @@
       "byes": 0,
       "resistance": 0.3333,
       "opponentsResistance": 0.6667,
-      "qualified": true,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 13,
-      "playerId": "p_daniel-alocen-pinillos-a8390a",
-      "name": "Daniel Alocen Pinillos",
-      "chesscomUsername": "PerfectRiver",
-      "points": 2,
-      "record": {
-        "win": 2,
-        "loss": 1
-      },
-      "games": {
-        "win": 2,
-        "loss": 1,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.3333,
-      "opponentsResistance": 0.5741,
       "qualified": true,
       "dropped": false,
       "outcome": null
@@ -534,6 +534,28 @@
     },
     {
       "rank": 25,
+      "playerId": "p_jose-luis-gomez-anton-3f5575",
+      "name": "José Luis Gómez Antón",
+      "chesscomUsername": "ToteBoss",
+      "points": 1,
+      "record": {
+        "win": 1,
+        "loss": 2
+      },
+      "games": {
+        "win": 1,
+        "loss": 2,
+        "draw": 0
+      },
+      "byes": 0,
+      "resistance": 0.2222,
+      "opponentsResistance": 0.5,
+      "qualified": false,
+      "dropped": false,
+      "outcome": null
+    },
+    {
+      "rank": 26,
       "playerId": "p_david-prats-vargas-ee9dca",
       "name": "David Prats Vargas",
       "chesscomUsername": "Devittot",
@@ -555,7 +577,7 @@
       "outcome": null
     },
     {
-      "rank": 26,
+      "rank": 27,
       "playerId": "p_alvaro-castro-sampedro-2685b6",
       "name": "Álvaro Castro Sampedro",
       "chesscomUsername": "alvastro0055",
@@ -571,29 +593,7 @@
       },
       "byes": 0,
       "resistance": 0.8333,
-      "opponentsResistance": 0.25,
-      "qualified": false,
-      "dropped": false,
-      "outcome": null
-    },
-    {
-      "rank": 27,
-      "playerId": "p_emilio-garcia-quintana-935a82",
-      "name": "Emilio García Quintana",
-      "chesscomUsername": "emiliogq",
-      "points": 0,
-      "record": {
-        "win": 0,
-        "loss": 2
-      },
-      "games": {
-        "win": 0,
-        "loss": 2,
-        "draw": 0
-      },
-      "byes": 0,
-      "resistance": 0.6667,
-      "opponentsResistance": 0.4722,
+      "opponentsResistance": 0.3056,
       "qualified": false,
       "dropped": false,
       "outcome": null
@@ -658,30 +658,30 @@
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0.3333,
-      "opponentsResistance": 0.4167,
+      "resistance": 0.5,
+      "opponentsResistance": 0.3611,
       "qualified": false,
       "dropped": false,
       "outcome": null
     },
     {
       "rank": 31,
-      "playerId": "p_jose-luis-gomez-anton-3f5575",
-      "name": "José Luis Gómez Antón",
-      "chesscomUsername": "ToteBoss",
+      "playerId": "p_emilio-garcia-quintana-935a82",
+      "name": "Emilio García Quintana",
+      "chesscomUsername": "emiliogq",
       "points": 0,
       "record": {
         "win": 0,
-        "loss": 2
+        "loss": 3
       },
       "games": {
         "win": 0,
-        "loss": 2,
+        "loss": 3,
         "draw": 0
       },
       "byes": 0,
-      "resistance": 0.3333,
-      "opponentsResistance": 0.3333,
+      "resistance": 0.5556,
+      "opponentsResistance": 0.3889,
       "qualified": false,
       "dropped": false,
       "outcome": null

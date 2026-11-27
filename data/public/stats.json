@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-27T11:50:33.488Z",
+  "updatedAt": "2026-11-27T12:35:00.880Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 38,
+  "gamesAnalyzed": 39,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -89,7 +89,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 12
+        "seed": 11
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -102,7 +102,7 @@
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 2
+        "seed": 3
       },
       "round": 3,
       "roundLabel": "Ronda 3",
@@ -210,7 +210,7 @@
         "id": "p_sergio-bernardez-molina-7de06b",
         "name": "Sergio Bernardez Molina",
         "chesscomUsername": "sergiako_98",
-        "seed": 2
+        "seed": 3
       },
       "checkmates": 3
     },

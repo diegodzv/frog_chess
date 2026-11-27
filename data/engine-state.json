@@ -1772,12 +1772,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "4ad2e830-ac86-4665-bcf5-4f5aaf50e81c",
       "loss": false,
       "match": 8,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-26T09:46:37.000Z",
+            "material": {
+              "black": 18,
+              "white": 7
+            },
+            "moves": 36,
+            "p1Color": "white",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 392,
+              "white": 567
+            },
+            "url": "https://www.chess.com/game/live/188049099928"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1785,14 +1808,14 @@
       "player1": {
         "draw": 0,
         "id": "p_emilio-garcia-quintana-935a82",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_jose-luis-gomez-anton-3f5575",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 3
     },
@@ -2599,7 +2622,7 @@
           "bye": false,
           "draw": 0,
           "id": "4ad2e830-ac86-4665-bcf5-4f5aaf50e81c",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_jose-luis-gomez-anton-3f5575",
           "pairUpDown": false,
           "seating": null,
@@ -2897,7 +2920,7 @@
           "opponent": "p_emilio-garcia-quintana-935a82",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
