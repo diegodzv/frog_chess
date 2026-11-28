@@ -1770,12 +1770,35 @@
       "round": 3
     },
     {
-      "active": true,
+      "active": false,
       "bye": false,
       "id": "6efc6caf-ec15-4bfb-bf41-8b6ea294ece9",
       "loss": false,
       "match": 7,
-      "meta": {},
+      "meta": {
+        "chesscomGames": [
+          {
+            "endTime": "2026-11-28T09:27:48.000Z",
+            "material": {
+              "black": 2,
+              "white": 16
+            },
+            "moves": 43,
+            "p1Color": "black",
+            "result": "p2",
+            "termination": "checkmated",
+            "timeUsed": {
+              "black": 455,
+              "white": 463
+            },
+            "url": "https://www.chess.com/game/live/188202198622"
+          }
+        ],
+        "games": [
+          "p2"
+        ],
+        "source": "chesscom"
+      },
       "path": {
         "loss": null,
         "win": null
@@ -1783,14 +1806,14 @@
       "player1": {
         "draw": 0,
         "id": "p_raul-morchon-fuentes-3193bc",
-        "loss": 0,
+        "loss": 1,
         "win": 0
       },
       "player2": {
         "draw": 0,
         "id": "p_alberto-ruiz-rancano-41fb08",
         "loss": 0,
-        "win": 0
+        "win": 1
       },
       "round": 3
     },
@@ -2294,7 +2317,7 @@
           "opponent": "p_raul-morchon-fuentes-3193bc",
           "pairUpDown": false,
           "seating": null,
-          "win": 0
+          "win": 1
         }
       ],
       "meta": {
@@ -2374,7 +2397,7 @@
           "bye": false,
           "draw": 0,
           "id": "6efc6caf-ec15-4bfb-bf41-8b6ea294ece9",
-          "loss": 0,
+          "loss": 1,
           "opponent": "p_alberto-ruiz-rancano-41fb08",
           "pairUpDown": false,
           "seating": null,

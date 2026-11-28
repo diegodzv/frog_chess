@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-27T23:16:39.567Z",
+  "updatedAt": "2026-11-28T09:48:16.206Z",
   "phase": "stage-one",
-  "gamesAnalyzed": 41,
+  "gamesAnalyzed": 42,
   "minMovesForRecords": 5,
   "fastestByMoves": [
     {
@@ -22,7 +22,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 7
+        "seed": 5
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -35,7 +35,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 7
+        "seed": 5
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -76,7 +76,7 @@
         "id": "p_alejandro-garcia-castillo-58ed7d",
         "name": "Alejandro García Castillo",
         "chesscomUsername": "AGarcia98",
-        "seed": 7
+        "seed": 5
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -89,7 +89,7 @@
         "id": "p_daniel-alocen-pinillos-a8390a",
         "name": "Daniel Alocen Pinillos",
         "chesscomUsername": "PerfectRiver",
-        "seed": 6
+        "seed": 8
       },
       "round": 2,
       "roundLabel": "Ronda 2",
@@ -143,7 +143,7 @@
         "id": "p_angel-tena-jimenez-b2ec4e",
         "name": "Ángel Tena Jiménez",
         "chesscomUsername": "angeltena26",
-        "seed": 15
+        "seed": 16
       },
       "round": 1,
       "roundLabel": "Ronda 1",
@@ -228,7 +228,7 @@
         "id": "p_lucas-llobet-cusi-354632",
         "name": "Lucas Llobet Cusi",
         "chesscomUsername": "Lucasllobet",
-        "seed": 5
+        "seed": 6
       },
       "checkmates": 2
     },
@@ -237,7 +237,7 @@
         "id": "p_hector-rodriguez-vegue-bd3889",
         "name": "Héctor Rodríguez Vegue",
         "chesscomUsername": "Vegue82",
-        "seed": 13
+        "seed": 15
       },
       "checkmates": 2
     },
@@ -246,7 +246,7 @@
         "id": "p_antonio-manuel-martin-garcia-c24f9d",
         "name": "Antonio Manuel Martín García",
         "chesscomUsername": "PangWM",
-        "seed": 11
+        "seed": 12
       },
       "checkmates": 2
     }
